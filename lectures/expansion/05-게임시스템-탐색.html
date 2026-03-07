@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>V단원 확장: 게임 시스템 실습과제 | 탐색</title>
+  <link rel="stylesheet" href="../../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>V단원 확장 — 게임 시스템 실습과제</h1>
+    <p class="subtitle">학습한 이진 탐색을 아이템/스킬 테이블 검색으로 확장하기 (추가 강의)</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../../index.html" class="back">← 전체 목차</a>
+    <a href="../05-index.html" class="back">V단원 목차</a>
+
+    <p class="hook lead">이 페이지는 <strong>강의 외 추가 강의</strong>예요. V단원에서 배운 <strong>순차·이진 탐색</strong>을 게임의 <strong>아이템 ID로 이름 찾기</strong>, <strong>정렬된 스킬 테이블에서 번호로 검색</strong> 같은 구체적인 시스템으로 확장합니다. <strong>자료구조 복기 → 사용 API → 실제 구현 활용</strong> 순으로 짚어요.</p>
+
+    <h2>이진 탐색 — 정렬된 테이블에서 빠르게 찾기</h2>
+    <p>게임에서 "아이템 ID 12번의 이름이 뭐지?", "스킬 번호 5의 설명은?"처럼 <strong>정렬된 테이블</strong>에서 번호(키)로 정보를 찾을 때 이진 탐색이 쓰여요. 순차 탐색은 정렬이 없어도 되지만 느리고, 이진 탐색은 정렬돼 있어야 하며 빠릅니다.</p>
+
+    <div class="expansion-review" role="region" aria-label="복기">
+      <h3>📌 복기: 이진 탐색</h3>
+      <ul>
+        <li><strong>조건</strong>: 자료가 이미 오름차순(또는 내림차순)으로 정렬되어 있을 때만 사용.</li>
+        <li><strong>방법</strong>: 현재 구간의 <strong>가운데 값</strong>을 보고, 찾는 값이 더 크면 오른쪽 절반만, 더 작으면 왼쪽 절반만 다시 탐색. 반씩 버리므로 빠름.</li>
+        <li>자료구조는 <strong>배열(리스트)</strong>. 연산은 "가운데 인덱스 계산"과 "구간 좁히기(left/right 갱신)".</li>
+      </ul>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API">
+      <h3>📌 사용하는 파이썬 API</h3>
+      <dl>
+        <dt><code>mid = (left + right) // 2</code></dt>
+        <dd>정수 나눗셈으로 가운데 <strong>인덱스</strong>를 구해요. 인덱스는 항상 정수여야 하므로 //를 씁니다.</dd>
+        <dt><code>left = mid + 1</code>, <code>right = mid - 1</code></dt>
+        <dd>찾는 값이 arr[mid]보다 크면 오른쪽 절반만 보면 되므로 <code>left = mid + 1</code>. 더 작으면 <code>right = mid - 1</code>로 구간을 줄여요.</dd>
+        <dt><code>리스트[mid]</code></dt>
+        <dd>mid번째 칸의 값. 이 값과 target을 비교해서 "같으면 찾음", "target이 더 크면/작으면" 구간을 좁혀요.</dd>
+      </dl>
+    </div>
+    <div class="game-use-callout" role="region" aria-label="실제 구현 활용">
+      <h3>🎮 실제 구현에서 쓰는 곳</h3>
+      <ul>
+        <li><strong>아이템/스킬 테이블</strong>: ID가 1, 2, 3, … 순으로 정렬된 테이블에서 "ID 12번 아이템 이름"을 찾을 때. 리스트를 (id, name) 쌍으로 두고 id로 정렬해 두면, 이진 탐색으로 12번이 몇 번째 인덱스인지 찾은 뒤 name을 반환.</li>
+        <li><strong>정렬된 데이터가 전제</strong>: 게임 데이터를 "ID순"으로 미리 정렬해 두면, 런타임에 이진 탐색으로 로그 N 번만에 찾을 수 있어요.</li>
+      </ul>
+    </div>
+    <p class="practice-callout-inline">👇 이진 탐색: 가운데 인덱스 mid, target이 크면 left = mid+1. 실습창에서 빈칸을 채운 뒤 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 이진 탐색: 정렬된 리스트에서 target 위치 찾기
+arr = [2, 5, 8, 12, 16, 23, 38]
+target = 12
+left, right = 0, len(arr) - 1
+while left &lt;= right:
+    mid = (left + right) // 2
+    if arr[mid] == target:
+        print("찾음! 인덱스:", mid)
+        break
+    if arr[mid] &lt; target:
+        left = mid + 1
+    else:
+        right = mid - 1
+else:
+    print("없음")</code></pre>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 실습: 이진 탐색</span>
+      <iframe src="../../practice/pyodide.html?snippet=binary&amp;embed=1" title="파이썬: 이진 탐색" class="pyodide-iframe"></iframe>
+    </div>
+    <p>게임에서 "ID 12번 스킬 이름"을 찾는다면, 스킬 리스트를 ID순으로 정렬해 두고 위와 같이 target=12로 이진 탐색한 뒤, 찾은 인덱스의 "이름" 필드를 화면에 표시하면 됩니다.</p>
+
+    <nav class="page-nav">
+      <a href="04-게임시스템-정렬.html">← IV단원 확장</a>
+      <a href="../05-3-최단거리.html">V단원: 최단 거리</a>
+      <span></span>
+    </nav>
+  </article>
+  <script src="../../js/theme.js"></script>
+</body>
+</html>

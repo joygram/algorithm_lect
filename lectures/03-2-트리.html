@@ -49,11 +49,21 @@
 
     <h4 class="section-title">문제 및 실습</h4>
     <div class="problem-section practice-callout">
-      <p>트리 구조를 보고 루트·자식·리프를 눈으로 따라 가 보세요. 아래에서 파이썬으로 바로 실행해 볼 수 있어요.</p>
+      <p>트리 구조를 보고 루트·자식·리프를 눈으로 따라 가 보세요. <strong>아래 iframe</strong>에서 파이썬 예제를 골라 바로 실행해 볼 수 있어요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/tree.html">실습: 트리 →</a>
-        <a href="../practice/pyodide.html" class="practice-pyodide">전체 화면 파이썬 실습 →</a>
       </div>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 예제별로 쓰는 파이썬 API·함수</p>
+      <p>예제 버튼을 누르면 해당 뼈대 코드가 불러와져요. <strong>예제별 사용 함수</strong> 요약이에요.</p>
+      <dl>
+        <dt>리스트</dt><dd><code>append(값)</code>, <code>pop(인덱스)</code></dd>
+        <dt>스택</dt><dd><code>append(값)</code>, <code>pop()</code> (인자 없음)</dd>
+        <dt>큐</dt><dd><code>deque</code>, <code>append</code>, <code>popleft()</code></dd>
+        <dt>버블 정렬</dt><dd>인덱싱 <code>arr[j]</code>, 비교 <code>&gt;</code>, 스왑 <code>a,b = b,a</code></dd>
+        <dt>이진 탐색</dt><dd><code>(left+right)//2</code>, <code>left = mid+1</code> / <code>right = mid-1</code></dd>
+      </dl>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>II단원 심화 실습 (4단계) | 스택·큐로 게임 흐름 구현</title>
+  <link rel="stylesheet" href="../../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>II. 선형 구조 — 심화 실습</h1>
+    <p class="subtitle">파이썬으로 메뉴 뒤로가기·대사 큐 구현 (4단계)</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../02-index.html" class="back">← II단원 목차</a>
+    <a href="../../index.html" class="back">전체 목차</a>
+
+    <p class="hook lead">스택과 큐를 파이썬으로 써서 <strong>메뉴 화면 히스토리</strong>, <strong>대사 순서</strong>를 구현해 보는 심화 실습이에요.</p>
+
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 심화에서 다루는 게임 활용</p>
+      <p><strong>스택</strong> = 타이틀 → 메인 → 설정 들어갈 때마다 push, "뒤로" 누르면 pop. <strong>큐</strong> = 대사 줄을 순서대로 enqueue, 화면에 띄울 때마다 dequeue.</p>
+    </div>
+
+    <h2>심화 실습 4단계</h2>
+
+    <div class="deep-practice-steps">
+      <ol>
+        <li><strong>1단계: 스택으로 메뉴 화면 이름 쌓기</strong> — 리스트에 "타이틀", "메인", "설정"을 append로 넣고, pop으로 "뒤로" 할 때마다 꺼내 보기.</li>
+        <li><strong>2단계: 큐로 대사 줄 넣고 꺼내기</strong> — deque에 "안녕!", "선택지가 있어요", "1. 예 2. 아니오"를 넣고 popleft()로 순서대로 꺼내 보기.</li>
+        <li><strong>3단계: 스택+큐 함께 쓰기</strong> — 메뉴 스택과 대사 큐를 각각 변수로 두고, "메뉴 들어가기" / "대사 다음" 시뮬레이션을 print로 확인.</li>
+        <li><strong>4단계: 간단한 메뉴 루프 흉내</strong> — while과 input은 쓰지 않고, 미리 정해 둔 push/pop 순서를 코드로 써서 "들어가기·뒤로가기" 순서가 스택에 어떻게 쌓이는지 확인.</li>
+      </ol>
+    </div>
+
+    <h3>1·2단계: 스택·큐 실습</h3>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 스택 (메뉴 히스토리)</span>
+      <iframe src="../../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬 실습: 스택" class="pyodide-iframe"></iframe>
+    </div>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 큐 (대사 순서)</span>
+      <iframe src="../../practice/pyodide.html?snippet=queue&amp;embed=1" title="파이썬 실습: 큐" class="pyodide-iframe"></iframe>
+    </div>
+
+    <h3>3·4단계</h3>
+    <p>같은 페이지의 통합 파이썬 실습에서 스택 예제와 큐 예제를 번갈아 불러와서, 각각 "메뉴 이름 push/pop", "대사 popleft"를 한 번씩 실행해 보세요.</p>
+
+    <nav class="page-nav">
+      <a href="../02-4-덱.html">← II단원: 덱</a>
+      <a href="../03-index.html" class="next">III단원으로 →</a>
+    </nav>
+  </article>
+  <script src="../../js/theme.js"></script>
+</body>
+</html>

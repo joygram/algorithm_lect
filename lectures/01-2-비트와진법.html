@@ -37,11 +37,23 @@
 
     <div class="practice-callout">
       <p class="label">실습하기</p>
-      <p>진법·보수 따라하기와 아래에서 파이썬으로 <code>bin()</code>, <code>hex()</code> 등을 바로 실행해 보세요.</p>
+      <p>진법·보수 따라하기와 <strong>아래 iframe</strong>에서 파이썬으로 진법 변환 함수를 바로 실행해 보세요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/radix.html">실습: 진법·보수 따라하기 →</a>
-        <a href="../practice/pyodide.html" class="practice-pyodide">전체 화면 파이썬 실습 →</a>
       </div>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 진법 관련 파이썬 내장 함수</p>
+      <p><strong>대응</strong> 정수를 2진수·8진수·16진수 문자열로 바꾸거나, 그 반대로 바꿀 때 쓰는 함수예요.</p>
+      <dl>
+        <dt><code>bin(정수)</code></dt>
+        <dd>정수를 <strong>2진수</strong> 문자열로 바꿔요. 예: <code>bin(25)</code> → <code>'0b11001'</code>. 앞의 <code>0b</code>는 2진수라는 표시예요.</dd>
+        <dt><code>hex(정수)</code></dt>
+        <dd>정수를 <strong>16진수</strong> 문자열로 바꿔요. 예: <code>hex(255)</code> → <code>'0xff'</code>. <code>0x</code>는 16진수 표시예요.</dd>
+        <dt><code>int(문자열, 밑)</code></dt>
+        <dd>문자열을 지정한 <strong>밑(진법)</strong>으로 해석해서 정수로 바꿔요. 예: <code>int('11001', 2)</code> → 25, <code>int('ff', 16)</code> → 255.</dd>
+      </dl>
+      <p><strong>왜 이렇게 쓰나요?</strong> 진법 변환을 손으로 하지 않고, 코드로 "확인"할 때 위 함수들을 쓰면 됩니다. 실습에서는 <code>print(bin(25))</code>처럼 출력해 보세요.</p>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>

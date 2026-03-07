@@ -37,16 +37,39 @@
     <p><strong>자료 추상화</strong>는 "어떤 걸 넣고, 빼고, 찾을 수 있다"처럼 <strong>동작만</strong> 정해 두고, "메모리 어디에 어떻게 저장하는지"는 숨기는 거예요. 시험에는 위처럼 <strong>ADT(추상 자료형)</strong>이라고 나옵니다.</p>
     <p>예: 게임에서 "인벤토리"라는 ADT는 "넣기", "꺼내기", "순서 바꾸기"만 정하고, 안쪽을 배열로 할지 연결 리스트로 할지는 구현할 때 정해요.</p>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p>자료·추상화는 <strong>게임 기획서</strong>처럼 "인벤토리는 넣기/꺼내기만 한다", "대사는 순서대로 나간다"처럼 <strong>할 수 있는 연산</strong>만 정하는 단계예요. 실제로는 다음 단원부터 배우는 리스트·스택·큐로 구현합니다.</p>
+    </div>
+
     <div class="practice-callout">
       <p class="label">실습하기</p>
-      <p>자료구조를 코드로 다뤄 보려면 아래에서 리스트 예제를 불러와 실행해 보세요.</p>
-      <div class="lecture-practice-cta">
-        <a href="../practice/pyodide.html?snippet=list" class="practice-pyodide">전체 화면 파이썬 실습 →</a>
-      </div>
+      <p>자료구조를 코드로 다뤄 보려면 <strong>아래 iframe</strong>에서 리스트 예제를 바로 실행해 보세요. (다른 페이지로 넘어가지 않습니다)</p>
     </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 이 실습에서 쓰는 파이썬 API·함수</p>
+      <p><strong>대응</strong> 파이썬 <code>list</code>는 순서 있는 배열처럼 씁니다. "맨 뒤에 넣기"·"몇 번째 칸 지우기"에 아래 메서드를 써요.</p>
+      <dl>
+        <dt><code>리스트.append(값)</code></dt>
+        <dd><strong>맨 뒤에</strong> 한 칸 추가. 리스트 길이가 n이면 새 값은 인덱스 n에 들어갑니다.</dd>
+        <dt><code>리스트.pop(인덱스)</code></dt>
+        <dd><strong>지정한 인덱스</strong>의 값을 제거하고 그 값을 반환해요. 예: <code>pop(1)</code>이면 1번 칸(두 번째 값)이 사라집니다.</dd>
+      </dl>
+      <p><strong>왜 이렇게 쓰나요?</strong> 파이썬 list는 "동적 배열"이라 맨 뒤 추가는 빠르고, 인덱스로 접근·삭제가 직관적이에요.</p>
+    </div>
+    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 실습창에서 그대로 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)
+arr = [10, 20, 30]
+# ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)
+arr._____(40)
+print("append(40) 후:", arr)
+# ② 빈칸: 1번 인덱스(20)를 제거하려면? pop( ? )
+arr.pop(_____)
+print("pop(1) 후:", arr)
+print("길이:", len(arr))</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <p>리스트 예제가 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
+      <p>위 코드와 동일한 예제가 실습창에 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
       <iframe src="../practice/pyodide.html?snippet=list&amp;embed=1" title="파이썬 실습: 리스트" class="pyodide-iframe"></iframe>
     </div>
 

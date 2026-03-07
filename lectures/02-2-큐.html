@@ -16,6 +16,11 @@
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="02-index.html" class="back">이 단원 목차</a>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>큐</strong> = 대사·이벤트가 <strong>나온 순서대로</strong> 처리될 때 씁니다. 대사 한 줄이 enqueue되고, 화면에 띄울 때마다 dequeue해서 "다음 대사"가 나와요. 선택지 전에 쌓인 대사가 순서대로 재생되는 게 큐예요.</p>
+    </div>
+
     <h2>큐(Queue, 큐)</h2>
     <p>큐는 <strong>줄 서기</strong>와 똑같아요. 먼저 줄 선 사람이 먼저 나갑니다. 영어로 <strong>FIFO(파이포)</strong>(First In First Out, 퍼스트 인 퍼스트 아웃) = "먼저 들어간 게 먼저 나온다"라고 해요.</p>
 
@@ -41,7 +46,15 @@
       </dl>
       <p><strong>왜 list가 아니라 deque인가요?</strong> 일반 리스트에서 <code>pop(0)</code>(맨 앞 제거)을 쓰면, 뒤의 값들을 한 칸씩 당겨야 해서 비용이 커요. deque는 맨 앞·맨 뒤만 다루도록 구현돼 있어서 큐 연산에 맞습니다.</p>
     </div>
-    <p class="practice-callout-inline">👇 <strong>바로 여기서</strong> 큐(popleft) 코드를 실행해 보세요.</p>
+    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄
+from collections import deque
+q = deque(["첫번째", "두번째", "세번째"])
+print("큐:", list(q))
+# 빈칸: 큐의 맨 앞에서 하나 꺼내는 메서드 (pop / popleft / append 중)
+out = q._____()
+print("popleft() →", out)
+print("남은 큐:", list(q))</code></pre>
     <div class="fill-code-practice" data-answer="popleft" data-snippet="queue">
       <p class="fill-code-prompt">큐에서 맨 앞에서 꺼낼 때 쓰는 메서드? (파이썬 deque)</p>
       <div class="fill-code-line">out = q._____()</div>
@@ -94,7 +107,7 @@ console.log('남은 큐:', q);</textarea>
       </details>
     </div>
 
-    <p class="lecture-practice-integrated" style="margin-top:0.5rem;"><strong>필요할 때만</strong> <a href="../practice/queue.html">실습: 큐 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=queue">통합 파이썬 실습 (전체 화면)</a></p>
+    <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(큐)</strong>에서 배운 enqueue·dequeue, 즉 append·popleft를 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/queue.html">실습: 큐 (손으로 하기)</a>.</p>
     <nav class="page-nav">
       <a href="02-1-선형구조개요.html">← 이전: 선형 구조 개요</a>
       <a href="02-3-스택.html" class="next">다음: 스택 →</a>

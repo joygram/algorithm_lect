@@ -46,17 +46,59 @@
 
     <h4 class="section-title">문제 및 실습</h4>
     <div class="problem-section practice-callout">
-      <p>앞/뒤에 넣고 앞/뒤에서 꺼내 보면서 덱 동작을 확인해 보세요. 아래에서 큐(deque) 예제로 바로 실행할 수 있어요.</p>
+      <p>앞/뒤에 넣고 앞/뒤에서 꺼내 보면서 덱 동작을 확인해 보세요. <strong>아래 iframe</strong>에서 큐(deque) 예제를 바로 실행할 수 있어요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/deque.html">실습: 덱 →</a>
-        <a href="../practice/pyodide.html?snippet=queue" class="practice-pyodide">전체 화면 파이썬 실습 →</a>
       </div>
     </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 덱/큐 실습에서 쓰는 파이썬 API·함수</p>
+      <p><strong>대응</strong> 덱은 "앞·뒤 모두 넣고 뺄 수 있는" 구조예요. 파이썬에서는 <code>collections.deque</code>로 큐·덱 연산을 둘 다 씁니다.</p>
+      <dl>
+        <dt><code>from collections import deque</code> / <code>deque(리스트)</code></dt>
+        <dd>앞·뒤에서 O(1)로 넣고 뺄 수 있는 <strong>deque</strong>. 큐처럼 "뒤에 넣고 앞에서 뺄 때" 쓰기 좋아요.</dd>
+        <dt><code>덱.append(값)</code></dt>
+        <dd>맨 <strong>뒤</strong>에 넣기 → enqueue에 대응해요.</dd>
+        <dt><code>덱.popleft()</code></dt>
+        <dd>맨 <strong>앞</strong>에서 하나 꺼내서 반환 → dequeue에 대응해요. "left"는 앞쪽을 의미해요.</dd>
+      </dl>
+      <p><strong>왜 list가 아니라 deque인가요?</strong> 리스트의 <code>pop(0)</code>은 비용이 커요. deque는 맨 앞·맨 뒤만 다루도록 구현돼 있어서 덱/큐 연산에 맞습니다.</p>
+    </div>
+    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄
+from collections import deque
+q = deque(["첫번째", "두번째", "세번째"])
+print("큐:", list(q))
+# 빈칸: 큐의 맨 앞에서 하나 꺼내는 메서드 (pop / popleft / append 중)
+out = q._____()
+print("popleft() →", out)
+print("남은 큐:", list(q))</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <p>큐(deque) 예제가 불러와져 있어요. <code>popleft()</code>로 앞에서 꺼내는 연습을 해 보세요.</p>
+      <p>위 코드와 동일한 예제가 실습창에 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
       <iframe src="../practice/pyodide.html?snippet=queue&amp;embed=1" title="파이썬 실습: 큐(덱)" class="pyodide-iframe"></iframe>
     </div>
+    <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(덱/큐)</strong>에서 배운 append·popleft를 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/deque.html">실습: 덱 (손으로 하기)</a>.</p>
+
+    <h3 class="section-title">II단원 심화 실습 (4단계) — 이 페이지 안에서</h3>
+    <p>아래는 <strong>이 단원(스택·큐)</strong>을 게임에 쓰는 방식으로 확장하는 실습이에요. 페이지 이동 없이 여기서 진행하면 됩니다.</p>
+    <div class="deep-practice-steps">
+      <ol>
+        <li><strong>1단계</strong> 스택: 메뉴 화면 이름을 append로 쌓고, pop으로 "뒤로" 할 때마다 꺼내 보기.</li>
+        <li><strong>2단계</strong> 큐: 대사 줄을 append로 넣고, popleft()로 순서대로 꺼내 보기.</li>
+        <li><strong>3단계</strong> 스택+큐를 각각 변수로 두고, "메뉴 들어가기 / 대사 다음"을 print로 시뮬레이션.</li>
+        <li><strong>4단계</strong> push/pop 순서를 코드로 써서 "들어가기·뒤로가기"가 스택에 어떻게 쌓이는지 확인.</li>
+      </ol>
+    </div>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 심화: 스택 (메뉴 히스토리)</span>
+      <iframe src="../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬: 스택" class="pyodide-iframe"></iframe>
+    </div>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 심화: 큐 (대사 순서)</span>
+      <iframe src="../practice/pyodide.html?snippet=queue&amp;embed=1" title="파이썬: 큐" class="pyodide-iframe"></iframe>
+    </div>
+
     <nav class="page-nav">
       <a href="02-3-스택.html">← 이전: 스택</a>
       <a href="03-index.html" class="next">다음 단원: III. 비선형 구조 →</a>

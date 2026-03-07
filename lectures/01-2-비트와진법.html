@@ -15,6 +15,9 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="01-index.html" class="back">이 단원 목차</a>
+    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
+      <img src="../images/undertale-02.png" alt="챕터 캐릭터" width="100">
+    </figure>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
@@ -44,15 +47,8 @@
       <li><strong>16진수</strong>: 0~9, A(10), B(11), C(12), D(13), E(14), F(15). 프로그래밍에서 주소·색상 등에 자주 씀. 예: 1A₁₆ = 26</li>
     </ul>
 
-    <div class="practice-callout">
-      <p class="label">실습하기</p>
-      <p>진법·보수 따라하기와 <strong>아래</strong>에서 파이썬으로 진법 변환 함수를 바로 실행해 보세요.</p>
-      <div class="lecture-practice-cta">
-        <a href="../practice/radix.html">실습: 진법·보수 따라하기 →</a>
-      </div>
-    </div>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 실습 전: 진법 관련 파이썬 내장 함수</p>
+      <p class="api-guide-title">📌 이 실습에서 쓰는 함수: bin(), hex(), int(문자열, 밑)</p>
       <p><strong>대응</strong> 정수를 2진수·8진수·16진수 문자열로 바꾸거나, 그 반대로 바꿀 때 쓰는 함수예요.</p>
       <dl>
         <dt><code>bin(정수)</code></dt>
@@ -66,7 +62,6 @@
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <p>예: <code>print(bin(25))</code>, <code>print(hex(255))</code> 를 입력하고 실행해 보세요.</p>
       <iframe src="../practice/pyodide.html?embed=1" title="파이썬 실습" class="pyodide-iframe"></iframe>
     </div>
 

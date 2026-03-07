@@ -15,6 +15,9 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="01-index.html" class="back">이 단원 목차</a>
+    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
+      <img src="../images/undertale-05.png" alt="챕터 캐릭터" width="100">
+    </figure>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
@@ -37,7 +40,7 @@
       <li><strong>연결 리스트</strong>: 각 노드가 "다음 노드 주소"를 갖고 있어서, 가운데 삽입·삭제가 배열보다 유리해요. <strong>머리(head, 헤드)</strong>, <strong>꼬리(tail, 테일)</strong> 용어가 시험에 나옵니다.</li>
     </ul>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 실습 전: 파이썬에서 쓰는 API·함수</p>
+      <p class="api-guide-title">📌 이 실습에서 쓰는 API: append(값), pop(인덱스)</p>
       <p><strong>대응</strong> 파이썬 <code>list</code>는 순서 있는 배열처럼 씁니다. 리스트의 "맨 뒤에 넣기"·"몇 번째 칸 지우기"에 아래 메서드를 써요.</p>
       <dl>
         <dt><code>리스트.append(값)</code></dt>
@@ -47,7 +50,7 @@
       </dl>
       <p><strong>왜 이렇게 쓰나요?</strong> 파이썬 list는 "동적 배열"이라 맨 뒤 추가는 빠르고, 인덱스로 접근·삭제가 직관적이에요. 실습에서는 "append로 넣고, pop(인덱스)로 특정 위치 제거"를 익히면 됩니다.</p>
     </div>
-    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
+    <p class="practice-callout-inline">이 실습에서 쓰는 메서드: <code>append(값)</code>, <code>pop(인덱스)</code></p>
     <pre class="lecture-code-same-as-practice"><code class="language-python"># 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)
 arr = [10, 20, 30]
 # ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)

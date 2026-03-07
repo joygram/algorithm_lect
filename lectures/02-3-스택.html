@@ -18,13 +18,30 @@
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
-      <p><strong>스택</strong> = <strong>메뉴 뒤로가기</strong>에 씁니다. 타이틀 → 메인 → 설정 들어갈 때마다 push, "뒤로" 누를 때마다 pop해서 이전 화면으로 돌아가요. 언더테일처럼 메뉴가 겹겹이 쌓이는 구조가 스택이에요.</p>
+      <p><strong>스택</strong> = <strong>메뉴 뒤로가기</strong>에 씁니다. 타이틀 → 메인 → 설정 들어갈 때마다 push, "뒤로" 누를 때마다 pop해서 이전 화면으로 돌아가요. <strong>샌즈</strong>가 나오는 메뉴처럼 화면이 겹겹이 쌓이는 구조가 스택이에요.</p>
     </div>
+    <figure class="lecture-figure" aria-label="게임 메뉴가 쌓이는 모습">
+      <img src="../images/game-menu-stack.png" alt="샌즈가 나오는 메뉴처럼 타이틀 → 메인 → 설정이 겹겹이 쌓인 화면. 뒤로가기 시 맨 위가 pop 된다." width="480">
+      <figcaption>샌즈가 있는 메뉴처럼 겹겹이 쌓이는 화면. 맨 위가 현재 화면, 뒤로가기 = pop.</figcaption>
+    </figure>
 
     <h2>스택(Stack, 스택)</h2>
     <p>스택은 <strong>접시를 쌓는 것</strong>처럼 생각하면 돼요. 맨 위에만 넣고, 맨 위에서만 뺄 수 있어요. 그래서 <strong>나중에 넣은 게 먼저</strong> 나옵니다. <strong>LIFO(라이포)</strong>(Last In First Out, 라스트 인 퍼스트 아웃)라고 해요.</p>
 
     <h3>연산</h3>
+    <figure class="lecture-diagram" aria-label="스택 push와 pop 도식">
+      <svg viewBox="0 0 200 140" width="280" height="196" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="70" y="80" width="60" height="22" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="100" y="95" text-anchor="middle" font-size="11" fill="currentColor">C (top)</text>
+        <rect x="72" y="56" width="56" height="22" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="100" y="71" text-anchor="middle" font-size="11" fill="currentColor">B</text>
+        <rect x="74" y="32" width="52" height="22" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="100" y="47" text-anchor="middle" font-size="11" fill="currentColor">A</text>
+        <line x1="100" y1="108" x2="100" y2="120" stroke="currentColor" stroke-width="1"/>
+        <text x="100" y="132" text-anchor="middle" font-size="10" fill="currentColor">push → 위에 추가 / pop → 위에서 제거</text>
+      </svg>
+      <figcaption>스택: 맨 위(top)에만 넣고 뺀다. LIFO.</figcaption>
+    </figure>
     <ul>
       <li><strong>push(푸시)</strong>: 맨 위(top, 탑)에 넣기</li>
       <li><strong>pop(팝)</strong>: 맨 위에서 꺼내기</li>
@@ -32,7 +49,7 @@
 
     <h3>활용</h3>
     <p>게임에서 <strong>메뉴 뒤로가기</strong>(설정 → 메인 → 타이틀처럼), 괄호 짝 맞추기, <strong>DFS(디에프에스, 깊이 우선 탐색)</strong>, 함수 호출 시 복귀 주소 저장 등.</p>
-    <div class="fun-callout etymology"><span class="label">📖 어원</span> Stack(스택) = "쌓다, 더미". Queue(큐) = "줄, 꼬리"(프랑스어). <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+    <div class="fun-callout etymology has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">📖 어원</span> Stack(스택) = "쌓다, 더미". Queue(큐) = "줄, 꼬리"(프랑스어). <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
       <p class="api-guide-title">📌 실습 전: 파이썬에서 쓰는 API·함수</p>
       <p><strong>대응</strong> 스택은 "맨 위에만 넣고, 맨 위에서만 뺀다"가 핵심이에요. 파이썬 <code>list</code>에서 <strong>맨 뒤</strong>를 "맨 위(top)"로 보면 됩니다.</p>
@@ -45,7 +62,7 @@
       <p><strong>왜 list만으로 되나요?</strong> 스택은 "맨 끝"에만 넣고 빼면 되기 때문에, list의 append와 pop()이 모두 O(1)로 동작해요. 별도 모듈 없이 리스트만으로 스택을 구현하는 게 파이썬에서 일반적입니다.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)
 stack = []
 stack.append("A")
 # ① 빈칸: 스택에 "B"를 넣으세요 (append 사용)
@@ -107,6 +124,29 @@ console.log('pop() →', x, ', 남은 스택:', stack);</textarea>
       </details>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 메뉴에서 "타이틀 → 메인 → 설정 → 오디오" 순으로 들어간 뒤 "뒤로"를 두 번 눌렀을 때, 현재 화면은? (스택으로 생각할 때 pop 두 번)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 메인</strong></p>
+          <p>스택 [타이틀, 메인, 설정, 오디오]에서 pop → 오디오 나감(현재=설정). pop 한 번 더 → 설정 나감(현재=메인). "뒤로" 두 번 후 현재 화면은 <strong>메인</strong>이에요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. push A → push B → push C → pop → pop 순서로 했을 때, 스택에 남은 값은?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: A 한 개</strong></p>
+          <p>push A,B,C → [A, B, C](맨 위=C). pop → C 제거, [A, B]. pop → B 제거, [A]. 따라서 남은 값은 A뿐이에요.</p>
+        </div>
+      </details>
+    </div>
+
     <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(스택)</strong>에서 배운 push·pop, 즉 list.append·list.pop()을 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/stack.html">실습: 스택 (손으로 하기)</a>.</p>
 
     <nav class="page-nav">
@@ -114,6 +154,7 @@ console.log('pop() →', x, ', 남은 스택:', stack);</textarea>
       <a href="02-4-덱.html" class="next">다음: 덱 →</a>
     </nav>
   </article>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/run-js-practice.js"></script>
   <script src="../js/theme.js"></script>

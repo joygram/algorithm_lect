@@ -41,7 +41,7 @@
       <p><strong>왜 이렇게 쓰나요?</strong> 이진 탐색의 핵심은 "매번 구간의 가운데를 보고 절반을 버리는 것"이에요. 가운데 인덱스를 정수로 구하는 //, 구간을 좁히는 left/right 갱신이 그대로 코드에 반영됩니다.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 이진 탐색: 정렬된 리스트에서 target 위치 찾기
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 이진 탐색: 정렬된 리스트에서 target 위치 찾기
 arr = [2, 5, 8, 12, 16, 23, 38]
 target = 12
 left, right = 0, len(arr) - 1
@@ -155,6 +155,29 @@ if (left > right) console.log('없음');</textarea>
       </details>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 정렬된 배열 [10, 20, 30, 40, 50]에서 <strong>35</strong>를 이진 탐색할 때, 비교하는 값의 순서는? (가운데부터)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 30 → 40 → (없음)</strong></p>
+          <p>첫 비교: mid=2, 30. 35&gt;30 → 오른쪽 절반 [40,50]. 두 번째: mid=3, 40. 35&lt;40 → 왼쪽 절반 없음(구간 3~2로 만료). 35는 배열에 없으므로 "찾지 못함"이에요. 게임에서 ID 35번 아이템이 테이블에 없을 때와 같은 경우예요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. "정렬되지 않은 인벤토리"에서 특정 아이템을 찾을 때 순차 탐색과 이진 탐색 중 뭘 써야 하나요? 그 이유는?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 순차 탐색</strong></p>
+          <p>이유: 이진 탐색은 "정렬된" 데이터에서만 동작해요. 정렬되지 않았으면 "가운데 값"을 봐도 왼쪽/오른쪽에 찾는 값이 있다고 확신할 수 없어요. 정렬되지 않은 목록에서는 처음부터 끝까지 하나씩 보는 순차 탐색을 써야 해요.</p>
+        </div>
+      </details>
+    </div>
+
     <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(이진 탐색)</strong>에서 배운 가운데 인덱스 (left+right)//2, 구간 좁히기 left=mid+1/right=mid-1을 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/search.html">실습: 탐색 (손으로 하기)</a>.</p>
     <nav class="page-nav">
       <span></span>
@@ -163,6 +186,7 @@ if (left > right) console.log('없음');</textarea>
   </article>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/run-js-practice.js"></script>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

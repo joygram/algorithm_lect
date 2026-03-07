@@ -16,6 +16,11 @@
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="03-index.html" class="back">이 단원 목차</a>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>트리</strong> = <strong>스토리 분기</strong>를 나타낼 때 씁니다. 루트가 "시작 장면", 자식이 "선택지별 다음 장면", 리프가 "엔딩·막다른 장면"이에요. <strong>샌즈</strong>에게 말을 걸지, <strong>파피루스</strong>에게 갈지 같은 선택지가 2개면 이진 트리, 3개면 자식이 3개인 노드로 확장할 수 있어요. 퀘스트 의존 관계도 트리로 표현할 수 있습니다.</p>
+    </div>
+
     <h2>트리(Tree, 트리)</h2>
     <p>트리는 <strong>맨 위에서부터 아래로</strong> 뻗어 나가는 구조예요. 한 지점에서 여러 개가 갈라질 수 있어요. 사이클(돌고 도는 연결)이 없어요.</p>
 
@@ -28,9 +33,30 @@
       <li><strong>레벨, 높이</strong>: 루트가 레벨 0, 그 아래가 1, …</li>
     </ul>
 
+    <figure class="lecture-diagram" aria-label="트리 구조 도식">
+      <svg viewBox="0 0 220 160" width="280" height="204" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="110" cy="24" r="14" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="110" y="28" text-anchor="middle" font-size="10" fill="currentColor">루트</text>
+        <line x1="110" y1="38" x2="55" y2="70" stroke="currentColor" stroke-width="1"/>
+        <line x1="110" y1="38" x2="165" y2="70" stroke="currentColor" stroke-width="1"/>
+        <circle cx="55" cy="82" r="12" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="55" y="86" text-anchor="middle" font-size="9" fill="currentColor">자식</text>
+        <circle cx="165" cy="82" r="12" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="165" y="86" text-anchor="middle" font-size="9" fill="currentColor">자식</text>
+        <line x1="55" y1="94" x2="30" y2="128" stroke="currentColor" stroke-width="1"/>
+        <line x1="55" y1="94" x2="80" y2="128" stroke="currentColor" stroke-width="1"/>
+        <circle cx="30" cy="140" r="10" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="30" y="144" text-anchor="middle" font-size="8" fill="currentColor">리프</text>
+        <circle cx="80" cy="140" r="10" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="80" y="144" text-anchor="middle" font-size="8" fill="currentColor">리프</text>
+        <text x="110" y="158" text-anchor="middle" font-size="9" fill="currentColor">스토리 분기: 루트=시작, 자식=선택지, 리프=엔딩</text>
+      </svg>
+      <figcaption>트리: 루트 → 부모/자식 → 리프. 스토리 분기에 대응.</figcaption>
+    </figure>
+
     <h3>이진 트리</h3>
     <p>각 노드의 자식이 <strong>최대 2개</strong>만 있는 트리예요. 왼쪽 자식, 오른쪽 자식으로 구분합니다. 완전 이진 트리, 포화 이진 트리 같은 말이 시험에 나와요.</p>
-    <div class="fun-callout etymology"><span class="label">📖 어원</span> Tree(트리) = 나무, Root(루트) = 뿌리. 위에서 가지가 뻗어 내려가는 모양이 나무 같아서 그래요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+    <div class="fun-callout etymology has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">📖 어원</span> Tree(트리) = 나무, Root(루트) = 뿌리. 위에서 가지가 뻗어 내려가는 모양이 나무 같아서 그래요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <h4 class="section-title">문제 및 해설</h4>
     <div class="problem-section exam-type">
@@ -47,9 +73,32 @@
       </details>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 스토리 분기에서 "시작 → 선택 A → 엔딩1", "시작 → 선택 B → 엔딩2"처럼 갈라질 때, 트리로 보면 노드 개수는? (시작, A, B, 엔딩1, 엔딩2)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 5개</strong></p>
+          <p>루트=시작, 자식=A와 B. A의 자식=엔딩1, B의 자식=엔딩2. 노드는 시작, A, B, 엔딩1, 엔딩2로 5개. 리프는 엔딩1, 엔딩2 두 개예요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. "완전 이진 트리"에서 리프 노드를 제외한 모든 노드가 자식을 2개 가지면, 높이 2인 완전 이진 트리의 노드 개수는? (루트=1, 레벨1=2, 레벨2=최대 4)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 7개</strong> (포화 이진 트리일 때)</p>
+          <p>레벨 0: 1개, 레벨 1: 2개, 레벨 2: 4개 → 1+2+4=7. 완전 이진 트리는 마지막 레벨만 왼쪽부터 채워지므로 4~7개일 수 있어요. "높이 2인 포화"면 7개.</p>
+        </div>
+      </details>
+    </div>
+
     <h4 class="section-title">문제 및 실습</h4>
     <div class="problem-section practice-callout">
-      <p>트리 구조를 보고 루트·자식·리프를 눈으로 따라 가 보세요. <strong>아래 iframe</strong>에서 파이썬 예제를 골라 바로 실행해 볼 수 있어요.</p>
+      <p>트리 구조를 보고 루트·자식·리프를 눈으로 따라 가 보세요. <strong>아래</strong>에서 파이썬 예제를 골라 바로 실행해 볼 수 있어요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/tree.html">실습: 트리 →</a>
       </div>

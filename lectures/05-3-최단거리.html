@@ -14,7 +14,10 @@
   </header>
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
-    <a href="05-index.html" class="back">이 단원 목차</a>
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>최단 거리</strong> = 맵에서 <strong>현재 방에서 목표 방까지 문을 최소로 지나가는 경로</strong>, 또는 <strong>이동 비용(걸음 수·시간)이 가장 적은 경로</strong>를 구할 때 씁니다. 간선 비용이 모두 같으면 <strong>BFS</strong>로, 비용이 다르면 <strong>다익스트라</strong>로 구해요. NPC 이동 경로, 미니맵 최단 경로 표시, 퀘스트 "가장 가까운 목표" 찾기 등에 활용됩니다.</p>
+    </div>
 
     <h2>최단 거리</h2>
     <p>그래프에서 한 점에서 다른 점까지 <strong>가장 짧은 경로</strong>를 구하는 거예요. 간선에 거리(가중치)가 있으면 그 합이 최소가 되는 경로를 찾습니다.</p>
@@ -24,11 +27,11 @@
 
     <h3>다익스트라(Dijkstra, 다익스트라)</h3>
     <p>가중치가 다를 때는 <strong>다익스트라 알고리즘</strong> 등을 씁니다. 시험에 "단계별로 어떤 점이 선택되는지" 묻는 문제가 나올 수 있어요.</p>
-    <div class="fun-callout"><span class="label">😄 조크</span> 다른 과목에서는 복사·붙여넣기가 표절인데, 프로그래밍에서는 "코드 재사용"이라고 부른대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+    <div class="fun-callout has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 다른 과목에서는 복사·붙여넣기가 표절인데, 프로그래밍에서는 "코드 재사용"이라고 부른대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <div class="practice-callout">
       <p class="label">실습하기</p>
-      <p>탐색·그래프를 손으로 해 보거나, <strong>아래 iframe</strong>에서 이진 탐색 코드를 바로 실행해 보세요.</p>
+      <p>탐색·그래프를 손으로 해 보거나, <strong>아래</strong>에서 이진 탐색 코드를 바로 실행해 보세요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/search.html">실습: 탐색</a>
         <a href="../practice/graph.html">실습: 그래프</a>
@@ -48,7 +51,7 @@
       <p><strong>왜 이렇게 쓰나요?</strong> "매번 가운데를 보고 절반을 버리는" 이진 탐색이 코드로는 //와 left/right 갱신으로 구현돼요.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 이진 탐색: 정렬된 리스트에서 target 위치 찾기
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 이진 탐색: 정렬된 리스트에서 target 위치 찾기
 arr = [2, 5, 8, 12, 16, 23, 38]
 target = 12
 left, right = 0, len(arr) - 1
@@ -76,6 +79,7 @@ else:
     </nav>
   </article>
   <script src="../js/fill-practice.js"></script>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

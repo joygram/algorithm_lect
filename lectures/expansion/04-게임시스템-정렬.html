@@ -20,11 +20,16 @@
 
     <h2>정렬 — 인벤토리 정렬 시스템</h2>
     <p>게임에서 "이름순", "가격순", "획득 순"으로 아이템 목록을 한 줄로 재배치할 때, 비교 정렬(버블·선택·삽입)과 같은 생각이 들어요. 실제로는 정렬 키(이름/가격/날짜)만 정해 주면 됩니다.</p>
-
+    <figure class="lecture-figure" aria-label="인벤토리 정렬 예시">
+      <img src="../../images/game-inventory-slots.png" alt="RPG 인벤토리. 이름순·가격순으로 슬롯 순서를 바꾸는 게 정렬이다." width="400">
+      <figcaption>인벤토리 슬롯 순서를 바꾸는 것 = 리스트 정렬. 버블·선택·삽입과 같은 비교·교환.</figcaption>
+    </figure>
     <div class="expansion-review" role="region" aria-label="복기">
       <h3>📌 복기: 버블·선택·삽입 정렬</h3>
       <ul>
-        <li><strong>버블 정렬</strong>: 인접한 두 원소를 비교해서 순서가 잘못됐으면 교환. 한 번 지나가면 가장 큰 값이 맨 뒤로.</li>
+        <li><strong>버블 정렬</strong>: 인접한 두 원소를 비교해서 순서가 잘못됐으면 교환. 한 번 지나가면 가장 큰 값이 맨 뒤로. <strong>개념</strong> "옆과 비교해서 큰 걸 오른쪽으로 밀어냄".</li>
+        <li><strong>선택 정렬</strong>: 매 단계에서 "아직 정렬 안 된 구간"에서 가장 작은(또는 큰) 값을 찾아서 그 구간의 맨 앞(또는 맨 뒤)과 교환. <strong>개념</strong> "한 번에 하나씩 최솟값을 골라 자리에 놓음". 게임에서는 "가장 싼 아이템을 맨 위로" 같은 단순 정렬에 대응.</li>
+        <li><strong>삽입 정렬</strong>: 이미 정렬된 앞부분에 새 원소를 "알맞은 자리에 끼워 넣기". <strong>개념</strong> "카드 한 장씩 손에 넣어서 순서 맞추기". 게임에서 "새로 획득한 아이템 하나만 이름순 자리에 끼우기"처럼 <strong>거의 정렬된 목록에 하나만 추가</strong>할 때 효율적.</li>
         <li><strong>공통</strong>: "비교"와 "자리 바꾸기(스왑)". 자료구조는 <strong>배열(리스트)</strong>이고, 연산은 비교 연산자(&gt;, &lt;)와 스왑(arr[i], arr[j] = arr[j], arr[i]).</li>
       </ul>
     </div>
@@ -43,11 +48,13 @@
       <h3>🎮 실제 구현에서 쓰는 곳</h3>
       <ul>
         <li><strong>인벤토리 정렬</strong>: 아이템 목록을 "이름순", "가격순", "획득 순"으로 바꿔서 표시. 각 아이템을 (이름, 가격, 획득시간)처럼 묶어 두고, 정렬 시 "비교할 키"만 바꿔서 정렬하면 됩니다.</li>
+        <li><strong>선택 정렬 활용</strong>: "가격이 가장 낮은 아이템을 맨 위로"처럼 한 기준으로 최솟값/최댓값을 골라 자리를 바꾸는 UI(정렬 버튼 한 번에 한 종류만 적용)와 같은 생각입니다.</li>
+        <li><strong>삽입 정렬 활용</strong>: 이미 이름순으로 정렬된 인벤에 "아이템 하나만 새로 넣을 때" 전체를 다시 정렬하지 않고, 새 아이템만 올바른 위치에 끼워 넣으면 됩니다. 실시간으로 아이템을 추가하는 게임에 유리해요.</li>
         <li>시험에는 "한 단계 지나면 배열이 어떻게 되나?"가 자주 나와요. 버블 정렬의 비교·스왑 한 사이클이 곧 "한 단계"에 해당해요.</li>
       </ul>
     </div>
     <p class="practice-callout-inline">👇 버블 정렬: 인접 비교 후 스왑. 실습창에서 빈칸을 채운 뒤 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
 arr = [64, 34, 25, 12, 22]
 print("정렬 전:", arr)
 n = len(arr)
@@ -63,11 +70,12 @@ print("정렬 후:", arr)</code></pre>
     <p>인벤토리를 "이름순"으로 보여주고 싶다면, 아이템 이름 리스트를 정렬한 뒤 그 순서대로 그리면 됩니다. 파이썬에서는 <code>items.sort(key=lambda x: x["name"])</code>처럼 키를 지정해 정렬할 수 있어요.</p>
 
     <nav class="page-nav">
-      <a href="02-게임시스템-선형구조.html">← II단원 확장</a>
+      <a href="03-게임시스템-비선형구조.html">← III단원 확장</a>
       <a href="../04-3-퀵병합힙.html">IV단원: 퀵·병합·힙</a>
       <a href="05-게임시스템-탐색.html" class="next">V단원 확장: 탐색 →</a>
     </nav>
   </article>
+  <script src="../../js/prism-lecture.js"></script>
   <script src="../../js/theme.js"></script>
 </body>
 </html>

@@ -18,13 +18,33 @@
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
-      <p><strong>큐</strong> = 대사·이벤트가 <strong>나온 순서대로</strong> 처리될 때 씁니다. 대사 한 줄이 enqueue되고, 화면에 띄울 때마다 dequeue해서 "다음 대사"가 나와요. 선택지 전에 쌓인 대사가 순서대로 재생되는 게 큐예요.</p>
+      <p><strong>큐</strong> = 대사·이벤트가 <strong>나온 순서대로</strong> 처리될 때 씁니다. 대사 한 줄이 enqueue되고, 화면에 띄울 때마다 dequeue해서 "다음 대사"가 나와요. <strong>샌즈</strong>나 <strong>어노잉 도그</strong> 대사가 선택지 전에 순서대로 나오는 그 구조가 큐예요.</p>
     </div>
+    <figure class="lecture-figure" aria-label="게임 대사창">
+      <img src="../images/game-dialogue-queue.png" alt="RPG 대사창: 한 줄씩 나오는 대사와 [다음] 버튼. dequeue할 때마다 다음 줄이 표시된다." width="480">
+      <figcaption>샌즈·어노잉 도그 대사처럼 한 줄씩 나오는 구조. "다음" 누를 때마다 큐에서 dequeue.</figcaption>
+    </figure>
 
     <h2>큐(Queue, 큐)</h2>
     <p>큐는 <strong>줄 서기</strong>와 똑같아요. 먼저 줄 선 사람이 먼저 나갑니다. 영어로 <strong>FIFO(파이포)</strong>(First In First Out, 퍼스트 인 퍼스트 아웃) = "먼저 들어간 게 먼저 나온다"라고 해요.</p>
 
     <h3>연산</h3>
+    <figure class="lecture-diagram" aria-label="큐 enqueue와 dequeue 도식">
+      <svg viewBox="0 0 260 100" width="320" height="123" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="20" y="30" width="44" height="28" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="42" y="48" text-anchor="middle" font-size="12" fill="currentColor">A</text>
+        <rect x="68" y="30" width="44" height="28" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="90" y="48" text-anchor="middle" font-size="12" fill="currentColor">B</text>
+        <rect x="116" y="30" width="44" height="28" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="138" y="48" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <rect x="164" y="30" width="44" height="28" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="186" y="48" text-anchor="middle" font-size="12" fill="currentColor">D</text>
+        <text x="42" y="82" text-anchor="middle" font-size="9" fill="currentColor">front</text>
+        <text x="186" y="82" text-anchor="middle" font-size="9" fill="currentColor">rear</text>
+        <text x="130" y="95" text-anchor="middle" font-size="10" fill="currentColor">enqueue → 뒤에 추가 / dequeue → 앞에서 제거 (FIFO)</text>
+      </svg>
+      <figcaption>큐: 뒤(rear)에 넣고, 앞(front)에서 뺀다. FIFO.</figcaption>
+    </figure>
     <ul>
       <li><strong>enqueue(인큐)</strong>: 줄 맨 뒤에 넣기. rear(리어, 뒤)에서 삽입.</li>
       <li><strong>dequeue(디큐)</strong>: 맨 앞에서 빼기. front(프론트, 앞)에서 삭제.</li>
@@ -47,7 +67,7 @@
       <p><strong>왜 list가 아니라 deque인가요?</strong> 일반 리스트에서 <code>pop(0)</code>(맨 앞 제거)을 쓰면, 뒤의 값들을 한 칸씩 당겨야 해서 비용이 커요. deque는 맨 앞·맨 뒤만 다루도록 구현돼 있어서 큐 연산에 맞습니다.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄
 from collections import deque
 q = deque(["첫번째", "두번째", "세번째"])
 print("큐:", list(q))
@@ -107,6 +127,29 @@ console.log('남은 큐:', q);</textarea>
       </details>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 대사 큐에 "안녕!", "선택지가 있어요", "1. 예 2. 아니오"를 순서대로 enqueue한 뒤, dequeue를 두 번 했을 때 화면에 나온 두 줄은? 그리고 큐에 남은 것은?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>나온 두 줄: "안녕!", "선택지가 있어요"</strong> (FIFO이므로 먼저 넣은 것부터)</p>
+          <p><strong>큐에 남은 것: "1. 예 2. 아니오"</strong> 한 개. 게임에서 "다음" 버튼을 두 번 눌렀을 때와 같은 상황이에요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. 스택과 큐의 공통점과 차이를 한 줄씩 쓰면? (넣고 빼는 위치)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>공통점:</strong> 모두 "순서가 있는" 자료를 한 줄로 다룬다.</p>
+          <p><strong>차이:</strong> 스택은 맨 위에서만 넣고 빼므로 LIFO. 큐는 맨 뒤에 넣고 맨 앞에서 빼므로 FIFO.</p>
+        </div>
+      </details>
+    </div>
+
     <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(큐)</strong>에서 배운 enqueue·dequeue, 즉 append·popleft를 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/queue.html">실습: 큐 (손으로 하기)</a>.</p>
     <nav class="page-nav">
       <a href="02-1-선형구조개요.html">← 이전: 선형 구조 개요</a>
@@ -115,6 +158,7 @@ console.log('남은 큐:', q);</textarea>
   </article>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/run-js-practice.js"></script>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

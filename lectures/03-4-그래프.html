@@ -14,9 +14,34 @@
   </header>
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
-    <a href="03-index.html" class="back">이 단원 목차</a>
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>그래프</strong> = <strong>맵의 방·지역 연결</strong>. 정점이 방, 간선이 문/통로예요. <strong>샌즈</strong>가 있는 방에서 <strong>파피루스</strong> 방까지 문을 최소로 지나가는 경로를 구할 때 BFS를 써요. <strong>DFS</strong>는 한 길로 쭉 들어갔다가 막히면 돌아오는 방식(미로 탐색). <strong>BFS</strong>는 가까운 방부터 층층이 방문해서 최단 거리를 구할 때 씁니다.</p>
+    </div>
 
     <h2>그래프(Graph, 그래프)</h2>
+    <figure class="lecture-diagram" aria-label="그래프 정점과 간선 도식">
+      <svg viewBox="0 0 200 130" width="280" height="182" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="40" cy="35" r="12" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="40" y="39" text-anchor="middle" font-size="9" fill="currentColor">방1</text>
+        <circle cx="100" cy="35" r="12" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="100" y="39" text-anchor="middle" font-size="9" fill="currentColor">방2</text>
+        <circle cx="160" cy="35" r="12" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="160" y="39" text-anchor="middle" font-size="9" fill="currentColor">방3</text>
+        <circle cx="70" cy="90" r="12" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="70" y="94" text-anchor="middle" font-size="9" fill="currentColor">방4</text>
+        <circle cx="130" cy="90" r="12" fill="var(--card)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="130" y="94" text-anchor="middle" font-size="9" fill="currentColor">방5</text>
+        <line x1="52" y1="42" x2="88" y2="42" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="112" y1="42" x2="148" y2="42" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="40" y1="47" x2="62" y2="78" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="100" y1="47" x2="82" y2="78" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="100" y1="47" x2="118" y2="78" stroke="currentColor" stroke-width="1.2"/>
+        <line x1="160" y1="47" x2="138" y2="78" stroke="currentColor" stroke-width="1.2"/>
+        <text x="100" y="118" text-anchor="middle" font-size="9" fill="currentColor">정점=방, 간선=문/통로. BFS로 최단 거리</text>
+      </svg>
+      <figcaption>그래프: 정점(방)과 간선(연결). 맵 구조에 대응.</figcaption>
+    </figure>
     <p><strong>정점(vertex, 버텍스)</strong>과 <strong>간선(edge, 엣지)</strong>의 집합이에요. 점과 선으로 "어디와 어디가 연결되어 있는지" 나타냅니다. 게임에서 <strong>방과 방이 연결된 맵</strong>처럼요.</p>
     <ul>
       <li>방향이 있으면 <strong>방향 그래프</strong>, 없으면 <strong>무방향 그래프</strong></li>
@@ -28,7 +53,7 @@
       <li><strong>DFS(디에프에스, 깊이 우선)</strong>: 한 길로 쭉 들어갔다가, 막히면 돌아와서 다른 길. <strong>스택</strong>을 쓰는 방법이에요.</li>
       <li><strong>BFS(비에프에스, 너비 우선)</strong>: 가까운 것부터 층층이. <strong>큐</strong>를 쓰는 방법이에요. "최단 거리" 구할 때 자주 씁니다. 시험에도 나와요.</li>
     </ul>
-    <div class="fun-callout"><span class="label">😄 조크</span> 프로그래머들이 다크 모드를 좋아하는 이유? 빛이 버그를 끌어당긴대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+    <div class="fun-callout has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 프로그래머들이 다크 모드를 좋아하는 이유? 빛이 버그를 끌어당긴대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <h4 class="section-title">문제 및 해설</h4>
     <div class="problem-section exam-type">
@@ -45,9 +70,32 @@
       </details>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 방 A—B—C가 일렬로 연결된 그래프(A-B, B-C)에서 A에서 출발해 BFS로 방문할 때, 방문 순서는?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: A, B, C</strong></p>
+          <p>BFS는 가까운 것부터. A 방문 → 이웃 B 큐에 → B 방문 → 이웃 C 큐에 → C 방문. 맵에서 "가장 가까운 방부터 탐색"하는 순서예요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. "플레이어 위치에서 가장 가까운 상점까지 걸어가는 문 수"를 구할 때, 간선 가중치가 모두 같다면 BFS와 다익스트라 중 뭘 쓰는 게 맞나요? 그 이유는?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: BFS</strong></p>
+          <p>이유: 간선 비용이 모두 같을 때 BFS로 레벨(거리)별로 퍼지면, 처음 목표에 도달한 순간이 곧 최단 거리예요. 다익스트라는 간선마다 비용이 다를 때 씁니다.</p>
+        </div>
+      </details>
+    </div>
+
     <h4 class="section-title">문제 및 실습</h4>
     <div class="problem-section practice-callout">
-      <p>정점과 간선을 넣고 DFS/BFS 방문 순서를 확인해 보세요. <strong>아래 iframe</strong>에서 파이썬 예제를 골라 바로 실행해 볼 수 있어요.</p>
+      <p>정점과 간선을 넣고 DFS/BFS 방문 순서를 확인해 보세요. <strong>아래</strong>에서 파이썬 예제를 골라 바로 실행해 볼 수 있어요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/graph.html">실습: 그래프 탐색 →</a>
       </div>

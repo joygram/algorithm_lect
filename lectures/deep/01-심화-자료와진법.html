@@ -20,7 +20,7 @@
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 심화에서 다루는 게임 활용</p>
-      <p>세이브 파일의 <strong>HP, 골드</strong>는 숫자 → 2진수로 저장되고, <strong>인벤토리</strong>는 리스트(순서 있는 목록)로 다룹니다. 아래 3단계에서 각각 파이썬으로 구현해 봐요.</p>
+      <p>세이브 파일의 <strong>HP, 골드</strong>는 숫자 → 2진수로 저장되고, <strong>업적·맵 열림 여부</strong>는 비트 플래그(한 비트가 하나의 on/off)로 담을 수 있어요. <strong>인벤토리</strong>는 리스트(순서 있는 목록)로 "몇 번째 슬롯에 뭐가 있는지"를 다룹니다. 아래 3단계에서 각각 파이썬으로 구현해 봐요.</p>
     </div>
 
     <h2>심화 실습 3단계</h2>
@@ -28,36 +28,40 @@
     <div class="deep-practice-steps">
       <ol>
         <li>
-          <strong>1단계: 진법으로 게임 숫자 표현</strong><br>
-          HP=25, 골드=100을 2진수·16진수로 바꿔 보기. 파이썬 <code>bin()</code>, <code>hex()</code>로 확인.
+          <strong>1단계: 진법으로 게임 숫자·플래그 표현</strong><br>
+          <strong>개념</strong> 진법은 "몇 개씩 묶어 자릿수를 올리느냐". 2진수 한 자리 = 비트 하나. <strong>활용</strong> HP=25, 골드=100을 <code>bin()</code>, <code>hex()</code>로 확인. 나아가 "업적 1·3 달성"을 0b101처럼 한 숫자(비트 플래그)로 두고, OR/AND로 추가·확인할 수 있어요.
         </li>
         <li>
           <strong>2단계: 리스트로 인벤토리 흉내</strong><br>
-          아이템 이름을 리스트에 <code>append</code>로 넣고, <code>pop(인덱스)</code>로 버리기. "몇 번째 아이템" 접근해 보기.
+          <strong>개념</strong> 리스트는 순서가 있는 자료. append=맨 뒤 추가, pop(인덱스)=해당 칸 제거. <strong>활용</strong> 아이템 이름을 append로 넣고, pop(인덱스)로 사용/버리기. inv[i]로 "i번 슬롯 아이템"을 툴팁·표시할 때 씁니다.
         </li>
         <li>
           <strong>3단계: 세이브 데이터처럼 묶기</strong><br>
-          HP, 골드, 인벤토리 리스트를 하나의 딕셔너리나 변수들로 묶어서 "세이브 한 덩어리"처럼 출력해 보기.
+          <strong>개념</strong> 딕셔너리는 "키→값" 쌍으로 자료를 묶는 구조. <strong>활용</strong> HP, 골드, 인벤 리스트를 <code>{"hp": 25, "gold": 100, "inv": [...]}</code>처럼 한 덩어리로 두면 세이브/로드 시 한 번에 읽고 쓸 수 있어요.
         </li>
       </ol>
     </div>
 
     <h3>1단계 실습</h3>
-    <p>아래 iframe에서 <code>print(bin(25))</code>, <code>print(hex(100))</code>를 실행해 보세요. 게임의 HP=25, 골드=100이 비트·16진수로 어떻게 보이는지 확인합니다.</p>
+    <p><strong>개념</strong> 10진수 → 2진수는 2로 나눈 나머지를 아래에서 위로 읽으면 됩니다. 게임에서 HP·골드는 이렇게 비트로 저장되고, <strong>업적·맵 열림</strong>은 한 비트가 하나의 "달성/미달성"을 나타내요. 아래에서 <code>print(bin(25))</code>, <code>print(hex(100))</code>를 실행해 보세요.</p>
     <div class="lecture-inline-run">
       <span class="label">🐍 1단계: 진법 확인</span>
       <iframe src="../../practice/pyodide.html?embed=1" title="파이썬 실습" class="pyodide-iframe"></iframe>
     </div>
 
     <h3>2단계 실습</h3>
-    <p>리스트로 인벤토리: <code>inv = ["검", "물약"]</code> 후 <code>inv.append("방패")</code>, <code>inv.pop(1)</code> 등으로 넣고 빼 보세요.</p>
+    <figure class="lecture-figure" style="max-width:320px;">
+      <img src="../../images/game-inventory-slots.png" alt="인벤토리 슬롯 예시. 리스트 인덱스 = 슬롯 번호." width="320">
+      <figcaption>게임 인벤토리 = 리스트. 슬롯이 곧 인덱스.</figcaption>
+    </figure>
+    <p><strong>활용</strong> 게임 인벤은 "슬롯 번호 = 리스트 인덱스". 획득 시 append, 사용/버리기 시 pop(인덱스), n번 슬롯 표시는 inv[n]. 리스트로 인벤토리: <code>inv = ["검", "물약"]</code> 후 <code>inv.append("방패")</code>, <code>inv.pop(1)</code> 등으로 넣고 빼 보세요.</p>
     <div class="lecture-inline-run">
       <span class="label">🐍 2단계: 리스트 인벤토리</span>
       <iframe src="../../practice/pyodide.html?snippet=list&amp;embed=1" title="파이썬 실습: 리스트" class="pyodide-iframe"></iframe>
     </div>
 
     <h3>3단계 실습</h3>
-    <p>HP, 골드, 인벤을 한 덩어리로: <code>save = {"hp": 25, "gold": 100, "inv": ["검", "물약"]}</code> 후 <code>print(save)</code> 해 보세요.</p>
+    <p><strong>활용</strong> 세이브 파일은 "캐릭터 상태 한 덩어리"를 저장합니다. HP, 골드, 인벤을 한 덩어리로: <code>save = {"hp": 25, "gold": 100, "inv": ["검", "물약"]}</code> 후 <code>print(save)</code> 해 보세요. 나중에 파일로 쓰면 세이브, 읽으면 로드가 됩니다.</p>
     <div class="lecture-inline-run">
       <span class="label">🐍 3단계: 세이브 데이터 흉내</span>
       <iframe src="../../practice/pyodide.html?embed=1" title="파이썬 실습" class="pyodide-iframe"></iframe>

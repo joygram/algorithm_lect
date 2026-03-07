@@ -14,7 +14,10 @@
   </header>
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
-    <a href="03-index.html" class="back">이 단원 목차</a>
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>전위·중위·후위 순회</strong> = 스토리 트리를 "어떤 순서로 장면을 방문할지" 정하는 것과 같아요. <strong>전위</strong>는 현재 장면을 먼저 처리하고 자식(다음 선택지)으로, <strong>후위</strong>는 자식들을 다 처리한 뒤 현재 장면(예: 결과 합산)을 할 때 씁니다. <strong>중위</strong>는 이진 탐색 트리에서 정렬된 순서로 값을 꺼낼 때 쓰여요.</p>
+    </div>
 
     <h2>순회(Traversal, 트래버설)</h2>
     <p>트리의 모든 노드를 <strong>어떤 순서로 방문할지</strong> 정한 거예요. "나"를 언제 방문하느냐에 따라 이름이 달라져요.</p>
@@ -44,9 +47,32 @@
       </details>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 루트 1, 왼쪽 자식 2(리프), 오른쪽 자식 3(리프)인 트리에서 <strong>후위 순회</strong>(왼쪽→오른쪽→나) 결과는?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 2, 3, 1</strong></p>
+          <p>왼쪽(2) → 오른쪽(3) → 나(1) 순서. 후위는 "자식들을 다 방문한 뒤에 루트"라서, 스토리에서는 "모든 선택을 본 뒤에 시작 장면 정리"할 때 쓸 수 있어요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. 게임에서 "장면 트리"를 전위 순회하면 어떤 순서로 장면을 방문하게 되나요? (한 줄로)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 나(현재 장면) 먼저 처리한 뒤, 왼쪽 서브트리(첫 번째 선택지 이하) 전체, 그다음 오른쪽 서브트리(두 번째 선택지 이하) 전체.</strong></p>
+          <p>즉 "지금 장면 연출 → 첫 번째 선택 분기 쭉 탐색 → 두 번째 선택 분기 쭉 탐색" 순서예요.</p>
+        </div>
+      </details>
+    </div>
+
     <h4 class="section-title">문제 및 실습</h4>
     <div class="problem-section practice-callout">
-      <p>전위·중위·후위 순회를 버튼으로 한 단계씩 따라 가 보세요. <strong>아래 iframe</strong>에서 파이썬 예제를 골라 바로 실행해 볼 수 있어요.</p>
+      <p>전위·중위·후위 순회를 버튼으로 한 단계씩 따라 가 보세요. <strong>아래</strong>에서 파이썬 예제를 골라 바로 실행해 볼 수 있어요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/tree.html">실습: 트리 순회 →</a>
       </div>

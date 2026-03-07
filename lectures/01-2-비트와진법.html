@@ -15,19 +15,11 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="01-index.html" class="back">이 단원 목차</a>
-    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
-      <img src="../images/undertale-02.png" alt="챕터 캐릭터" width="100">
-    </figure>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
       <p><strong>비트·진법</strong> = 세이브 파일의 HP·골드·플래그는 결국 숫자로 저장되고, 메모리에는 2진수로 들어가요. <strong>비트 플래그</strong>(업적 달성 여부, 맵 열림 여부)는 한 비트가 하나의 on/off를 나타내요. 16진수는 색상 코드(#FF5500)나 디버깅에서 자주 보입니다.</p>
     </div>
-    <figure class="lecture-figure" style="max-width:160px; margin:0.5rem 0 1rem;">
-      <img src="../images/game-inventory-slots.png" alt="인벤·세이브도 결국 비트로" width="160">
-      <figcaption style="font-size:0.85rem;">인벤·HP도 0과 1로</figcaption>
-    </figure>
-
     <h2>컴퓨터는 0과 1로 저장해요</h2>
     <p>컴퓨터 안에서는 모든 자료가 <strong>0과 1(2진수)</strong>로 바뀌어 저장돼요. 전기 신호가 있음(1) / 없음(0)으로 구분되기 때문이에요.</p>
 
@@ -36,7 +28,7 @@
 
     <h3>바이트(byte, 바이트)</h3>
     <p>비트 <strong>8개</strong>를 묶은 단위가 <strong>바이트</strong>예요. 게임 세이브에서 HP 한 칸, 글자 하나(영문)는 보통 1바이트. 프로그래밍기능사에서 "1바이트 = 8비트"는 기본으로 나와요.</p>
-    <div class="fun-callout etymology has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">📖 어원</span> "byte"는 한 입 베어 문 양이란 뜻의 "bite"에서 왔어요. bit와 헷갈리지 않게 y로 바꿨대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
+    <div class="fun-callout etymology has-char"><img src="../images/human.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">📖 어원</span> "byte"는 한 입 베어 문 양이란 뜻의 "bite"에서 왔어요. bit와 헷갈리지 않게 y로 바꿨대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <h3>진법이란?</h3>
     <p><strong>진법</strong>은 수를 셀 때 "몇 개씩 묶어서 자릿수를 올리느냐"를 정한 거예요.</p>
@@ -62,7 +54,7 @@
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <iframe src="../practice/pyodide.html?embed=1" title="파이썬 실습" class="pyodide-iframe"></iframe>
+      <iframe src="../practice/pyodide.html?snippet=radix&amp;embed=1" title="파이썬 실습: 진법" class="pyodide-iframe"></iframe>
     </div>
 
     <nav class="page-nav">

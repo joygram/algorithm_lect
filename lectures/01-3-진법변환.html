@@ -15,9 +15,6 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="01-index.html" class="back">이 단원 목차</a>
-    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
-      <img src="../images/undertale-03.png" alt="챕터 캐릭터" width="100">
-    </figure>
 
     <p class="hook lead">10진수를 2진수로 바꾸는 법만 확실히 알면 나머지는 같은 패턴이에요.</p>
 
@@ -25,11 +22,6 @@
       <p class="game-use-title">🎮 게임에서 쓰는 곳 (언더테일·RPG)</p>
       <p>세이브 파일의 <strong>HP, 골드, 플래그</strong>는 결국 숫자로 저장돼요. 메모리에는 0과 1(2진수)로 들어가고, 16진수는 색상 코드(#FF5500 같은)나 바이너리 덤프에서 자주 보입니다. 진법을 알면 "이 숫자가 게임 안에서 어떻게 비트로 쓰이는지"가 보여요.</p>
     </div>
-    <figure class="lecture-figure" style="max-width:140px; margin:0.5rem 0 1rem;">
-      <img src="../images/fun-character-joke.png" alt="" width="140">
-      <figcaption style="font-size:0.85rem;">HP·골드 숫자 → 2진수로 저장</figcaption>
-    </figure>
-
     <h2>진법 변환 — 규칙만 네 개</h2>
 
     <h3>① 10진수 → 2진수</h3>
@@ -226,8 +218,7 @@ print(hex(25))   # 0x19
 print(int('11001', 2))   # 25</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <p>위 코드와 동일하게 실습창에 입력한 뒤 실행해 보세요.</p>
-      <iframe src="../practice/pyodide.html?embed=1" title="파이썬 실습" class="pyodide-iframe"></iframe>
+      <iframe src="../practice/pyodide.html?snippet=radix&amp;embed=1" title="파이썬 실습: 진법 변환" class="pyodide-iframe"></iframe>
     </div>
 
     <nav class="page-nav">

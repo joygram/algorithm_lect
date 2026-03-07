@@ -15,19 +15,11 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="01-index.html" class="back">이 단원 목차</a>
-    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
-      <img src="../images/undertale-04.png" alt="챕터 캐릭터" width="100">
-    </figure>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
       <p><strong>보수·부호 비트</strong> = 게임에서 <strong>데미지 -5</strong>, <strong>골드 감소</strong>처럼 음수를 저장할 때 2의 보수로 저장해요. "n비트로 표현 가능한 범위"는 부호 있으면 -2^(n-1)~2^(n-1)-1, 부호 없으면 0~2^n-1이라서 HP·스탯 최대값 설계할 때 쓰입니다. <strong>인코딩</strong>은 대사·아이템 이름 같은 문자열을 파일에 저장할 때 UTF-8 등으로 쓰여요.</p>
     </div>
-    <figure class="lecture-figure" style="max-width:140px; margin:0.5rem 0 1rem;">
-      <img src="../images/fun-character-joke.png" alt="" width="140">
-      <figcaption style="font-size:0.85rem;">데미지 -5도 비트로</figcaption>
-    </figure>
-
     <h2>부호 비트 — 먼저 이걸 구분하자</h2>
     <p>교과서에서 "부호 있는 수", "부호 없는 수"라고 나오면 <strong>맨 앞 비트 한 칸을 뭘로 쓰느냐</strong>만 구분하면 돼요.</p>
 

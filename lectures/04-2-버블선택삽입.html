@@ -15,9 +15,6 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="04-index.html" class="back">이 단원 목차</a>
-    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
-      <img src="../images/undertale-15.png" alt="챕터 캐릭터" width="100">
-    </figure>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
@@ -69,10 +66,10 @@ for i in range(n):
             # ② 두 값 자리 바꾸기 (한 줄에 스왑)
             arr[j], arr[j + 1] = _____
 print("정렬 후:", arr)</code></pre>
-    <div class="fill-code-practice" data-answer=">" data-snippet="bubble">
-      <p class="fill-code-prompt">빈칸: arr[j]가 arr[j+1]보다 클 때 자리를 바꿉니다. 비교 연산자 한 글자?</p>
-      <div class="fill-code-line">if arr[j] _____ arr[j + 1]:</div>
-      <p><input type="text" class="fill-code-input" placeholder="한 글자" maxlength="1" aria-label="비교 연산자"> <button type="button" class="fill-code-check">확인</button></p>
+    <div class="fill-code-practice" data-answers=">|arr[j+1], arr[j]" data-snippet="bubble">
+      <p class="fill-code-prompt">① 비교 연산자: arr[j]가 arr[j+1]보다 클 때 바꿈 → <code>&gt;</code> &nbsp; ② 스왑: 두 값 맞바꾸기 → <code>arr[j+1], arr[j]</code></p>
+      <div class="fill-code-line">if arr[j] _____ arr[j + 1]: &nbsp; → &nbsp; arr[j], arr[j + 1] = _____</div>
+      <p>첫 빈칸: <input type="text" class="fill-code-input" placeholder=">" aria-label="비교 연산자"> 두 번째: <input type="text" class="fill-code-input" placeholder="arr[j+1], arr[j]" aria-label="스왑"> <button type="button" class="fill-code-check">확인</button></p>
       <p class="fill-code-msg" role="status"></p>
       <p class="fill-code-run-link" style="display:none;"></p>
     </div>
@@ -155,7 +152,7 @@ console.log('정렬 후:', arr);</textarea>
 
     <h2>삽입 정렬(Insertion Sort, 인서션 소트)</h2>
     <p>앞부분을 "이미 정렬된 줄"이라고 생각하고, 그 다음 숫자를 <strong>알맞은 자리에 끼워 넣는</strong> 방식이에요. 카드 놀이할 때 손에 든 카드를 순서대로 끼워 넣는 것과 비슷해요.</p>
-    <div class="fun-callout has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 디버깅 = n번째 버그를 잡으면 (n+1)번째 버그가 보이는 과정의 반복. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
+    <div class="fun-callout has-char"><img src="../images/human.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 디버깅 = n번째 버그를 잡으면 (n+1)번째 버그가 보이는 과정의 반복. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <h3 class="section-title">🔄 유사 알고리즘 비교: 버블·선택·삽입 정렬</h3>
     <p>세 가지 모두 <strong>비교 정렬</strong>이지만, "한 단계에서 무엇을 하느냐"가 달라요. 아래 표로 차이를 비교해 보세요.</p>

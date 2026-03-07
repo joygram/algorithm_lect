@@ -37,7 +37,8 @@
       <li><strong>연결 리스트</strong>: 각 노드가 "다음 노드 주소"를 갖고 있어서, 가운데 삽입·삭제가 배열보다 유리해요. <strong>머리(head, 헤드)</strong>, <strong>꼬리(tail, 테일)</strong> 용어가 시험에 나옵니다.</li>
     </ul>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이 실습에서 쓰는 API: append(값), pop(인덱스)</p>
+      <p class="api-guide-title">📌 이론(자료구조 연산) ↔ 파이썬 함수</p>
+      <p><strong>리스트 연산</strong> 맨 뒤에 넣기 → <code>list.append(값)</code> &nbsp;|&nbsp; i번째 칸 제거·반환 → <code>list.pop(인덱스)</code></p>
       <p><strong>대응</strong> 파이썬 <code>list</code>는 순서 있는 배열처럼 씁니다. 리스트의 "맨 뒤에 넣기"·"몇 번째 칸 지우기"에 아래 메서드를 써요.</p>
       <dl>
         <dt><code>리스트.append(값)</code></dt>
@@ -47,16 +48,6 @@
       </dl>
       <p><strong>왜 이렇게 쓰나요?</strong> 파이썬 list는 "동적 배열"이라 맨 뒤 추가는 빠르고, 인덱스로 접근·삭제가 직관적이에요. 실습에서는 "append로 넣고, pop(인덱스)로 특정 위치 제거"를 익히면 됩니다.</p>
     </div>
-    <p class="practice-callout-inline">이 실습에서 쓰는 메서드: <code>append(값)</code>, <code>pop(인덱스)</code></p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)
-arr = [10, 20, 30]
-# ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)
-arr._____(40)
-print("append(40) 후:", arr)
-# ② 빈칸: 1번 인덱스(20)를 제거하려면? pop( ? )
-arr.pop(_____)
-print("pop(1) 후:", arr)
-print("길이:", len(arr))</code></pre>
     <div class="fill-code-practice" data-answers="append|1" data-snippet="list">
       <p class="fill-code-prompt">맨 뒤에 추가하는 메서드, 1번 인덱스 제거할 때 pop(?)</p>
       <div class="fill-code-line">arr._____(40) &nbsp; → &nbsp; arr.pop(_____)</div>
@@ -66,7 +57,7 @@ print("길이:", len(arr))</code></pre>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬 (바로 실행)</span>
-      <iframe src="../practice/pyodide.html?snippet=list&amp;embed=1" title="파이썬 실습: 리스트" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="list"></div>
     </div>
     <div class="lecture-inline-js js-run-practice">
       <span class="label">🟨 자바스크립트로 확인</span>
@@ -146,16 +137,16 @@ console.log('길이:', arr.length);</textarea>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 심화 1단계: 진법 확인</span>
-      <iframe src="../practice/pyodide.html?embed=1" title="파이썬: 진법" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="radix"></div>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 심화 2단계: 리스트 인벤 (이 강의 append·pop)</span>
-      <iframe src="../practice/pyodide.html?snippet=list&amp;embed=1" title="파이썬: 리스트" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="list"></div>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 심화 3단계: 세이브 데이터 흉내</span>
-      <p>통합 실습에서 <code>save = {"hp": 25, "gold": 100, "inv": ["검", "물약"]}; print(save)</code> 입력 후 실행해 보세요.</p>
-      <iframe src="../practice/pyodide.html?embed=1" title="파이썬: 세이브 흉내" class="pyodide-iframe"></iframe>
+      <p>아래 코드창에 <code>save = {"hp": 25, "gold": 100, "inv": ["검", "물약"]}; print(save)</code> 입력 후 실행해 보세요.</p>
+      <div class="pyodide-inline"></div>
     </div>
 
     <p><a href="../exam/past-exam.html" class="back">기출 유형</a></p>
@@ -164,6 +155,10 @@ console.log('길이:', arr.length);</textarea>
       <a href="02-index.html" class="next">다음 단원: II. 선형 구조 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../js/pyodide-runner.js"></script>
+  <script src="../js/pyodide-snippets.js"></script>
+  <script src="../js/pyodide-inline.js"></script>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/run-js-practice.js"></script>
   <script src="../js/prism-lecture.js"></script>

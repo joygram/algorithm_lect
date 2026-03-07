@@ -536,6 +536,11 @@ body {
 .lecture-inline-run .label { display: block; margin-bottom: 0.35rem; font-weight: 700; color: var(--callout-label); }
 .lecture-inline-run p { margin: 0.25rem 0 0.75rem; font-size: 0.95rem; }
 .lecture-inline-run .pyodide-iframe { display: block; width: 100%; min-height: 520px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); }
+/* 인라인 실습: 페이지 본문 안 코드창·실행·출력 */
+.lecture .pyodide-inline-box { margin: 1rem 0; padding: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
+.lecture .pyodide-inline-box .btn-run { min-height: var(--touch-min); padding: 0.5rem 1.25rem; font-size: 1rem; font-weight: 600; border: none; border-radius: 8px; background: var(--primary); color: var(--header-fg); cursor: pointer; }
+.lecture .pyodide-inline-box .btn-run:hover:not(:disabled) { background: var(--primary-hover); }
+.lecture .pyodide-inline-box .btn-run:disabled { opacity: 0.6; cursor: not-allowed; }
 
 /* 강의 페이지 안 인라인 자바스크립트 실습 */
 .lecture-inline-js { margin: 1.5rem 0; padding: 1rem; background: var(--callout-etymology-bg); border: 1px solid var(--callout-etymology-border); border-radius: var(--radius); }

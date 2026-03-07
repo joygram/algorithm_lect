@@ -35,41 +35,13 @@
       <li><strong>덱</strong>: 앞·뒤 둘 다 넣고 뺄 수 있음</li>
     </ul>
     <p>프로그래밍기능사에서는 스택·큐의 연산 순서와 결과가 자주 나와요.</p>
-
-    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이 실습에서 쓰는 API: append(값), pop()</p>
-      <p><strong>대응</strong> 스택은 "맨 위에만 넣고, 맨 위에서만 뺀다"가 핵심이에요. 파이썬 <code>list</code>에서 <strong>맨 뒤</strong>를 "맨 위(top)"로 봅니다.</p>
-      <dl>
-        <dt><code>리스트.append(값)</code></dt>
-        <dd>맨 뒤에 넣기 → 스택의 <strong>push(푸시)</strong>에 대응해요.</dd>
-        <dt><code>리스트.pop()</code></dt>
-        <dd>괄호를 비우면 <strong>맨 뒤</strong>에서 하나 꺼내서 반환 → 스택의 <strong>pop(팝)</strong>에 대응해요.</dd>
-      </dl>
-      <p><strong>왜 list만으로 되나요?</strong> 스택은 "맨 끝"에만 넣고 빼면 되므로, list의 append와 pop()이 모두 O(1)로 동작해요.</p>
-    </div>
-    <p class="practice-callout-inline">이 실습에서 쓰는 메서드: <code>append(값)</code>, <code>pop()</code> (인자 없음)</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)
-stack = []
-stack.append("A")
-# ① 빈칸: 스택에 "B"를 넣으세요 (append 사용)
-stack._____("B")
-stack.append("C")
-print("push A,B,C 후:", stack)
-# ② 빈칸: 맨 위에서 하나 꺼내서 변수 x에 넣기 (pop은 인자 없음)
-x = stack._____()
-print("pop() →", x, ", 남은 스택:", stack)</code></pre>
-    <div class="lecture-inline-run">
-      <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <iframe src="../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬 실습: 스택" class="pyodide-iframe"></iframe>
-    </div>
+    <p class="practice-callout-inline">스택·큐·덱 실습은 각 주제 강의에서 해요. <a href="02-2-큐.html">2. 큐</a> · <a href="02-3-스택.html">3. 스택</a> · <a href="02-4-덱.html">4. 덱</a></p>
 
     <nav class="page-nav">
       <span></span>
       <a href="02-2-큐.html" class="next">다음: 큐 →</a>
     </nav>
   </article>
-  <script src="../js/fill-practice.js"></script>
-  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

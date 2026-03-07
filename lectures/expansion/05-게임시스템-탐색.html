@@ -51,25 +51,9 @@
         <li><strong>정렬된 데이터가 전제</strong>: 게임 데이터를 "ID순"으로 미리 정렬해 두면, 런타임에 이진 탐색으로 로그 N 번만에 찾을 수 있어요.</li>
       </ul>
     </div>
-    <p class="practice-callout-inline">👇 이진 탐색: 가운데 인덱스 mid, target이 크면 left = mid+1. 실습창에서 빈칸을 채운 뒤 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 이진 탐색: 정렬된 리스트에서 target 위치 찾기
-arr = [2, 5, 8, 12, 16, 23, 38]
-target = 12
-left, right = 0, len(arr) - 1
-while left &lt;= right:
-    mid = (left + right) // 2
-    if arr[mid] == target:
-        print("찾음! 인덱스:", mid)
-        break
-    if arr[mid] &lt; target:
-        left = mid + 1
-    else:
-        right = mid - 1
-else:
-    print("없음")</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 실습: 이진 탐색</span>
-      <iframe src="../../practice/pyodide.html?snippet=binary&amp;embed=1" title="파이썬: 이진 탐색" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="binary"></div>
     </div>
     <p>게임에서 "ID 12번 스킬 이름"을 찾는다면, 스킬 리스트를 ID순으로 정렬해 두고 위와 같이 target=12로 이진 탐색한 뒤, 찾은 인덱스의 "이름" 필드를 화면에 표시하면 됩니다.</p>
 
@@ -79,6 +63,10 @@ else:
       <span></span>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../../js/pyodide-runner.js"></script>
+  <script src="../../js/pyodide-snippets.js"></script>
+  <script src="../../js/pyodide-inline.js"></script>
   <script src="../../js/prism-lecture.js"></script>
   <script src="../../js/theme.js"></script>
 </body>

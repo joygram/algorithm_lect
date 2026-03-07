@@ -20,7 +20,10 @@
   <main class="practice-page pyodide-page">
     <a href="../index.html" class="back">← 목차</a>
 
-    <p><strong>통합 실습 페이지</strong>예요. 각 강의 안에도 파이썬 실습이 들어 있어요. <strong>하단 예제 선택</strong>에서 뼈대 코드를 고르면 불러와요. 빈칸(_____)을 채운 뒤 <strong>실행</strong>해서 결과를 확인하세요. 처음 한 번은 Python 엔진 로딩으로 조금 걸릴 수 있어요.</p>
+    <p><strong>통합 실습 페이지</strong>예요. 예제를 고르면 위 "실습 가이드"에 <strong>할 일·채울 부분</strong>이 바뀌어요. 빈칸(_____)을 채운 뒤 <strong>실행</strong>해서 결과를 확인하세요. 처음 한 번은 Python 엔진 로딩으로 조금 걸릴 수 있어요.</p>
+    <div class="practice-explanation" style="background: var(--callout-etymology-bg); border-left: 4px solid var(--callout-etymology-border); padding: 0.75rem 1rem; margin: 0.75rem 0; border-radius: 0 8px 8px 0;">
+      <p><strong>예제별 해당 강의</strong> 리스트 → <a href="../lectures/01-5-자료구조와리스트.html">01-5 자료구조와 리스트</a> · 스택 → <a href="../lectures/02-3-스택.html">02-3 스택</a> · 큐 → <a href="../lectures/02-2-큐.html">02-2 큐</a> · 버블 정렬 → <a href="../lectures/04-2-버블선택삽입.html">04-2 버블·선택·삽입</a> · 이진 탐색 → <a href="../lectures/05-1-순차이진탐색.html">05-1 순차·이진 탐색</a> · 진법 → <a href="../lectures/01-2-비트와진법.html">01-2 비트와 진법</a> / <a href="../lectures/01-3-진법변환.html">01-3 진법 변환</a></p>
+    </div>
 
     <div id="pyodide-guide" class="pyodide-guide" role="region" aria-label="실습 가이드">
       <p class="pyodide-guide-title">📌 실습 가이드</p>
@@ -50,6 +53,7 @@
           <option value="queue">큐 (FIFO)</option>
           <option value="bubble">버블 정렬</option>
           <option value="binary">이진 탐색</option>
+          <option value="radix">진법 변환 (bin, hex, int)</option>
           <option value="flags">게임: 비트 플래그</option>
           <option value="inventory">게임: 인벤토리</option>
         </select>
@@ -68,30 +72,25 @@
     <p class="hint">💡 빈칸은 <code>_____</code> 또는 주석 <code># 여기에: ...</code>으로 표시돼요. 채운 뒤 실행해서 출력이 맞는지 확인하세요. 막히면 아래 예제 선택에서 같은 예제를 다시 고르면 처음 뼈대로 돌아갑니다.</p>
   </main>
 
+  <script src="../js/pyodide-snippets.js"></script>
   <script src="../js/pyodide-runner.js"></script>
   <script>
     (function () {
       if ((window.location.search + window.location.hash).indexOf('embed=1') !== -1) {
         document.body.classList.add('pyodide-embed');
       }
-      var snippets = {
-        list: '# 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)\narr = [10, 20, 30]\n# ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)\narr._____(40)\nprint("append(40) 후:", arr)\n# ② 빈칸: 1번 인덱스(20)를 제거하려면? pop( ? )\narr.pop(_____)\nprint("pop(1) 후:", arr)\nprint("길이:", len(arr))',
-        stack: '# 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)\nstack = []\nstack.append("A")\n# ① 빈칸: 스택에 "B"를 넣으세요 (append 사용)\nstack._____("B")\nstack.append("C")\nprint("push A,B,C 후:", stack)\n# ② 빈칸: 맨 위에서 하나 꺼내서 변수 x에 넣기 (pop은 인자 없음)\nx = stack._____()\nprint("pop() →", x, ", 남은 스택:", stack)',
-        queue: '# 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄\nfrom collections import deque\nq = deque(["첫번째", "두번째", "세번째"])\nprint("큐:", list(q))\n# 빈칸: 큐의 맨 앞에서 하나 꺼내는 메서드 (pop / popleft / append 중)\nout = q._____()\nprint("popleft() →", out)\nprint("남은 큐:", list(q))',
-        bubble: '# 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄\narr = [64, 34, 25, 12, 22]\nprint("정렬 전:", arr)\nn = len(arr)\nfor i in range(n):\n    for j in range(0, n - 1 - i):\n        # ① 빈칸: arr[j]가 arr[j+1]보다 크면 자리 바꿈 (비교 연산자: > 또는 <)\n        if arr[j] _____ arr[j + 1]:\n            # ② 두 값 자리 바꾸기 (한 줄에 스왑)\n            arr[j], arr[j + 1] = _____\nprint("정렬 후:", arr)',
-        binary: '# 이진 탐색: 정렬된 리스트에서 target 위치 찾기\narr = [2, 5, 8, 12, 16, 23, 38]\ntarget = 12\nleft, right = 0, len(arr) - 1\nwhile left <= right:\n    # ① 빈칸: 가운데 인덱스 (left와 right의 평균, 정수)\n    mid = _____\n    if arr[mid] == target:\n        print("찾음! 인덱스:", mid)\n        break\n    # ② 빈칸: target이 더 크면 왼쪽을 mid 다음으로 (left = ?)\n    if arr[mid] < target:\n        left = _____\n    else:\n        right = mid - 1\nelse:\n    print("없음")',
-        flags: '# 게임: 비트 플래그 (진법/비트 연산 활용)\n# 비트0=업적1, 비트1=업적2, 비트2=업적3. 0b101 = 1번·3번 달성\nflags = 0b101\nprint("2진:", bin(flags), "10진:", flags)\n# 2번 업적 달성 추가: OR 연산 (1 << 2 = 0b100)\nflags = flags | (1 << 2)\nprint("2번 추가 후:", bin(flags))\n# 1번 업적 있는지 확인: AND\nprint("1번 달성?", bool(flags & (1 << 0)))',
-        inventory: '# 게임: 인벤토리 (리스트 활용)\ninv = ["검", "물약", "방패"]\nprint("인벤:", inv)\ninv.append("열쇠")\nprint("획득 후:", inv)\n# 1번 슬롯(물약) 사용 후 제거\ninv.pop(1)\nprint("물약 사용 후:", inv)\nprint("2번 슬롯 아이템:", inv[2])'
-      };
-
-      var guides = {
+      var snippets = window.PYODIDE_SNIPPETS || {};
+      var guides = window.PYODIDE_GUIDES || {};
+      /* 실습 페이지용 상세 가이드(강의 인라인은 짧은 버전 사용) */
+      var guidesLong = {
         list: '<strong>할 일</strong><br>① 첫 번째 빈칸: 리스트 <strong>맨 뒤에 추가</strong>하는 메서드 이름을 쓰세요 (append).<br>② 두 번째 빈칸: <strong>1번 인덱스</strong>를 지우려면 pop(?)에 들어갈 숫자를 쓰세요.<br>실행하면 <code>append(40) 후: [10, 20, 30, 40]</code>, <code>pop(1) 후: [10, 30, 40]</code>이 나오면 맞아요.',
         stack: '<strong>할 일</strong><br>① "B"를 스택에 넣는 메서드: <strong>append</strong>를 빈칸에 쓰세요.<br>② 맨 위에서 하나 꺼내는 메서드: 인자를 받지 않는 <strong>pop</strong>을 쓰세요 (괄호만).<br>실행하면 pop() → C, 남은 스택이 [\'A\', \'B\']처럼 나오면 맞아요. (나중에 넣은 게 먼저 나옴 = LIFO)',
         queue: '<strong>할 일</strong><br>큐에서는 <strong>맨 앞</strong>에서 꺼낼 때 쓰는 메서드를 빈칸에 쓰세요. (pop이 아니라 앞쪽을 의미하는 left가 들어간 이름)<br>실행하면 popleft() → 첫번째, 남은 큐가 [\'두번째\', \'세번째\']처럼 나오면 맞아요. (먼저 넣은 게 먼저 나옴 = FIFO)',
         bubble: '<strong>할 일</strong><br>① 큰 값을 오른쪽으로 보내려면: arr[j]가 arr[j+1]보다 <strong>클 때</strong> 바꿔야 하므로 비교 연산자 <code>&gt;</code>를 빈칸에 쓰세요.<br>② 두 칸의 값을 바꾸는 스왑: 오른쪽에는 <code>arr[j + 1], arr[j]</code>를 쓰세요 (순서만 반대로).<br>실행하면 정렬 후 [12, 22, 25, 34, 64]처럼 나오면 맞아요.',
         binary: '<strong>할 일</strong><br>① 가운데 인덱스: <code>(left + right) // 2</code>를 빈칸에 쓰세요. (정수 나눗셈)<br>② target이 더 크면 구간의 왼쪽을 mid 다음으로: <code>mid + 1</code>을 쓰세요.<br>실행하면 "찾음! 인덱스: 3"이 나오면 맞아요. (12는 인덱스 3)',
         flags: '게임에서 <strong>여러 상태를 한 숫자(비트 플래그)</strong>로 저장하는 예제예요. <code>|</code>(OR)로 비트 켜기, <code>&</code>(AND)로 확인. <code>1 << n</code>은 n번 비트를 의미해요. 실행해 보세요.',
-        inventory: '게임 <strong>인벤토리</strong>: 리스트에 append로 넣고, pop(인덱스)로 사용/제거, inv[i]로 i번 슬롯 접근. 실행해 보세요.'
+        inventory: '게임 <strong>인벤토리</strong>: 리스트에 append로 넣고, pop(인덱스)로 사용/제거, inv[i]로 i번 슬롯 접근. 실행해 보세요.',
+        radix: '진법 변환: <code>bin(정수)</code> → 2진수 문자열, <code>hex(정수)</code> → 16진수, <code>int(문자열, 밑)</code> → 정수. 실행해 보세요.'
       };
 
       var codeEl = document.getElementById('pyodide-code');
@@ -118,7 +117,8 @@
           codeEl.value = snippets[key];
           updateHighlight();
         }
-        if (guides[key]) guideBody.innerHTML = guides[key];
+        var guideText = (typeof guidesLong !== 'undefined' && guidesLong[key]) ? guidesLong[key] : (guides[key] || '');
+        if (guideText) guideBody.innerHTML = guideText;
       }
 
       var selectEl = document.getElementById('pyodide-snippet-select');

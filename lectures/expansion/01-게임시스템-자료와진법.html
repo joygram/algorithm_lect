@@ -51,19 +51,9 @@
         <li><strong>2^n 슬롯 인덱스</strong>: 인벤토리 슬롯이 8개(2³)일 때 인덱스 0~7은 3비트로 표현 가능. 메모리/패킷 크기 절약에 활용.</li>
       </ul>
     </div>
-    <p class="practice-callout-inline">👇 아래 코드는 <strong>비트 플래그</strong>로 "업적 1·3 달성"을 한 숫자에 담고, 2번 업적을 추가한 뒤 1번 달성 여부를 확인하는 예제예요. 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 게임: 비트 플래그 (진법/비트 연산 활용)
-# 비트0=업적1, 비트1=업적2, 비트2=업적3. 0b101 = 1번·3번 달성
-flags = 0b101
-print("2진:", bin(flags), "10진:", flags)
-# 2번 업적 달성 추가: OR 연산 (1 &lt;&lt; 2 = 0b100)
-flags = flags | (1 &lt;&lt; 2)
-print("2번 추가 후:", bin(flags))
-# 1번 업적 있는지 확인: AND
-print("1번 달성?", bool(flags &amp; (1 &lt;&lt; 0)))</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 실습: 비트 플래그</span>
-      <iframe src="../../practice/pyodide.html?snippet=flags&amp;embed=1" title="파이썬: 비트 플래그" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="flags"></div>
     </div>
 
     <!-- ========== 2. 리스트 → 인벤토리·퀘스트 ========== -->
@@ -99,19 +89,9 @@ print("1번 달성?", bool(flags &amp; (1 &lt;&lt; 0)))</code></pre>
         <li><strong>대사 한 줄씩</strong>: 대사 문자열을 리스트에 순서대로 넣고, 인덱스를 올려가며 "다음 대사" 표시 (다음 단원 큐와 연결).</li>
       </ul>
     </div>
-    <p class="practice-callout-inline">👇 인벤토리: append로 획득, pop(인덱스)로 사용/제거, inv[i]로 슬롯 접근. 실습창에서 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 게임: 인벤토리 (리스트 활용)
-inv = ["검", "물약", "방패"]
-print("인벤:", inv)
-inv.append("열쇠")
-print("획득 후:", inv)
-# 1번 슬롯(물약) 사용 후 제거
-inv.pop(1)
-print("물약 사용 후:", inv)
-print("2번 슬롯 아이템:", inv[2])</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 실습: 인벤토리</span>
-      <iframe src="../../practice/pyodide.html?snippet=inventory&amp;embed=1" title="파이썬: 인벤토리" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="inventory"></div>
     </div>
 
     <!-- ========== 3. 세이브 데이터 흉내 (자료 묶기) ========== -->
@@ -128,13 +108,9 @@ print("2번 슬롯 아이템:", inv[2])</code></pre>
         <dd>딕셔너리: 키로 값을 찾음. <code>save["hp"]</code>, <code>save["inv"]</code>처럼 접근.</dd>
       </dl>
     </div>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 세이브 스냅샷 흉내
-save = {"hp": 25, "gold": 100, "inv": ["검", "물약"]}
-print(save)
-print("HP:", save["hp"], "인벤 0번:", save["inv"][0])</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 실습: 세이브 흉내</span>
-      <iframe src="../../practice/pyodide.html?embed=1" title="파이썬: 세이브" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline"></div>
     </div>
 
     <nav class="page-nav">
@@ -142,6 +118,10 @@ print("HP:", save["hp"], "인벤 0번:", save["inv"][0])</code></pre>
       <a href="02-게임시스템-선형구조.html" class="next">II단원 확장: 스택·큐 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../../js/pyodide-runner.js"></script>
+  <script src="../../js/pyodide-snippets.js"></script>
+  <script src="../../js/pyodide-inline.js"></script>
   <script src="../../js/prism-lecture.js"></script>
   <script src="../../js/theme.js"></script>
 </body>

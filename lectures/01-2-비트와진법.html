@@ -40,7 +40,8 @@
     </ul>
 
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이 실습에서 쓰는 함수: bin(), hex(), int(문자열, 밑)</p>
+      <p class="api-guide-title">📌 이론(진법·변환) ↔ 파이썬 함수</p>
+      <p><strong>진법</strong> 10진 → 2진/16진 문자열 → <code>bin(정수)</code>, <code>hex(정수)</code> &nbsp;|&nbsp; 2진/16진 문자열 → 10진 → <code>int(문자열, 밑)</code></p>
       <p><strong>대응</strong> 정수를 2진수·8진수·16진수 문자열로 바꾸거나, 그 반대로 바꿀 때 쓰는 함수예요.</p>
       <dl>
         <dt><code>bin(정수)</code></dt>
@@ -54,7 +55,7 @@
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <iframe src="../practice/pyodide.html?snippet=radix&amp;embed=1" title="파이썬 실습: 진법" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="radix"></div>
     </div>
 
     <nav class="page-nav">
@@ -62,6 +63,10 @@
       <a href="01-3-진법변환.html" class="next">다음: 진법 변환 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../js/pyodide-runner.js"></script>
+  <script src="../js/pyodide-snippets.js"></script>
+  <script src="../js/pyodide-inline.js"></script>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/theme.js"></script>
 </body>

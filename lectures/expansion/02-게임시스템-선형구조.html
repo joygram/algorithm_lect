@@ -49,19 +49,9 @@
         <li>파피루스가 나오는 그 게임처럼 메뉴가 겹겹이 쌓이는 구조가 스택이에요.</li>
       </ul>
     </div>
-    <p class="practice-callout-inline">👇 아래 코드가 실습창과 동일한 스택 예제예요. push = append, pop = pop().</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 스택: 메뉴 히스토리 흉내
-stack = []
-stack.append("타이틀")
-stack.append("메인")
-stack.append("설정")
-print("들어간 순서:", stack)
-# 뒤로 가기
-screen = stack.pop()
-print("뒤로 →", screen, ", 남은 스택:", stack)</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 실습: 스택 (메뉴)</span>
-      <iframe src="../../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬: 스택" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="stack"></div>
     </div>
 
     <!-- ========== 2. 큐 → 대사·이벤트 순서 ========== -->
@@ -95,17 +85,9 @@ print("뒤로 →", screen, ", 남은 스택:", stack)</code></pre>
         <li>선택지 전에 쌓인 대사가 순서대로 재생되는 구조가 큐예요.</li>
       </ul>
     </div>
-    <p class="practice-callout-inline">👇 아래 코드가 실습창과 동일한 큐 예제예요. 맨 앞에서 꺼낼 때 popleft().</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 큐: 대사 순서 흉내
-from collections import deque
-q = deque(["안녕!", "선택지가 있어요", "1. 예 2. 아니오"])
-print("대사 큐:", list(q))
-out = q.popleft()
-print("다음 대사 →", out)
-print("남은 큐:", list(q))</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 실습: 큐 (대사)</span>
-      <iframe src="../../practice/pyodide.html?snippet=queue&amp;embed=1" title="파이썬: 큐" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="queue"></div>
     </div>
 
     <nav class="page-nav">
@@ -114,6 +96,10 @@ print("남은 큐:", list(q))</code></pre>
       <a href="03-게임시스템-비선형구조.html" class="next">III단원 확장: 트리·그래프 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../../js/pyodide-runner.js"></script>
+  <script src="../../js/pyodide-snippets.js"></script>
+  <script src="../../js/pyodide-inline.js"></script>
   <script src="../../js/prism-lecture.js"></script>
   <script src="../../js/theme.js"></script>
 </body>

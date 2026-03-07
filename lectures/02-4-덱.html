@@ -114,7 +114,8 @@
 
     <h4 class="section-title">문제 및 실습</h4>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이 실습에서 쓰는 API: deque, append, popleft()</p>
+      <p class="api-guide-title">📌 이론(알고리즘) ↔ 파이썬 함수</p>
+      <p><strong>큐 연산</strong> (덱으로 구현) enqueue → <code>deque.append(값)</code> &nbsp;|&nbsp; dequeue → <code>deque.popleft()</code></p>
       <p><strong>대응</strong> 덱은 "앞·뒤 모두 넣고 뺄 수 있는" 구조예요. 파이썬에서는 <code>collections.deque</code>로 큐·덱 연산을 둘 다 씁니다.</p>
       <dl>
         <dt><code>from collections import deque</code> / <code>deque(리스트)</code></dt>
@@ -126,18 +127,9 @@
       </dl>
       <p><strong>왜 list가 아니라 deque인가요?</strong> 리스트의 <code>pop(0)</code>은 비용이 커요. deque는 맨 앞·맨 뒤만 다루도록 구현돼 있어서 덱/큐 연산에 맞습니다.</p>
     </div>
-    <p class="practice-callout-inline">이 실습에서 쓰는 메서드: <code>popleft()</code> (맨 앞에서 꺼냄)</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄
-from collections import deque
-q = deque(["첫번째", "두번째", "세번째"])
-print("큐:", list(q))
-# 빈칸: 큐의 맨 앞에서 하나 꺼내는 메서드 (pop / popleft / append 중)
-out = q._____()
-print("popleft() →", out)
-print("남은 큐:", list(q))</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <iframe src="../practice/pyodide.html?snippet=queue&amp;embed=1" title="파이썬 실습: 큐(덱)" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="queue"></div>
     </div>
     <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(덱/큐)</strong>에서 배운 append·popleft를 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/deque.html">실습: 덱 (손으로 하기)</a>.</p>
 
@@ -153,11 +145,11 @@ print("남은 큐:", list(q))</code></pre>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 심화: 스택 (메뉴 히스토리)</span>
-      <iframe src="../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬: 스택" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="stack"></div>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 심화: 큐 (대사 순서)</span>
-      <iframe src="../practice/pyodide.html?snippet=queue&amp;embed=1" title="파이썬: 큐" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="queue"></div>
     </div>
 
     <nav class="page-nav">
@@ -165,6 +157,10 @@ print("남은 큐:", list(q))</code></pre>
       <a href="03-index.html" class="next">다음 단원: III. 비선형 구조 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../js/pyodide-runner.js"></script>
+  <script src="../js/pyodide-snippets.js"></script>
+  <script src="../js/pyodide-inline.js"></script>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>

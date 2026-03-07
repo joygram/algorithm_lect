@@ -17,6 +17,7 @@
     <a href="01-index.html" class="back">이 단원 목차</a>
 
     <p class="hook lead">10진수를 2진수로 바꾸는 법만 확실히 알면 나머지는 같은 패턴이에요.</p>
+    <p class="hint" style="margin-bottom:0.75rem;">📌 이 강의가 길면 <strong>① 10→2진, ② 2→10진</strong>만 먼저 보고, ③④·파이썬 실습은 나중에 이어서 보세요.</p>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 게임에서 쓰는 곳 (언더테일·RPG)</p>
@@ -200,7 +201,8 @@
       </div>
     </div>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이 실습에서 쓰는 함수: bin(), hex(), int(문자열, 밑)</p>
+      <p class="api-guide-title">📌 이론(진법 변환) ↔ 파이썬 함수</p>
+      <p><strong>진법 변환</strong> 10진→2진/16진 → <code>bin()</code>, <code>hex()</code> &nbsp;|&nbsp; 2진/16진 문자열→10진 → <code>int(문자열, 밑)</code></p>
       <p><strong>대응</strong> 정수 → 2진수/16진수 문자열로 바꿀 때 쓰는 내장 함수예요.</p>
       <dl>
         <dt><code>bin(정수)</code></dt>
@@ -210,15 +212,9 @@
       </dl>
       <p><strong>왜 쓰나요?</strong> 손으로 나머지 구한 결과를 코드로 검증할 때 위 함수를 쓰면 됩니다.</p>
     </div>
-    <p class="practice-callout-inline">이 실습에서 쓰는 함수: <code>bin(정수)</code>, <code>hex(정수)</code>, <code>int(문자열, 밑)</code></p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 진법 변환: bin(), hex()로 검증
-print(bin(25))   # 0b11001
-print(hex(25))   # 0x19
-# 역으로 2진수 문자열 → 정수
-print(int('11001', 2))   # 25</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <iframe src="../practice/pyodide.html?snippet=radix&amp;embed=1" title="파이썬 실습: 진법 변환" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="radix"></div>
     </div>
 
     <nav class="page-nav">
@@ -244,6 +240,10 @@ print(int('11001', 2))   # 25</code></pre>
       });
     })();
   </script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../js/pyodide-runner.js"></script>
+  <script src="../js/pyodide-snippets.js"></script>
+  <script src="../js/pyodide-inline.js"></script>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>

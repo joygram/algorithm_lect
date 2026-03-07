@@ -42,11 +42,11 @@
     <p><strong>개념 복기</strong> 스택 = LIFO(나중에 넣은 게 먼저 나옴) → 메뉴 "뒤로". 큐 = FIFO(먼저 넣은 게 먼저 나옴) → 대사·이벤트 순서. 파이썬에서는 리스트로 스택(append/pop), <code>collections.deque</code>로 큐(append/popleft)를 씁니다.</p>
     <div class="lecture-inline-run">
       <span class="label">🐍 스택 (메뉴 히스토리)</span>
-      <iframe src="../../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬 실습: 스택" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="stack"></div>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 큐 (대사 순서)</span>
-      <iframe src="../../practice/pyodide.html?snippet=queue&amp;embed=1" title="파이썬 실습: 큐" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="queue"></div>
     </div>
 
     <h3>3·4단계</h3>
@@ -57,6 +57,10 @@
       <a href="../03-index.html" class="next">III단원으로 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../../js/pyodide-runner.js"></script>
+  <script src="../../js/pyodide-snippets.js"></script>
+  <script src="../../js/pyodide-inline.js"></script>
   <script src="../../js/theme.js"></script>
 </body>
 </html>

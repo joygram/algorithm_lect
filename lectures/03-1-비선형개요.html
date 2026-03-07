@@ -49,7 +49,7 @@
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <iframe src="../practice/pyodide.html?embed=1" title="파이썬 실습" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline"></div>
     </div>
 
     <nav class="page-nav">
@@ -57,6 +57,10 @@
       <a href="03-2-트리.html" class="next">다음: 트리 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../js/pyodide-runner.js"></script>
+  <script src="../js/pyodide-snippets.js"></script>
+  <script src="../js/pyodide-inline.js"></script>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/theme.js"></script>
 </body>

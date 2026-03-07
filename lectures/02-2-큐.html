@@ -54,7 +54,8 @@
     <p>게임에서 <strong>대사·이벤트가 순서대로</strong> 나가게 할 때 큐를 씁니다. 프린터 대기, <strong>BFS(비에프에스, 너비 우선 탐색)</strong> 등에도 써요.</p>
     <p><strong>우선순위 큐</strong>는 급한 것(우선순위 높은 것)부터 꺼내는 큐예요. 시험에 나올 수 있어요.</p>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이 실습에서 쓰는 API: deque, append, popleft()</p>
+      <p class="api-guide-title">📌 이론(알고리즘) ↔ 파이썬 함수</p>
+      <p><strong>큐 연산</strong> enqueue(뒤에 넣기) → <code>deque.append(값)</code> &nbsp;|&nbsp; dequeue(앞에서 꺼내기) → <code>deque.popleft()</code></p>
       <p><strong>대응</strong> 큐는 "맨 뒤에 넣고, 맨 앞에서 뺀다"가 핵심이에요. 파이썬에서는 <code>collections.deque</code>(덱)를 쓰면 이 두 연산이 모두 빠릅니다.</p>
       <dl>
         <dt><code>from collections import deque</code> / <code>deque(리스트)</code></dt>
@@ -66,15 +67,6 @@
       </dl>
       <p><strong>왜 list가 아니라 deque인가요?</strong> 일반 리스트에서 <code>pop(0)</code>(맨 앞 제거)을 쓰면, 뒤의 값들을 한 칸씩 당겨야 해서 비용이 커요. deque는 맨 앞·맨 뒤만 다루도록 구현돼 있어서 큐 연산에 맞습니다.</p>
     </div>
-    <p class="practice-callout-inline">이 실습에서 쓰는 메서드: <code>popleft()</code> (맨 앞에서 꺼냄)</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄
-from collections import deque
-q = deque(["첫번째", "두번째", "세번째"])
-print("큐:", list(q))
-# 빈칸: 큐의 맨 앞에서 하나 꺼내는 메서드 (pop / popleft / append 중)
-out = q._____()
-print("popleft() →", out)
-print("남은 큐:", list(q))</code></pre>
     <div class="fill-code-practice" data-answer="popleft" data-snippet="queue">
       <p class="fill-code-prompt">큐에서 맨 앞에서 꺼낼 때 쓰는 메서드? (파이썬 deque)</p>
       <div class="fill-code-line">out = q._____()</div>
@@ -84,7 +76,7 @@ print("남은 큐:", list(q))</code></pre>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬 (바로 실행)</span>
-      <iframe src="../practice/pyodide.html?snippet=queue&amp;embed=1" title="파이썬 실습: 큐" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="queue"></div>
     </div>
     <div class="lecture-inline-js js-run-practice">
       <span class="label">🟨 자바스크립트로 확인</span>
@@ -156,6 +148,10 @@ console.log('남은 큐:', q);</textarea>
       <a href="02-3-스택.html" class="next">다음: 스택 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../js/pyodide-runner.js"></script>
+  <script src="../js/pyodide-snippets.js"></script>
+  <script src="../js/pyodide-inline.js"></script>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/run-js-practice.js"></script>
   <script src="../js/prism-lecture.js"></script>

@@ -328,6 +328,15 @@ body {
   border-bottom: 2px solid var(--primary);
   color: var(--primary);
 }
+/* 유사 알고리즘/구조 비교 표 */
+.algorithm-compare-wrap { margin: 1rem 0 1.5rem; overflow-x: auto; }
+.algorithm-compare { width: 100%; min-width: 360px; border-collapse: collapse; font-size: 0.9rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
+.algorithm-compare th, .algorithm-compare td { padding: 0.5rem 0.65rem; text-align: left; border: 1px solid var(--border); }
+.algorithm-compare thead th { background: var(--viz-subtle); font-weight: 700; color: var(--text); }
+.algorithm-compare tbody th { background: var(--viz-subtle); font-weight: 600; width: 10em; }
+.algorithm-compare tbody tr:nth-child(even) { background: color-mix(in srgb, var(--viz-subtle) 50%, transparent); }
+.algorithm-compare code { font-size: 0.85em; padding: 0.1rem 0.3rem; background: var(--input-bg); border-radius: 4px; }
+
 .lecture .problem-section { margin: 0.75rem 0 1.25rem; }
 .lecture .problem-section + .section-title { margin-top: 1.5rem; }
 .lecture .problem-section details { margin-top: 0.5rem; }

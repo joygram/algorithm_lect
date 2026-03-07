@@ -29,6 +29,47 @@
     <p>최근 본 목록, 스크롤 히스토리, 슬라이딩 윈도우 등 앞뒤로 자유롭게 넣고 빼는 경우에 씁니다.</p>
     <div class="fun-callout"><span class="label">😄 조크</span> 전구 갈 때 프로그래머가 몇 명 필요해요? 영 명. 그건 하드웨어 문제니까요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
 
+    <h3 class="section-title">🔄 유사 구조 비교: 스택 vs 큐 vs 덱</h3>
+    <p>넣고 빼는 <strong>위치</strong>가 다르면 나오는 순서가 달라요. 아래 표로 차이를 비교해 보세요.</p>
+    <div class="algorithm-compare-wrap" role="region" aria-label="스택 큐 덱 비교">
+      <table class="algorithm-compare">
+        <thead>
+          <tr>
+            <th scope="col">구분</th>
+            <th scope="col">스택</th>
+            <th scope="col">큐</th>
+            <th scope="col">덱</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">넣는 곳 / 빼는 곳</th>
+            <td>맨 위에만 넣고, 맨 위에서만 뺌 (한쪽 끝)</td>
+            <td>뒤에 넣고, <strong>앞</strong>에서 뺌 (한쪽은 넣기, 한쪽은 빼기)</td>
+            <td>앞·뒤 <strong>둘 다</strong> 넣고 뺄 수 있음</td>
+          </tr>
+          <tr>
+            <th scope="row">나오는 순서</th>
+            <td><strong>LIFO</strong> — 나중에 넣은 게 먼저 나옴</td>
+            <td><strong>FIFO</strong> — 먼저 넣은 게 먼저 나옴</td>
+            <td>쓰는 방식에 따라 LIFO 또는 FIFO 또는 혼합</td>
+          </tr>
+          <tr>
+            <th scope="row">게임에서 쓰는 곳</th>
+            <td>메뉴 뒤로가기 (타이틀→메인→설정 push, 뒤로 누르면 pop)</td>
+            <td>대사·이벤트 순서 (대사 enqueue, "다음" 누르면 dequeue)</td>
+            <td>최근 본 목록, 슬라이딩 윈도우</td>
+          </tr>
+          <tr>
+            <th scope="row">파이썬</th>
+            <td><code>list</code>: append, pop()</td>
+            <td><code>deque</code>: append, popleft()</td>
+            <td><code>deque</code>: append, appendleft, pop, popleft</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <h4 class="section-title">문제 및 해설</h4>
     <div class="problem-section exam-type">
       <div class="q">덱(Deque)은 스택과 큐를 합친 것처럼 앞·뒤 둘 다 넣고 뺄 수 있어요. "뒤에 넣고 앞에서 꺼내기"만 쓰면 어떤 구조와 같나요?</div>

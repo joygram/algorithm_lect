@@ -15,6 +15,9 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="04-index.html" class="back">이 단원 목차</a>
+    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
+      <img src="../images/undertale-15.png" alt="챕터 캐릭터" width="100">
+    </figure>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
@@ -42,7 +45,7 @@
       <figcaption>버블 정렬: 인접 쌍 비교 후 스왑. 한 패스마다 최댓값이 오른쪽으로.</figcaption>
     </figure>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 실습 전: 파이썬에서 쓰는 API·문법</p>
+      <p class="api-guide-title">📌 이 실습에서 쓰는 API: 비교 &gt;, 스왑 arr[j], arr[j+1] = arr[j+1], arr[j]</p>
       <p><strong>대응</strong> 버블 정렬은 "리스트(배열)"를 한 칸씩 보면서, <strong>인접한 두 값 비교</strong>와 <strong>자리 바꾸기(스왑)</strong>만 반복해요.</p>
       <dl>
         <dt><code>리스트[j]</code>, <code>리스트[j+1]</code></dt>
@@ -54,7 +57,7 @@
       </dl>
       <p><strong>왜 이렇게 구현하나요?</strong> 버블 정렬의 정의가 "인접한 두 원소를 비교해서 순서가 잘못됐으면 교환"이에요. 그래서 리스트 인덱싱, 비교 연산자, 스왑 문법만 알면 코드로 옮길 수 있습니다.</p>
     </div>
-    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
+    <p class="practice-callout-inline">이 실습에서 쓰는 것: <code>&gt;</code>, 스왑 <code>arr[j], arr[j+1] = arr[j+1], arr[j]</code></p>
     <pre class="lecture-code-same-as-practice"><code class="language-python"># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
 arr = [64, 34, 25, 12, 22]
 print("정렬 전:", arr)

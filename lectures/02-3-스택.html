@@ -15,6 +15,9 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="02-index.html" class="back">이 단원 목차</a>
+    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
+      <img src="../images/undertale-08.png" alt="챕터 캐릭터" width="100">
+    </figure>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
@@ -51,7 +54,7 @@
     <p>게임에서 <strong>메뉴 뒤로가기</strong>(설정 → 메인 → 타이틀처럼), 괄호 짝 맞추기, <strong>DFS(디에프에스, 깊이 우선 탐색)</strong>, 함수 호출 시 복귀 주소 저장 등.</p>
     <div class="fun-callout etymology has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">📖 어원</span> Stack(스택) = "쌓다, 더미". Queue(큐) = "줄, 꼬리"(프랑스어). <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 실습 전: 파이썬에서 쓰는 API·함수</p>
+      <p class="api-guide-title">📌 이 실습에서 쓰는 API: append(값), pop()</p>
       <p><strong>대응</strong> 스택은 "맨 위에만 넣고, 맨 위에서만 뺀다"가 핵심이에요. 파이썬 <code>list</code>에서 <strong>맨 뒤</strong>를 "맨 위(top)"로 보면 됩니다.</p>
       <dl>
         <dt><code>리스트.append(값)</code></dt>
@@ -61,7 +64,7 @@
       </dl>
       <p><strong>왜 list만으로 되나요?</strong> 스택은 "맨 끝"에만 넣고 빼면 되기 때문에, list의 append와 pop()이 모두 O(1)로 동작해요. 별도 모듈 없이 리스트만으로 스택을 구현하는 게 파이썬에서 일반적입니다.</p>
     </div>
-    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
+    <p class="practice-callout-inline">이 실습에서 쓰는 메서드: <code>append(값)</code>, <code>pop()</code> (인자 없음)</p>
     <pre class="lecture-code-same-as-practice"><code class="language-python"># 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)
 stack = []
 stack.append("A")

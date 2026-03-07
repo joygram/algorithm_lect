@@ -15,6 +15,9 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="01-index.html" class="back">이 단원 목차</a>
+    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
+      <img src="../images/undertale-01.png" alt="챕터 캐릭터" width="100">
+    </figure>
 
     <h2>자료란 뭘까요?</h2>
     <p><strong>자료(Data, 데이터)</strong>는 컴퓨터가 다루는 모든 정보예요. 숫자, 문자, 사진, 동영상, 프로그램 안의 변수값까지 다 자료입니다. 프로그래밍기능사 필기에서 "데이터 타입", "자료 추상화"가 자주 나와요.</p>
@@ -46,12 +49,8 @@
       <figcaption style="font-size:0.85rem;">게임 기획 = 자료 어떻게 쓸지 정하기</figcaption>
     </figure>
 
-    <div class="practice-callout">
-      <p class="label">실습하기</p>
-      <p>자료구조를 코드로 다뤄 보려면 <strong>아래</strong>에서 리스트 예제를 바로 실행해 보세요. (다른 페이지로 넘어가지 않습니다)</p>
-    </div>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 실습 전: 이 실습에서 쓰는 파이썬 API·함수</p>
+      <p class="api-guide-title">📌 이 실습에서 쓰는 API: append(값), pop(인덱스)</p>
       <p><strong>대응</strong> 파이썬 <code>list</code>는 순서 있는 배열처럼 씁니다. "맨 뒤에 넣기"·"몇 번째 칸 지우기"에 아래 메서드를 써요.</p>
       <dl>
         <dt><code>리스트.append(값)</code></dt>
@@ -61,7 +60,7 @@
       </dl>
       <p><strong>왜 이렇게 쓰나요?</strong> 파이썬 list는 "동적 배열"이라 맨 뒤 추가는 빠르고, 인덱스로 접근·삭제가 직관적이에요.</p>
     </div>
-    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 실습창에서 그대로 실행해 보세요.</p>
+    <p class="practice-callout-inline">이 실습에서 쓰는 메서드: <code>append(값)</code>, <code>pop(인덱스)</code></p>
     <pre class="lecture-code-same-as-practice"><code class="language-python"># 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)
 arr = [10, 20, 30]
 # ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)
@@ -73,7 +72,6 @@ print("pop(1) 후:", arr)
 print("길이:", len(arr))</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <p>위 코드와 동일한 예제가 실습창에 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
       <iframe src="../practice/pyodide.html?snippet=list&amp;embed=1" title="파이썬 실습: 리스트" class="pyodide-iframe"></iframe>
     </div>
 

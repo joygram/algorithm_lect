@@ -15,6 +15,9 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="04-index.html" class="back">이 단원 목차</a>
+    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
+      <img src="../images/undertale-16.png" alt="챕터 캐릭터" width="100">
+    </figure>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
@@ -39,15 +42,8 @@
 
     <p>프로그래밍기능사에서는 버블·선택·삽입의 <strong>한 단계 결과</strong>를 묻는 문제가 많아요. 위 세 가지는 이름과 아이디어만 알면 됩니다.</p>
 
-    <div class="practice-callout">
-      <p class="label">실습하기</p>
-      <p>정렬을 손으로 해 보거나, <strong>아래</strong>에서 버블 정렬 코드를 바로 실행해 보세요.</p>
-      <div class="lecture-practice-cta">
-        <a href="../practice/sort.html">실습: 정렬 →</a>
-      </div>
-    </div>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 실습 전: 버블 정렬에서 쓰는 파이썬 API·문법</p>
+      <p class="api-guide-title">📌 이 실습에서 쓰는 API: 비교 &gt;, 스왑</p>
       <p><strong>대응</strong> 버블 정렬은 "인접한 두 값 비교"와 "자리 바꾸기(스왑)"만 반복해요.</p>
       <dl>
         <dt><code>리스트[j]</code>, <code>리스트[j+1]</code></dt>
@@ -59,7 +55,7 @@
       </dl>
       <p><strong>왜 이렇게 쓰나요?</strong> 버블 정렬 정의가 "인접 비교 후 교환"이므로, 인덱싱·비교·스왑만 알면 구현할 수 있어요.</p>
     </div>
-    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 실습창에서 그대로 실행해 보세요.</p>
+    <p class="practice-callout-inline">이 실습에서 쓰는 것: <code>&gt;</code>, 스왑 <code>arr[j], arr[j+1] = arr[j+1], arr[j]</code></p>
     <pre class="lecture-code-same-as-practice"><code class="language-python"># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
 arr = [64, 34, 25, 12, 22]
 print("정렬 전:", arr)
@@ -73,7 +69,6 @@ for i in range(n):
 print("정렬 후:", arr)</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <p>위 코드와 동일한 예제가 실습창에 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
       <iframe src="../practice/pyodide.html?snippet=bubble&amp;embed=1" title="파이썬 실습: 버블 정렬" class="pyodide-iframe"></iframe>
     </div>
 

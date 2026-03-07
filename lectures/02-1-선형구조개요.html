@@ -15,6 +15,9 @@
   <article class="lecture">
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="02-index.html" class="back">이 단원 목차</a>
+    <figure class="lecture-figure undertale-ch" style="max-width:100px; margin:0 0 1rem;">
+      <img src="../images/undertale-06.png" alt="챕터 캐릭터" width="100">
+    </figure>
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
@@ -36,17 +39,8 @@
     </ul>
     <p>프로그래밍기능사에서는 스택·큐의 연산 순서와 결과가 자주 나와요.</p>
 
-    <div class="practice-callout">
-      <p class="label">실습하기</p>
-      <p>스택·큐·덱을 손으로 해 보거나, <strong>아래</strong>에서 스택 예제를 바로 실행해 보세요.</p>
-      <div class="lecture-practice-cta">
-        <a href="../practice/stack.html">실습: 스택</a>
-        <a href="../practice/queue.html">실습: 큐</a>
-        <a href="../practice/deque.html">실습: 덱</a>
-      </div>
-    </div>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 실습 전: 스택 실습에서 쓰는 파이썬 API·함수</p>
+      <p class="api-guide-title">📌 이 실습에서 쓰는 API: append(값), pop()</p>
       <p><strong>대응</strong> 스택은 "맨 위에만 넣고, 맨 위에서만 뺀다"가 핵심이에요. 파이썬 <code>list</code>에서 <strong>맨 뒤</strong>를 "맨 위(top)"로 봅니다.</p>
       <dl>
         <dt><code>리스트.append(값)</code></dt>
@@ -56,7 +50,7 @@
       </dl>
       <p><strong>왜 list만으로 되나요?</strong> 스택은 "맨 끝"에만 넣고 빼면 되므로, list의 append와 pop()이 모두 O(1)로 동작해요.</p>
     </div>
-    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 실습창에서 그대로 실행해 보세요.</p>
+    <p class="practice-callout-inline">이 실습에서 쓰는 메서드: <code>append(값)</code>, <code>pop()</code> (인자 없음)</p>
     <pre class="lecture-code-same-as-practice"><code class="language-python"># 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)
 stack = []
 stack.append("A")
@@ -69,7 +63,6 @@ x = stack._____()
 print("pop() →", x, ", 남은 스택:", stack)</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <p>위 코드와 동일한 예제가 실습창에 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요. (다음 강의에서 큐·스택을 자세히 배워요)</p>
       <iframe src="../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬 실습: 스택" class="pyodide-iframe"></iframe>
     </div>
 

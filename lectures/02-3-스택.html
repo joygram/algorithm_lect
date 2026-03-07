@@ -28,6 +28,17 @@
     <h3>활용</h3>
     <p>게임에서 <strong>메뉴 뒤로가기</strong>(설정 → 메인 → 타이틀처럼), 괄호 짝 맞추기, <strong>DFS(디에프에스, 깊이 우선 탐색)</strong>, 함수 호출 시 복귀 주소 저장 등.</p>
     <div class="fun-callout etymology"><span class="label">📖 어원</span> Stack(스택) = "쌓다, 더미". Queue(큐) = "줄, 꼬리"(프랑스어). <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 파이썬에서 쓰는 API·함수</p>
+      <p><strong>대응</strong> 스택은 "맨 위에만 넣고, 맨 위에서만 뺀다"가 핵심이에요. 파이썬 <code>list</code>에서 <strong>맨 뒤</strong>를 "맨 위(top)"로 보면 됩니다.</p>
+      <dl>
+        <dt><code>리스트.append(값)</code></dt>
+        <dd>맨 <strong>뒤</strong>에 넣기 → 스택의 <strong>push(푸시)</strong>에 대응해요. 접시를 쌓듯이 위에 하나 올리는 것과 같아요.</dd>
+        <dt><code>리스트.pop()</code></dt>
+        <dd>괄호 안에 아무것도 안 쓰면 <strong>맨 뒤</strong>에서 하나 꺼내서 반환해요 → 스택의 <strong>pop(팝)</strong>에 대응합니다. "맨 위 접시"를 들어 올리는 것과 같아요.</dd>
+      </dl>
+      <p><strong>왜 list만으로 되나요?</strong> 스택은 "맨 끝"에만 넣고 빼면 되기 때문에, list의 append와 pop()이 모두 O(1)로 동작해요. 별도 모듈 없이 리스트만으로 스택을 구현하는 게 파이썬에서 일반적입니다.</p>
+    </div>
     <p class="practice-callout-inline">👇 <strong>바로 여기서</strong> 스택(push/pop) 코드를 실행해 보세요.</p>
     <div class="fill-code-practice" data-answers="append|pop" data-snippet="stack">
       <p class="fill-code-prompt">스택에 넣을 때 append, 맨 위에서 꺼낼 때? (빈칸 두 개)</p>

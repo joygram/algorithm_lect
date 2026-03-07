@@ -519,6 +519,28 @@ body {
 }
 .lecture .practice-callout a:hover { background: var(--primary-hover); }
 
+/* 실습 전: 파이썬 API·함수 안내 (대응 관계, 왜 쓰는지) */
+.lecture .python-api-guide {
+  background: var(--callout-bg);
+  border: 1px solid var(--callout-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 0.5rem;
+  font-size: 0.9rem;
+}
+.lecture .python-api-guide .api-guide-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--callout-label);
+}
+.lecture .python-api-guide dl { margin: 0.25rem 0; }
+.lecture .python-api-guide dt {
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+.lecture .python-api-guide dt:first-of-type { margin-top: 0; }
+.lecture .python-api-guide dd { margin-left: 1rem; margin-bottom: 0.25rem; color: var(--text); }
+
 /* 개념 직후 "바로 여기서 실습" 문구 */
 .lecture .practice-callout-inline {
   margin: 0.75rem 0 0.5rem;

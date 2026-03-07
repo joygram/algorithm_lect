@@ -28,6 +28,19 @@
     <h3>활용</h3>
     <p>게임에서 <strong>대사·이벤트가 순서대로</strong> 나가게 할 때 큐를 씁니다. 프린터 대기, <strong>BFS(비에프에스, 너비 우선 탐색)</strong> 등에도 써요.</p>
     <p><strong>우선순위 큐</strong>는 급한 것(우선순위 높은 것)부터 꺼내는 큐예요. 시험에 나올 수 있어요.</p>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 파이썬에서 쓰는 API·함수</p>
+      <p><strong>대응</strong> 큐는 "맨 뒤에 넣고, 맨 앞에서 뺀다"가 핵심이에요. 파이썬에서는 <code>collections.deque</code>(덱)를 쓰면 이 두 연산이 모두 빠릅니다.</p>
+      <dl>
+        <dt><code>from collections import deque</code> / <code>deque(리스트)</code></dt>
+        <dd>표준 라이브러리 <strong>deque</strong>(double-ended queue)는 앞·뒤 모두에서 O(1)로 넣고 뺄 수 있어요. 큐처럼 "뒤에 넣고 앞에서 뺄 때" 쓰기 좋습니다.</dd>
+        <dt><code>덱.append(값)</code></dt>
+        <dd>맨 <strong>뒤</strong>에 넣기 → enqueue(인큐)에 대응해요.</dd>
+        <dt><code>덱.popleft()</code></dt>
+        <dd>맨 <strong>앞</strong>에서 하나 꺼내서 반환 → dequeue(디큐)에 대응해요. 이름에 "left"가 들어간 이유는 "앞쪽=왼쪽"이라고 보기 때문이에요.</dd>
+      </dl>
+      <p><strong>왜 list가 아니라 deque인가요?</strong> 일반 리스트에서 <code>pop(0)</code>(맨 앞 제거)을 쓰면, 뒤의 값들을 한 칸씩 당겨야 해서 비용이 커요. deque는 맨 앞·맨 뒤만 다루도록 구현돼 있어서 큐 연산에 맞습니다.</p>
+    </div>
     <p class="practice-callout-inline">👇 <strong>바로 여기서</strong> 큐(popleft) 코드를 실행해 보세요.</p>
     <div class="fill-code-practice" data-answer="popleft" data-snippet="queue">
       <p class="fill-code-prompt">큐에서 맨 앞에서 꺼낼 때 쓰는 메서드? (파이썬 deque)</p>

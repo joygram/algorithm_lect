@@ -18,6 +18,19 @@
 
     <h2>버블 정렬(Bubble Sort, 버블 소트)</h2>
     <p>맨 앞부터 <strong>바로 옆 숫자랑 비교</strong>해서, 순서가 잘못됐으면 자리를 바꿔요. 한 번 쭉 지나가면 가장 큰 수가 맨 뒤로 가요. 게임 인벤토리를 이름순·가격순으로 정렬할 때 같은 생각이에요. 시험에 자주 나와요.</p>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 파이썬에서 쓰는 API·문법</p>
+      <p><strong>대응</strong> 버블 정렬은 "리스트(배열)"를 한 칸씩 보면서, <strong>인접한 두 값 비교</strong>와 <strong>자리 바꾸기(스왑)</strong>만 반복해요.</p>
+      <dl>
+        <dt><code>리스트[j]</code>, <code>리스트[j+1]</code></dt>
+        <dd>j번째 칸과 그 <strong>바로 옆</strong>(j+1) 칸의 값이에요. 버블 정렬은 "옆과 비교"하므로 이 두 인덱스가 핵심입니다.</dd>
+        <dt><code>비교 연산자 &gt;</code> (크다)</dt>
+        <dd><code>arr[j] &gt; arr[j+1]</code>이면 "왼쪽이 더 크다" → 오름차순이면 자리를 바꿔야 해요. 반대로 정렬하려면 <code>&lt;</code>를 씁니다.</dd>
+        <dt><code>a, b = b, a</code> (스왑)</dt>
+        <dd>파이썬에서는 한 줄로 두 변수의 값을 맞바꿀 수 있어요. <code>arr[j], arr[j+1] = arr[j+1], arr[j]</code>로 두 칸의 값을 서로 바꿉니다. 임시 변수 없이 구현할 수 있어요.</dd>
+      </dl>
+      <p><strong>왜 이렇게 구현하나요?</strong> 버블 정렬의 정의가 "인접한 두 원소를 비교해서 순서가 잘못됐으면 교환"이에요. 그래서 리스트 인덱싱, 비교 연산자, 스왑 문법만 알면 코드로 옮길 수 있습니다.</p>
+    </div>
     <p class="practice-callout-inline">👇 <strong>바로 여기서</strong> 버블 정렬 코드를 실행해 보세요.</p>
     <div class="fill-code-practice" data-answer=">" data-snippet="bubble">
       <p class="fill-code-prompt">빈칸: arr[j]가 arr[j+1]보다 클 때 자리를 바꿉니다. 비교 연산자 한 글자?</p>

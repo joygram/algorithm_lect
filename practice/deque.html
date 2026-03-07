@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>실습: 덱 | 자료구조</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>실습: 덱 (앞뒤로 넣고 빼기)</h1>
+    <p class="subtitle">앞이든 뒤든 넣고 꺼내기 가능</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <main class="practice-page">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <p>덱은 <strong>앞과 뒤 둘 다</strong> 넣고 뺄 수 있어요. 값을 입력한 뒤 <strong>앞에 넣기</strong> 또는 <strong>뒤에 넣기</strong>를 누르고, 꺼낼 때는 <strong>앞에서 꺼내기</strong> / <strong>뒤에서 꺼내기</strong> 중 하나를 골라 보세요.</p>
+
+    <div class="controls">
+      <input type="text" id="inputVal" placeholder="넣을 값" maxlength="6" aria-label="덱에 넣을 값">
+      <button type="button" id="btnFrontPush">앞에 넣기</button>
+      <button type="button" id="btnRearPush">뒤에 넣기</button>
+      <br>
+      <button type="button" id="btnFrontPop">앞에서 꺼내기</button>
+      <button type="button" id="btnRearPop">뒤에서 꺼내기</button>
+    </div>
+
+    <div class="viz" id="viz" role="status" aria-live="polite">
+      [ 앞 ] — 비어 있음 — [ 뒤 ]
+    </div>
+
+    <p class="hint">방금 꺼낸 값: <strong id="lastPop">—</strong></p>
+  </main>
+  <script>
+    (function () {
+      var deque = [];
+      var viz = document.getElementById('viz');
+      var lastPop = document.getElementById('lastPop');
+      var inputVal = document.getElementById('inputVal');
+
+      function render() {
+        if (deque.length === 0) {
+          viz.innerHTML = '[ 앞 ] — 비어 있음 — [ 뒤 ]';
+          return;
+        }
+        var items = deque.map(function (x, i) {
+          var label = (i === 0 ? ' 앞 ' : '') + (i === deque.length - 1 ? ' 뒤' : '');
+          return '<span class="viz-item">' + x + label + '</span>';
+        }).join('');
+        viz.innerHTML = '<div style="display:flex; flex-wrap:wrap;">' + items + '</div>';
+      }
+
+      function addFront() {
+        var v = inputVal.value.trim();
+        if (v === '') return;
+        deque.unshift(v);
+        inputVal.value = '';
+        render();
+      }
+      function addRear() {
+        var v = inputVal.value.trim();
+        if (v === '') return;
+        deque.push(v);
+        inputVal.value = '';
+        render();
+      }
+      function popFront() {
+        if (deque.length === 0) { lastPop.textContent = '(비어 있음)'; return; }
+        lastPop.textContent = deque.shift();
+        render();
+      }
+      function popRear() {
+        if (deque.length === 0) { lastPop.textContent = '(비어 있음)'; return; }
+        lastPop.textContent = deque.pop();
+        render();
+      }
+
+      document.getElementById('btnFrontPush').addEventListener('click', addFront);
+      document.getElementById('btnRearPush').addEventListener('click', addRear);
+      document.getElementById('btnFrontPop').addEventListener('click', popFront);
+      document.getElementById('btnRearPop').addEventListener('click', popRear);
+
+      render();
+    })();
+  </script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>실습: 이진 트리 | 자료구조</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>실습: 이진 트리 순회</h1>
+    <p class="subtitle">나무를 어떤 순서로 방문할지 눌러 보기</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <main class="practice-page">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <p>아래는 숫자가 써 있는 "나무"예요. 이 나무를 <strong>어떤 순서로 방문할지</strong> 정한 게 "순회"예요. 버튼을 누르면 그 순서대로 숫자들이 나열돼요.</p>
+    <ul style="font-size:0.95rem;">
+      <li><strong>전위</strong>: (나) 먼저 → 왼쪽 → 오른쪽</li>
+      <li><strong>중위</strong>: 왼쪽 → (나) → 오른쪽</li>
+      <li><strong>후위</strong>: 왼쪽 → 오른쪽 → (나)</li>
+    </ul>
+
+    <div class="viz" id="treeViz" style="text-align:center; padding:1rem;">
+      <pre id="treeAscii" style="margin:0; font-size:0.85rem; overflow-x:auto;"></pre>
+    </div>
+
+    <div class="controls">
+      <button type="button" id="btnPre">전위 순회</button>
+      <button type="button" id="btnIn">중위 순회</button>
+      <button type="button" id="btnPost">후위 순회</button>
+    </div>
+
+    <div class="viz" id="resultViz" role="status">
+      순회 결과: 버튼을 눌러 보세요.
+    </div>
+
+    <p class="hint">💡 맨 위 1이 루트(뿌리), 2·3이 그 자식, 4·5·6·7이 그 다음 줄이에요. 시험에도 "순회 순서"가 나와요.</p>
+  </main>
+  <script>
+    (function () {
+      // 고정 이진 트리 (배열 인덱스: 0=루트, 1=왼쪽, 2=오른쪽, 3=1의 왼쪽, 4=1의 오른쪽, ...)
+      var tree = ['1', '2', '3', '4', '5', '6', '7'];
+      function left(i) { return 2 * i + 1; }
+      function right(i) { return 2 * i + 2; }
+
+      function preorder(i, acc) {
+        if (i >= tree.length) return acc;
+        acc.push(tree[i]);
+        preorder(left(i), acc);
+        preorder(right(i), acc);
+        return acc;
+      }
+      function inorder(i, acc) {
+        if (i >= tree.length) return acc;
+        inorder(left(i), acc);
+        acc.push(tree[i]);
+        inorder(right(i), acc);
+        return acc;
+      }
+      function postorder(i, acc) {
+        if (i >= tree.length) return acc;
+        postorder(left(i), acc);
+        postorder(right(i), acc);
+        acc.push(tree[i]);
+        return acc;
+      }
+
+      document.getElementById('treeAscii').textContent = [
+        '      1',
+        '     / \\',
+        '    2   3',
+        '   / \\ / \\',
+        '  4  5 6  7'
+      ].join('\n');
+
+      var resultViz = document.getElementById('resultViz');
+      function show(label, arr) {
+        resultViz.textContent = label + ': ' + arr.join(' → ');
+      }
+
+      document.getElementById('btnPre').addEventListener('click', function () {
+        show('전위 순회', preorder(0, []));
+      });
+      document.getElementById('btnIn').addEventListener('click', function () {
+        show('중위 순회', inorder(0, []));
+      });
+      document.getElementById('btnPost').addEventListener('click', function () {
+        show('후위 순회', postorder(0, []));
+      });
+
+      resultViz.textContent = '순회 결과: 위 버튼을 눌러 보세요.';
+    })();
+  </script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

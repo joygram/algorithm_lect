@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>실습: 스택 | 자료구조</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>실습: 스택 (접시 쌓기)</h1>
+    <p class="subtitle">맨 위에만 넣고, 맨 위에서만 꺼내기</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <main class="practice-page">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <p>접시를 쌓는 것처럼 생각해 보세요. 값을 입력하고 <strong>넣기(Push)</strong>를 누르면 맨 위에 쌓이고, <strong>꺼내기(Pop)</strong>를 누르면 <strong>맨 위에 있는 것만</strong> 나와요. 나중에 넣은 게 먼저 나오는지 확인해 보세요.</p>
+
+    <div class="controls">
+      <input type="text" id="inputVal" placeholder="넣을 값 (예: A)" maxlength="6" aria-label="스택에 넣을 값">
+      <button type="button" id="btnPush">넣기 (Push)</button>
+      <button type="button" id="btnPop">꺼내기 (Pop)</button>
+    </div>
+
+    <div class="viz" id="viz" role="status" aria-live="polite">
+      [ 맨 위 ] — 비어 있음
+    </div>
+
+    <p class="hint">방금 꺼낸 값: <strong id="lastPop">—</strong> (꺼내기를 누르면 여기에 표시돼요)</p>
+  </main>
+  <script>
+    (function () {
+      var stack = [];
+      var viz = document.getElementById('viz');
+      var lastPop = document.getElementById('lastPop');
+      var inputVal = document.getElementById('inputVal');
+
+      function render() {
+        if (stack.length === 0) {
+          viz.innerHTML = '[ 맨 위 ] — 비어 있음';
+          return;
+        }
+        var items = stack.slice().reverse().map(function (x, i) {
+          return '<div class="stack-viz-item">' + (i === 0 ? '← 맨 위 ' : '') + x + '</div>';
+        }).join('');
+        viz.innerHTML = '<div class="viz-caption">맨 위 ↑</div>' + items;
+      }
+
+      document.getElementById('btnPush').addEventListener('click', function () {
+        var v = inputVal.value.trim();
+        if (v === '') return;
+        stack.push(v);
+        inputVal.value = '';
+        render();
+      });
+
+      document.getElementById('btnPop').addEventListener('click', function () {
+        if (stack.length === 0) {
+          lastPop.textContent = '(비어 있음)';
+          return;
+        }
+        var v = stack.pop();
+        lastPop.textContent = v;
+        render();
+      });
+
+      render();
+    })();
+  </script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

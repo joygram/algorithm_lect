@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>2. 큐(Queue) | II단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>II. 선형 구조</h1>
+    <p class="subtitle">2. 큐 — 줄 서기 · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="02-index.html" class="back">이 단원 목차</a>
+
+    <h2>큐(Queue, 큐)</h2>
+    <p>큐는 <strong>줄 서기</strong>와 똑같아요. 먼저 줄 선 사람이 먼저 나갑니다. 영어로 <strong>FIFO(파이포)</strong>(First In First Out, 퍼스트 인 퍼스트 아웃) = "먼저 들어간 게 먼저 나온다"라고 해요.</p>
+
+    <h3>연산</h3>
+    <ul>
+      <li><strong>enqueue(인큐)</strong>: 줄 맨 뒤에 넣기. rear(리어, 뒤)에서 삽입.</li>
+      <li><strong>dequeue(디큐)</strong>: 맨 앞에서 빼기. front(프론트, 앞)에서 삭제.</li>
+    </ul>
+
+    <h3>활용</h3>
+    <p>게임에서 <strong>대사·이벤트가 순서대로</strong> 나가게 할 때 큐를 씁니다. 프린터 대기, <strong>BFS(비에프에스, 너비 우선 탐색)</strong> 등에도 써요.</p>
+    <p><strong>우선순위 큐</strong>는 급한 것(우선순위 높은 것)부터 꺼내는 큐예요. 시험에 나올 수 있어요.</p>
+
+    <h4 class="section-title">문제 및 해설</h4>
+    <div class="problem-section exam-type">
+      <div class="q">1, 2, 3을 순서대로 enqueue(인큐)한 뒤 dequeue(디큐) 두 번 하면 나오는 값은?</div>
+      <div class="a">정답: 1, 2. FIFO라서 먼저 들어간 1이 먼저, 그다음 2가 나와요. <a href="../exam/past-exam.html">더 많은 예제 →</a></div>
+    </div>
+
+    <h4 class="section-title">문제 및 답 확인</h4>
+    <div class="problem-section exam-type">
+      <div class="q">enqueue A → enqueue B → dequeue → enqueue C → dequeue 순서로 했을 때, 지금까지 꺼낸 값은?</div>
+      <details>
+        <summary>답 보기</summary>
+        <div class="a">dequeue 첫 번째: A, 두 번째: B. 꺼낸 순서는 A, B.</div>
+      </details>
+    </div>
+
+    <h4 class="section-title">문제 및 실습</h4>
+    <div class="fill-code-practice" data-answer="popleft" data-snippet="queue">
+      <p class="fill-code-prompt">큐에서 맨 앞에서 꺼낼 때 쓰는 메서드 이름을 써 보세요. (파이썬 deque 기준)</p>
+      <div class="fill-code-line">out = q._____()  # 맨 앞에서 하나 꺼내기</div>
+      <p><input type="text" class="fill-code-input" placeholder="예: popleft" aria-label="메서드"> <button type="button" class="fill-code-check">확인</button></p>
+      <p class="fill-code-msg" role="status"></p>
+      <p class="fill-code-run-link" style="display:none;"></p>
+    </div>
+    <div class="problem-section practice-callout">
+      <p>뒤에 넣기·앞에서 꺼내기로 FIFO가 어떻게 동작하는지 직접 해 보세요. 코드로 실행해 보려면 파이썬 실습을 이용하세요.</p>
+      <div class="lecture-practice-cta">
+        <a href="../practice/queue.html">실습: 큐 →</a>
+        <a href="../practice/pyodide.html?snippet=queue" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      </div>
+    </div>
+
+    <nav class="page-nav">
+      <a href="02-1-선형구조개요.html">← 이전: 선형 구조 개요</a>
+      <a href="02-3-스택.html" class="next">다음: 스택 →</a>
+    </nav>
+  </article>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

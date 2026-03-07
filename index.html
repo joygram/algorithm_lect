@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>자료구조 강의·실습 | 프로그래밍기능사</title>
+  <link rel="stylesheet" href="css/common.css">
+  <!-- GitHub Pages: 주소 끝에 / 없으면 추가해서 상대경로가 깨지지 않게 -->
+  <script>
+    (function(){
+      var p = window.location.pathname;
+      if (p.length > 1 && p.indexOf('.') === -1 && p.slice(-1) !== '/') {
+        window.location.replace(p + '/' + window.location.search + window.location.hash);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="header">
+    <h1>자료구조 강의·실습</h1>
+    <p class="subtitle">언더테일 같은 턴제 RPG 만들기 기준으로 · 프로그래밍기능사 대비</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+
+  <main class="main">
+    <p class="theme-intro">이걸 하나의 줄거리로: <strong>언더테일 스타일 게임</strong>을 만든다고 생각하고, 세이브·메뉴·대사·스토리 분기·인벤·아이템 찾기까지 필요한 자료구조만 골라 배워요.</p>
+    <p class="exam-link"><a href="exam/past-exam.html">📋 전년도 기출 유형 예제 풀어보기</a></p>
+    <p class="exam-link" style="margin-top:0.5rem;"><a href="practice/pyodide.html">🐍 브라우저에서 파이썬 실습 (코드 쓰고 바로 실행)</a></p>
+    <p class="exam-link" style="margin-top:0.5rem;"><a href="fun/etymology-and-jokes.html" class="link-accent">📖 용어 어원 & 프로그래밍 조크 (짬짬이 읽기)</a></p>
+    <nav class="unit-nav" aria-label="단원 목차">
+      <section class="unit-card">
+        <h2>I. 자료와 자료 구조</h2>
+        <p class="card-hook">세이브 파일·HP·데미지 숫자도 결국 0과 1. 진법·보수 알면 게임 데이터 저장이 보여요.</p>
+        <p><a href="lectures/01-index.html" class="unit-go">이 단원 보기 →</a></p>
+      </section>
+      <section class="unit-card">
+        <h2>II. 선형 구조</h2>
+        <p class="card-hook">메뉴 뒤로가기(스택), 대사·이벤트 순서(큐). 언더테일 같은 메뉴/대사 흐름에 그대로 써요.</p>
+        <p><a href="lectures/02-index.html" class="unit-go">이 단원 보기 →</a></p>
+      </section>
+      <section class="unit-card">
+        <h2>III. 비선형 구조</h2>
+        <p class="card-hook">스토리 분기(트리), 맵·방 연결·최단 경로(그래프). 선택지·맵 이동 구현할 때 쓰는 거예요.</p>
+        <p><a href="lectures/03-index.html" class="unit-go">이 단원 보기 →</a></p>
+      </section>
+      <section class="unit-card">
+        <h2>IV. 자료 정렬</h2>
+        <p class="card-hook">인벤토리 정렬·"한 단계 지나면 배열이?" — 버블·선택·삽입으로 정렬 감 잡아요.</p>
+        <p><a href="lectures/04-index.html" class="unit-go">이 단원 보기 →</a></p>
+      </section>
+      <section class="unit-card">
+        <h2>V. 자료 탐색</h2>
+        <p class="card-hook">아이템·스탯 리스트에서 빨리 찾기(이진 탐색), 이름으로 찾기(해싱). 게임 데이터 검색의 기본.</p>
+        <p><a href="lectures/05-index.html" class="unit-go">이 단원 보기 →</a></p>
+      </section>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <p>고등학교 특성화 자료구조 교과 기반 · 프로그래밍기능사(정보처리기능사) 자격증 과정</p>
+  </footer>
+  <script src="js/theme.js"></script>
+</body>
+</html>

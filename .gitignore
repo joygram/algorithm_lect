@@ -1,0 +1,9 @@
+# Optional local server
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.meta-editor-paths.json

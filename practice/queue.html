@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>실습: 큐 | 자료구조</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>실습: 큐 (줄 서기)</h1>
+    <p class="subtitle">뒤에 서고, 맨 앞 사람만 나가기</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <main class="practice-page">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <p>줄 서기와 같아요. <strong>뒤에 넣기</strong>를 누르면 줄 맨 뒤에 서고, <strong>앞에서 꺼내기</strong>를 누르면 <strong>맨 앞에 있는 사람만</strong> 나가요. 먼저 줄 선 사람이 먼저 나가는지 확인해 보세요.</p>
+
+    <div class="controls">
+      <input type="text" id="inputVal" placeholder="넣을 값 (예: 1번)" maxlength="6" aria-label="큐에 넣을 값">
+      <button type="button" id="btnEnqueue">뒤에 넣기 (Enqueue)</button>
+      <button type="button" id="btnDequeue">앞에서 꺼내기 (Dequeue)</button>
+    </div>
+
+    <div class="viz" id="viz" role="status" aria-live="polite">
+      [ 맨 앞 ] — 비어 있음 — [ 맨 뒤 ]
+    </div>
+
+    <p class="hint">방금 나간 값: <strong id="lastDeq">—</strong></p>
+  </main>
+  <script>
+    (function () {
+      var queue = [];
+      var viz = document.getElementById('viz');
+      var lastDeq = document.getElementById('lastDeq');
+      var inputVal = document.getElementById('inputVal');
+
+      function render() {
+        if (queue.length === 0) {
+          viz.innerHTML = '[ 맨 앞 ] — 비어 있음 — [ 맨 뒤 ]';
+          return;
+        }
+        var items = queue.map(function (x, i) {
+          var label = (i === 0 ? ' Front ' : '') + (i === queue.length - 1 ? ' Rear' : '');
+          return '<span class="viz-item">' + x + label + '</span>';
+        }).join('');
+        viz.innerHTML = '<div style="display:flex; flex-wrap:wrap; align-items:center;">' + items + '</div>';
+      }
+
+      document.getElementById('btnEnqueue').addEventListener('click', function () {
+        var v = inputVal.value.trim();
+        if (v === '') return;
+        queue.push(v);
+        inputVal.value = '';
+        render();
+      });
+
+      document.getElementById('btnDequeue').addEventListener('click', function () {
+        if (queue.length === 0) {
+          lastDeq.textContent = '(비어 있음)';
+          return;
+        }
+        var v = queue.shift();
+        lastDeq.textContent = v;
+        render();
+      });
+
+      render();
+    })();
+  </script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

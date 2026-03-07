@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>2. 비트, 바이트, 진법 | I단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>I. 자료와 자료 구조</h1>
+    <p class="subtitle">2. 비트, 바이트, 진법이란? · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="01-index.html" class="back">이 단원 목차</a>
+
+    <h2>컴퓨터는 0과 1로 저장해요</h2>
+    <p>컴퓨터 안에서는 모든 자료가 <strong>0과 1(2진수)</strong>로 바뀌어 저장돼요. 전기 신호가 있음(1) / 없음(0)으로 구분되기 때문이에요.</p>
+
+    <h3>비트(bit, 비트)</h3>
+    <p><strong>비트</strong>는 0 하나 또는 1 하나를 말해요. Binary(바이너리) + digit(디짓)의 줄임말이에요. 컴퓨터가 쓰는 가장 작은 단위입니다.</p>
+
+    <h3>바이트(byte, 바이트)</h3>
+    <p>비트 <strong>8개</strong>를 묶은 단위가 <strong>바이트</strong>예요. 게임 세이브에서 HP 한 칸, 글자 하나(영문)는 보통 1바이트. 프로그래밍기능사에서 "1바이트 = 8비트"는 기본으로 나와요.</p>
+    <div class="fun-callout etymology"><span class="label">📖 어원</span> "byte"는 한 입 베어 문 양이란 뜻의 "bite"에서 왔어요. bit와 헷갈리지 않게 y로 바꿨대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <h3>진법이란?</h3>
+    <p><strong>진법</strong>은 수를 셀 때 "몇 개씩 묶어서 자릿수를 올리느냐"를 정한 거예요.</p>
+    <ul>
+      <li><strong>2진수</strong>: 0, 1만 사용. 컴퓨터가 쓰는 방식. 예: 1010₂ = 10</li>
+      <li><strong>8진수</strong>: 0~7. 예: 12₈ = 10</li>
+      <li><strong>10진수</strong>: 0~9. 우리가 일상에서 쓰는 수.</li>
+      <li><strong>16진수</strong>: 0~9, A(10), B(11), C(12), D(13), E(14), F(15). 프로그래밍에서 주소·색상 등에 자주 씀. 예: 1A₁₆ = 26</li>
+    </ul>
+
+    <div class="practice-callout">
+      <p class="label">실습하기</p>
+      <p>진법·보수 따라하기와 브라우저에서 파이썬으로 코드를 실행해 보세요.</p>
+      <div class="lecture-practice-cta">
+        <a href="../practice/radix.html">실습: 진법·보수 따라하기 →</a>
+        <a href="../practice/pyodide.html" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      </div>
+    </div>
+
+    <nav class="page-nav">
+      <a href="01-1-자료와추상화.html">← 이전: 자료와 추상화</a>
+      <a href="01-3-진법변환.html" class="next">다음: 진법 변환 →</a>
+    </nav>
+  </article>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

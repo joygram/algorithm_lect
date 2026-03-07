@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>3. 스택(Stack) | II단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>II. 선형 구조</h1>
+    <p class="subtitle">3. 스택 — 접시 쌓기 · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="02-index.html" class="back">이 단원 목차</a>
+
+    <h2>스택(Stack, 스택)</h2>
+    <p>스택은 <strong>접시를 쌓는 것</strong>처럼 생각하면 돼요. 맨 위에만 넣고, 맨 위에서만 뺄 수 있어요. 그래서 <strong>나중에 넣은 게 먼저</strong> 나옵니다. <strong>LIFO(라이포)</strong>(Last In First Out, 라스트 인 퍼스트 아웃)라고 해요.</p>
+
+    <h3>연산</h3>
+    <ul>
+      <li><strong>push(푸시)</strong>: 맨 위(top, 탑)에 넣기</li>
+      <li><strong>pop(팝)</strong>: 맨 위에서 꺼내기</li>
+    </ul>
+
+    <h3>활용</h3>
+    <p>게임에서 <strong>메뉴 뒤로가기</strong>(설정 → 메인 → 타이틀처럼), 괄호 짝 맞추기, <strong>DFS(디에프에스, 깊이 우선 탐색)</strong>, 함수 호출 시 복귀 주소 저장 등.</p>
+    <div class="fun-callout etymology"><span class="label">📖 어원</span> Stack(스택) = "쌓다, 더미". Queue(큐) = "줄, 꼬리"(프랑스어). <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <h4 class="section-title">문제 및 해설</h4>
+    <div class="problem-section exam-type">
+      <strong>📋 기출 유형</strong>
+      <div class="q">A, B, C, D를 스택에 넣었다가 모두 꺼낼 때, 나올 수 <strong>없는</strong> 출력 순서는? ① A,B,C,D ② B,D,C,A ③ C,D,B,A ④ D,B,C,A</div>
+      <div class="a">정답: ④ D,B,C,A. D가 먼저 나오려면 네 개 다 넣은 뒤 꺼내야 하는데, 그다음엔 C→B→A 순서만 가능해요. <a href="../exam/past-exam.html">더 많은 예제 →</a></div>
+    </div>
+
+    <h4 class="section-title">문제 및 답 확인</h4>
+    <div class="problem-section exam-type">
+      <div class="q">push A → push B → pop → push C → pop 순서로 했을 때, 지금까지 꺼낸 값은?</div>
+      <details>
+        <summary>답 보기</summary>
+        <div class="a">pop 첫 번째: B, pop 두 번째: C. 따라서 꺼낸 순서는 B, C.</div>
+      </details>
+    </div>
+
+    <h4 class="section-title">문제 및 실습</h4>
+    <div class="fill-code-practice" data-answers="append|pop" data-snippet="stack">
+      <p class="fill-code-prompt">스택에 넣을 때는 append, 맨 위에서 꺼낼 때는? (파이썬 리스트 기준)</p>
+      <div class="fill-code-line">stack._____("B")  # 넣기 &nbsp; → &nbsp; x = stack._____()  # 맨 위에서 꺼내기</div>
+      <p>첫 빈칸(넣는 메서드): <input type="text" class="fill-code-input" placeholder="append"> 두 번째 빈칸(꺼내는 메서드): <input type="text" class="fill-code-input" placeholder="pop"> <button type="button" class="fill-code-check">확인</button></p>
+      <p class="fill-code-msg" role="status"></p>
+      <p class="fill-code-run-link" style="display:none;"></p>
+    </div>
+    <div class="problem-section practice-callout">
+      <p>push(푸시)/pop(팝)으로 맨 위에만 넣고 꺼내 보면서 LIFO를 확인해 보세요. 코드로 실행해 보려면 파이썬 실습을 이용하세요.</p>
+      <div class="lecture-practice-cta">
+        <a href="../practice/stack.html">실습: 스택 →</a>
+        <a href="../practice/pyodide.html?snippet=stack" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      </div>
+    </div>
+
+    <nav class="page-nav">
+      <a href="02-2-큐.html">← 이전: 큐</a>
+      <a href="02-4-덱.html" class="next">다음: 덱 →</a>
+    </nav>
+  </article>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

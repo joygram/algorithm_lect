@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>V. 자료 탐색 | 자료구조 강의</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>V. 자료 탐색</h1>
+    <p class="subtitle">원하는 값을 찾는 방법 · 프로그래밍기능사 대비</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <h2>01. 순차 탐색 — 처음부터 하나씩</h2>
+    <p>첫 번째 칸부터 차례대로 "이거 내가 찾는 값이야?" 하고 비교하는 방법이에요. 찾을 때까지 또는 끝까지 가면 끝입니다. 정렬이 안 되어 있어도 쓸 수 있어요. 데이터가 n개면 최대 n번 비교할 수 있어요.</p>
+
+    <h2>02. 이진 탐색 — 반씩 나눠서 찾기</h2>
+    <p>자료가 <strong>이미 순서대로 정렬되어 있을 때</strong>만 쓸 수 있어요. 가운데 값을 보고 "찾는 값이 더 크네? 그러면 오른쪽 절반만 보자" 이렇게 반씩 버리면서 찾아요. 그래서 훨씬 빨라요. 시험에 "비교 횟수", "중간 인덱스" 같은 게 자주 나옵니다.</p>
+
+    <div class="exam-type">
+      <strong>📋 전년도 기출 유형</strong>
+      <div class="q">오름차순 배열 [10, 20, 30, 40, 50, 60, 70]에서 <strong>40</strong>을 이진 탐색할 때, 첫 번째로 비교하는 값은? (가운데 값을 비교해요)</div>
+      <div class="a">정답: 40. 칸이 7개일 때 가운데(네 번째)가 40이에요. 찾는 값이랑 같으니까 한 번에 끝나요. 더 많은 예제는 <a href="../exam/past-exam.html">기출 유형 예제</a>에서 풀어 보세요.</div>
+    </div>
+
+    <h2>03. 이진 탐색 트리 (참고)</h2>
+    <p>트리로 만든 구조에서, "왼쪽 자식 &lt; 부모 &lt; 오른쪽 자식" 규칙을 지키면 찾기·넣기·빼기가 모두 편해요. 나중에 배우게 될 거예요.</p>
+
+    <h2>04. 해싱 (참고)</h2>
+    <p>"키"(이름, 번호 등)를 어떤 식으로 계산해서 "저장할 칸 번호"를 정하는 방법이에요. 같은 칸에 두 값이 들어가면 "충돌"이라고 하고, 이걸 푸는 방법(체이닝, 개방 주소법)이 시험에 나올 수 있어요.</p>
+    <div class="fun-callout etymology"><span class="label">📖 어원</span> Hash = "잘게 썬다"(해시 브라운처럼). 데이터를 잘게 잘라 번호처럼 만드는 함수라서 해시예요. Cache = "숨기다"(프랑스어). 자주 쓰는 걸 숨겨 둔 곳이 캐시. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <h2>05. 최단 거리 (참고)</h2>
+    <p>그래프에서 한 점에서 다른 점까지 <strong>가장 짧은 경로</strong>를 구하는 거예요. BFS나 다익스트라 같은 방법이 있고, 시험에 단계를 묻는 문제가 나올 수 있어요.</p>
+    <div class="fun-callout"><span class="label">😄 조크</span> 다른 과목에서는 복사·붙여넣기가 표절인데, 프로그래밍에서는 "코드 재사용"이라고 부른대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <p><a href="../practice/search.html" class="back">실습: 탐색</a> <a href="../practice/pyodide.html?snippet=binary" class="back">브라우저에서 파이썬 실습</a></p>
+  </article>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

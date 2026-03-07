@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>5. 자료구조와 리스트 | I단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>I. 자료와 자료 구조</h1>
+    <p class="subtitle">5. 자료구조·알고리즘, 리스트 · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="01-index.html" class="back">이 단원 목차</a>
+
+    <h2>자료구조와 알고리즘</h2>
+    <p><strong>자료구조</strong>는 자료를 어떤 순서·형태로 담아 둘지 정한 구조예요. 게임에서 대사 목록(리스트), 메뉴 뒤로가기(스택), 이벤트 순서(큐)처럼요.</p>
+    <p><strong>알고리즘</strong>은 문제를 풀기 위한 단계별 방법이에요. 좋은 자료구조를 고르면 알고리즘이 더 빨라져요. 프로그래밍기능사 실기에서 자료구조를 이용한 코딩이 나올 수 있어요.</p>
+    <div class="fun-callout"><span class="label">😄 조크</span> 세상에는 10가지 종류의 사람이 있어요 — 2진수를 아는 사람이랑 모르는 사람. (10을 2진수로 쓰면 2예요.) <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <h2>리스트(List, 리스트)</h2>
+    <p><strong>순서가 있는</strong> 자료의 나열이에요. 같은 종류의 값들이 한 줄로 배치됩니다.</p>
+    <ul>
+      <li><strong>배열</strong>: 칸이 연달아 있어서 "몇 번째 칸"으로 바로 찾기 좋아요. 삽입·삭제 시 다른 칸을 밀어야 할 수 있어요.</li>
+      <li><strong>연결 리스트</strong>: 각 노드가 "다음 노드 주소"를 갖고 있어서, 가운데 삽입·삭제가 배열보다 유리해요. <strong>머리(head, 헤드)</strong>, <strong>꼬리(tail, 테일)</strong> 용어가 시험에 나옵니다.</li>
+    </ul>
+
+    <h4 class="section-title">문제 및 해설</h4>
+    <div class="problem-section exam-type">
+      <div class="q">연결 리스트에서 "맨 앞 노드"를 뭘이라고 부르나요? 삽입·삭제가 배열보다 유리한 이유는?</div>
+      <div class="a">맨 앞: <strong>head(헤드)</strong>. 각 노드가 "다음 주소"만 갖고 있어서 가운데를 끊고 넣거나 빼기만 하면 되고, 옆 칸을 전부 밀 필요가 없어요. <a href="../exam/past-exam.html">더 많은 예제 →</a></div>
+    </div>
+
+    <h4 class="section-title">문제 및 답 확인</h4>
+    <div class="problem-section exam-type">
+      <div class="q">배열과 연결 리스트 중 "몇 번째 칸에 바로 접근"하기 좋은 건?</div>
+      <details>
+        <summary>답 보기</summary>
+        <div class="a">배열. 배열은 칸이 연달아 있어서 인덱스로 바로 찾을 수 있어요. 연결 리스트는 head부터 따라가야 해요.</div>
+      </details>
+    </div>
+
+    <h4 class="section-title">문제 및 실습</h4>
+    <div class="fill-code-practice" data-answers="append|1" data-snippet="list">
+      <p class="fill-code-prompt">빈칸을 채운 뒤 확인을 누르세요. 맞으면 파이썬 실습에서 코드로 실행해 볼 수 있어요.</p>
+      <div class="fill-code-line">arr = [10, 20, 30] &nbsp; → &nbsp; arr.<u>_____</u>(40) &nbsp; → &nbsp; arr.pop(<u>_____</u>) &nbsp; (1번 인덱스 제거)</div>
+      <p>첫 빈칸(맨 뒤에 추가하는 메서드): <input type="text" class="fill-code-input" placeholder="예: append" aria-label="메서드"> 두 번째 빈칸(제거할 인덱스): <input type="text" class="fill-code-input" placeholder="숫자" aria-label="인덱스"> <button type="button" class="fill-code-check">확인</button></p>
+      <p class="fill-code-msg" role="status"></p>
+      <p class="fill-code-run-link" style="display:none;"></p>
+    </div>
+    <div class="problem-section practice-callout">
+      <p>리스트를 손으로 넣고 빼 보면서 순서를 확인해 보세요. 코드로 실행해 보려면 아래 파이썬 실습을 이용하세요.</p>
+      <div class="lecture-practice-cta">
+        <a href="../practice/list.html">실습: 리스트 →</a>
+        <a href="../practice/pyodide.html?snippet=list" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      </div>
+    </div>
+
+    <p><a href="../practice/list.html" class="back">실습: 리스트</a> <a href="../practice/pyodide.html?snippet=list" class="back">브라우저 파이썬 실습</a> <a href="../exam/past-exam.html" class="back">기출 유형</a></p>
+    <nav class="page-nav">
+      <a href="01-4-보수와인코딩.html">← 이전: 보수와 인코딩</a>
+      <a href="02-index.html" class="next">다음 단원: II. 선형 구조 →</a>
+    </nav>
+  </article>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

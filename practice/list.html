@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>실습: 리스트 | 자료구조</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>실습: 리스트</h1>
+    <p class="subtitle">한 줄로 세운 목록에 넣고 빼 보기</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <main class="practice-page">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <p>아래 칸에 <strong>넣고 싶은 값</strong>(숫자나 글자)을 쓰고 <strong>맨 뒤에 추가</strong>를 누르면 줄 맨 뒤에 붙어요. <strong>몇 번째 칸</strong>을 지울지 숫자(0부터 시작)를 쓰고 <strong>해당 위치 삭제</strong>를 누르면 그 칸만 사라져요.</p>
+
+    <div class="controls">
+      <input type="text" id="inputVal" placeholder="넣을 값 (예: 사과)" maxlength="6" aria-label="추가할 값">
+      <button type="button" id="btnAdd">맨 뒤에 추가</button>
+      <br>
+      <input type="number" id="inputIdx" placeholder="지울 칸 번호 (0이 첫 번째)" min="0" aria-label="삭제할 인덱스">
+      <button type="button" id="btnRemove">해당 위치 삭제</button>
+    </div>
+
+    <div class="viz" id="viz" role="status" aria-live="polite">
+      리스트: [ ]
+    </div>
+
+    <p class="hint">💡 0번 = 첫 번째, 1번 = 두 번째예요. 리스트는 "순서가 있는 나열"이라는 걸 느껴 보세요.</p>
+  </main>
+  <script>
+    (function () {
+      var list = [];
+      var viz = document.getElementById('viz');
+      var inputVal = document.getElementById('inputVal');
+      var inputIdx = document.getElementById('inputIdx');
+
+      function render() {
+        viz.textContent = '리스트: [ ' + list.join(', ') + ' ]';
+      }
+
+      document.getElementById('btnAdd').addEventListener('click', function () {
+        var v = inputVal.value.trim();
+        if (v === '') return;
+        list.push(v);
+        inputVal.value = '';
+        render();
+      });
+
+      document.getElementById('btnRemove').addEventListener('click', function () {
+        var i = parseInt(inputIdx.value, 10);
+        if (isNaN(i) || i < 0 || i >= list.length) return;
+        list.splice(i, 1);
+        inputIdx.value = '';
+        render();
+      });
+
+      render();
+    })();
+  </script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

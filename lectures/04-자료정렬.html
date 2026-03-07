@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>IV. 자료 정렬 | 자료구조 강의</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>IV. 자료 정렬</h1>
+    <p class="subtitle">숫자를 순서대로 나열하기 · 프로그래밍기능사 대비</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <h2>01. 정렬이 뭐예요?</h2>
+    <p>한 줄로 된 자료를 <strong>작은 것부터(오름차순)</strong> 또는 <strong>큰 것부터(내림차순)</strong> 다시 배치하는 걸 정렬이라고 해요. 시험 문제에서 "한 단계 지나면 배열이 어떻게 되나요?" 같은 게 자주 나옵니다.</p>
+
+    <h2>02. 버블 정렬 — 옆이랑 비교해서 자리 바꾸기</h2>
+    <p>맨 앞부터 <strong>바로 옆 숫자랑 비교</strong>해서, 순서가 잘못됐으면 자리를 바꿔요. 한 번 쭉 지나가면 가장 큰 수가 맨 뒤로 가요. 이걸 반복하면 결국 전체가 정렬돼요. 이해하기 쉽고 시험에 자주 나와요.</p>
+    <div class="fun-callout"><span class="label">😄 조크</span> 디버깅 = n번째 버그를 잡으면 (n+1)번째 버그가 보이는 과정의 반복. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <h2>03. 선택 정렬 — 가장 작은 걸 골라서 앞으로</h2>
+    <p>아직 정렬 안 된 구간에서 <strong>가장 작은 수</strong>를 찾아서, 그 구간의 맨 앞 자리와 바꿔요. 그 다음은 두 번째 칸부터 같은 일을 반복해요. 직관적이라 역시 시험에 자주 나옵니다.</p>
+
+    <div class="exam-type">
+      <strong>📋 전년도 기출 유형</strong>
+      <div class="q">배열 [5, 2, 8, 1, 9]를 <strong>선택 정렬</strong>로 오름차순 할 때, 첫 번째 단계(가장 작은 값을 맨 앞과 바꾼 뒤) 배열은?</div>
+      <div class="a">정답: [1, 2, 8, 5, 9]. 최솟값 1(네 번째 칸)을 맨 앞 5와 바꾸면 돼요. 더 많은 예제는 <a href="../exam/past-exam.html">기출 유형 예제</a>에서 풀어 보세요.</div>
+    </div>
+
+    <h2>04. 삽입 정렬 — 정렬된 줄에 하나씩 끼워 넣기</h2>
+    <p>앞부분을 "이미 정렬된 줄"이라고 생각하고, 그 다음 숫자를 <strong>알맞은 자리에 끼워 넣는</strong> 방식이에요. 카드 놀이할 때 손에 든 카드를 순서대로 끼워 넣는 것과 비슷해요.</p>
+
+    <h2>05. 더 빠른 정렬 (참고)</h2>
+    <p>나중에 배우게 될 것들:</p>
+    <ul>
+      <li><strong>퀵 정렬</strong>: 기준값을 하나 잡고, 그보다 작은 것 / 큰 것 나눠서 정렬</li>
+      <li><strong>병합 정렬</strong>: 반으로 나눠서 각각 정렬한 다음, 합치면서 순서 맞추기</li>
+      <li><strong>힙 정렬</strong>: "힙"이라는 특별한 트리를 이용해서 정렬</li>
+    </ul>
+    <p>지금은 버블·선택·삽입만 잘 이해해도 충분해요.</p>
+
+    <p><a href="../practice/sort.html" class="back">실습: 정렬</a> <a href="../practice/pyodide.html?snippet=bubble" class="back">브라우저에서 파이썬 실습</a></p>
+  </article>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

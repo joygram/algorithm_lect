@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>2. 이진 탐색 트리·해싱 | V단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>V. 자료 탐색</h1>
+    <p class="subtitle">2. 이진 탐색 트리 · 해싱 (참고) · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="05-index.html" class="back">이 단원 목차</a>
+
+    <h2>이진 탐색 트리(BST, 비에스티)</h2>
+    <p>트리로 만든 구조에서, <strong>왼쪽 자식 &lt; 부모 &lt; 오른쪽 자식</strong> 규칙을 지키면 찾기·넣기·빼기가 모두 편해요. 중위 순회하면 정렬된 순서로 나와요. 프로그래밍기능사 실기에서 트리 순회·탐색이 나올 수 있어요.</p>
+
+    <h2>해싱(Hashing, 해싱)</h2>
+    <p>"키(key, 키)"(이름, 번호 등)를 <strong>해시 함수(hash function)</strong>로 계산해서 "저장할 칸 번호"를 정하는 방법이에요. 같은 칸에 두 값이 들어가면 <strong>충돌</strong>이라고 하고, 이걸 푸는 방법이 <strong>체이닝(chaining, 체이닝)</strong>(리스트로 연결), <strong>개방 주소법</strong>(다른 빈 칸 찾기)이에요. 시험에 나올 수 있어요.</p>
+    <div class="fun-callout etymology"><span class="label">📖 어원</span> Hash = "잘게 썬다". 데이터를 잘게 잘라 번호처럼 만드는 함수라서 해시예요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <div class="practice-callout">
+      <p class="label">실습하기</p>
+      <p>탐색·이진 탐색을 손으로 해 보거나, 브라우저에서 파이썬으로 이진 탐색 코드를 실행해 보세요.</p>
+      <div class="lecture-practice-cta">
+        <a href="../practice/search.html">실습: 탐색 →</a>
+        <a href="../practice/pyodide.html?snippet=binary" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      </div>
+    </div>
+
+    <nav class="page-nav">
+      <a href="05-1-순차이진탐색.html">← 이전: 순차·이진 탐색</a>
+      <a href="05-3-최단거리.html" class="next">다음: 최단 거리 →</a>
+    </nav>
+  </article>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

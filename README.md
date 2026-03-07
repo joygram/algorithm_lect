@@ -30,10 +30,10 @@
 ### 페이지가 안 뜰 때 (처음 설정)
 
 1. **Settings** → 왼쪽 **Pages**
-2. **Build and deployment** → **Source**를 **GitHub Actions**로 선택 (이 저장소에 `.github/workflows/deploy-pages.yml` 있음)
-3. `main` 브랜치에 푸시한 뒤 **Actions** 탭에서 "Deploy to GitHub Pages" 워크플로가 **성공**했는지 확인
-4. 배포 성공 후 **2~3분** 정도 지나면 위 링크로 접속 가능 (캐시 때문에 더 걸릴 수 있음)
-5. 여전히 404면: **Source**를 **Deploy from a branch**로 바꾸고, **Branch** `main`, **Folder** `/ (root)` → **Save** 후 1~2분 기다리기
+2. **Build and deployment** → **Source**를 **Deploy from a branch**로 선택
+3. **Branch**에서 `gh-pages` 선택, **Folder**는 `/ (root)` → **Save**
+4. `main`에 푸시하면 Actions가 자동으로 `gh-pages` 브랜치에 배포함. **Actions** 탭에서 "Deploy to GitHub Pages"가 성공했는지 확인
+5. 배포 성공 후 **2~3분** 지나면 위 링크로 접속 가능 (캐시 때문에 더 걸릴 수 있음)
 
 ### 확인할 것
 

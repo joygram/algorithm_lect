@@ -18,11 +18,24 @@
 
     <p class="hook lead">10진수를 2진수로 바꾸는 법만 확실히 알면 나머지는 같은 패턴이에요.</p>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 게임에서 쓰는 곳 (언더테일·RPG)</p>
+      <p>세이브 파일의 <strong>HP, 골드, 플래그</strong>는 결국 숫자로 저장돼요. 메모리에는 0과 1(2진수)로 들어가고, 16진수는 색상 코드(#FF5500 같은)나 바이너리 덤프에서 자주 보입니다. 진법을 알면 "이 숫자가 게임 안에서 어떻게 비트로 쓰이는지"가 보여요.</p>
+    </div>
+
     <h2>진법 변환 — 규칙만 네 개</h2>
 
     <h3>① 10진수 → 2진수</h3>
     <p><strong>2로 나눈 나머지</strong>를 적고, 몫을 다시 2로 나누는 걸 <strong>몫이 0될 때까지</strong> 반복. 적어 둔 나머지를 <strong>맨 아래→맨 위</strong> 순서로 읽으면 2진수.</p>
-    <p class="example">13: 나머지 1→0→1→1 → 아래에서 위로 읽으면 <strong>1101₂</strong></p>
+    <p class="example">예: 13을 2진수로 — 한 줄에 한 번 나눗셈, 나머지만 오른쪽에 적기:</p>
+    <div class="radix-steps" role="img" aria-label="13을 2로 나누는 과정">
+      <div class="radix-step-line"><span class="radix-op">13 ÷ 2</span> = 6 … <strong class="radix-rem">나머지 1</strong></div>
+      <div class="radix-step-line"><span class="radix-op"> 6 ÷ 2</span> = 3 … <strong class="radix-rem">나머지 0</strong></div>
+      <div class="radix-step-line"><span class="radix-op"> 3 ÷ 2</span> = 1 … <strong class="radix-rem">나머지 1</strong></div>
+      <div class="radix-step-line"><span class="radix-op"> 1 ÷ 2</span> = 0 … <strong class="radix-rem">나머지 1</strong></div>
+      <p class="radix-result">↓ 나머지를 <strong>아래에서 위로</strong> 읽으면 → <strong>1101₂</strong></p>
+    </div>
+    <p class="example">25라면: 25÷2=12…1, 12÷2=6…0, 6÷2=3…0, 3÷2=1…1, 1÷2=0…1 → <strong>11001₂</strong></p>
 
     <h3>② 2진수 → 10진수</h3>
     <p>오른쪽부터 자리가 2⁰, 2¹, 2², … 그 자리 숫자×자리값을 더함.</p>
@@ -41,7 +54,15 @@
       <div class="q">10진수 <strong>25</strong>를 2진수로 바꾸면?</div>
       <div class="a">
         <p><strong>정답: 11001₂</strong></p>
-        <p>25를 2로 나눈 나머지를 순서대로 쓰면 1, 0, 0, 1, 1. 이걸 <strong>아래에서 위로</strong> 읽으면 11001₂. (맨 마지막 나머지가 2진수 맨 왼쪽.)</p>
+        <p>한 줄에 한 번씩 나눗셈하면:</p>
+        <div class="radix-steps" role="img" aria-label="25를 2로 나누는 과정">
+          <div class="radix-step-line"><span class="radix-op">25 ÷ 2</span> = 12 … <strong class="radix-rem">나머지 1</strong></div>
+          <div class="radix-step-line"><span class="radix-op">12 ÷ 2</span> =  6 … <strong class="radix-rem">나머지 0</strong></div>
+          <div class="radix-step-line"><span class="radix-op"> 6 ÷ 2</span> =  3 … <strong class="radix-rem">나머지 0</strong></div>
+          <div class="radix-step-line"><span class="radix-op"> 3 ÷ 2</span> =  1 … <strong class="radix-rem">나머지 1</strong></div>
+          <div class="radix-step-line"><span class="radix-op"> 1 ÷ 2</span> =  0 … <strong class="radix-rem">나머지 1</strong></div>
+          <p class="radix-result">↓ 나머지를 아래→위로 읽으면 → <strong>11001₂</strong></p>
+        </div>
       </div>
     </div>
 
@@ -61,15 +82,31 @@
 
     <h4 class="section-title">문제 및 실습</h4>
     <div class="problem-section practice-callout">
-      <p>같은 방식으로 다른 숫자도 2진수·16진수로 바꿔 보세요. 아래에서 파이썬으로 바로 확인할 수 있어요.</p>
+      <p>같은 방식으로 다른 숫자도 2진수·16진수로 바꿔 보세요. <strong>아래 iframe</strong>에서 파이썬으로 바로 확인할 수 있어요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/radix.html">실습: 진법·보수 따라하기 →</a>
-        <a href="../practice/pyodide.html" class="practice-pyodide">전체 화면 파이썬 실습 →</a>
       </div>
     </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 진법 변환에 쓰는 파이썬 함수</p>
+      <p><strong>대응</strong> 정수 → 2진수/16진수 문자열로 바꿀 때 쓰는 내장 함수예요.</p>
+      <dl>
+        <dt><code>bin(정수)</code></dt>
+        <dd>2진수 문자열로 바꿔요. <code>bin(25)</code> → <code>'0b11001'</code> (0b는 2진수 표시).</dd>
+        <dt><code>hex(정수)</code></dt>
+        <dd>16진수 문자열로 바꿔요. <code>hex(25)</code> → <code>'0x19'</code>. 역으로 문자열을 정수로: <code>int('11001', 2)</code> → 25.</dd>
+      </dl>
+      <p><strong>왜 쓰나요?</strong> 손으로 나머지 구한 결과를 코드로 검증할 때 위 함수를 쓰면 됩니다.</p>
+    </div>
+    <p class="practice-callout-inline">👇 아래 코드가 실습창에서 그대로 쓸 수 있는 예제예요. 복사해서 실습창에 붙여 넣고 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 진법 변환: bin(), hex()로 검증
+print(bin(25))   # 0b11001
+print(hex(25))   # 0x19
+# 역으로 2진수 문자열 → 정수
+print(int('11001', 2))   # 25</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <p>예: <code>print(bin(25))</code> → 0b11001, <code>print(hex(25))</code> → 0x19. 직접 입력해 보세요.</p>
+      <p>위 코드와 동일하게 실습창에 입력한 뒤 실행해 보세요.</p>
       <iframe src="../practice/pyodide.html?embed=1" title="파이썬 실습" class="pyodide-iframe"></iframe>
     </div>
 

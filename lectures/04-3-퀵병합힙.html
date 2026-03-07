@@ -32,15 +32,39 @@
 
     <div class="practice-callout">
       <p class="label">실습하기</p>
-      <p>정렬을 손으로 해 보거나, 아래에서 버블 정렬 코드를 바로 실행해 보세요.</p>
+      <p>정렬을 손으로 해 보거나, <strong>아래 iframe</strong>에서 버블 정렬 코드를 바로 실행해 보세요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/sort.html">실습: 정렬 →</a>
-        <a href="../practice/pyodide.html?snippet=bubble" class="practice-pyodide">전체 화면 파이썬 실습 →</a>
       </div>
     </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 버블 정렬에서 쓰는 파이썬 API·문법</p>
+      <p><strong>대응</strong> 버블 정렬은 "인접한 두 값 비교"와 "자리 바꾸기(스왑)"만 반복해요.</p>
+      <dl>
+        <dt><code>리스트[j]</code>, <code>리스트[j+1]</code></dt>
+        <dd>j번째와 그 바로 옆(j+1) 칸의 값. 버블은 "옆과 비교"하므로 이 두 인덱스가 핵심이에요.</dd>
+        <dt><code>비교 연산자 &gt;</code></dt>
+        <dd><code>arr[j] &gt; arr[j+1]</code>이면 오름차순일 때 자리를 바꿔요.</dd>
+        <dt><code>a, b = b, a</code> (스왑)</dt>
+        <dd><code>arr[j], arr[j+1] = arr[j+1], arr[j]</code>로 두 칸의 값을 서로 바꿔요.</dd>
+      </dl>
+      <p><strong>왜 이렇게 쓰나요?</strong> 버블 정렬 정의가 "인접 비교 후 교환"이므로, 인덱싱·비교·스왑만 알면 구현할 수 있어요.</p>
+    </div>
+    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 실습창에서 그대로 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
+arr = [64, 34, 25, 12, 22]
+print("정렬 전:", arr)
+n = len(arr)
+for i in range(n):
+    for j in range(0, n - 1 - i):
+        # ① 빈칸: arr[j]가 arr[j+1]보다 크면 자리 바꿈 (비교 연산자: &gt; 또는 &lt;)
+        if arr[j] _____ arr[j + 1]:
+            # ② 두 값 자리 바꾸기 (한 줄에 스왑)
+            arr[j], arr[j + 1] = _____
+print("정렬 후:", arr)</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <p>버블 정렬 예제가 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
+      <p>위 코드와 동일한 예제가 실습창에 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
       <iframe src="../practice/pyodide.html?snippet=bubble&amp;embed=1" title="파이썬 실습: 버블 정렬" class="pyodide-iframe"></iframe>
     </div>
 

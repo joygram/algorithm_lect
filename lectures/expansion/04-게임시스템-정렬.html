@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>IV단원 확장: 게임 시스템 실습과제 | 정렬</title>
+  <link rel="stylesheet" href="../../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>IV단원 확장 — 게임 시스템 실습과제</h1>
+    <p class="subtitle">학습한 정렬을 인벤토리 정렬(이름순·가격순)로 확장하기 (추가 강의)</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../../index.html" class="back">← 전체 목차</a>
+    <a href="../04-index.html" class="back">IV단원 목차</a>
+
+    <p class="hook lead">이 페이지는 <strong>강의 외 추가 강의</strong>예요. IV단원에서 배운 <strong>버블·선택·삽입 정렬</strong>을 게임의 <strong>인벤토리 정렬(이름순, 가격순, 획득 순)</strong>이라는 구체적인 시스템으로 확장합니다. <strong>자료구조 복기 → 사용 API → 실제 구현 활용</strong> 순으로 짚어요.</p>
+
+    <h2>정렬 — 인벤토리 정렬 시스템</h2>
+    <p>게임에서 "이름순", "가격순", "획득 순"으로 아이템 목록을 한 줄로 재배치할 때, 비교 정렬(버블·선택·삽입)과 같은 생각이 들어요. 실제로는 정렬 키(이름/가격/날짜)만 정해 주면 됩니다.</p>
+
+    <div class="expansion-review" role="region" aria-label="복기">
+      <h3>📌 복기: 버블·선택·삽입 정렬</h3>
+      <ul>
+        <li><strong>버블 정렬</strong>: 인접한 두 원소를 비교해서 순서가 잘못됐으면 교환. 한 번 지나가면 가장 큰 값이 맨 뒤로.</li>
+        <li><strong>공통</strong>: "비교"와 "자리 바꾸기(스왑)". 자료구조는 <strong>배열(리스트)</strong>이고, 연산은 비교 연산자(&gt;, &lt;)와 스왑(arr[i], arr[j] = arr[j], arr[i]).</li>
+      </ul>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API">
+      <h3>📌 사용하는 파이썬 API</h3>
+      <dl>
+        <dt><code>arr[j] &gt; arr[j+1]</code></dt>
+        <dd>인접 두 값 비교. 오름차순이면 "왼쪽이 크면" 자리 바꿈.</dd>
+        <dt><code>arr[j], arr[j+1] = arr[j+1], arr[j]</code></dt>
+        <dd>두 칸의 값을 한 줄에 스왑. 임시 변수 없이 맞바꿀 수 있어요.</dd>
+        <dt><code>리스트.sort(key=...)</code></dt>
+        <dd>실전에서는 내장 정렬을 쓰지만, "어떤 기준으로 비교할지"가 정렬 알고리즘에서 배운 비교·스왑과 같아요. key로 이름/가격 등을 지정.</dd>
+      </dl>
+    </div>
+    <div class="game-use-callout" role="region" aria-label="실제 구현 활용">
+      <h3>🎮 실제 구현에서 쓰는 곳</h3>
+      <ul>
+        <li><strong>인벤토리 정렬</strong>: 아이템 목록을 "이름순", "가격순", "획득 순"으로 바꿔서 표시. 각 아이템을 (이름, 가격, 획득시간)처럼 묶어 두고, 정렬 시 "비교할 키"만 바꿔서 정렬하면 됩니다.</li>
+        <li>시험에는 "한 단계 지나면 배열이 어떻게 되나?"가 자주 나와요. 버블 정렬의 비교·스왑 한 사이클이 곧 "한 단계"에 해당해요.</li>
+      </ul>
+    </div>
+    <p class="practice-callout-inline">👇 버블 정렬: 인접 비교 후 스왑. 실습창에서 빈칸을 채운 뒤 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
+arr = [64, 34, 25, 12, 22]
+print("정렬 전:", arr)
+n = len(arr)
+for i in range(n):
+    for j in range(0, n - 1 - i):
+        if arr[j] &gt; arr[j + 1]:
+            arr[j], arr[j + 1] = arr[j + 1], arr[j]
+print("정렬 후:", arr)</code></pre>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 실습: 버블 정렬</span>
+      <iframe src="../../practice/pyodide.html?snippet=bubble&amp;embed=1" title="파이썬: 버블 정렬" class="pyodide-iframe"></iframe>
+    </div>
+    <p>인벤토리를 "이름순"으로 보여주고 싶다면, 아이템 이름 리스트를 정렬한 뒤 그 순서대로 그리면 됩니다. 파이썬에서는 <code>items.sort(key=lambda x: x["name"])</code>처럼 키를 지정해 정렬할 수 있어요.</p>
+
+    <nav class="page-nav">
+      <a href="02-게임시스템-선형구조.html">← II단원 확장</a>
+      <a href="../04-3-퀵병합힙.html">IV단원: 퀵·병합·힙</a>
+      <a href="05-게임시스템-탐색.html" class="next">V단원 확장: 탐색 →</a>
+    </nav>
+  </article>
+  <script src="../../js/theme.js"></script>
+</body>
+</html>

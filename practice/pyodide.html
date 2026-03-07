@@ -27,6 +27,8 @@
       <button type="button" class="btn-preset" data-snippet="queue">큐 (FIFO)</button>
       <button type="button" class="btn-preset" data-snippet="bubble">버블 정렬</button>
       <button type="button" class="btn-preset" data-snippet="binary">이진 탐색</button>
+      <button type="button" class="btn-preset" data-snippet="flags">게임: 비트 플래그</button>
+      <button type="button" class="btn-preset" data-snippet="inventory">게임: 인벤토리</button>
     </div>
 
     <div id="pyodide-guide" class="pyodide-guide" role="region" aria-label="실습 가이드">
@@ -70,7 +72,9 @@
         stack: '# 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)\nstack = []\nstack.append("A")\n# ① 빈칸: 스택에 "B"를 넣으세요 (append 사용)\nstack._____("B")\nstack.append("C")\nprint("push A,B,C 후:", stack)\n# ② 빈칸: 맨 위에서 하나 꺼내서 변수 x에 넣기 (pop은 인자 없음)\nx = stack._____()\nprint("pop() →", x, ", 남은 스택:", stack)',
         queue: '# 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄\nfrom collections import deque\nq = deque(["첫번째", "두번째", "세번째"])\nprint("큐:", list(q))\n# 빈칸: 큐의 맨 앞에서 하나 꺼내는 메서드 (pop / popleft / append 중)\nout = q._____()\nprint("popleft() →", out)\nprint("남은 큐:", list(q))',
         bubble: '# 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄\narr = [64, 34, 25, 12, 22]\nprint("정렬 전:", arr)\nn = len(arr)\nfor i in range(n):\n    for j in range(0, n - 1 - i):\n        # ① 빈칸: arr[j]가 arr[j+1]보다 크면 자리 바꿈 (비교 연산자: > 또는 <)\n        if arr[j] _____ arr[j + 1]:\n            # ② 두 값 자리 바꾸기 (한 줄에 스왑)\n            arr[j], arr[j + 1] = _____\nprint("정렬 후:", arr)',
-        binary: '# 이진 탐색: 정렬된 리스트에서 target 위치 찾기\narr = [2, 5, 8, 12, 16, 23, 38]\ntarget = 12\nleft, right = 0, len(arr) - 1\nwhile left <= right:\n    # ① 빈칸: 가운데 인덱스 (left와 right의 평균, 정수)\n    mid = _____\n    if arr[mid] == target:\n        print("찾음! 인덱스:", mid)\n        break\n    # ② 빈칸: target이 더 크면 왼쪽을 mid 다음으로 (left = ?)\n    if arr[mid] < target:\n        left = _____\n    else:\n        right = mid - 1\nelse:\n    print("없음")'
+        binary: '# 이진 탐색: 정렬된 리스트에서 target 위치 찾기\narr = [2, 5, 8, 12, 16, 23, 38]\ntarget = 12\nleft, right = 0, len(arr) - 1\nwhile left <= right:\n    # ① 빈칸: 가운데 인덱스 (left와 right의 평균, 정수)\n    mid = _____\n    if arr[mid] == target:\n        print("찾음! 인덱스:", mid)\n        break\n    # ② 빈칸: target이 더 크면 왼쪽을 mid 다음으로 (left = ?)\n    if arr[mid] < target:\n        left = _____\n    else:\n        right = mid - 1\nelse:\n    print("없음")',
+        flags: '# 게임: 비트 플래그 (진법/비트 연산 활용)\n# 비트0=업적1, 비트1=업적2, 비트2=업적3. 0b101 = 1번·3번 달성\nflags = 0b101\nprint("2진:", bin(flags), "10진:", flags)\n# 2번 업적 달성 추가: OR 연산 (1 << 2 = 0b100)\nflags = flags | (1 << 2)\nprint("2번 추가 후:", bin(flags))\n# 1번 업적 있는지 확인: AND\nprint("1번 달성?", bool(flags & (1 << 0)))',
+        inventory: '# 게임: 인벤토리 (리스트 활용)\ninv = ["검", "물약", "방패"]\nprint("인벤:", inv)\ninv.append("열쇠")\nprint("획득 후:", inv)\n# 1번 슬롯(물약) 사용 후 제거\ninv.pop(1)\nprint("물약 사용 후:", inv)\nprint("2번 슬롯 아이템:", inv[2])'
       };
 
       var guides = {
@@ -78,7 +82,9 @@
         stack: '<strong>할 일</strong><br>① "B"를 스택에 넣는 메서드: <strong>append</strong>를 빈칸에 쓰세요.<br>② 맨 위에서 하나 꺼내는 메서드: 인자를 받지 않는 <strong>pop</strong>을 쓰세요 (괄호만).<br>실행하면 pop() → C, 남은 스택이 [\'A\', \'B\']처럼 나오면 맞아요. (나중에 넣은 게 먼저 나옴 = LIFO)',
         queue: '<strong>할 일</strong><br>큐에서는 <strong>맨 앞</strong>에서 꺼낼 때 쓰는 메서드를 빈칸에 쓰세요. (pop이 아니라 앞쪽을 의미하는 left가 들어간 이름)<br>실행하면 popleft() → 첫번째, 남은 큐가 [\'두번째\', \'세번째\']처럼 나오면 맞아요. (먼저 넣은 게 먼저 나옴 = FIFO)',
         bubble: '<strong>할 일</strong><br>① 큰 값을 오른쪽으로 보내려면: arr[j]가 arr[j+1]보다 <strong>클 때</strong> 바꿔야 하므로 비교 연산자 <code>&gt;</code>를 빈칸에 쓰세요.<br>② 두 칸의 값을 바꾸는 스왑: 오른쪽에는 <code>arr[j + 1], arr[j]</code>를 쓰세요 (순서만 반대로).<br>실행하면 정렬 후 [12, 22, 25, 34, 64]처럼 나오면 맞아요.',
-        binary: '<strong>할 일</strong><br>① 가운데 인덱스: <code>(left + right) // 2</code>를 빈칸에 쓰세요. (정수 나눗셈)<br>② target이 더 크면 구간의 왼쪽을 mid 다음으로: <code>mid + 1</code>을 쓰세요.<br>실행하면 "찾음! 인덱스: 3"이 나오면 맞아요. (12는 인덱스 3)'
+        binary: '<strong>할 일</strong><br>① 가운데 인덱스: <code>(left + right) // 2</code>를 빈칸에 쓰세요. (정수 나눗셈)<br>② target이 더 크면 구간의 왼쪽을 mid 다음으로: <code>mid + 1</code>을 쓰세요.<br>실행하면 "찾음! 인덱스: 3"이 나오면 맞아요. (12는 인덱스 3)',
+        flags: '게임에서 <strong>여러 상태를 한 숫자(비트 플래그)</strong>로 저장하는 예제예요. <code>|</code>(OR)로 비트 켜기, <code>&</code>(AND)로 확인. <code>1 << n</code>은 n번 비트를 의미해요. 실행해 보세요.',
+        inventory: '게임 <strong>인벤토리</strong>: 리스트에 append로 넣고, pop(인덱스)로 사용/제거, inv[i]로 i번 슬롯 접근. 실행해 보세요.'
       };
 
       var codeEl = document.getElementById('pyodide-code');

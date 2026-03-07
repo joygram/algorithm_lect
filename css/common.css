@@ -474,6 +474,10 @@ body {
 .lecture .lecture-practice-cta a.practice-pyodide:hover { background: var(--callout-border); color: var(--text); }
 
 /* 강의 페이지 안 인라인 실습(iframe): 강의와 함께 같은 화면에서 실습 */
+/* 강의 본문 = 실습과 동일한 코드 (학생이 그대로 따라 칠 수 있도록) */
+.lecture-code-same-as-practice { margin: 0.75rem 0 1rem; padding: 1rem; overflow-x: auto; font-family: Consolas, Monaco, "Courier New", monospace; font-size: 0.9rem; line-height: 1.45; background: var(--input-bg); border: 1px solid var(--border); border-radius: 8px; white-space: pre; }
+.lecture-code-same-as-practice code { background: none; padding: 0; border: none; font-size: inherit; }
+
 .lecture-inline-run { margin: 1.5rem 0; padding: 1rem; background: var(--callout-bg); border: 1px solid var(--callout-border); border-radius: var(--radius); }
 .lecture-inline-run .label { display: block; margin-bottom: 0.35rem; font-weight: 700; color: var(--callout-label); }
 .lecture-inline-run p { margin: 0.25rem 0 0.75rem; font-size: 0.95rem; }
@@ -541,6 +545,30 @@ body {
 .lecture .python-api-guide dt:first-of-type { margin-top: 0; }
 .lecture .python-api-guide dd { margin-left: 1rem; margin-bottom: 0.25rem; color: var(--text); }
 
+/* 진법 변환: 한 줄 단위 나머지 계산 표시 */
+.lecture .radix-steps {
+  background: var(--callout-bg);
+  border: 1px solid var(--callout-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+  font-family: var(--mono), "Consolas", monospace;
+  font-size: 0.95rem;
+}
+.lecture .radix-step-line {
+  padding: 0.25rem 0;
+  border-bottom: 1px dotted var(--callout-border);
+}
+.lecture .radix-step-line:last-of-type { border-bottom: none; }
+.lecture .radix-op { color: var(--text); }
+.lecture .radix-rem { color: var(--primary); }
+.lecture .radix-result {
+  margin: 0.75rem 0 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--callout-border);
+  font-size: 0.95rem;
+}
+
 /* 개념 직후 "바로 여기서 실습" 문구 */
 .lecture .practice-callout-inline {
   margin: 0.75rem 0 0.5rem;
@@ -548,6 +576,37 @@ body {
   font-size: 0.95rem;
   color: var(--text);
 }
+
+/* 게임 개발 활용 (언더테일·어디에 쓰는지) */
+/* 확장 실습과제: 복기 블록 */
+.lecture .expansion-review {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--viz-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
+}
+.lecture .expansion-review h3 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--primary); }
+
+.lecture .game-use-callout {
+  background: linear-gradient(135deg, var(--callout-bg) 0%, color-mix(in srgb, var(--callout-bg) 90%, var(--primary) 8%) 100%);
+  border: 1px solid var(--callout-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+}
+.lecture .game-use-callout .game-use-title {
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: var(--callout-label);
+}
+
+/* 심화 실습 (3-4단계) */
+.lecture .deep-practice-steps { margin: 1rem 0; }
+.lecture .deep-practice-steps ol { padding-left: 1.5rem; }
+.lecture .deep-practice-steps li { margin: 0.5rem 0; }
 
 /* 실습 공통 */
 .practice-page {

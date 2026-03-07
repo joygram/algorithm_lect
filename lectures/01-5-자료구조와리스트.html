@@ -16,6 +16,11 @@
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="01-index.html" class="back">이 단원 목차</a>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>리스트</strong> = 인벤토리(아이템 순서), 대사 한 줄씩 저장, 퀘스트 목록. "몇 번째 칸"으로 바로 접근해서 아이템 정보를 보여줄 때 써요. <strong>배열 vs 연결 리스트</strong>는 "인벤에 넣었다 뺐다"가 많으면 연결 리스트가, "n번째 아이템 보기"가 많으면 배열이 유리해요.</p>
+    </div>
+
     <h2>자료구조와 알고리즘</h2>
     <p><strong>자료구조</strong>는 자료를 어떤 순서·형태로 담아 둘지 정한 구조예요. 게임에서 대사 목록(리스트), 메뉴 뒤로가기(스택), 이벤트 순서(큐)처럼요.</p>
     <p><strong>알고리즘</strong>은 문제를 풀기 위한 단계별 방법이에요. 좋은 자료구조를 고르면 알고리즘이 더 빨라져요. 프로그래밍기능사 실기에서 자료구조를 이용한 코딩이 나올 수 있어요.</p>
@@ -38,7 +43,16 @@
       </dl>
       <p><strong>왜 이렇게 쓰나요?</strong> 파이썬 list는 "동적 배열"이라 맨 뒤 추가는 빠르고, 인덱스로 접근·삭제가 직관적이에요. 실습에서는 "append로 넣고, pop(인덱스)로 특정 위치 제거"를 익히면 됩니다.</p>
     </div>
-    <p class="practice-callout-inline">👇 <strong>바로 여기서</strong> 리스트(append/pop) 코드를 실행해 보세요.</p>
+    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)
+arr = [10, 20, 30]
+# ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)
+arr._____(40)
+print("append(40) 후:", arr)
+# ② 빈칸: 1번 인덱스(20)를 제거하려면? pop( ? )
+arr.pop(_____)
+print("pop(1) 후:", arr)
+print("길이:", len(arr))</code></pre>
     <div class="fill-code-practice" data-answers="append|1" data-snippet="list">
       <p class="fill-code-prompt">맨 뒤에 추가하는 메서드, 1번 인덱스 제거할 때 pop(?)</p>
       <div class="fill-code-line">arr._____(40) &nbsp; → &nbsp; arr.pop(_____)</div>
@@ -92,8 +106,32 @@ console.log('길이:', arr.length);</textarea>
       </details>
     </div>
 
-    <p class="lecture-practice-integrated" style="margin-top:0.5rem;"><strong>필요할 때만</strong> <a href="../practice/list.html">실습: 리스트 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=list">통합 파이썬 실습 (전체 화면)</a></p>
-    <p><a href="../practice/list.html" class="back">실습: 리스트</a> <a href="../practice/pyodide.html?snippet=list" class="back">브라우저 파이썬 실습</a> <a href="../exam/past-exam.html" class="back">기출 유형</a></p>
+    <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(리스트)</strong>에서 배운 append·pop(인덱스)을 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/list.html">실습: 리스트 (손으로 하기)</a>.</p>
+
+    <h3 class="section-title">I단원 심화 실습 (3단계) — 이 페이지 안에서</h3>
+    <p>아래는 <strong>이 단원(자료·진법·리스트)</strong>을 파이썬으로 한 단계씩 확장하는 실습이에요. 페이지 이동 없이 스크롤해서 진행하면 됩니다.</p>
+    <div class="deep-practice-steps">
+      <ol>
+        <li><strong>1단계</strong> 진법: 게임의 HP·골드 같은 숫자를 <code>bin()</code>, <code>hex()</code>로 2진수·16진수 확인.</li>
+        <li><strong>2단계</strong> 리스트: 인벤토리처럼 append로 넣고, pop(인덱스)로 빼 보기 (위 실습과 동일한 API).</li>
+        <li><strong>3단계</strong> 세이브 흉내: <code>{"hp": 25, "gold": 100, "inv": ["검", "물약"]}</code>처럼 묶어서 출력해 보기.</li>
+      </ol>
+    </div>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 심화 1단계: 진법 확인</span>
+      <iframe src="../practice/pyodide.html?embed=1" title="파이썬: 진법" class="pyodide-iframe"></iframe>
+    </div>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 심화 2단계: 리스트 인벤 (이 강의 append·pop)</span>
+      <iframe src="../practice/pyodide.html?snippet=list&amp;embed=1" title="파이썬: 리스트" class="pyodide-iframe"></iframe>
+    </div>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 심화 3단계: 세이브 데이터 흉내</span>
+      <p>통합 실습에서 <code>save = {"hp": 25, "gold": 100, "inv": ["검", "물약"]}; print(save)</code> 입력 후 실행해 보세요.</p>
+      <iframe src="../practice/pyodide.html?embed=1" title="파이썬: 세이브 흉내" class="pyodide-iframe"></iframe>
+    </div>
+
+    <p><a href="../exam/past-exam.html" class="back">기출 유형</a></p>
     <nav class="page-nav">
       <a href="01-4-보수와인코딩.html">← 이전: 보수와 인코딩</a>
       <a href="02-index.html" class="next">다음 단원: II. 선형 구조 →</a>

@@ -28,12 +28,28 @@
 
     <div class="practice-callout">
       <p class="label">실습하기</p>
-      <p>트리·그래프를 손으로 해 보거나, 아래에서 파이썬으로 코드를 바로 실행해 보세요.</p>
+      <p>트리·그래프를 손으로 해 보거나, <strong>아래 iframe</strong>에서 예제를 골라 파이썬으로 바로 실행해 보세요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/tree.html">실습: 트리</a>
         <a href="../practice/graph.html">실습: 그래프</a>
-        <a href="../practice/pyodide.html" class="practice-pyodide">전체 화면 파이썬 실습 →</a>
       </div>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
+      <p class="api-guide-title">📌 실습 전: 예제별로 쓰는 파이썬 API·함수</p>
+      <p>아래에서 예제 버튼을 누르면 뼈대 코드가 불러와져요. <strong>각 예제에서 쓰는 함수</strong>를 미리 알아두면 실습이 수월해요.</p>
+      <dl>
+        <dt>리스트 예제</dt>
+        <dd><code>list.append(값)</code> — 맨 뒤 추가. <code>list.pop(인덱스)</code> — 해당 칸 제거·반환.</dd>
+        <dt>스택 예제</dt>
+        <dd><code>list.append(값)</code> — push. <code>list.pop()</code> — 맨 뒤에서 꺼내기(pop).</dd>
+        <dt>큐 예제</dt>
+        <dd><code>from collections import deque</code>, <code>deque.append(값)</code>, <code>deque.popleft()</code> — 맨 앞에서 꺼내기.</dd>
+        <dt>버블 정렬 예제</dt>
+        <dd><code>리스트[j]</code>, <code>리스트[j+1]</code> 인덱싱, 비교 연산자 <code>&gt;</code>, 스왑 <code>a, b = b, a</code>.</dd>
+        <dt>이진 탐색 예제</dt>
+        <dd><code>(left + right) // 2</code> — 가운데 인덱스. <code>left = mid + 1</code> / <code>right = mid - 1</code> — 구간 좁히기.</dd>
+      </dl>
+      <p>자세한 설명은 각 단원(리스트·스택·큐·정렬·이진탐색) 강의의 "실습 전 API 안내"를 참고하세요.</p>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>

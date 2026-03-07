@@ -16,6 +16,11 @@
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="04-index.html" class="back">이 단원 목차</a>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>정렬</strong> = <strong>인벤토리 정렬</strong>에 씁니다. "이름순", "가격순", "획득 순"처럼 아이템 목록을 한 줄로 재배치할 때 버블·선택·삽입 같은 비교 정렬이 쓰여요. 시험에는 "한 단계 지나면 배열이 어떻게 되나?"가 자주 나옵니다.</p>
+    </div>
+
     <h2>버블 정렬(Bubble Sort, 버블 소트)</h2>
     <p>맨 앞부터 <strong>바로 옆 숫자랑 비교</strong>해서, 순서가 잘못됐으면 자리를 바꿔요. 한 번 쭉 지나가면 가장 큰 수가 맨 뒤로 가요. 게임 인벤토리를 이름순·가격순으로 정렬할 때 같은 생각이에요. 시험에 자주 나와요.</p>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
@@ -31,7 +36,18 @@
       </dl>
       <p><strong>왜 이렇게 구현하나요?</strong> 버블 정렬의 정의가 "인접한 두 원소를 비교해서 순서가 잘못됐으면 교환"이에요. 그래서 리스트 인덱싱, 비교 연산자, 스왑 문법만 알면 코드로 옮길 수 있습니다.</p>
     </div>
-    <p class="practice-callout-inline">👇 <strong>바로 여기서</strong> 버블 정렬 코드를 실행해 보세요.</p>
+    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
+arr = [64, 34, 25, 12, 22]
+print("정렬 전:", arr)
+n = len(arr)
+for i in range(n):
+    for j in range(0, n - 1 - i):
+        # ① 빈칸: arr[j]가 arr[j+1]보다 크면 자리 바꿈 (비교 연산자: &gt; 또는 &lt;)
+        if arr[j] _____ arr[j + 1]:
+            # ② 두 값 자리 바꾸기 (한 줄에 스왑)
+            arr[j], arr[j + 1] = _____
+print("정렬 후:", arr)</code></pre>
     <div class="fill-code-practice" data-answer=">" data-snippet="bubble">
       <p class="fill-code-prompt">빈칸: arr[j]가 arr[j+1]보다 클 때 자리를 바꿉니다. 비교 연산자 한 글자?</p>
       <div class="fill-code-line">if arr[j] _____ arr[j + 1]:</div>
@@ -97,7 +113,7 @@ console.log('정렬 후:', arr);</textarea>
     <p>앞부분을 "이미 정렬된 줄"이라고 생각하고, 그 다음 숫자를 <strong>알맞은 자리에 끼워 넣는</strong> 방식이에요. 카드 놀이할 때 손에 든 카드를 순서대로 끼워 넣는 것과 비슷해요.</p>
     <div class="fun-callout"><span class="label">😄 조크</span> 디버깅 = n번째 버그를 잡으면 (n+1)번째 버그가 보이는 과정의 반복. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
 
-    <p class="lecture-practice-integrated" style="margin-top:0.5rem;"><strong>필요할 때만</strong> <a href="../practice/sort.html">실습: 정렬 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=bubble">통합 파이썬 실습 (전체 화면)</a></p>
+    <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(버블·선택·삽입 정렬)</strong>에서 배운 인접 비교·스왑(비교 연산자 &gt;, a,b=b,a)을 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/sort.html">실습: 정렬 (손으로 하기)</a>.</p>
     <nav class="page-nav">
       <a href="04-1-정렬개요.html">← 이전: 정렬 개요</a>
       <a href="04-3-퀵병합힙.html" class="next">다음: 퀵·병합·힙 →</a>

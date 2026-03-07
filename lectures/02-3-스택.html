@@ -16,6 +16,11 @@
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="02-index.html" class="back">이 단원 목차</a>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>스택</strong> = <strong>메뉴 뒤로가기</strong>에 씁니다. 타이틀 → 메인 → 설정 들어갈 때마다 push, "뒤로" 누를 때마다 pop해서 이전 화면으로 돌아가요. 언더테일처럼 메뉴가 겹겹이 쌓이는 구조가 스택이에요.</p>
+    </div>
+
     <h2>스택(Stack, 스택)</h2>
     <p>스택은 <strong>접시를 쌓는 것</strong>처럼 생각하면 돼요. 맨 위에만 넣고, 맨 위에서만 뺄 수 있어요. 그래서 <strong>나중에 넣은 게 먼저</strong> 나옵니다. <strong>LIFO(라이포)</strong>(Last In First Out, 라스트 인 퍼스트 아웃)라고 해요.</p>
 
@@ -39,7 +44,17 @@
       </dl>
       <p><strong>왜 list만으로 되나요?</strong> 스택은 "맨 끝"에만 넣고 빼면 되기 때문에, list의 append와 pop()이 모두 O(1)로 동작해요. 별도 모듈 없이 리스트만으로 스택을 구현하는 게 파이썬에서 일반적입니다.</p>
     </div>
-    <p class="practice-callout-inline">👇 <strong>바로 여기서</strong> 스택(push/pop) 코드를 실행해 보세요.</p>
+    <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)
+stack = []
+stack.append("A")
+# ① 빈칸: 스택에 "B"를 넣으세요 (append 사용)
+stack._____("B")
+stack.append("C")
+print("push A,B,C 후:", stack)
+# ② 빈칸: 맨 위에서 하나 꺼내서 변수 x에 넣기 (pop은 인자 없음)
+x = stack._____()
+print("pop() →", x, ", 남은 스택:", stack)</code></pre>
     <div class="fill-code-practice" data-answers="append|pop" data-snippet="stack">
       <p class="fill-code-prompt">스택에 넣을 때 append, 맨 위에서 꺼낼 때? (빈칸 두 개)</p>
       <div class="fill-code-line">stack._____("B") &nbsp; → &nbsp; x = stack._____()</div>
@@ -92,7 +107,7 @@ console.log('pop() →', x, ', 남은 스택:', stack);</textarea>
       </details>
     </div>
 
-    <p class="lecture-practice-integrated" style="margin-top:0.5rem;"><strong>필요할 때만</strong> <a href="../practice/stack.html">실습: 스택 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=stack">통합 파이썬 실습 (전체 화면)</a></p>
+    <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(스택)</strong>에서 배운 push·pop, 즉 list.append·list.pop()을 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/stack.html">실습: 스택 (손으로 하기)</a>.</p>
 
     <nav class="page-nav">
       <a href="02-2-큐.html">← 이전: 큐</a>

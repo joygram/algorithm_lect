@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>I단원 확장: 게임 시스템 실습과제 | 자료·진법·리스트</title>
+  <link rel="stylesheet" href="../../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>I단원 확장 — 게임 시스템 실습과제</h1>
+    <p class="subtitle">학습한 자료·진법·리스트를 구체적인 게임 시스템으로 확장하기 (추가 강의)</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../../index.html" class="back">← 전체 목차</a>
+    <a href="../01-index.html" class="back">I단원 목차</a>
+
+    <p class="hook lead">이 페이지는 <strong>강의 외 추가 강의</strong>예요. I단원에서 배운 <strong>진법·리스트</strong>를 게임에서 실제로 쓰는 방식(비트 플래그, 인벤토리, 세이브 데이터)으로 확장합니다. 각 주제마다 <strong>자료구조 복기 → 사용 API → 실제 구현 활용</strong> 순으로 짚어요.</p>
+
+    <!-- ========== 1. 진법 → 게임에서의 실제 활용 ========== -->
+    <h2>1. 진법 — 게임 시스템에서의 실제 활용</h2>
+    <p>단순히 "10진수를 2진수로 표기한다"는 것만으로는 자료구조와의 연결이 약해요. 게임에서는 <strong>한 숫자에 여러 상태를 비트로 담는 플래그</strong>, <strong>슬롯 개수가 2^n일 때 인덱스 표현</strong>, <strong>세이브/네트워크에서 숫자 압축</strong> 등에 진법·비트가 쓰입니다.</p>
+
+    <div class="expansion-review" role="region" aria-label="복기">
+      <h3>📌 복기: 진법·비트</h3>
+      <ul>
+        <li><strong>진법 변환</strong>: 10진 → 2진은 2로 나눈 나머지를 아래→위로 읽기. 2진수 한 자리는 0 또는 1 한 비트.</li>
+        <li><strong>자료구조와의 연결</strong>: "여러 개의 참/거짓(불리언)"을 한 개의 정수로 묶어 저장할 때, 각 비트가 하나의 플래그가 됩니다. (비트마스크)</li>
+      </ul>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API">
+      <h3>📌 사용하는 파이썬 API</h3>
+      <dl>
+        <dt><code>bin(정수)</code>, <code>hex(정수)</code></dt>
+        <dd>정수를 2진·16진 <strong>문자열</strong>로 바꿔요. 디버깅·확인용.</dd>
+        <dt><code>int("11001", 2)</code></dt>
+        <dd>2진수 문자열을 10진 정수로 변환. 두 번째 인자가 밑(2, 8, 16 등).</dd>
+        <dt><code>1 << n</code></dt>
+        <dd>1을 왼쪽으로 n비트 시프트 → <strong>n번 비트만 1인 값</strong>. 예: <code>1 << 2</code> → 4 (0b100).</dd>
+        <dt><code>a | b</code> (OR), <code>a &amp; b</code> (AND)</dt>
+        <dd>비트 OR로 "해당 비트 켜기", AND로 "해당 비트가 켜져 있는지 확인".</dd>
+      </dl>
+    </div>
+    <div class="game-use-callout" role="region" aria-label="실제 구현 활용">
+      <h3>🎮 실제 구현에서 쓰는 곳</h3>
+      <ul>
+        <li><strong>업적·맵 열림 플래그</strong>: "업적 1, 2, 3 달성"을 각각 비트 0, 1, 2로 두고, 한 정수(예: 0b101)에 담아요. OR로 달성 추가, AND로 확인.</li>
+        <li><strong>옵션/상태 조합</strong>: "소리 ON, 진동 OFF, 자막 ON"처럼 여러 on/off를 한 숫자로 저장할 때 비트 플래그를 씁니다.</li>
+        <li><strong>2^n 슬롯 인덱스</strong>: 인벤토리 슬롯이 8개(2³)일 때 인덱스 0~7은 3비트로 표현 가능. 메모리/패킷 크기 절약에 활용.</li>
+      </ul>
+    </div>
+    <p class="practice-callout-inline">👇 아래 코드는 <strong>비트 플래그</strong>로 "업적 1·3 달성"을 한 숫자에 담고, 2번 업적을 추가한 뒤 1번 달성 여부를 확인하는 예제예요. 실습창에서 그대로 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 게임: 비트 플래그 (진법/비트 연산 활용)
+# 비트0=업적1, 비트1=업적2, 비트2=업적3. 0b101 = 1번·3번 달성
+flags = 0b101
+print("2진:", bin(flags), "10진:", flags)
+# 2번 업적 달성 추가: OR 연산 (1 &lt;&lt; 2 = 0b100)
+flags = flags | (1 &lt;&lt; 2)
+print("2번 추가 후:", bin(flags))
+# 1번 업적 있는지 확인: AND
+print("1번 달성?", bool(flags &amp; (1 &lt;&lt; 0)))</code></pre>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 실습: 비트 플래그</span>
+      <iframe src="../../practice/pyodide.html?snippet=flags&amp;embed=1" title="파이썬: 비트 플래그" class="pyodide-iframe"></iframe>
+    </div>
+
+    <!-- ========== 2. 리스트 → 인벤토리·퀘스트 ========== -->
+    <h2>2. 리스트 — 인벤토리·퀘스트 목록</h2>
+    <p>리스트는 <strong>순서가 있는 자료</strong>라서 게임의 인벤토리(몇 번째 슬롯에 뭐가 있는지), 퀘스트 목록, 대사 줄 등에 그대로 대응해요.</p>
+
+    <div class="expansion-review" role="region" aria-label="복기">
+      <h3>📌 복기: 리스트(배열)</h3>
+      <ul>
+        <li><strong>연산</strong>: 맨 뒤에 넣기(append), 지정 인덱스 제거·반환(pop(인덱스)), i번째 값 접근(리스트[i]).</li>
+        <li>배열은 "몇 번째 칸"으로 바로 접근 가능해서, "n번 슬롯 아이템 보기"에 적합해요.</li>
+      </ul>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API">
+      <h3>📌 사용하는 파이썬 API</h3>
+      <dl>
+        <dt><code>리스트.append(값)</code></dt>
+        <dd>맨 뒤에 한 칸 추가. 아이템 획득 시 인벤에 넣는 것에 대응.</dd>
+        <dt><code>리스트.pop(인덱스)</code></dt>
+        <dd>해당 인덱스 값을 제거하고 반환. "n번 슬롯 아이템 사용 후 제거"에 대응.</dd>
+        <dt><code>리스트[i]</code>, <code>len(리스트)</code></dt>
+        <dd>i번째 슬롯 접근, 슬롯 개수(길이).</dd>
+      </dl>
+    </div>
+    <div class="game-use-callout" role="region" aria-label="실제 구현 활용">
+      <h3>🎮 실제 구현에서 쓰는 곳</h3>
+      <ul>
+        <li><strong>인벤토리</strong>: 슬롯 번호 = 리스트 인덱스. append로 획득, pop(i)로 사용/버리기, inv[i]로 툴팁 표시.</li>
+        <li><strong>퀘스트 목록</strong>: 진행 중 퀘스트 ID나 이름을 리스트에 넣고, 완료 시 pop 또는 별도 "완료 리스트"로 이동.</li>
+        <li><strong>대사 한 줄씩</strong>: 대사 문자열을 리스트에 순서대로 넣고, 인덱스를 올려가며 "다음 대사" 표시 (다음 단원 큐와 연결).</li>
+      </ul>
+    </div>
+    <p class="practice-callout-inline">👇 인벤토리: append로 획득, pop(인덱스)로 사용/제거, inv[i]로 슬롯 접근. 실습창에서 실행해 보세요.</p>
+    <pre class="lecture-code-same-as-practice"><code># 게임: 인벤토리 (리스트 활용)
+inv = ["검", "물약", "방패"]
+print("인벤:", inv)
+inv.append("열쇠")
+print("획득 후:", inv)
+# 1번 슬롯(물약) 사용 후 제거
+inv.pop(1)
+print("물약 사용 후:", inv)
+print("2번 슬롯 아이템:", inv[2])</code></pre>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 실습: 인벤토리</span>
+      <iframe src="../../practice/pyodide.html?snippet=inventory&amp;embed=1" title="파이썬: 인벤토리" class="pyodide-iframe"></iframe>
+    </div>
+
+    <!-- ========== 3. 세이브 데이터 흉내 (자료 묶기) ========== -->
+    <h2>3. 세이브 데이터처럼 묶기</h2>
+    <p>HP, 골드, 인벤토리 리스트를 <strong>한 덩어리</strong>로 묶으면 "세이브 스냅샷"처럼 다룰 수 있어요. 파이썬에서는 <code>dict</code>(딕셔너리)로 키–값 쌍을 저장합니다.</p>
+    <div class="expansion-review" role="region" aria-label="복기">
+      <h3>📌 복기</h3>
+      <p>자료구조는 "어떤 순서·형태로 담을지"를 정하는 것. 게임 세이브는 "HP, 골드, 인벤, 플래그" 등을 <strong>이름(키)으로 구분해 묶는</strong> 구조예요.</p>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 API">
+      <h3>📌 사용하는 파이썬 API</h3>
+      <dl>
+        <dt><code>{"키": 값, ...}</code></dt>
+        <dd>딕셔너리: 키로 값을 찾음. <code>save["hp"]</code>, <code>save["inv"]</code>처럼 접근.</dd>
+      </dl>
+    </div>
+    <pre class="lecture-code-same-as-practice"><code># 세이브 스냅샷 흉내
+save = {"hp": 25, "gold": 100, "inv": ["검", "물약"]}
+print(save)
+print("HP:", save["hp"], "인벤 0번:", save["inv"][0])</code></pre>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 실습: 세이브 흉내</span>
+      <iframe src="../../practice/pyodide.html?embed=1" title="파이썬: 세이브" class="pyodide-iframe"></iframe>
+    </div>
+
+    <nav class="page-nav">
+      <a href="../01-5-자료구조와리스트.html">← I단원: 자료구조와 리스트</a>
+      <a href="02-게임시스템-선형구조.html" class="next">II단원 확장: 스택·큐 →</a>
+    </nav>
+  </article>
+  <script src="../../js/theme.js"></script>
+</body>
+</html>

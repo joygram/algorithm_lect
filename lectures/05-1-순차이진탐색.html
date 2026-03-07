@@ -22,6 +22,33 @@
     <h2>이진 탐색(Binary Search, 바이너리 서치)</h2>
     <p>자료가 <strong>이미 오름차순(또는 내림차순)으로 정렬되어 있을 때</strong>만 쓸 수 있어요. <strong>가운데 값</strong>을 보고, 찾는 값이 더 크면 오른쪽 절반만, 더 작으면 왼쪽 절반만 다시 봐요. 반씩 버리니까 훨씬 빨라요.</p>
     <p>시험에 "비교 횟수", "첫 번째로 비교하는 값", "중간 인덱스" 같은 게 자주 나와요.</p>
+    <p class="practice-callout-inline">👇 <strong>바로 여기서</strong> 이진 탐색 코드를 실행해 보세요.</p>
+    <div class="fill-code-practice" data-answers="(left+right)//2|mid+1" data-snippet="binary">
+      <p class="fill-code-prompt">가운데 인덱스 mid = ? &nbsp; target이 더 크면 left = ?</p>
+      <div class="fill-code-line">mid = _____ &nbsp; &nbsp; left = _____</div>
+      <p>첫 빈칸: <input type="text" class="fill-code-input" placeholder="(left+right)//2"> 두 번째: <input type="text" class="fill-code-input" placeholder="mid+1"> <button type="button" class="fill-code-check">확인</button></p>
+      <p class="fill-code-msg" role="status"></p>
+      <p class="fill-code-run-link" style="display:none;"></p>
+    </div>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 파이썬 (바로 실행)</span>
+      <iframe src="../practice/pyodide.html?snippet=binary&amp;embed=1" title="파이썬 실습: 이진 탐색" class="pyodide-iframe"></iframe>
+    </div>
+    <div class="lecture-inline-js js-run-practice">
+      <span class="label">🟨 자바스크립트로 확인</span>
+      <textarea class="js-run-code" rows="18" spellcheck="false">var arr = [2, 5, 8, 12, 16, 23, 38];
+var target = 12, left = 0, right = arr.length - 1;
+while (left <= right) {
+  var mid = Math.floor((left + right) / 2);
+  if (arr[mid] === target) { console.log('찾음! 인덱스:', mid); break; }
+  if (arr[mid] < target) left = mid + 1;
+  else right = mid - 1;
+}
+if (left > right) console.log('없음');</textarea>
+      <div class="js-run-actions"><button type="button" class="js-run-btn">실행</button></div>
+      <div class="js-run-output" role="log" aria-live="polite"></div>
+    </div>
+
     <h4 class="section-title">문제 및 해설</h4>
     <div class="problem-section exam-type problem-with-steps">
       <strong>📋 기출 유형</strong>
@@ -53,50 +80,7 @@
       </details>
     </div>
 
-    <h4 class="section-title">문제 및 실습</h4>
-    <div class="fill-code-practice" data-answers="(left+right)//2|mid+1" data-snippet="binary">
-      <p class="fill-code-prompt">이진 탐색에서 가운데 인덱스와, target이 더 클 때 left를 어떻게 바꾸는지 써 보세요. (공백 없이)</p>
-      <div class="fill-code-line">mid = _____ &nbsp; &nbsp; (target이 더 크면) left = _____</div>
-      <p>첫 빈칸(가운데 인덱스): <input type="text" class="fill-code-input" placeholder="예: (left+right)//2"> 두 번째 빈칸: <input type="text" class="fill-code-input" placeholder="예: mid+1"> <button type="button" class="fill-code-check">확인</button></p>
-      <p class="fill-code-msg" role="status"></p>
-      <p class="fill-code-run-link" style="display:none;"></p>
-    </div>
-    <div class="problem-section practice-callout">
-      <p>순차 탐색·이진 탐색을 한 단계씩 눌러 보면서 비교 대상이 어떻게 바뀌는지 확인해 보세요. 아래 <strong>파이썬·자바스크립트 실습</strong>을 강의 안에서 바로 할 수 있어요.</p>
-    </div>
-
-    <div class="lecture-inline-run">
-      <span class="label">🐍 파이썬으로 실습 (인라인)</span>
-      <p>이 단원 예제(이진 탐색)가 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
-      <iframe src="../practice/pyodide.html?snippet=binary&amp;embed=1" title="파이썬 실습: 이진 탐색" class="pyodide-iframe"></iframe>
-    </div>
-
-    <div class="lecture-inline-js js-run-practice">
-      <span class="label">🟨 자바스크립트로 같은 동작 확인 (인라인)</span>
-      <p>정렬된 배열에서 가운데를 보고, 찾는 값이 더 크면 오른쪽 절반만 다시 봅니다. 실행해 보세요.</p>
-      <textarea class="js-run-code" rows="18" spellcheck="false">var arr = [2, 5, 8, 12, 16, 23, 38];
-var target = 12;
-var left = 0, right = arr.length - 1;
-while (left <= right) {
-  var mid = Math.floor((left + right) / 2);
-  if (arr[mid] === target) {
-    console.log('찾음! 인덱스:', mid);
-    break;
-  }
-  if (arr[mid] < target) left = mid + 1;
-  else right = mid - 1;
-}
-if (left > right) console.log('없음');</textarea>
-      <div class="js-run-actions">
-        <button type="button" class="js-run-btn">실행</button>
-      </div>
-      <div class="js-run-output" role="log" aria-live="polite"></div>
-    </div>
-
-    <div class="lecture-practice-integrated">
-      <strong>필요할 때만</strong> 전체 실습: <a href="../practice/search.html">실습: 탐색 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=binary">통합 파이썬 실습 (전체 화면)</a>
-    </div>
-
+    <p class="lecture-practice-integrated" style="margin-top:0.5rem;"><strong>필요할 때만</strong> <a href="../practice/search.html">실습: 탐색 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=binary">통합 파이썬 실습 (전체 화면)</a></p>
     <nav class="page-nav">
       <span></span>
       <a href="05-2-이진탐색트리해싱.html" class="next">다음: 이진 탐색 트리·해싱 →</a>

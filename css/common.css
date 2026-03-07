@@ -519,6 +519,14 @@ body {
 }
 .lecture .practice-callout a:hover { background: var(--primary-hover); }
 
+/* 개념 직후 "바로 여기서 실습" 문구 */
+.lecture .practice-callout-inline {
+  margin: 0.75rem 0 0.5rem;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
 /* 실습 공통 */
 .practice-page {
   padding: 1rem;

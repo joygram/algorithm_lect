@@ -18,6 +18,34 @@
 
     <h2>버블 정렬(Bubble Sort, 버블 소트)</h2>
     <p>맨 앞부터 <strong>바로 옆 숫자랑 비교</strong>해서, 순서가 잘못됐으면 자리를 바꿔요. 한 번 쭉 지나가면 가장 큰 수가 맨 뒤로 가요. 게임 인벤토리를 이름순·가격순으로 정렬할 때 같은 생각이에요. 시험에 자주 나와요.</p>
+    <p class="practice-callout-inline">👇 <strong>바로 여기서</strong> 버블 정렬 코드를 실행해 보세요.</p>
+    <div class="fill-code-practice" data-answer=">" data-snippet="bubble">
+      <p class="fill-code-prompt">빈칸: arr[j]가 arr[j+1]보다 클 때 자리를 바꿉니다. 비교 연산자 한 글자?</p>
+      <div class="fill-code-line">if arr[j] _____ arr[j + 1]:</div>
+      <p><input type="text" class="fill-code-input" placeholder="한 글자" maxlength="1" aria-label="비교 연산자"> <button type="button" class="fill-code-check">확인</button></p>
+      <p class="fill-code-msg" role="status"></p>
+      <p class="fill-code-run-link" style="display:none;"></p>
+    </div>
+    <div class="lecture-inline-run">
+      <span class="label">🐍 파이썬 (바로 실행)</span>
+      <iframe src="../practice/pyodide.html?snippet=bubble&amp;embed=1" title="파이썬 실습: 버블 정렬" class="pyodide-iframe"></iframe>
+    </div>
+    <div class="lecture-inline-js js-run-practice">
+      <span class="label">🟨 자바스크립트로 확인</span>
+      <textarea class="js-run-code" rows="12" spellcheck="false">var arr = [64, 34, 25, 12, 22];
+console.log('정렬 전:', arr);
+var n = arr.length;
+for (var i = 0; i < n; i++) {
+  for (var j = 0; j < n - 1 - i; j++) {
+    if (arr[j] > arr[j + 1]) {
+      var t = arr[j]; arr[j] = arr[j + 1]; arr[j + 1] = t;
+    }
+  }
+}
+console.log('정렬 후:', arr);</textarea>
+      <div class="js-run-actions"><button type="button" class="js-run-btn">실행</button></div>
+      <div class="js-run-output" role="log" aria-live="polite"></div>
+    </div>
 
     <h2>선택 정렬(Selection Sort, 셀렉션 소트)</h2>
     <p>아직 정렬 안 된 구간에서 <strong>가장 작은 수</strong>를 찾아서, 그 구간의 맨 앞 자리와 바꿔요. 그 다음은 두 번째 칸부터 같은 일을 반복해요.</p>
@@ -56,49 +84,7 @@
     <p>앞부분을 "이미 정렬된 줄"이라고 생각하고, 그 다음 숫자를 <strong>알맞은 자리에 끼워 넣는</strong> 방식이에요. 카드 놀이할 때 손에 든 카드를 순서대로 끼워 넣는 것과 비슷해요.</p>
     <div class="fun-callout"><span class="label">😄 조크</span> 디버깅 = n번째 버그를 잡으면 (n+1)번째 버그가 보이는 과정의 반복. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
 
-    <h4 class="section-title">문제 및 실습</h4>
-    <div class="fill-code-practice" data-answer=">" data-snippet="bubble">
-      <p class="fill-code-prompt">버블 정렬에서 arr[j]가 arr[j+1]보다 클 때 자리를 바꿉니다. 빈칸에 들어갈 비교 연산자 한 글자를 써 보세요.</p>
-      <div class="fill-code-line">if arr[j] _____ arr[j + 1]:  # 크면 바꿈</div>
-      <p><input type="text" class="fill-code-input" placeholder="한 글자" maxlength="1" aria-label="비교 연산자"> <button type="button" class="fill-code-check">확인</button></p>
-      <p class="fill-code-msg" role="status"></p>
-      <p class="fill-code-run-link" style="display:none;"></p>
-    </div>
-    <div class="problem-section practice-callout">
-      <p>버블·선택·삽입 정렬을 한 단계씩 눌러 보면서 배열이 어떻게 바뀌는지 확인해 보세요. 아래 <strong>파이썬·자바스크립트 실습</strong>을 강의 안에서 바로 할 수 있어요.</p>
-    </div>
-
-    <div class="lecture-inline-run">
-      <span class="label">🐍 파이썬으로 실습 (인라인)</span>
-      <p>이 단원 예제(버블 정렬)가 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
-      <iframe src="../practice/pyodide.html?snippet=bubble&amp;embed=1" title="파이썬 실습: 버블 정렬" class="pyodide-iframe"></iframe>
-    </div>
-
-    <div class="lecture-inline-js js-run-practice">
-      <span class="label">🟨 자바스크립트로 같은 동작 확인 (인라인)</span>
-      <p>버블 정렬: 옆과 비교해서 큰 값을 뒤로 보냅니다. 실행해 보세요.</p>
-      <textarea class="js-run-code" rows="12" spellcheck="false">var arr = [64, 34, 25, 12, 22];
-console.log('정렬 전:', arr);
-var n = arr.length;
-for (var i = 0; i < n; i++) {
-  for (var j = 0; j < n - 1 - i; j++) {
-    if (arr[j] > arr[j + 1]) {
-      var t = arr[j];
-      arr[j] = arr[j + 1];
-      arr[j + 1] = t;
-    }
-  }
-}
-console.log('정렬 후:', arr);</textarea>
-      <div class="js-run-actions">
-        <button type="button" class="js-run-btn">실행</button>
-      </div>
-      <div class="js-run-output" role="log" aria-live="polite"></div>
-    </div>
-
-    <div class="lecture-practice-integrated">
-      <strong>필요할 때만</strong> 전체 실습: <a href="../practice/sort.html">실습: 정렬 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=bubble">통합 파이썬 실습 (전체 화면)</a>
-    </div>
+    <p class="lecture-practice-integrated" style="margin-top:0.5rem;"><strong>필요할 때만</strong> <a href="../practice/sort.html">실습: 정렬 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=bubble">통합 파이썬 실습 (전체 화면)</a></p>
     <nav class="page-nav">
       <a href="04-1-정렬개요.html">← 이전: 정렬 개요</a>
       <a href="04-3-퀵병합힙.html" class="next">다음: 퀵·병합·힙 →</a>

@@ -27,13 +27,17 @@
 
 저장소에서 `index.html`을 눌러도 **소스만** 보이므로, 웹처럼 보려면 **GitHub Pages**를 켜야 합니다.
 
-### 페이지가 안 뜰 때 (처음 설정)
+### 페이지가 안 뜰 때 (404 나올 때)
 
-1. **Settings** → 왼쪽 **Pages**
+**→ [이 저장소 Pages 설정 바로가기](https://github.com/joygram/algorithm_lect/settings/pages)**
+
+1. 위 링크 또는 **Settings** → 왼쪽 **Pages** 이동
 2. **Build and deployment** → **Source**를 **Deploy from a branch**로 선택
-3. **Branch**에서 `gh-pages` 선택, **Folder**는 `/ (root)` → **Save**
-4. `main`에 푸시하면 Actions가 자동으로 `gh-pages` 브랜치에 배포함. **Actions** 탭에서 "Deploy to GitHub Pages"가 성공했는지 확인
-5. 배포 성공 후 **2~3분** 지나면 위 링크로 접속 가능 (캐시 때문에 더 걸릴 수 있음)
+3. **Branch**에서 `gh-pages` 선택, **Folder**는 **/ (root)** → **Save** 클릭
+4. 저장 후 1~2분 기다리면 `https://joygram.github.io/algorithm_lect/` 에서 접속 가능 (캐시 때문에 더 걸릴 수 있음)
+
+- `gh-pages` 브랜치가 이미 있으므로, Source만 위처럼 맞춰 두면 됨.
+- `main`에 푸시할 때마다 Actions가 `gh-pages`를 자동 갱신함.
 
 ### 확인할 것
 

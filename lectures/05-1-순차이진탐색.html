@@ -84,6 +84,46 @@ if (left > right) console.log('없음');</textarea>
       <div class="js-run-output" role="log" aria-live="polite"></div>
     </div>
 
+    <h3 class="section-title">🔄 유사 알고리즘 비교: 순차 탐색 vs 이진 탐색</h3>
+    <p>둘 다 "찾는 값의 위치"를 구하지만, <strong>전제 조건</strong>과 <strong>비교 횟수</strong>가 달라요. 아래 표로 차이를 비교해 보세요.</p>
+    <div class="algorithm-compare-wrap" role="region" aria-label="순차 탐색 이진 탐색 비교">
+      <table class="algorithm-compare">
+        <thead>
+          <tr>
+            <th scope="col">구분</th>
+            <th scope="col">순차 탐색</th>
+            <th scope="col">이진 탐색</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">전제 조건</th>
+            <td>정렬 <strong>필요 없음</strong>. 아무 순서로 되어 있어도 됨.</td>
+            <td>자료가 <strong>이미 오름차순(또는 내림차순) 정렬</strong>되어 있어야 함.</td>
+          </tr>
+          <tr>
+            <th scope="row">방법</th>
+            <td>첫 번째 칸부터 <strong>차례대로</strong> target과 비교. 같으면 종료, 아니면 다음 칸.</td>
+            <td>현재 구간의 <strong>가운데 값</strong>과 비교. target이 더 크면 오른쪽 절반만, 더 작으면 왼쪽 절반만 남기고 반복.</td>
+          </tr>
+          <tr>
+            <th scope="row">최대 비교 횟수 (n개일 때)</th>
+            <td>최악 <strong>n번</strong> (맨 끝에 있거나 없을 때)</td>
+            <td>최악 약 <strong>log₂ n번</strong> (반씩 버리므로 훨씬 적음)</td>
+          </tr>
+          <tr>
+            <th scope="row">쓰는 연산</th>
+            <td>인덱스 0, 1, 2, … 순으로 증가하며 <code>arr[i] == target</code> 비교</td>
+            <td><code>mid = (left+right)//2</code>, <code>arr[mid]</code>와 비교, <code>left = mid+1</code> 또는 <code>right = mid-1</code>로 구간 좁히기</td>
+          </tr>
+          <tr>
+            <th scope="row">공통점</th>
+            <td colspan="2">모두 <strong>배열(리스트)</strong>에서 특정 값을 찾음. "찾음/없음"과 "인덱스"를 구할 수 있음.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <h4 class="section-title">문제 및 해설</h4>
     <div class="problem-section exam-type problem-with-steps">
       <strong>📋 기출 유형</strong>

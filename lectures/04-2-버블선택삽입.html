@@ -113,6 +113,45 @@ console.log('정렬 후:', arr);</textarea>
     <p>앞부분을 "이미 정렬된 줄"이라고 생각하고, 그 다음 숫자를 <strong>알맞은 자리에 끼워 넣는</strong> 방식이에요. 카드 놀이할 때 손에 든 카드를 순서대로 끼워 넣는 것과 비슷해요.</p>
     <div class="fun-callout"><span class="label">😄 조크</span> 디버깅 = n번째 버그를 잡으면 (n+1)번째 버그가 보이는 과정의 반복. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
 
+    <h3 class="section-title">🔄 유사 알고리즘 비교: 버블·선택·삽입 정렬</h3>
+    <p>세 가지 모두 <strong>비교 정렬</strong>이지만, "한 단계에서 무엇을 하느냐"가 달라요. 아래 표로 차이를 비교해 보세요.</p>
+    <div class="algorithm-compare-wrap" role="region" aria-label="버블 선택 삽입 정렬 비교">
+      <table class="algorithm-compare">
+        <thead>
+          <tr>
+            <th scope="col">구분</th>
+            <th scope="col">버블 정렬</th>
+            <th scope="col">선택 정렬</th>
+            <th scope="col">삽입 정렬</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">한 단계(1패스)에서 하는 일</th>
+            <td>맨 앞부터 <strong>옆과 비교</strong>해서 크면 스왑. 한 바퀴 돌면 가장 큰 값이 맨 뒤로.</td>
+            <td>아직 정렬 안 된 구간에서 <strong>최솟값</strong>을 찾아서 그 구간의 <strong>맨 앞과 교환</strong>.</td>
+            <td>다음 숫자 하나를 골라 <strong>이미 정렬된 앞부분</strong> 안에서 알맞은 자리에 <strong>끼워 넣기</strong>.</td>
+          </tr>
+          <tr>
+            <th scope="row">비교 대상</th>
+            <td>인접한 두 칸 (j와 j+1)</td>
+            <td>구간 전체에서 최솟값 탐색</td>
+            <td>앞의 정렬된 구간과 비교하며 자리 찾기</td>
+          </tr>
+          <tr>
+            <th scope="row">교환(스왑) 횟수</th>
+            <td>한 패스에 여러 번 (인접 쌍마다 필요 시)</td>
+            <td>한 단계당 <strong>1번</strong> (최솟값과 맨 앞만)</td>
+            <td>끼워 넣을 때까지 앞쪽 원소들을 한 칸씩 밀어냄 (이동 많음)</td>
+          </tr>
+          <tr>
+            <th scope="row">공통점</th>
+            <td colspan="3">모두 <strong>배열(리스트)</strong>을 사용하고, <strong>비교 연산</strong>과 <strong>자리 바꾸기/이동</strong>으로 오름차순(또는 내림차순)을 만듦. 시험에 "한 단계 후 배열 상태"가 자주 나옴.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(버블·선택·삽입 정렬)</strong>에서 배운 인접 비교·스왑(비교 연산자 &gt;, a,b=b,a)을 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/sort.html">실습: 정렬 (손으로 하기)</a>.</p>
     <nav class="page-nav">
       <a href="04-1-정렬개요.html">← 이전: 정렬 개요</a>

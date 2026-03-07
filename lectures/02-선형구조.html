@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>II. 선형 구조 | 자료구조 강의</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>II. 선형 구조</h1>
+    <p class="subtitle">한 줄로 세우는 구조 — 스택, 큐, 덱 · 프로그래밍기능사 대비</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <h2>01. 선형 구조가 뭐예요?</h2>
+    <p>자료를 <strong>한 줄로</strong> 나열한 구조를 선형 구조라고 해요. 리스트, 스택, 큐, 덱이 모두 여기 속합니다. "어디에 넣고, 어디서 뺄 수 있는지"에 따라 이름이 달라져요.</p>
+
+    <h2>02. 큐(Queue) — 줄 서기</h2>
+    <p>큐는 <strong>줄 서기</strong>와 똑같아요. 먼저 줄 선 사람이 먼저 나갑니다. 영어로 <strong>FIFO</strong>(First In First Out) = "먼저 들어간 게 먼저 나온다"라고 부릅니다.</p>
+    <ul>
+      <li><strong>뒤에 넣기(enqueue)</strong>: 줄 맨 뒤에 서기</li>
+      <li><strong>앞에서 빼기(dequeue)</strong>: 맨 앞 사람이 나가기</li>
+      <li>쓰는 곳: 프린터 대기, 게임 매칭 대기 등. "우선순위 큐"는 급한 것부터 처리하는 줄이라고 생각하면 돼요. 시험에 나올 수 있어요.</li>
+    </ul>
+
+    <h2>03. 스택(Stack) — 접시 쌓기</h2>
+    <p>스택은 <strong>접시를 쌓는 것</strong>처럼 생각하면 돼요. 맨 위에 접시를 올리고, 맨 위 접시만 뺄 수 있어요. 그래서 <strong>나중에 넣은 게 먼저</strong> 나옵니다. 영어로 <strong>LIFO</strong>(Last In First Out)라고 해요.</p>
+    <ul>
+      <li><strong>넣기(push)</strong>: 맨 위에 쌓기</li>
+      <li><strong>빼기(pop)</strong>: 맨 위에서만 꺼내기</li>
+      <li>쓰는 곳: 웹 뒤로가기(방문한 페이지), 괄호 짝 맞추기, 계산기 등. 시험에는 "push 순서가 이렇게일 때 pop 결과는?" 같은 문제가 나와요.</li>
+    </ul>
+    <div class="fun-callout etymology"><span class="label">📖 어원</span> Stack = "쌓다, 더미". Queue = "줄, 꼬리"(프랑스어 queue에서). Deque = Double-Ended Queue의 줄임말. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <div class="exam-type">
+      <strong>📋 전년도 기출 유형</strong>
+      <div class="q">A, B, C, D를 순서대로 스택에 넣었다가 모두 꺼낼 때, 아래 중 <strong>나올 수 없는</strong> 출력 순서는?<br>① A,B,C,D &nbsp; ② B,D,C,A &nbsp; ③ C,D,B,A &nbsp; ④ D,B,C,A</div>
+      <div class="a">정답: ④ D,B,C,A. D가 먼저 나오려면 네 개 다 넣은 뒤 꺼내야 하는데, 그다음엔 C→B→A 순서만 가능해서 D 다음에 B가 나오는 경우는 없어요. 더 많은 예제는 <a href="../exam/past-exam.html">기출 유형 예제</a>에서 풀어 보세요.</div>
+    </div>
+
+    <h2>04. 덱(Deque) — 앞뒤로 넣고 빼기</h2>
+    <p>덱은 <strong>앞과 뒤 둘 다</strong> 넣고 뺄 수 있는 구조예요. 스택이랑 큐를 합친 느낌이에요.</p>
+    <ul>
+      <li>앞에 넣기, 뒤에 넣기, 앞에서 빼기, 뒤에서 빼기 — 네 가지를 다 쓸 수 있어요.</li>
+      <li>쓰는 곳: 최근 본 목록처럼 앞뒤로 자유롭게 넣고 빼는 경우</li>
+    </ul>
+    <div class="fun-callout"><span class="label">😄 조크</span> 전구 갈 때 프로그래머가 몇 명 필요해요? 영 명. 그건 하드웨어 문제니까요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <p>
+      <a href="../practice/stack.html" class="back">실습: 스택</a>
+      <a href="../practice/queue.html" class="back">실습: 큐</a>
+      <a href="../practice/deque.html" class="back">실습: 덱</a>
+      <a href="../practice/pyodide.html" class="back">브라우저에서 파이썬 실습</a>
+    </p>
+  </article>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

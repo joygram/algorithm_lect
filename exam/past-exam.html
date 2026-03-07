@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>전년도 기출 유형 예제 | 프로그래밍기능사</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    .badge { display: inline-block; padding: 0.2rem 0.5rem; background: var(--callout-etymology-bg); color: var(--callout-etymology-label); font-size: 0.8rem; border-radius: 6px; margin-left: 0.5rem; }
+    .q-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 1rem 0; }
+    .q-box h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .q-box .question { margin: 0.5rem 0; padding: 0.75rem; background: var(--bg); border-radius: 8px; }
+    .q-box .answer { margin: 0.75rem 0 0; padding: 0.75rem; background: var(--callout-bg); border-left: 4px solid var(--callout-border); border-radius: 0 8px 8px 0; font-weight: 600; }
+    .q-box .explain { margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted); }
+    .q-box details { margin-top: 0.5rem; }
+    .q-box summary { cursor: pointer; color: var(--primary); }
+    .q-box pre { background: var(--bg); padding: 0.75rem; border-radius: 8px; font-size: 0.9rem; border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>전년도 기출 유형 예제</h1>
+    <p class="subtitle">프로그래밍기능사·정보처리기능사 필기 기출을 참고한 예제 (중학생도 풀 수 있어요)</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture" style="max-width: 720px;">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <p>아래는 <strong>전년도 기출문제</strong>에서 자주 나온 유형을 쉬운 말로 다시 만든 예제예요. 정답을 생각한 뒤 "해설 보기"를 펼쳐 보세요.</p>
+
+    <h2>1. 스택 (접시 쌓기) — 기출 단골</h2>
+    <div class="q-box">
+      <h3>예제 1-1 <span class="badge">기출 유형</span></h3>
+      <div class="question">
+        순서대로 A, B, C, D를 스택에 넣고 뺄 때, 다음 순서로 연산했어요.<br>
+        <strong>넣기(A) → 넣기(B) → 꺼내기 → 넣기(C) → 넣기(D) → 꺼내기 → 꺼내기 → 꺼내기</strong><br>
+        꺼낸 순서대로 쓰면 어떻게 될까요?
+      </div>
+      <details>
+        <summary>정답 및 해설 보기</summary>
+        <div class="answer">정답: B, D, C, A (또는 BDCA)</div>
+        <div class="explain">
+          접시를 쌓는다고 생각해 보세요. A 넣음 → B 넣음(맨 위: B) → 꺼내기 → B 나옴. 그다음 C 넣음 → D 넣음(맨 위: D) → 꺼내기 → D 나옴 → 꺼내기 → C 나옴 → 꺼내기 → A 나옴. 그래서 나온 순서는 B → D → C → A예요.
+        </div>
+      </details>
+    </div>
+    <div class="q-box">
+      <h3>예제 1-2 <span class="badge">기출 유형</span></h3>
+      <div class="question">
+        A, B, C, D를 스택에 넣었다가 모두 꺼낼 때, 아래 중 <strong>나올 수 없는</strong> 출력 순서는?<br>
+        ① A, B, C, D &nbsp; ② B, D, C, A &nbsp; ③ C, D, B, A &nbsp; ④ D, B, C, A
+      </div>
+      <details>
+        <summary>정답 및 해설 보기</summary>
+        <div class="answer">정답: ④ D, B, C, A</div>
+        <div class="explain">
+          D가 맨 먼저 나오려면 A, B, C, D를 다 넣은 뒤 맨 위인 D를 꺼내야 해요. 그다음엔 맨 위가 C이니까 C가 나오고, 그다음 B, 그다음 A만 가능해요. 그래서 D 다음에 B가 나오는 순서(D, B, …)는 절대 나올 수 없어요.
+        </div>
+      </details>
+    </div>
+
+    <h2>2. 큐 (줄 서기) — 기출 단골</h2>
+    <div class="q-box">
+      <h3>예제 2-1 <span class="badge">기출 유형</span></h3>
+      <div class="question">
+        큐에 순서대로 10, 20, 30을 넣은 뒤, 꺼내기 한 번, 넣기 40 한 번, 꺼내기 두 번을 했어요. 두 번째로 꺼낸 값은?
+      </div>
+      <details>
+        <summary>정답 및 해설 보기</summary>
+        <div class="answer">정답: 20</div>
+        <div class="explain">
+          줄 서기예요. 뒤에 넣기 10, 20, 30 → 줄: [10, 20, 30]. 맨 앞에서 꺼내기 한 번 → 10이 나감(첫 번째로 꺼낸 값). 넣기 40 → 줄: [20, 30, 40]. 꺼내기 두 번 → 20 나감(두 번째로 꺼낸 값), 30 나감(세 번째). 따라서 <strong>두 번째로 꺼낸 값은 20</strong>이에요.
+        </div>
+      </details>
+    </div>
+
+    <h2>3. 정렬 — 한 단계 후 배열</h2>
+    <div class="q-box">
+      <h3>예제 3-1 <span class="badge">기출 유형</span></h3>
+      <div class="question">
+        배열 [5, 2, 8, 1, 9]를 <strong>버블 정렬</strong>로 오름차순 할 때, <strong>첫 번째 패스(한 바퀴)</strong>가 끝난 뒤 배열은?
+      </div>
+      <details>
+        <summary>정답 및 해설 보기</summary>
+        <div class="answer">정답: [2, 5, 1, 8, 9]</div>
+        <div class="explain">
+          버블 정렬은 옆이랑 비교해서 큰 걸 뒤로 보내요. (5,2) → 2,5 / (5,8) 유지 / (8,1) → 1,8 / (8,9) 유지. 한 바퀴 후: [2, 5, 1, 8, 9]. 가장 큰 9가 맨 뒤로 갔어요.
+        </div>
+      </details>
+    </div>
+    <div class="q-box">
+      <h3>예제 3-2 <span class="badge">기출 유형</span></h3>
+      <div class="question">
+        배열 [5, 2, 8, 1, 9]를 <strong>선택 정렬</strong>로 오름차순 할 때, <strong>첫 번째 단계</strong>(가장 작은 값을 맨 앞과 바꾼 뒤) 배열은?
+      </div>
+      <details>
+        <summary>정답 및 해설 보기</summary>
+        <div class="answer">정답: [1, 2, 8, 5, 9]</div>
+        <div class="explain">
+          선택 정렬은 "아직 정렬 안 된 구간에서 가장 작은 수"를 찾아서 그 구간의 맨 앞과 바꿔요. 처음 구간 전체에서 최솟값은 1(인덱스 3)이에요. 5와 1을 바꾸면 [1, 2, 8, 5, 9]가 됩니다.
+        </div>
+      </details>
+    </div>
+
+    <h2>4. 이진 탐색 — 비교 횟수·중간 인덱스</h2>
+    <div class="q-box">
+      <h3>예제 4-1 <span class="badge">기출 유형</span></h3>
+      <div class="question">
+        오름차순 배열 [10, 20, 30, 40, 50, 60, 70]에서 <strong>40</strong>을 이진 탐색으로 찾을 때, <strong>첫 번째로 비교하는 값</strong>은? (가운데 값을 비교해요)
+      </div>
+      <details>
+        <summary>정답 및 해설 보기</summary>
+        <div class="answer">정답: 40 (인덱스 3, 가운데)</div>
+        <div class="explain">
+          이진 탐색은 먼저 "가운데" 값을 봐요. 칸이 7개면 가운데는 4번째(인덱스 3) = 40. 40이 찾는 값이니까 한 번에 찾았어요. 시험에서는 "비교 횟수"나 "두 번째로 비교하는 값"처럼 단계를 묻는 경우가 많아요.
+        </div>
+      </details>
+    </div>
+    <div class="q-box">
+      <h3>예제 4-2 <span class="badge">기출 유형</span></h3>
+      <div class="question">
+        오름차순 배열 [3, 7, 11, 15, 19, 23, 27]에서 <strong>7</strong>을 이진 탐색할 때, 비교하는 순서는? (가운데 보고, 작으면 왼쪽 절반, 크면 오른쪽 절반만 다시 봐요)
+      </div>
+      <details>
+        <summary>정답 및 해설 보기</summary>
+        <div class="answer">정답: 15 → 7 (두 번 비교)</div>
+        <div class="explain">
+          첫 비교: 칸 7개 중 가운데(인덱스 3) = 15. 7이 15보다 작으니까 왼쪽 절반 [3, 7, 11]만 봐요. 두 번째: 이 구간 가운데(인덱스 1) = 7. 찾는 값이니까 끝! 비교한 값 순서는 <strong>15 → 7</strong>이에요.
+        </div>
+      </details>
+    </div>
+
+    <h2>5. 이진 트리 순회 — 기출 단골</h2>
+    <div class="q-box">
+      <h3>예제 5-1 <span class="badge">기출 유형</span></h3>
+      <div class="question">
+        아래 이진 트리에서 루트는 1, 왼쪽 자식 2(자식 4, 5), 오른쪽 자식 3(자식 6, 7)이에요. <strong>중위 순회</strong>(왼쪽 → 나 → 오른쪽) 결과는?
+      </div>
+      <pre>    1
+   / \
+  2   3
+ / \ / \
+4  5 6  7</pre>
+      <details>
+        <summary>정답 및 해설 보기</summary>
+        <div class="answer">정답: 4, 2, 5, 1, 6, 3, 7</div>
+        <div class="explain">
+          중위는 "왼쪽 먼저 → 나 → 오른쪽". 1 기준: 왼쪽(2 전체) → 1 → 오른쪽(3 전체). 2 기준: 4 → 2 → 5. 3 기준: 6 → 3 → 7. 합치면 4, 2, 5, 1, 6, 3, 7이에요.
+        </div>
+      </details>
+    </div>
+
+    <p style="margin-top: 1.5rem;"><a href="../index.html" class="back">← 목차로</a></p>
+  </article>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>실습: 정렬 | 자료구조</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>실습: 정렬</h1>
+    <p class="subtitle">숫자를 작은 순서대로 나열하는 과정 보기</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <main class="practice-page">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <p>숫자들을 <strong>쉼표로 구분</strong>해서 넣고(예: 5,2,8,1,9), 정렬 방법을 골라 보세요. <strong>한 단계</strong>를 누르면 한 번만 자리 바꾸고, <strong>전체 실행</strong>을 누르면 작은 순서가 될 때까지 계속 진행돼요. 노란색은 방금 바꾼 칸이에요.</p>
+
+    <div class="controls">
+      <input type="text" id="inputArr" placeholder="숫자,쉼표로 (예: 5,2,8,1,9)" value="5,2,8,1,9" aria-label="정렬할 숫자들">
+      <select id="algo" aria-label="정렬 방법">
+        <option value="bubble">버블 정렬 (옆이랑 비교해서 바꾸기)</option>
+        <option value="selection">선택 정렬 (가장 작은 걸 앞으로)</option>
+        <option value="insertion">삽입 정렬 (알맞은 자리에 끼워 넣기)</option>
+      </select>
+      <button type="button" id="btnStep">한 단계만</button>
+      <button type="button" id="btnRun">전체 실행</button>
+      <button type="button" id="btnReset">처음부터 다시</button>
+    </div>
+
+    <div class="viz" id="viz" role="status" aria-live="polite">
+      [ 5, 2, 8, 1, 9 ]
+    </div>
+
+    <p class="hint" id="log">—</p>
+  </main>
+  <script>
+    (function () {
+      var inputArr = document.getElementById('inputArr');
+      var algo = document.getElementById('algo');
+      var viz = document.getElementById('viz');
+      var log = document.getElementById('log');
+
+      var state = { arr: [], step: 0, done: false, algoState: null };
+
+      function parse() {
+        var s = inputArr.value.trim();
+        return s ? s.split(/[\s,]+/).map(Number).filter(function (n) { return !isNaN(n); }) : [];
+      }
+
+      function render(arr, highlight) {
+        if (!arr.length) { viz.textContent = '(비어 있음)'; return; }
+        var html = arr.map(function (x, i) {
+          var cls = 'viz-item';
+          if (highlight && (i === highlight[0] || i === highlight[1])) cls += ' highlight-item';
+          return '<span class="' + cls + '">' + x + '</span>';
+        }).join('');
+        viz.innerHTML = html;
+      }
+
+      function bubbleStep(arr) {
+        var i = state.algoState != null ? state.algoState.i : 0;
+        var j = state.algoState != null ? state.algoState.j : 0;
+        if (state.algoState == null) state.algoState = { i: 0, j: 0 };
+        for (; i < arr.length - 1; i++) {
+          for (; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+              var t = arr[j]; arr[j] = arr[j + 1]; arr[j + 1] = t;
+              state.algoState.j = j + 1;
+              return { arr: arr.slice(), highlight: [j, j + 1], msg: '교환 ' + arr[j + 1] + ' ↔ ' + arr[j] };
+            }
+          }
+          j = 0;
+        }
+        state.done = true;
+        return { arr: arr.slice(), highlight: null, msg: '정렬 완료' };
+      }
+
+      function selectionStep(arr) {
+        var start = state.algoState != null ? state.algoState.start : 0;
+        if (state.algoState == null) state.algoState = { start: 0, minIdx: 0 };
+        if (start >= arr.length) { state.done = true; return { arr: arr.slice(), highlight: null, msg: '정렬 완료'; }
+        var minIdx = start;
+        for (var k = start + 1; k < arr.length; k++) {
+          if (arr[k] < arr[minIdx]) minIdx = k;
+        }
+        if (minIdx !== start) {
+          var t = arr[start]; arr[start] = arr[minIdx]; arr[minIdx] = t;
+          state.algoState.start = start + 1;
+          return { arr: arr.slice(), highlight: [start, minIdx], msg: '최솟값 ' + arr[start] + '을(를) 앞으로' };
+        }
+        state.algoState.start = start + 1;
+        return selectionStep(arr);
+      }
+
+      function insertionStep(arr) {
+        var i = state.algoState != null ? state.algoState.i : 1;
+        var j = state.algoState != null ? state.algoState.j : 1;
+        if (state.algoState == null) state.algoState = { i: 1, j: 1 };
+        if (i >= arr.length) { state.done = true; return { arr: arr.slice(), highlight: null, msg: '정렬 완료'; }
+        if (j > 0 && arr[j - 1] > arr[j]) {
+          var t = arr[j]; arr[j] = arr[j - 1]; arr[j - 1] = t;
+          state.algoState.j = j - 1;
+          return { arr: arr.slice(), highlight: [j - 1, j], msg: '교환 ' + arr[j] + ' ↔ ' + arr[j - 1] + ' (삽입 중)' };
+        }
+        state.algoState.i = i + 1;
+        state.algoState.j = i + 1;
+        return { arr: arr.slice(), highlight: null, msg: '인덱스 ' + (i + 1) + ' 삽입 구간으로 이동' };
+      }
+
+      function step() {
+        if (state.done || !state.arr.length) return;
+        var fn = { bubble: bubbleStep, selection: selectionStep, insertion: insertionStep }[algo.value];
+        var r = fn(state.arr);
+        state.arr = r.arr;
+        render(r.arr, r.highlight);
+        log.textContent = r.msg;
+      }
+
+      function reset() {
+        state.arr = parse();
+        state.step = 0;
+        state.done = false;
+        state.algoState = null;
+        render(state.arr);
+        log.textContent = '—';
+      }
+
+      document.getElementById('btnStep').addEventListener('click', function () {
+        if (!state.arr.length) state.arr = parse();
+        step();
+      });
+      document.getElementById('btnRun').addEventListener('click', function () {
+        if (!state.arr.length) state.arr = parse();
+        var id = setInterval(function () {
+          step();
+          if (state.done) clearInterval(id);
+        }, 600);
+      });
+      document.getElementById('btnReset').addEventListener('click', reset);
+
+      reset();
+    })();
+  </script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

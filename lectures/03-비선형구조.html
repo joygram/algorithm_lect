@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>III. 비선형 구조 | 자료구조 강의</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>III. 비선형 구조</h1>
+    <p class="subtitle">한 줄이 아닌 구조 — 트리, 그래프 · 프로그래밍기능사 대비</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <h2>01. 비선형 구조가 뭐예요?</h2>
+    <p>자료가 <strong>한 줄이 아니라</strong> 가지처럼 퍼지거나, 서로 여러 개가 연결된 구조예요. 가족 관계도, 폴더 안에 폴더가 있는 구조, 지도 위의 길 연결처럼요.</p>
+
+    <h2>02. 트리(Tree) — 나무처럼 가지치기</h2>
+    <p>트리는 <strong>맨 위에서부터 아래로</strong> 뻗어 나가는 구조예요. 한 지점에서 여러 개가 갈라질 수 있어요.</p>
+    <ul>
+      <li><strong>루트</strong>: 맨 위의 시작점 (나무 뿌리처럼)</li>
+      <li><strong>부모 / 자식</strong>: 위에 있는 게 부모, 바로 아래 연결된 게 자식</li>
+      <li><strong>형제</strong>: 같은 부모 아래의 자식들끼리</li>
+      <li><strong>리프(잎)</strong>: 맨 끝, 자식이 없는 노드</li>
+      <li><strong>이진 트리</strong>: 각 노드의 자식이 <strong>최대 2개</strong>만 있는 트리 (왼쪽 자식, 오른쪽 자식)</li>
+    </ul>
+    <div class="fun-callout etymology"><span class="label">📖 어원</span> Tree = 나무, Root = 뿌리. 위에서 가지가 뻗어 내려가는 모양이 나무 같아서 트리, 맨 위 시작점을 루트(뿌리)라고 해요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+    <p><strong>순회</strong>는 트리의 모든 노드를 어떤 순서로 방문할지 정한 거예요.</p>
+    <ul>
+      <li><strong>전위</strong>: (나) → 왼쪽 → 오른쪽</li>
+      <li><strong>중위</strong>: 왼쪽 → (나) → 오른쪽</li>
+      <li><strong>후위</strong>: 왼쪽 → 오른쪽 → (나)</li>
+    </ul>
+    <p>시험에 "이 트리를 전위 순회하면?" 같은 문제가 자주 나와요.</p>
+
+    <div class="exam-type">
+      <strong>📋 전년도 기출 유형</strong>
+      <div class="q">루트 1, 왼쪽 2(자식 4,5), 오른쪽 3(자식 6,7)인 이진 트리에서 <strong>중위 순회</strong>(왼쪽 → 나 → 오른쪽) 결과는?</div>
+      <div class="a">정답: 4, 2, 5, 1, 6, 3, 7. 더 많은 예제는 <a href="../exam/past-exam.html">기출 유형 예제</a>에서 풀어 보세요.</div>
+    </div>
+
+    <h2>03. 그래프(Graph) — 점과 선으로 연결</h2>
+    <p>그래프는 <strong>점(정점)</strong>과 <strong>선(간선)</strong>으로 "누가 누구와 연결되어 있는지" 나타내는 구조예요. 지하철 노선도, SNS 친구 관계처럼요.</p>
+    <ul>
+      <li><strong>정점(vertex)</strong>: 하나하나의 점 (역, 사람 등)</li>
+      <li><strong>간선(edge)</strong>: 두 정점을 잇는 선 (길, 관계 등)</li>
+      <li>방향이 있으면 "일방통로", 없으면 "왕복"이라고 생각하면 돼요.</li>
+    </ul>
+    <p><strong>탐색 방법</strong></p>
+    <ul>
+      <li><strong>DFS(깊이 우선)</strong>: 한 길로 쭉 들어갔다가, 막히면 돌아와서 다른 길. 스택을 쓰는 방법이에요.</li>
+      <li><strong>BFS(너비 우선)</strong>: 가까운 것부터 층층이. 큐를 쓰는 방법이에요. "최단 거리" 구할 때 자주 씁니다. 시험에도 나와요.</li>
+    </ul>
+    <div class="fun-callout"><span class="label">😄 조크</span> 프로그래머들이 다크 모드를 좋아하는 이유? 빛이 버그를 끌어당긴대요. (Light attracts bugs.) <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <p>
+      <a href="../practice/tree.html" class="back">실습: 트리</a>
+      <a href="../practice/graph.html" class="back">실습: 그래프</a>
+      <a href="../practice/pyodide.html" class="back">브라우저에서 파이썬 실습</a>
+    </p>
+  </article>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

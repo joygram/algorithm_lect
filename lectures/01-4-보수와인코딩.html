@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>4. 보수와 문자 인코딩 | I단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>I. 자료와 자료 구조</h1>
+    <p class="subtitle">4. 보수(1의 보수, 2의 보수)와 문자 인코딩 · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="01-index.html" class="back">이 단원 목차</a>
+
+    <h2>부호 비트 — 먼저 이걸 구분하자</h2>
+    <p>교과서에서 "부호 있는 수", "부호 없는 수"라고 나오면 <strong>맨 앞 비트 한 칸을 뭘로 쓰느냐</strong>만 구분하면 돼요.</p>
+
+    <p><strong>비트 한 줄</strong>이 있을 때, <strong>맨 왼쪽 한 칸</strong>을 "양수/음수 표시"로 쓰면 <strong>부호 있는 수</strong>, 그 칸까지 그냥 "숫자 크기"로만 쓰면 <strong>부호 없는 수</strong>예요.</p>
+
+    <div class="viz-box">
+      <p style="margin:0 0 0.5rem;"><strong>4비트 예시 (맨 앞 = 부호 비트라고 생각할 때)</strong></p>
+      <pre style="margin:0; font-size:0.9rem; background:var(--card); padding:0.75rem; border-radius:8px; overflow-x:auto;">[맨 앞 1칸] [나머지 3칸]
+    부호       크기
+    0 = 양수   000~111  →  양수 0~7
+    1 = 음수   (2의 보수로 해석) →  음수 -8~-1</pre>
+    </div>
+
+    <ul>
+      <li><strong>부호 없는 수</strong>: 맨 앞 칸도 그냥 숫자로 씀. 4비트면 0000~1111 = <strong>0~15</strong>. 음수 없음.</li>
+      <li><strong>부호 있는 수</strong>: 맨 앞 칸을 <strong>부호 비트</strong>로 씀. 0이면 양수, 1이면 음수. 나머지 비트는 2의 보수 방식으로 해석해서 4비트면 <strong>-8~7</strong> 같은 식으로 표현해요.</li>
+    </ul>
+
+    <p>정리하면, <strong>부호 비트 = "맨 앞 한 비트가 부호(+,−)를 나타낸다"고 정해 둔 것</strong>이에요. "부호 있는 수"일 때만 그 비트를 부호로 쓰고, "부호 없는 수"일 때는 그 비트도 그냥 크기로만 써서 헷갈리지 말면 돼요.</p>
+
+    <h3>프로그래밍 기능사에서: 보수 문제에 "부호 비트(사인 비트)"가 나오는지 판단하는 기준</h3>
+    <p>보수 변환 문제를 풀 때, <strong>부호 비트를 언급해야 하는지</strong>는 아래처럼 보면 돼요.</p>
+    <ul>
+      <li><strong>부호 비트 관련이라고 보면 되는 경우</strong>
+        <ul>
+          <li>문제에 <strong>"부호 있는 수"</strong>, <strong>"signed(사인드)"</strong>, <strong>"음수의 2의 보수"</strong>, <strong>"-5의 2의 보수"</strong>처럼 <em>음수</em>가 나오면 → 부호 있는 수 체계이므로 <strong>맨 앞 비트 = 부호 비트</strong>(0=양수, 1=음수)로 해석하는 게 맞아요.</li>
+          <li><strong>"n비트로 표현할 수 있는 범위"</strong>를 묻고, 선택지에 음수 구간(예: -8~7)이 있으면 → 부호 있는 수를 가정한 거라 부호 비트 개념이 들어가 있어요.</li>
+          <li><strong>"최상위 비트"</strong>, <strong>"MSB(엠에스비)"</strong>, <strong>"부호 비트"</strong>, <strong>"사인 비트"</strong>라는 말이 지문이나 선택지에 있으면 → 당연히 부호 비트 기준으로 풀면 돼요.</li>
+        </ul>
+      </li>
+      <li><strong>부호 비트를 굳이 강조하지 않아도 되는 경우</strong>
+        <ul>
+          <li>문제에 <strong>"부호 없는 수"</strong>, <strong>"unsigned(언사인드)"</strong>만 나오고, 음수나 범위를 안 묻으면 → 맨 앞 비트도 그냥 숫자 자리로만 보면 돼요. (예: 8비트 부호 없음 → 0~255)</li>
+          <li>"2의 보수를 구하라"만 있고, 문맥상 <em>양수에 대한 2의 보수(비트 반전+1)</em>만 구하면 되는 경우 → 계산 절차만 맞추면 되고, "이 결과를 음수로 쓸 때 맨 앞이 부호 비트"라고만 생각해 두면 돼요.</li>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>한 줄 요약</strong>: 문제에 <strong>음수</strong>, <strong>부호 있는/signed</strong>, <strong>범위(음수 포함)</strong>, <strong>최상위 비트·MSB·부호 비트·사인 비트</strong> 중 하나라도 나오면 → "맨 앞 한 비트 = 부호 비트"로 보고 풀면 돼요.</p>
+
+    <h2>보수(補數) — 시험 단골</h2>
+    <p>컴퓨터에서 <strong>음수</strong>를 표현하거나 <strong>뺄셈</strong>을 할 때 "보수"를 씁니다. 어떤 수에 더했을 때 자릿수가 한 단계 올라가게 만드는 수예요. <strong>부호 있는 수</strong>에서 음수는 보통 2의 보수로 저장해요.</p>
+
+    <h3>1의 보수</h3>
+    <p>2진수에서 <strong>0은 1로, 1은 0으로</strong> 바꾼 거예요. "비트 반전"이라고 해요.</p>
+    <p>예: 0011 (3)의 1의 보수 → <strong>1100</strong>. 0011 + 1100 = 1111 (4비트에서 모두 1)</p>
+
+    <h3>2의 보수</h3>
+    <p><strong>1의 보수에 1을 더한 값</strong>이에요. 컴퓨터는 보통 2의 보수로 음수를 표현해요.</p>
+    <p>예: 0011 (3)의 2의 보수 → 1100 + 1 = <strong>1101</strong>. 이 1101을 "-3"으로 씁니다. 0011 + 1101 = 10000 → 4비트만 쓰면 0000이 되니까 3 + (-3) = 0이에요.</p>
+    <p>여기서 1101의 <strong>맨 앞이 1</strong>이죠? 부호 있는 수일 때는 그게 <strong>부호 비트</strong>라서 "1 = 음수"라고 보는 거예요. 2의 보수로 만든 음수는 항상 맨 앞 비트가 1이에요.</p>
+    <p><strong>시험 예</strong>: "8비트에서 -5의 2의 보수 표현" → 5 = 0000 0101 → 1의 보수 1111 1010 → 2의 보수 1111 1010 + 1 = <strong>1111 1011</strong>. 맨 앞 1이 부호 비트(음수)예요.</p>
+
+    <h4 class="section-title">문제 및 해설</h4>
+    <div class="problem-section exam-type problem-with-steps">
+      <div class="q">8비트 부호 있는 수에서 <strong>-3</strong>의 2의 보수 표현은?</div>
+      <div class="a">
+        <p class="answer-head">정답: <strong>1111 1101</strong></p>
+        <div class="solution-steps">
+          <p class="step-title">풀이 단계</p>
+          <ol>
+            <li><strong>① 양수 3을 8비트 2진수로</strong> 씁니다. 3 = 11₂이므로 앞을 0으로 채워 8자리로 → <strong>0000 0011</strong>.</li>
+            <li><strong>② 1의 보수</strong>: 0은 1로, 1은 0으로 바꿉니다. → <strong>1111 1100</strong>.</li>
+            <li><strong>③ 2의 보수</strong>: ② 결과에 1을 더합니다. 1111 1100 + 1 = <strong>1111 1101</strong>. 이게 -3의 2의 보수 표현입니다.</li>
+          </ol>
+          <p class="step-why"><strong>왜 맨 앞이 1인가요?</strong> 부호 있는 수에서 맨 앞 비트는 부호 비트예요. 0이면 양수, 1이면 음수. 2의 보수로 만든 음수는 항상 맨 앞이 1이 됩니다.</p>
+          <p class="step-summary"><strong>한 줄 요약</strong> 양수 2진수 → 1의 보수(0↔1) → 2의 보수(+1). 결과의 맨 앞 1 = 부호 비트(음수).</p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="section-title">문제 및 답 확인</h4>
+    <div class="problem-section">
+      <p>아래 빈칸에 <strong>-5의 2의 보수</strong>를 구하는 과정을 <strong>한 단계씩</strong> 채워 보세요. ① 5를 8비트 2진수로 쓰고, ② 0과 1을 바꾼 1의 보수, ③ 그다음 1을 더한 2의 보수를 순서대로 입력한 뒤 [확인]을 누르세요.</p>
+    </div>
+    <div class="inline-practice">
+      <p>① 5를 8비트 2진수로 → ② 1의 보수(0↔1) → ③ 2의 보수(②+1) 순서로 입력하세요.</p>
+      <div class="fill-step">
+        <label>① 5를 8비트 2진수 (앞을 0으로 채워 8자리)</label>
+        <input type="text" id="inline-c1" placeholder="00000101" maxlength="8" aria-label="5의 2진수">
+      </div>
+      <div class="fill-step">
+        <label>② 1의 보수 (0↔1 바꾼 결과, 8자리)</label>
+        <input type="text" id="inline-c2" placeholder="11111010" maxlength="8" aria-label="1의 보수">
+      </div>
+      <div class="fill-step">
+        <label>③ 2의 보수 (②+1, 8자리)</label>
+        <input type="text" id="inline-c3" placeholder="11111011" maxlength="8" aria-label="2의 보수">
+        <button type="button" id="inline-btn-comp">확인</button>
+        <p id="inline-msg-comp" class="check-msg" role="status"></p>
+      </div>
+    </div>
+
+    <h4 class="section-title">문제 및 실습</h4>
+    <div class="problem-section practice-callout">
+      <p>진법 변환과 보수 빈칸 채우기를 더 해 보세요. 코드로 확인하려면 파이썬 실습을 이용하세요.</p>
+      <div class="lecture-practice-cta">
+        <a href="../practice/radix.html">실습: 진법·보수 따라하기 →</a>
+        <a href="../practice/pyodide.html" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      </div>
+    </div>
+
+    <h3>문자 인코딩</h3>
+    <p>글자도 숫자로 바꿔서 저장해요. 그 규칙이 <strong>인코딩</strong>이에요.</p>
+    <ul>
+      <li><strong>ASCII(아스키)</strong>: 영문·숫자·기호 128개(7비트). 'A' = 65 등.</li>
+      <li><strong>유니코드(Unicode, 유니코드)</strong>: 전 세계 문자를 번호로 매긴 표. 한글, 이모지 포함.</li>
+      <li><strong>UTF-8(유티에프에이트)</strong>: 유니코드를 1~4바이트로 저장하는 방식. 웹·파일에서 많이 씀.</li>
+    </ul>
+
+    <nav class="page-nav">
+      <a href="01-3-진법변환.html">← 이전: 진법 변환</a>
+      <a href="01-5-자료구조와리스트.html" class="next">다음: 자료구조와 리스트 →</a>
+    </nav>
+  </article>
+  <script>
+    (function () {
+      var btn = document.getElementById('inline-btn-comp');
+      if (!btn) return;
+      function only01(s) { s = String(s).replace(/\s/g, ''); for (var i = 0; i < s.length; i++) if (s[i] !== '0' && s[i] !== '1') return false; return true; }
+      function pad8(s) { s = String(s).replace(/\s/g, ''); while (s.length < 8) s = '0' + s; return s.slice(-8); }
+      btn.addEventListener('click', function () {
+        var s1 = document.getElementById('inline-c1').value.trim().replace(/\s/g, '');
+        var s2 = document.getElementById('inline-c2').value.trim().replace(/\s/g, '');
+        var s3 = document.getElementById('inline-c3').value.trim().replace(/\s/g, '');
+        var msg = document.getElementById('inline-msg-comp');
+        var a1 = '00000101', a2 = '11111010', a3 = '11111011';
+        if (!s1 && !s2 && !s3) { msg.textContent = '빈칸을 채운 뒤 확인을 눌러 주세요.'; msg.className = 'check-msg'; return; }
+        if (!only01(s1) || !only01(s2) || !only01(s3)) { msg.textContent = '0과 1만 입력해 주세요.'; msg.className = 'check-msg err'; return; }
+        var ok = (pad8(s1) === a1 && pad8(s2) === a2 && pad8(s3) === a3);
+        msg.textContent = ok ? '정답이에요! 5 → 1의 보수 → +1 하면 -5의 2의 보수 11111011이 됩니다. 맨 앞 1이 부호 비트(음수)예요.' : '순서: ① 5의 8비트 2진수 00000101 ② 0↔1 바꾼 11111010 ③ ②+1 = 11111011. 한 단계씩 확인해 보세요.';
+        msg.className = 'check-msg ' + (ok ? 'ok' : 'err');
+      });
+    })();
+  </script>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

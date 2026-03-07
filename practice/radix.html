@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>실습: 진법·보수 따라하기 | 자료구조</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>실습: 진법·보수 따라하기</h1>
+    <p class="subtitle">빈칸 채우며 손으로 따라해 보기</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <main class="practice-page">
+    <a href="../index.html" class="back">← 목차</a>
+    <a href="../lectures/01-index.html" class="back">I단원 강의</a>
+
+    <h2>1. 진법 변환 따라하기</h2>
+    <p><strong>13</strong>을 2진수로 바꿔 보세요. 2로 계속 나눈 <strong>나머지</strong>를 아래 빈칸에 채운 뒤, 나머지를 <strong>아래에서 위로</strong> 읽어서 맨 아래 "2진수" 칸에 쓰면 돼요.</p>
+    <p>13÷2=6 나머지 <input type="text" id="r1" maxlength="1" size="2" aria-label="나머지1"> → 6÷2=3 나머지 <input type="text" id="r2" maxlength="1" size="2" aria-label="나머지2"> → 3÷2=1 나머지 <input type="text" id="r3" maxlength="1" size="2" aria-label="나머지3"> → 1÷2=0 나머지 <input type="text" id="r4" maxlength="1" size="2" aria-label="나머지4"></p>
+    <div class="fill-step">
+      <label>나머지를 아래→위로 읽은 2진수 (네 자리, 0과 1만)</label>
+      <input type="text" id="binAnswer" placeholder="예: 1101" maxlength="8" aria-label="2진수 답">
+      <button type="button" id="btnCheckRadix">확인</button>
+      <p id="msgRadix" class="check-msg" role="status"></p>
+    </div>
+
+    <h2>2. 보수를 이용한 2의 보수 따라하기</h2>
+    <p><strong>8비트에서 -5의 2의 보수</strong>를 구해 보세요. 강의 순서대로: ① 5를 8비트 2진수로 쓰기 → ② 1의 보수(0은 1로, 1은 0으로) → ③ 2의 보수(① 결과 + 1)</p>
+    <div class="fill-step">
+      <label>① 5를 8비트 2진수로 (앞을 0으로 채워서 8자리)</label>
+      <input type="text" id="step1" placeholder="00000101" maxlength="8" aria-label="5의 2진수">
+    </div>
+    <div class="fill-step">
+      <label>② 1의 보수 (0↔1 바꾼 결과, 8자리)</label>
+      <input type="text" id="step2" placeholder="11111010" maxlength="8" aria-label="1의 보수">
+    </div>
+    <div class="fill-step">
+      <label>③ 2의 보수 (② + 1 한 결과, 8자리. -5의 2의 보수 표현)</label>
+      <input type="text" id="step3" placeholder="11111011" maxlength="8" aria-label="2의 보수">
+      <button type="button" id="btnCheckComplement">확인</button>
+      <p id="msgComplement" class="check-msg" role="status"></p>
+    </div>
+
+    <p class="hint">💡 숫자만 입력하세요. 2진수는 0과 1만 가능해요. 공백 넣지 말고 8자리면 8자리로 붙여 쓰면 됩니다.</p>
+  </main>
+  <script>
+    (function () {
+      function only01(s) {
+        s = String(s).replace(/\s/g, '');
+        for (var i = 0; i < s.length; i++) if (s[i] !== '0' && s[i] !== '1') return false;
+        return true;
+      }
+      function pad8(s) {
+        s = String(s).replace(/\s/g, '');
+        while (s.length < 8) s = '0' + s;
+        return s.slice(-8);
+      }
+
+      document.getElementById('btnCheckRadix').addEventListener('click', function () {
+        var r1 = document.getElementById('r1').value.trim();
+        var r2 = document.getElementById('r2').value.trim();
+        var r3 = document.getElementById('r3').value.trim();
+        var r4 = document.getElementById('r4').value.trim();
+        var ans = document.getElementById('binAnswer').value.trim();
+        var msg = document.getElementById('msgRadix');
+        var correct = (r1 === '1' && r2 === '0' && r3 === '1' && r4 === '1' && ans === '1101');
+        if (ans === '' && r1 === '' && r2 === '' && r3 === '' && r4 === '') {
+          msg.textContent = '빈칸을 채운 뒤 확인을 눌러 주세요.';
+          msg.className = 'check-msg';
+          return;
+        }
+        if (correct) {
+          msg.textContent = '정답이에요! 13 = 1101₂';
+          msg.className = 'check-msg ok';
+        } else {
+          msg.textContent = '다시 해 보세요. 나머지는 1, 0, 1, 1 순서이고, 거꾸로 읽으면 1101₂';
+          msg.className = 'check-msg err';
+        }
+      });
+
+      document.getElementById('btnCheckComplement').addEventListener('click', function () {
+        var s1 = document.getElementById('step1').value.trim().replace(/\s/g, '');
+        var s2 = document.getElementById('step2').value.trim().replace(/\s/g, '');
+        var s3 = document.getElementById('step3').value.trim().replace(/\s/g, '');
+        var msg = document.getElementById('msgComplement');
+        var a1 = '00000101', a2 = '11111010', a3 = '11111011';
+        if (s1 === '' && s2 === '' && s3 === '') {
+          msg.textContent = '빈칸을 채운 뒤 확인을 눌러 주세요.';
+          msg.className = 'check-msg';
+          return;
+        }
+        if (!only01(s1) || !only01(s2) || !only01(s3)) {
+          msg.textContent = '0과 1만 입력해 주세요.';
+          msg.className = 'check-msg err';
+          return;
+        }
+        if (pad8(s1) === a1 && pad8(s2) === a2 && pad8(s3) === a3) {
+          msg.textContent = '정답이에요! -5의 8비트 2의 보수 = 11111011';
+          msg.className = 'check-msg ok';
+        } else {
+          msg.textContent = '① 00000101 ② 11111010 ③ 11111011 순서로 다시 해 보세요.';
+          msg.className = 'check-msg err';
+        }
+      });
+    })();
+  </script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

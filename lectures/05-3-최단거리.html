@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>3. 최단 거리 | V단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>V. 자료 탐색</h1>
+    <p class="subtitle">3. 최단 거리 (참고) · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="05-index.html" class="back">이 단원 목차</a>
+
+    <h2>최단 거리</h2>
+    <p>그래프에서 한 점에서 다른 점까지 <strong>가장 짧은 경로</strong>를 구하는 거예요. 간선에 거리(가중치)가 있으면 그 합이 최소가 되는 경로를 찾습니다.</p>
+
+    <h3>BFS(비에프에스)</h3>
+    <p>간선의 가중치가 모두 같을 때(예: 1), <strong>BFS(너비 우선 탐색)</strong>로 최단 거리를 구할 수 있어요. 가까운 것부터 층층이 방문하면 됩니다.</p>
+
+    <h3>다익스트라(Dijkstra, 다익스트라)</h3>
+    <p>가중치가 다를 때는 <strong>다익스트라 알고리즘</strong> 등을 씁니다. 시험에 "단계별로 어떤 점이 선택되는지" 묻는 문제가 나올 수 있어요.</p>
+    <div class="fun-callout"><span class="label">😄 조크</span> 다른 과목에서는 복사·붙여넣기가 표절인데, 프로그래밍에서는 "코드 재사용"이라고 부른대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <div class="practice-callout">
+      <p class="label">실습하기</p>
+      <p>탐색·그래프를 손으로 해 보거나, 브라우저에서 파이썬으로 코드를 실행해 보세요.</p>
+      <div class="lecture-practice-cta">
+        <a href="../practice/search.html">실습: 탐색</a>
+        <a href="../practice/graph.html">실습: 그래프</a>
+        <a href="../practice/pyodide.html" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      </div>
+    </div>
+    <nav class="page-nav">
+      <a href="05-2-이진탐색트리해싱.html">← 이전: 이진 탐색 트리·해싱</a>
+      <span></span>
+    </nav>
+  </article>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

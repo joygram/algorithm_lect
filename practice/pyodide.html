@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>실습: 브라우저에서 파이썬 | 자료구조</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <!-- Pyodide: CDN 절대 경로 사용 → GitHub Pages 어디서든 동작 -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
+  <header class="header">
+    <h1>실습: 브라우저에서 파이썬</h1>
+    <p class="subtitle">코드를 쓰고 실행 버튼으로 바로 확인해 보기</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <main class="practice-page pyodide-page">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <p><strong>통합 실습 페이지</strong>예요. 각 강의 안에도 파이썬·자바스크립트 실습이 인라인으로 들어 있어요. 모든 예제를 한곳에서 쓰거나 전체 화면으로 하고 싶을 때 이 페이지를 이용하세요.</p>
+    <p>아래에서 <strong>실습 예제를 고르면</strong> 뼈대 코드가 불러와요. <strong>빈칸(_____)이나 주석으로 표시된 부분</strong>을 채운 뒤 <strong>실행</strong>해서 결과를 확인하세요. 처음 한 번은 Python 엔진 로딩으로 조금 걸릴 수 있어요.</p>
+
+    <div class="pyodide-presets">
+      <span class="pyodide-presets-label">실습 예제:</span>
+      <button type="button" class="btn-preset" data-snippet="list">리스트 (추가·삭제)</button>
+      <button type="button" class="btn-preset" data-snippet="stack">스택 (Push/Pop)</button>
+      <button type="button" class="btn-preset" data-snippet="queue">큐 (FIFO)</button>
+      <button type="button" class="btn-preset" data-snippet="bubble">버블 정렬</button>
+      <button type="button" class="btn-preset" data-snippet="binary">이진 탐색</button>
+    </div>
+
+    <div id="pyodide-guide" class="pyodide-guide" role="region" aria-label="실습 가이드">
+      <p class="pyodide-guide-title">📌 실습 가이드</p>
+      <p id="pyodide-guide-body" class="pyodide-guide-body">왼쪽에서 실습 예제를 누르면 여기에 <strong>할 일</strong>과 <strong>채울 부분</strong> 안내가 나타납니다. 빈칸을 채운 뒤 실행해 보세요.</p>
+    </div>
+
+    <div class="pyodide-box">
+      <label class="pyodide-label" for="pyodide-code">Python 코드</label>
+      <textarea id="pyodide-code" class="code-editor" rows="14" placeholder="# 여기에 Python 코드를 쓰고 실행 버튼을 누르세요.&#10;print('안녕!')" spellcheck="false"></textarea>
+      <div class="pyodide-actions">
+        <button type="button" id="pyodide-run" class="btn-run" disabled>실행</button>
+        <span id="pyodide-status" class="pyodide-status" aria-live="polite">Python 엔진 로딩 중… (처음 한 번만 필요해요)</span>
+      </div>
+      <div class="pyodide-output-wrap">
+        <span class="pyodide-output-label">실행 결과</span>
+        <div id="pyodide-output" class="code-output" role="log" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="pyodide-err-help" role="region" aria-label="에러가 났을 때">
+      <p class="pyodide-err-help-title">🛠 에러가 나면?</p>
+      <ol class="pyodide-err-help-list">
+        <li><strong>빈칸(_____)이 남아 있나요?</strong> → 파이썬은 빈칸을 이름으로 인식해요. 위 "실습 가이드"에서 첫 번째·두 번째 빈칸을 <strong>하나씩</strong> 채운 뒤 실행해 보세요.</li>
+        <li><strong>NameError / is not defined</strong> → 채운 내용이 메서드 이름(append, pop, popleft 등)과 정확히 같은지, 오타가 없는지 확인하세요.</li>
+        <li><strong>SyntaxError</strong> → 괄호 (), 쉼표, 따옴표가 빠지지 않았는지 확인하세요.</li>
+        <li>한 번에 다 채우기 어렵다면 <strong>첫 번째 빈칸만</strong> 채우고 실행해 보고, 되면 다음 빈칸을 채우는 식으로 하나씩 보강하세요.</li>
+      </ol>
+    </div>
+    <p class="hint">💡 빈칸은 <code>_____</code> 또는 주석 <code># 여기에: ...</code>으로 표시돼요. 채운 뒤 실행해서 출력이 맞는지 확인하세요. 막히면 같은 예제를 다시 불러오면 처음 뼈대로 돌아갑니다.</p>
+  </main>
+
+  <script src="../js/pyodide-runner.js"></script>
+  <script>
+    (function () {
+      if ((window.location.search + window.location.hash).indexOf('embed=1') !== -1) {
+        document.body.classList.add('pyodide-embed');
+      }
+      var snippets = {
+        list: '# 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)\narr = [10, 20, 30]\n# ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)\narr._____(40)\nprint("append(40) 후:", arr)\n# ② 빈칸: 1번 인덱스(20)를 제거하려면? pop( ? )\narr.pop(_____)\nprint("pop(1) 후:", arr)\nprint("길이:", len(arr))',
+        stack: '# 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)\nstack = []\nstack.append("A")\n# ① 빈칸: 스택에 "B"를 넣으세요 (append 사용)\nstack._____("B")\nstack.append("C")\nprint("push A,B,C 후:", stack)\n# ② 빈칸: 맨 위에서 하나 꺼내서 변수 x에 넣기 (pop은 인자 없음)\nx = stack._____()\nprint("pop() →", x, ", 남은 스택:", stack)',
+        queue: '# 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄\nfrom collections import deque\nq = deque(["첫번째", "두번째", "세번째"])\nprint("큐:", list(q))\n# 빈칸: 큐의 맨 앞에서 하나 꺼내는 메서드 (pop / popleft / append 중)\nout = q._____()\nprint("popleft() →", out)\nprint("남은 큐:", list(q))',
+        bubble: '# 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄\narr = [64, 34, 25, 12, 22]\nprint("정렬 전:", arr)\nn = len(arr)\nfor i in range(n):\n    for j in range(0, n - 1 - i):\n        # ① 빈칸: arr[j]가 arr[j+1]보다 크면 자리 바꿈 (비교 연산자: > 또는 <)\n        if arr[j] _____ arr[j + 1]:\n            # ② 두 값 자리 바꾸기 (한 줄에 스왑)\n            arr[j], arr[j + 1] = _____\nprint("정렬 후:", arr)',
+        binary: '# 이진 탐색: 정렬된 리스트에서 target 위치 찾기\narr = [2, 5, 8, 12, 16, 23, 38]\ntarget = 12\nleft, right = 0, len(arr) - 1\nwhile left <= right:\n    # ① 빈칸: 가운데 인덱스 (left와 right의 평균, 정수)\n    mid = _____\n    if arr[mid] == target:\n        print("찾음! 인덱스:", mid)\n        break\n    # ② 빈칸: target이 더 크면 왼쪽을 mid 다음으로 (left = ?)\n    if arr[mid] < target:\n        left = _____\n    else:\n        right = mid - 1\nelse:\n    print("없음")'
+      };
+
+      var guides = {
+        list: '<strong>할 일</strong><br>① 첫 번째 빈칸: 리스트 <strong>맨 뒤에 추가</strong>하는 메서드 이름을 쓰세요 (append).<br>② 두 번째 빈칸: <strong>1번 인덱스</strong>를 지우려면 pop(?)에 들어갈 숫자를 쓰세요.<br>실행하면 <code>append(40) 후: [10, 20, 30, 40]</code>, <code>pop(1) 후: [10, 30, 40]</code>이 나오면 맞아요.',
+        stack: '<strong>할 일</strong><br>① "B"를 스택에 넣는 메서드: <strong>append</strong>를 빈칸에 쓰세요.<br>② 맨 위에서 하나 꺼내는 메서드: 인자를 받지 않는 <strong>pop</strong>을 쓰세요 (괄호만).<br>실행하면 pop() → C, 남은 스택이 [\'A\', \'B\']처럼 나오면 맞아요. (나중에 넣은 게 먼저 나옴 = LIFO)',
+        queue: '<strong>할 일</strong><br>큐에서는 <strong>맨 앞</strong>에서 꺼낼 때 쓰는 메서드를 빈칸에 쓰세요. (pop이 아니라 앞쪽을 의미하는 left가 들어간 이름)<br>실행하면 popleft() → 첫번째, 남은 큐가 [\'두번째\', \'세번째\']처럼 나오면 맞아요. (먼저 넣은 게 먼저 나옴 = FIFO)',
+        bubble: '<strong>할 일</strong><br>① 큰 값을 오른쪽으로 보내려면: arr[j]가 arr[j+1]보다 <strong>클 때</strong> 바꿔야 하므로 비교 연산자 <code>&gt;</code>를 빈칸에 쓰세요.<br>② 두 칸의 값을 바꾸는 스왑: 오른쪽에는 <code>arr[j + 1], arr[j]</code>를 쓰세요 (순서만 반대로).<br>실행하면 정렬 후 [12, 22, 25, 34, 64]처럼 나오면 맞아요.',
+        binary: '<strong>할 일</strong><br>① 가운데 인덱스: <code>(left + right) // 2</code>를 빈칸에 쓰세요. (정수 나눗셈)<br>② target이 더 크면 구간의 왼쪽을 mid 다음으로: <code>mid + 1</code>을 쓰세요.<br>실행하면 "찾음! 인덱스: 3"이 나오면 맞아요. (12는 인덱스 3)'
+      };
+
+      var codeEl = document.getElementById('pyodide-code');
+      var runBtn = document.getElementById('pyodide-run');
+      var statusEl = document.getElementById('pyodide-status');
+      var outputEl = document.getElementById('pyodide-output');
+      var guideBody = document.getElementById('pyodide-guide-body');
+
+      function loadSnippet(key) {
+        if (snippets[key]) codeEl.value = snippets[key];
+        if (guides[key]) guideBody.innerHTML = guides[key];
+      }
+
+      document.querySelectorAll('.btn-preset').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          loadSnippet(this.getAttribute('data-snippet'));
+        });
+      });
+      var hash = window.location.hash.slice(1) || '';
+      var param = (window.location.search.match(/[?&]snippet=([^&]+)/) || [])[1] || '';
+      var snippetKey = (param || hash).toLowerCase();
+      if (snippetKey && snippets[snippetKey]) loadSnippet(snippetKey);
+
+      var runner = null;
+      function setReady(ready) {
+        runBtn.disabled = !ready;
+        statusEl.textContent = ready ? '실행할 준비됨' : 'Python 엔진 로딩 중… (처음 한 번만 필요해요)';
+        statusEl.className = 'pyodide-status' + (ready ? ' pyodide-ready' : '');
+      }
+
+      function tryInitPyodide() {
+        if (typeof window.loadPyodide !== 'function') return false;
+        statusEl.textContent = 'Python 엔진 불러오는 중…';
+        PyodideRunner.init().then(function (r) {
+          runner = r;
+          setReady(true);
+        }).catch(function (err) {
+          statusEl.textContent = '로딩 실패: ' + (err.message || err) + ' (네트워크 확인 후 새로고침)';
+          statusEl.classList.add('pyodide-err');
+        });
+        return true;
+      }
+      function waitForPyodide() {
+        var script = document.querySelector('script[src*="pyodide"]');
+        var loadTimeout = window.setTimeout(function () {
+          if (!runner || !runner.ready) {
+            statusEl.textContent = '로딩이 오래 걸립니다. 네트워크를 확인한 뒤 새로고침해 주세요.';
+            statusEl.classList.add('pyodide-err');
+          }
+        }, 60000);
+        function onReady() {
+          window.clearTimeout(loadTimeout);
+          if (tryInitPyodide()) return;
+          var poll = setInterval(function () {
+            if (tryInitPyodide()) clearInterval(poll);
+          }, 150);
+        }
+        if (script) {
+          script.addEventListener('load', onReady);
+          script.addEventListener('error', function () {
+            window.clearTimeout(loadTimeout);
+            statusEl.textContent = 'Pyodide 스크립트를 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.';
+            statusEl.classList.add('pyodide-err');
+          });
+          if (script.getAttribute('src') && typeof window.loadPyodide === 'function') onReady();
+        } else {
+          onReady();
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', waitForPyodide);
+      } else {
+        waitForPyodide();
+      }
+
+      runBtn.addEventListener('click', function () {
+        if (!runner) return;
+        var code = codeEl.value.trim();
+        if (!code) return;
+        runBtn.disabled = true;
+        outputEl.innerHTML = '';
+        runner.run(code, outputEl).finally(function () {
+          runBtn.disabled = false;
+        });
+      });
+
+      if (!snippetKey || !snippets[snippetKey]) {
+        codeEl.value = '# 위에서 실습 예제를 고르면 뼈대 코드가 불러와요.\n# 빈칸(_____)을 채운 뒤 실행 버튼을 눌러 보세요.\nprint("실습 예제를 선택해 주세요.")';
+      }
+    })();
+  </script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>3. 트리 순회 | III단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>III. 비선형 구조</h1>
+    <p class="subtitle">3. 트리 순회(전위·중위·후위) · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="03-index.html" class="back">이 단원 목차</a>
+
+    <h2>순회(Traversal, 트래버설)</h2>
+    <p>트리의 모든 노드를 <strong>어떤 순서로 방문할지</strong> 정한 거예요. "나"를 언제 방문하느냐에 따라 이름이 달라져요.</p>
+
+    <h3>전위 순회 (Preorder, 프리오더)</h3>
+    <p><strong>(나) → 왼쪽 → 오른쪽</strong>. 루트를 먼저 방문하고, 왼쪽 서브트리, 그다음 오른쪽 서브트리.</p>
+
+    <h3>중위 순회 (Inorder, 인오더)</h3>
+    <p><strong>왼쪽 → (나) → 오른쪽</strong>. 왼쪽 다 보고, 나를 보고, 오른쪽을 봐요. 이진 탐색 트리에서는 중위 순회하면 정렬된 순서로 나와요.</p>
+
+    <h3>후위 순회 (Postorder, 포스트오더)</h3>
+    <p><strong>왼쪽 → 오른쪽 → (나)</strong>. 왼쪽, 오른쪽 다 방문한 뒤에 나를 방문해요.</p>
+
+    <h4 class="section-title">문제 및 해설</h4>
+    <div class="problem-section exam-type">
+      <strong>📋 기출 유형</strong>
+      <div class="q">루트 1, 왼쪽 2(자식 4,5), 오른쪽 3(자식 6,7)인 이진 트리에서 <strong>중위 순회</strong> 결과는?</div>
+      <div class="a">정답: 4, 2, 5, 1, 6, 3, 7. 왼쪽→나→오른쪽이니까 1 기준 왼쪽(2 전체) → 1 → 오른쪽(3 전체). <a href="../exam/past-exam.html">더 많은 예제 →</a></div>
+    </div>
+
+    <h4 class="section-title">문제 및 답 확인</h4>
+    <div class="problem-section exam-type">
+      <div class="q">같은 트리에서 <strong>전위 순회</strong>(나→왼쪽→오른쪽) 결과는?</div>
+      <details>
+        <summary>답 보기</summary>
+        <div class="a">1, 2, 4, 5, 3, 6, 7. 루트 1 먼저, 그다음 왼쪽 서브트리(2,4,5), 그다음 오른쪽(3,6,7).</div>
+      </details>
+    </div>
+
+    <h4 class="section-title">문제 및 실습</h4>
+    <div class="problem-section practice-callout">
+      <p>전위·중위·후위 순회를 버튼으로 한 단계씩 따라 가 보세요. 코드로 확인하려면 파이썬 실습을 이용하세요.</p>
+      <div class="lecture-practice-cta">
+        <a href="../practice/tree.html">실습: 트리 순회 →</a>
+        <a href="../practice/pyodide.html" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      </div>
+    </div>
+    <nav class="page-nav">
+      <a href="03-2-트리.html">← 이전: 트리</a>
+      <a href="03-4-그래프.html" class="next">다음: 그래프 →</a>
+    </nav>
+  </article>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

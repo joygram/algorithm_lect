@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>1. 순차·이진 탐색 | V단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>V. 자료 탐색</h1>
+    <p class="subtitle">1. 순차 탐색 · 이진 탐색 · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="05-index.html" class="back">이 단원 목차</a>
+
+    <h2>순차 탐색</h2>
+    <p>첫 번째 칸부터 차례대로 "이거 내가 찾는 값이야?" 하고 비교하는 방법이에요. 찾을 때까지 또는 끝까지 가면 끝입니다. 정렬이 안 되어 있어도 쓸 수 있어요. 데이터가 n개면 최대 n번 비교해요.</p>
+
+    <h2>이진 탐색(Binary Search, 바이너리 서치)</h2>
+    <p>자료가 <strong>이미 오름차순(또는 내림차순)으로 정렬되어 있을 때</strong>만 쓸 수 있어요. <strong>가운데 값</strong>을 보고, 찾는 값이 더 크면 오른쪽 절반만, 더 작으면 왼쪽 절반만 다시 봐요. 반씩 버리니까 훨씬 빨라요.</p>
+    <p>시험에 "비교 횟수", "첫 번째로 비교하는 값", "중간 인덱스" 같은 게 자주 나와요.</p>
+    <h4 class="section-title">문제 및 해설</h4>
+    <div class="problem-section exam-type problem-with-steps">
+      <strong>📋 기출 유형</strong>
+      <div class="q">[10, 20, 30, 40, 50, 60, 70]에서 <strong>40</strong>을 이진 탐색할 때, 첫 번째로 비교하는 값은?</div>
+      <div class="a">
+        <p class="answer-head">정답: <strong>40</strong></p>
+        <div class="solution-steps">
+          <p class="step-title">풀이 단계</p>
+          <ol>
+            <li>이진 탐색은 매번 "현재 구간의 <strong>가운데 값</strong>"과 찾는 값을 비교합니다. 첫 번째 비교 때 현재 구간은 전체 배열이에요.</li>
+            <li>인덱스 0~6(7개)일 때 가운데 인덱스는 (0+6)÷2 = <strong>3</strong>. 세 번째 칸(인덱스 3)의 값은 <strong>40</strong>입니다.</li>
+            <li>따라서 첫 번째로 비교하는 값은 40이에요. 40을 찾는 문제이므로 첫 비교에서 바로 찾게 됩니다.</li>
+          </ol>
+          <p class="step-why"><strong>가운데는 어떻게 구하나요?</strong> (왼쪽 인덱스 + 오른쪽 인덱스) ÷ 2 의 정수 부분, 즉 (left+right)//2 로 구합니다. 7개면 (0+6)//2 = 3.</p>
+          <p class="step-summary"><strong>한 줄 요약</strong> 이진 탐색 첫 비교 = "현재 구간의 가운데 값". 7개 배열이면 인덱스 3 = 네 번째 값. <a href="../exam/past-exam.html">더 많은 예제 →</a></p>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="section-title">문제 및 답 확인</h4>
+    <div class="problem-section exam-type">
+      <div class="q">위 배열에서 <strong>25</strong>를 이진 탐색할 때, 첫 번째 비교 후 다음에 볼 구간(인덱스 범위)은?</div>
+      <details>
+        <summary>답 보기</summary>
+        <div class="a">
+          <p class="answer-head">정답: <strong>인덱스 0~2</strong> (값으로는 10, 20, 30)</p>
+          <p><strong>풀이</strong> 첫 비교는 가운데(인덱스 3) 값 <strong>40</strong>과 25를 비교합니다. 25 &lt; 40이므로 "25는 40보다 작다" → 왼쪽 절반에 있어요. 따라서 다음에 볼 구간은 인덱스 0~2(10, 20, 30)입니다. 이진 탐색은 "비교한 값보다 작으면 왼쪽, 크면 오른쪽" 절반만 남겨서 반복해요.</p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="section-title">문제 및 실습</h4>
+    <div class="fill-code-practice" data-answers="(left+right)//2|mid+1" data-snippet="binary">
+      <p class="fill-code-prompt">이진 탐색에서 가운데 인덱스와, target이 더 클 때 left를 어떻게 바꾸는지 써 보세요. (공백 없이)</p>
+      <div class="fill-code-line">mid = _____ &nbsp; &nbsp; (target이 더 크면) left = _____</div>
+      <p>첫 빈칸(가운데 인덱스): <input type="text" class="fill-code-input" placeholder="예: (left+right)//2"> 두 번째 빈칸: <input type="text" class="fill-code-input" placeholder="예: mid+1"> <button type="button" class="fill-code-check">확인</button></p>
+      <p class="fill-code-msg" role="status"></p>
+      <p class="fill-code-run-link" style="display:none;"></p>
+    </div>
+    <div class="problem-section practice-callout">
+      <p>순차 탐색·이진 탐색을 한 단계씩 눌러 보면서 비교 대상이 어떻게 바뀌는지 확인해 보세요. 아래 <strong>파이썬·자바스크립트 실습</strong>을 강의 안에서 바로 할 수 있어요.</p>
+    </div>
+
+    <div class="lecture-inline-run">
+      <span class="label">🐍 파이썬으로 실습 (인라인)</span>
+      <p>이 단원 예제(이진 탐색)가 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
+      <iframe src="../practice/pyodide.html?snippet=binary&amp;embed=1" title="파이썬 실습: 이진 탐색" class="pyodide-iframe"></iframe>
+    </div>
+
+    <div class="lecture-inline-js js-run-practice">
+      <span class="label">🟨 자바스크립트로 같은 동작 확인 (인라인)</span>
+      <p>정렬된 배열에서 가운데를 보고, 찾는 값이 더 크면 오른쪽 절반만 다시 봅니다. 실행해 보세요.</p>
+      <textarea class="js-run-code" rows="18" spellcheck="false">var arr = [2, 5, 8, 12, 16, 23, 38];
+var target = 12;
+var left = 0, right = arr.length - 1;
+while (left <= right) {
+  var mid = Math.floor((left + right) / 2);
+  if (arr[mid] === target) {
+    console.log('찾음! 인덱스:', mid);
+    break;
+  }
+  if (arr[mid] < target) left = mid + 1;
+  else right = mid - 1;
+}
+if (left > right) console.log('없음');</textarea>
+      <div class="js-run-actions">
+        <button type="button" class="js-run-btn">실행</button>
+      </div>
+      <div class="js-run-output" role="log" aria-live="polite"></div>
+    </div>
+
+    <div class="lecture-practice-integrated">
+      <strong>필요할 때만</strong> 전체 실습: <a href="../practice/search.html">실습: 탐색 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=binary">통합 파이썬 실습 (전체 화면)</a>
+    </div>
+
+    <nav class="page-nav">
+      <span></span>
+      <a href="05-2-이진탐색트리해싱.html" class="next">다음: 이진 탐색 트리·해싱 →</a>
+    </nav>
+  </article>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/run-js-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

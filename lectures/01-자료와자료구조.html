@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>I. 자료와 자료 구조 | 자료구조 강의</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>I. 자료와 자료 구조</h1>
+    <p class="subtitle">쉽게 배우는 자료, 리스트 · 프로그래밍기능사 대비</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <h2>01. 자료란 뭘까요?</h2>
+    <p><strong>자료</strong>는 컴퓨터가 다루는 모든 정보예요. 숫자, 문자, 사진, 동영상까지 다 자료입니다.</p>
+    <p><strong>자료 추상화</strong>는 "어떤 걸 넣고 빼고 찾을 수 있다"만 정해 두고, "어디에 어떻게 저장하는지"는 숨기는 거예요. 시험에 <strong>ADT = Abstract Data Type(추상 자료형, 에이디티·앱스트랙트 데이터 타입)</strong>이라고 나옵니다.</p>
+    <ul>
+      <li><strong>데이터 타입</strong>: 정수(1, 2, 3), 실수(1.5), 문자(‘가’), 문자열("안녕"), 참/거짓 등</li>
+      <li><strong>추상화</strong>: 넣기, 빼기, 찾기 같은 동작만 정하고, 저장 방식은 나중에 정함</li>
+    </ul>
+
+    <h2>02. 자료는 어떻게 저장될까?</h2>
+    <p>컴퓨터 안에서는 모든 게 <strong>0과 1(2진수)</strong>로 바뀌어 저장돼요.</p>
+    <ul>
+      <li><strong>비트(bit)</strong>: 0 하나 또는 1 하나. Binary + digit의 줄임말.</li>
+      <li><strong>바이트(byte)</strong>: 비트 8개 = 1바이트. 글자 하나는 보통 1바이트 이상 사용.</li>
+    </ul>
+    <div class="fun-callout etymology"><span class="label">📖 어원</span> "byte"는 한 입 베어 문 양이란 뜻의 "bite"에서 왔어요. bit와 헷갈리지 않게 y로 바꿨대요. <a href="../fun/etymology-and-jokes.html">더 많은 어원·조크 →</a></div>
+
+    <h3>02-1. 진법이란?</h3>
+    <p><strong>진법</strong>은 수를 셀 때 "몇 개씩 묶어서 자릿수를 올리느냐"를 정한 거예요. 우리가 쓰는 일상 숫자는 <strong>10진법</strong>(0~9, 10이 되면 다음 자리), 컴퓨터는 <strong>2진법</strong>(0과 1만), 프로그래밍에서는 <strong>8진법</strong>, <strong>16진법</strong>도 자주 씁니다.</p>
+    <ul>
+      <li><strong>2진수</strong>: 0, 1만 사용. 예: 1010₂ = 1×2³ + 0×2² + 1×2¹ + 0×2⁰ = 10</li>
+      <li><strong>8진수</strong>: 0~7. 예: 12₈ = 1×8¹ + 2×8⁰ = 10</li>
+      <li><strong>10진수</strong>: 0~9. 우리가 쓰는 수.</li>
+      <li><strong>16진수</strong>: 0~9, A(10), B(11), C(12), D(13), E(14), F(15). 예: 1A₁₆ = 1×16 + 10 = 26</li>
+    </ul>
+
+    <h3>02-2. 진법 변환 (중요 · 시험 단골)</h3>
+    <p><strong>① 10진수 → 2진수</strong>: 10진수를 <strong>2로 계속 나눠서</strong> 나머지를 아래에서 위로 읽으면 됩니다.</p>
+    <p>예: 13을 2진수로? 13÷2=6…1, 6÷2=3…0, 3÷2=1…1, 1÷2=0…1 → 나머지 순서: 1,0,1,1 → 거꾸로 읽으면 <strong>1101₂</strong> = 13</p>
+    <p><strong>② 2진수 → 10진수</strong>: 각 자리에 2의 거듭제곱을 곱해서 더합니다.</p>
+    <p>예: 1101₂ = 1×2³ + 1×2² + 0×2¹ + 1×2⁰ = 8+4+0+1 = <strong>13</strong></p>
+    <p><strong>③ 10진수 → 16진수</strong>: 10진수를 16으로 계속 나눈 나머지를 모아요. 10~15는 A~F로 씁니다.</p>
+    <p>예: 255 → 255÷16=15…15 → 15÷16=0…15 → 나머지 15,15 → <strong>FF₁₆</strong> = 255</p>
+    <p><strong>④ 2진수 ↔ 16진수</strong>: 2진수 네 자리씩 묶으면 16진수 한 자리예요. 0000=0, 0001=1, … 1111=F.</p>
+    <p>예: 1111 1010₂ → 1111=F, 1010=A → <strong>FA₁₆</strong>. 반대로 FA₁₆ → F=1111, A=1010 → 11111010₂</p>
+
+    <h3>02-3. 보수(補數) 개념 (시험 단골)</h3>
+    <p>컴퓨터에서 <strong>음수</strong>를 표현하거나 <strong>뺄셈</strong>을 할 때 "보수"를 씁니다. 어떤 수에 더했을 때 자릿수가 한 단계 올라가게 만드는 수예요.</p>
+    <p><strong>① 1의 보수</strong>: 2진수에서 0은 1로, 1은 0으로 바꾼 거예요. "비트를 반전"한다고 해요.</p>
+    <p>예: 0011 (3)의 1의 보수 → <strong>1100</strong>. 0011 + 1100 = 1111 (모두 1). 4비트에서 1111+1 = 10000이 되면 자리 올림이 나요.</p>
+    <p><strong>② 2의 보수</strong>: 1의 보수에 1을 더한 값이에요. 컴퓨터는 보통 <strong>2의 보수</strong>로 음수를 표현해요.</p>
+    <p>예: 0011 (3)의 2의 보수 → 1의 보수 1100 + 1 = <strong>1101</strong>. 이 1101을 "음수 -3"으로 쓰는 방식이에요. 0011 + 1101 = 10000 → 4비트만 쓰면 0000이 되니까 3 + (-3) = 0이 됩니다.</p>
+    <p><strong>정리</strong>: n비트일 때, 어떤 수의 2의 보수 = 그 수의 1의 보수 + 1. 2의 보수로 표현한 수는 "음수"로 해석합니다. 시험에 "8비트에서 -5의 2의 보수 표현" 같은 문제가 나와요. (5 = 0000 0101 → 1의 보수 1111 1010 → 2의 보수 1111 1011)</p>
+
+    <h3>02-4. 문자 인코딩</h3>
+    <p>글자(문자)도 숫자로 바꿔서 저장해요. 그 규칙이 <strong>인코딩</strong>이에요.</p>
+    <ul>
+      <li><strong>ASCII</strong>: 영문·숫자·기호 등 128개(7비트). 예: 'A' = 65.</li>
+      <li><strong>유니코드(Unicode)</strong>: 전 세계 문자를 하나의 번호로 매긴 표. 한글, 이모지까지 포함.</li>
+      <li><strong>UTF-8</strong>: 유니코드를 실제로 저장할 때 쓰는 방식 중 하나. 1바이트~4바이트로 한 글자를 저장.</li>
+    </ul>
+
+    <h2>03. 자료구조와 알고리즘</h2>
+    <p><strong>자료구조</strong> = 자료를 어떤 순서·형태로 담아 둘지 정한 구조 (줄로 세우기, 쌓아 두기 등).</p>
+    <p><strong>알고리즘</strong> = 문제를 풀기 위한 단계별 방법. 좋은 자료구조를 고르면 알고리즘이 더 빨라져요.</p>
+    <div class="fun-callout"><span class="label">😄 조크</span> 세상에는 10가지 종류의 사람이 있어요 — 2진수를 아는 사람이랑 모르는 사람. (10을 2진수로 쓰면 2예요.) <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+
+    <h2>04. 리스트(List) — 순서 있는 나열</h2>
+    <p>리스트는 <strong>순서가 있는</strong> 자료의 나열이에요. 같은 종류의 값들이 한 줄로 배치됩니다.</p>
+    <ul>
+      <li><strong>배열</strong>: 칸이 연달아 있어서 "몇 번째 칸"으로 바로 찾기 좋아요. 삽입·삭제 시 다른 칸을 밀어야 할 수 있어요.</li>
+      <li><strong>연결 리스트</strong>: 각 노드가 "다음 노드 주소"를 갖고 있어서, 가운데 삽입·삭제가 배열보다 유리해요. <strong>머리(head)</strong>, <strong>꼬리(tail)</strong> 용어가 시험에 나옵니다.</li>
+    </ul>
+
+    <p><a href="../practice/radix.html" class="back">실습: 진법·보수</a> <a href="../practice/list.html" class="back">실습: 리스트</a> <a href="../practice/pyodide.html" class="back">브라우저에서 파이썬 실습</a> <a href="../exam/past-exam.html" class="back">기출 유형 예제</a></p>
+  </article>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

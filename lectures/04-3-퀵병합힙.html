@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>3. 퀵·병합·힙 정렬 | IV단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>IV. 자료 정렬</h1>
+    <p class="subtitle">3. 퀵·병합·힙 정렬 (참고) · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="04-index.html" class="back">이 단원 목차</a>
+
+    <h2>더 빠른 정렬 (참고)</h2>
+    <p>버블·선택·삽입은 이해하기 쉽지만 데이터가 많으면 느려요. 아래는 더 빠른 방법이에요. 이름만 알아 두어도 돼요.</p>
+
+    <h3>퀵 정렬(Quick Sort, 퀵 소트)</h3>
+    <p><strong>기준값(pivot, 피벗)</strong>을 하나 잡고, 그보다 작은 것 / 큰 것을 나눠서 각각 정렬한 뒤 합쳐요. 평균적으로 빠르지만, 최악의 경우엔 느릴 수 있어요.</p>
+
+    <h3>병합 정렬(Merge Sort, 머지 소트)</h3>
+    <p>반으로 나눠서 각각 정렬한 다음, <strong>합치면서</strong> 순서를 맞춰요. 항상 같은 속도로 동작하고, 안정 정렬이에요.</p>
+
+    <h3>힙 정렬(Heap Sort, 힙 소트)</h3>
+    <p>"힙(heap, 힙)"이라는 특별한 트리 구조를 이용해서, 가장 큰 값(또는 작은 값)을 차례로 꺼내며 정렬해요.</p>
+
+    <p>프로그래밍기능사에서는 버블·선택·삽입의 <strong>한 단계 결과</strong>를 묻는 문제가 많아요. 위 세 가지는 이름과 아이디어만 알면 됩니다.</p>
+
+    <div class="practice-callout">
+      <p class="label">실습하기</p>
+      <p>정렬을 손으로 해 보거나, 브라우저에서 파이썬으로 버블 정렬 코드를 실행해 보세요.</p>
+      <div class="lecture-practice-cta">
+        <a href="../practice/sort.html">실습: 정렬 →</a>
+        <a href="../practice/pyodide.html?snippet=bubble" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      </div>
+    </div>
+
+    <nav class="page-nav">
+      <a href="04-2-버블선택삽입.html">← 이전: 버블·선택·삽입</a>
+      <a href="05-index.html" class="next">다음 단원: V. 자료 탐색 →</a>
+    </nav>
+  </article>
+  <script src="../js/fill-practice.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

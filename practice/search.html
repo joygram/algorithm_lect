@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>실습: 탐색 | 자료구조</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>실습: 순차·이진 탐색</h1>
+    <p class="subtitle">원하는 숫자를 찾는 과정을 한 단계씩 보기</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <main class="practice-page">
+    <a href="../index.html" class="back">← 목차</a>
+
+    <p><strong>숫자 목록</strong>은 반드시 <strong>작은 순서대로</strong> 쉼표로 입력해 주세요(예: 1,3,5,7,9). <strong>찾을 값</strong>을 쓰고, <strong>순차</strong>(처음부터 하나씩) 또는 <strong>이진</strong>(가운데 보고 반씩 버리기) 중 하나를 고른 뒤 <strong>한 단계</strong>를 눌러 보세요. 노란색이 지금 비교하는 칸이에요.</p>
+
+    <div class="controls">
+      <input type="text" id="inputArr" placeholder="작은 순서로 (예: 1,3,5,7,9)" value="1,3,5,7,9,11,13" aria-label="배열">
+      <input type="number" id="inputKey" placeholder="찾을 숫자" value="7" aria-label="찾을 값">
+      <select id="algo" aria-label="탐색 방법">
+        <option value="sequential">순차 탐색 (처음부터 차례대로)</option>
+        <option value="binary">이진 탐색 (가운데 보고 반씩)</option>
+      </select>
+      <button type="button" id="btnStep">한 단계</button>
+      <button type="button" id="btnReset">처음부터 다시</button>
+    </div>
+
+    <div class="viz" id="viz" role="status" aria-live="polite"></div>
+    <p class="hint" id="log">—</p>
+  </main>
+  <script>
+    (function () {
+      var inputArr = document.getElementById('inputArr');
+      var inputKey = document.getElementById('inputKey');
+      var algo = document.getElementById('algo');
+      var viz = document.getElementById('viz');
+      var log = document.getElementById('log');
+
+      var state = { arr: [], key: 0, idx: 0, left: 0, right: 0, done: false, found: false };
+
+      function parse() {
+        var s = inputArr.value.trim();
+        return s ? s.split(/[\s,]+/).map(Number).filter(function (n) { return !isNaN(n); }) : [];
+      }
+
+      function render(arr, highlightIdx, range) {
+        if (!arr.length) { viz.textContent = '(비어 있음)'; return; }
+        var html = arr.map(function (x, i) {
+          var cls = 'viz-item';
+          if (highlightIdx === i) cls += ' highlight-item';
+          else if (range && (i < range[0] || i > range[1])) cls += ' viz-item-dim';
+          return '<span class="' + cls + '">' + x + ' <small>(' + i + ')</small></span>';
+        }).join('');
+        viz.innerHTML = html;
+      }
+
+      function sequentialStep() {
+        if (state.idx >= state.arr.length) {
+          state.done = true;
+          state.found = false;
+          log.textContent = '못 찾음 (순차 탐색 끝)';
+          render(state.arr, null);
+          return;
+        }
+        var i = state.idx;
+        render(state.arr, i);
+        if (state.arr[i] === state.key) {
+          state.done = true;
+          state.found = true;
+          log.textContent = '찾음! 인덱스 ' + i + ', 비교 횟수 ' + (i + 1);
+          return;
+        }
+        log.textContent = '인덱스 ' + i + ' 비교: ' + state.arr[i] + ' ≠ ' + state.key + ' → 다음';
+        state.idx++;
+      }
+
+      function binaryStep() {
+        if (state.left > state.right) {
+          state.done = true;
+          state.found = false;
+          log.textContent = '못 찾음 (이진 탐색 끝)';
+          render(state.arr, null, [state.left, state.right]);
+          return;
+        }
+        var mid = Math.floor((state.left + state.right) / 2);
+        render(state.arr, mid, [state.left, state.right]);
+        if (state.arr[mid] === state.key) {
+          state.done = true;
+          state.found = true;
+          log.textContent = '찾음! 인덱스 ' + mid + ' (이진 탐색)';
+          return;
+        }
+        if (state.arr[mid] < state.key) {
+          state.left = mid + 1;
+          log.textContent = '중간 인덱스 ' + mid + ' 값 ' + state.arr[mid] + ' < ' + state.key + ' → 오른쪽 구간 [' + state.left + '~' + state.right + ']';
+        } else {
+          state.right = mid - 1;
+          log.textContent = '중간 인덱스 ' + mid + ' 값 ' + state.arr[mid] + ' > ' + state.key + ' → 왼쪽 구간 [' + state.left + '~' + state.right + ']';
+        }
+      }
+
+      function step() {
+        if (state.done) return;
+        if (algo.value === 'sequential') sequentialStep();
+        else binaryStep();
+      }
+
+      function reset() {
+        state.arr = parse();
+        state.key = parseInt(inputKey.value, 10) || 0;
+        state.idx = 0;
+        state.left = 0;
+        state.right = state.arr.length - 1;
+        state.done = false;
+        state.found = false;
+        render(state.arr);
+        log.textContent = '한 단계 버튼을 누르면 비교하는 칸이 바뀌어요.';
+      }
+
+      document.getElementById('btnStep').addEventListener('click', step);
+      document.getElementById('btnReset').addEventListener('click', reset);
+
+      reset();
+    })();
+  </script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

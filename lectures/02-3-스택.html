@@ -30,10 +30,21 @@
     <div class="fun-callout etymology"><span class="label">📖 어원</span> Stack(스택) = "쌓다, 더미". Queue(큐) = "줄, 꼬리"(프랑스어). <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
 
     <h4 class="section-title">문제 및 해설</h4>
-    <div class="problem-section exam-type">
+    <div class="problem-section exam-type problem-with-steps">
       <strong>📋 기출 유형</strong>
       <div class="q">A, B, C, D를 스택에 넣었다가 모두 꺼낼 때, 나올 수 <strong>없는</strong> 출력 순서는? ① A,B,C,D ② B,D,C,A ③ C,D,B,A ④ D,B,C,A</div>
-      <div class="a">정답: ④ D,B,C,A. D가 먼저 나오려면 네 개 다 넣은 뒤 꺼내야 하는데, 그다음엔 C→B→A 순서만 가능해요. <a href="../exam/past-exam.html">더 많은 예제 →</a></div>
+      <div class="a">
+        <p class="answer-head">정답: <strong>④ D,B,C,A</strong></p>
+        <div class="solution-steps">
+          <p class="step-title">풀이 단계</p>
+          <ol>
+            <li>스택은 LIFO이므로, "맨 나중에 넣은 것이 맨 먼저" 나옵니다. push A → B → C → D 순이면, pop 순서는 반드시 D → C → B → A입니다.</li>
+            <li>④에서 D가 먼저 나온 뒤 B가 나온다고 했어요. D 다음에 나올 수 있는 건 "그때 스택 맨 위에 있던 것"뿐이에요. D를 pop한 직후 맨 위에는 C가 있으므로, 다음은 반드시 C가 나와야 합니다. 따라서 D 다음에 B가 나오는 순서(D,B,C,A)는 <strong>불가능</strong>합니다.</li>
+          </ol>
+          <p class="step-pitfall"><strong>실수하기 쉬운 점</strong> "D가 먼저 나왔으니 나머지는 아무 순서나 되지 않을까?"라고 생각하기 쉽습니다. 스택에서는 pop할 때마다 "현재 맨 위"만 꺼낼 수 있어요. 그 순서가 정해져 있습니다.</p>
+          <p class="step-summary"><strong>한 줄 요약</strong> 스택에서 나올 수 있는 순서는 "넣은 순서의 역순"만 가능해요. D 다음에는 반드시 C가 나와야 하므로 ④는 불가능. <a href="../exam/past-exam.html">더 많은 예제 →</a></p>
+        </div>
+      </div>
     </div>
 
     <h4 class="section-title">문제 및 답 확인</h4>
@@ -41,7 +52,10 @@
       <div class="q">push A → push B → pop → push C → pop 순서로 했을 때, 지금까지 꺼낸 값은?</div>
       <details>
         <summary>답 보기</summary>
-        <div class="a">pop 첫 번째: B, pop 두 번째: C. 따라서 꺼낸 순서는 B, C.</div>
+        <div class="a">
+          <p class="answer-head">정답: <strong>B, C</strong> (꺼낸 순서)</p>
+          <p><strong>풀이</strong> push A → 스택 [A]. push B → [A, B](맨 위=B). pop → B가 나옴(첫 번째로 꺼낸 값). push C → [A, C]. pop → C가 나옴(두 번째로 꺼낸 값). 따라서 지금까지 꺼낸 값은 B, C입니다. 스택은 맨 위에서만 꺼내므로 "나중에 넣은 것"이 먼저 나와요.</p>
+        </div>
       </details>
     </div>
 
@@ -54,11 +68,33 @@
       <p class="fill-code-run-link" style="display:none;"></p>
     </div>
     <div class="problem-section practice-callout">
-      <p>push(푸시)/pop(팝)으로 맨 위에만 넣고 꺼내 보면서 LIFO를 확인해 보세요. 코드로 실행해 보려면 파이썬 실습을 이용하세요.</p>
-      <div class="lecture-practice-cta">
-        <a href="../practice/stack.html">실습: 스택 →</a>
-        <a href="../practice/pyodide.html?snippet=stack" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      <p>push(푸시)/pop(팝)으로 맨 위에만 넣고 꺼내 보면서 LIFO를 확인해 보세요. 아래 <strong>파이썬·자바스크립트 실습</strong>을 강의 안에서 바로 할 수 있어요.</p>
+    </div>
+
+    <div class="lecture-inline-run">
+      <span class="label">🐍 파이썬으로 실습 (인라인)</span>
+      <p>이 단원 예제(스택)가 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
+      <iframe src="../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬 실습: 스택" class="pyodide-iframe"></iframe>
+    </div>
+
+    <div class="lecture-inline-js js-run-practice">
+      <span class="label">🟨 자바스크립트로 같은 동작 확인 (인라인)</span>
+      <p>배열의 push(맨 뒤에 넣기)·pop(맨 뒤에서 꺼내기)로 스택을 씁니다. 실행해 보세요.</p>
+      <textarea class="js-run-code" rows="7" spellcheck="false">var stack = [];
+stack.push('A');
+stack.push('B');
+stack.push('C');
+console.log('push A,B,C 후:', stack);
+var x = stack.pop();
+console.log('pop() →', x, ', 남은 스택:', stack);</textarea>
+      <div class="js-run-actions">
+        <button type="button" class="js-run-btn">실행</button>
       </div>
+      <div class="js-run-output" role="log" aria-live="polite"></div>
+    </div>
+
+    <div class="lecture-practice-integrated">
+      <strong>필요할 때만</strong> 전체 실습: <a href="../practice/stack.html">실습: 스택 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=stack">통합 파이썬 실습 (전체 화면)</a>
     </div>
 
     <nav class="page-nav">
@@ -67,6 +103,7 @@
     </nav>
   </article>
   <script src="../js/fill-practice.js"></script>
+  <script src="../js/run-js-practice.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

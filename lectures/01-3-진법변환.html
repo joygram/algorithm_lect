@@ -16,35 +16,38 @@
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="01-index.html" class="back">이 단원 목차</a>
 
-    <p class="hook lead">13을 2진수로 바꾸면? 언더테일처럼 세이브 파일·HP·데미지 숫자도 결국 0과 1로 저장돼요. <strong>방법 네 가지만</strong> 보면 돼요.</p>
+    <p class="hook lead">10진수를 2진수로 바꾸는 법만 확실히 알면 나머지는 같은 패턴이에요.</p>
 
-    <h2>진법 변환 — 네 가지만 알면 됨</h2>
+    <h2>진법 변환 — 규칙만 네 개</h2>
 
     <h3>① 10진수 → 2진수</h3>
-    <p><strong>2로 계속 나눠서</strong> 나머지만 적고, 나머지를 <strong>아래에서 위로</strong> 읽으면 끝.</p>
-    <p class="example">예: 13 → 13÷2=6…1, 6÷2=3…0, 3÷2=1…1, 1÷2=0…1 → 나머지 1,0,1,1 거꾸로 → <strong>1101₂</strong></p>
+    <p><strong>2로 나눈 나머지</strong>를 적고, 몫을 다시 2로 나누는 걸 <strong>몫이 0될 때까지</strong> 반복. 적어 둔 나머지를 <strong>맨 아래→맨 위</strong> 순서로 읽으면 2진수.</p>
+    <p class="example">13: 나머지 1→0→1→1 → 아래에서 위로 읽으면 <strong>1101₂</strong></p>
 
     <h3>② 2진수 → 10진수</h3>
-    <p>자리마다 <strong>2의 거듭제곱</strong> 곱해서 더하기. 오른쪽부터 2⁰, 2¹, 2², …</p>
-    <p class="example">예: 1101₂ = 1×2³ + 1×2² + 0×2¹ + 1×2⁰ = 8+4+0+1 = <strong>13</strong></p>
+    <p>오른쪽부터 자리가 2⁰, 2¹, 2², … 그 자리 숫자×자리값을 더함.</p>
+    <p class="example">1101₂ = 1×8+1×4+0×2+1×1 = <strong>13</strong></p>
 
     <h3>③ 10진수 → 16진수</h3>
-    <p><strong>16으로 계속 나눈 나머지</strong> 모으기. 10~15는 A~F.</p>
-    <p class="example">예: 255 → 나머지 15(F), 15(F) → <strong>FF₁₆</strong></p>
+    <p>2 대신 <strong>16으로 나눈 나머지</strong>. 10~15는 A~F. 나머지를 아래→위로 읽음.</p>
+    <p class="example">255 → 나머지 F,F → <strong>FF₁₆</strong></p>
 
     <h3>④ 2진수 ↔ 16진수</h3>
-    <p>2진수 <strong>네 자리 = 16진수 한 자리</strong>. 1111=F, 1010=A 같은 식.</p>
-    <p class="example">예: 1111 1010₂ → <strong>FA₁₆</strong> &nbsp;|&nbsp; FA₁₆ → 11111010₂</p>
+    <p>2진수 <strong>4자리 = 16진수 1자리</strong> (0000=0, 1111=F). 네 자리씩 묶어서 바꿈.</p>
+    <p class="example">1111 1010₂ = <strong>FA₁₆</strong></p>
 
     <h4 class="section-title">문제 및 해설</h4>
     <div class="problem-section exam-type">
       <div class="q">10진수 <strong>25</strong>를 2진수로 바꾸면?</div>
-      <div class="a">정답: <strong>11001₂</strong>. 25÷2=12…1, 12÷2=6…0, 6÷2=3…0, 3÷2=1…1, 1÷2=0…1 → 나머지 1,0,0,1,1을 아래에서 위로 읽으면 11001.</div>
+      <div class="a">
+        <p><strong>정답: 11001₂</strong></p>
+        <p>25를 2로 나눈 나머지를 순서대로 쓰면 1, 0, 0, 1, 1. 이걸 <strong>아래에서 위로</strong> 읽으면 11001₂. (맨 마지막 나머지가 2진수 맨 왼쪽.)</p>
+      </div>
     </div>
 
     <h4 class="section-title">문제 및 답 확인</h4>
     <div class="problem-section">
-      <p>아래 빈칸에 <strong>13을 2진수로</strong> 바꾼 과정을 채우고, 2진수 답을 입력한 뒤 [확인]을 누르세요.</p>
+      <p>13을 2로 나눈 나머지 네 개를 쓰고, 그 나머지를 <strong>아래→위</strong>로 읽은 2진수를 넣은 뒤 [확인]을 누르세요.</p>
       <div class="inline-practice">
         <p>13÷2=6 나머지 <input type="text" id="inline-r1" maxlength="1" size="2" aria-label="나머지1"> → 6÷2=3 나머지 <input type="text" id="inline-r2" maxlength="1" size="2" aria-label="나머지2"> → 3÷2=1 나머지 <input type="text" id="inline-r3" maxlength="1" size="2" aria-label="나머지3"> → 1÷2=0 나머지 <input type="text" id="inline-r4" maxlength="1" size="2" aria-label="나머지4"></p>
         <div class="fill-step">
@@ -83,7 +86,7 @@
         var msg = document.getElementById('inline-msg-radix');
         var ok = (r1 === '1' && r2 === '0' && r3 === '1' && r4 === '1' && ans === '1101');
         if (!ans && !r1 && !r2 && !r3 && !r4) { msg.textContent = '빈칸을 채운 뒤 확인을 눌러 주세요.'; msg.className = 'check-msg'; return; }
-        msg.textContent = ok ? '정답이에요! 13 = 1101₂' : '다시 해 보세요. 나머지 1,0,1,1 → 거꾸로 1101₂';
+        msg.textContent = ok ? '정답! 나머지 1,0,1,1 → 아래→위로 1101₂' : '나머지 1, 0, 1, 1 → 아래에서 위로 읽으면 1101₂';
         msg.className = 'check-msg ' + (ok ? 'ok' : 'err');
       });
     })();

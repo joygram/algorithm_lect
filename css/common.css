@@ -332,6 +332,19 @@ body {
 .lecture .problem-section + .section-title { margin-top: 1.5rem; }
 .lecture .problem-section details { margin-top: 0.5rem; }
 .lecture .problem-section summary { cursor: pointer; color: var(--primary); font-weight: 600; }
+/* 문제 해설: 단계별·왜·실수하기쉬운점·요약 */
+.lecture .problem-with-steps .a { margin-top: 0.5rem; }
+.lecture .answer-head { margin-bottom: 0.75rem; font-size: 1.05rem; }
+.lecture .solution-steps { margin-top: 0.75rem; padding: 1rem 1.25rem; background: var(--viz-subtle); border-radius: 8px; border-left: 4px solid var(--primary); font-size: 0.95rem; }
+.lecture .solution-steps .step-title { margin: 0 0 0.5rem; font-weight: 700; color: var(--primary); }
+.lecture .solution-steps ol { margin: 0.5rem 0; padding-left: 1.5rem; }
+.lecture .solution-steps li { margin: 0.4rem 0; line-height: 1.5; }
+.lecture .solution-steps .step-why,
+.lecture .solution-steps .step-pitfall,
+.lecture .solution-steps .step-summary { margin: 0.75rem 0 0; padding: 0.5rem 0.75rem; background: var(--card); border-radius: 6px; font-size: 0.9rem; }
+.lecture .solution-steps .step-why { border-left: 3px solid var(--callout-etymology-border); }
+.lecture .solution-steps .step-pitfall { border-left: 3px solid var(--exam-type-border); }
+.lecture .solution-steps .step-summary { border-left: 3px solid var(--callout-border); font-weight: 600; }
 
 /* 약어·전체 표현 박스 (ADT 등) */
 .lecture .abbrev-box {
@@ -460,6 +473,30 @@ body {
 }
 .lecture .lecture-practice-cta a.practice-pyodide:hover { background: var(--callout-border); color: var(--text); }
 
+/* 강의 페이지 안 인라인 실습(iframe): 강의와 함께 같은 화면에서 실습 */
+.lecture-inline-run { margin: 1.5rem 0; padding: 1rem; background: var(--callout-bg); border: 1px solid var(--callout-border); border-radius: var(--radius); }
+.lecture-inline-run .label { display: block; margin-bottom: 0.35rem; font-weight: 700; color: var(--callout-label); }
+.lecture-inline-run p { margin: 0.25rem 0 0.75rem; font-size: 0.95rem; }
+.lecture-inline-run .pyodide-iframe { display: block; width: 100%; min-height: 520px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); }
+
+/* 강의 페이지 안 인라인 자바스크립트 실습 */
+.lecture-inline-js { margin: 1.5rem 0; padding: 1rem; background: var(--callout-etymology-bg); border: 1px solid var(--callout-etymology-border); border-radius: var(--radius); }
+.lecture-inline-js .label { display: block; margin-bottom: 0.35rem; font-weight: 700; color: var(--primary); }
+.lecture-inline-js p { margin: 0.25rem 0 0.75rem; font-size: 0.95rem; }
+.lecture-inline-js .js-run-code { width: 100%; min-height: 120px; padding: 0.6rem; font-family: Consolas, Monaco, monospace; font-size: 0.9rem; border: 1px solid var(--border); border-radius: 8px; background: var(--input-bg); color: var(--text); resize: vertical; }
+.lecture-inline-js .js-run-actions { margin-top: 0.5rem; }
+.lecture-inline-js .js-run-btn { padding: 0.45rem 1rem; border: none; border-radius: 8px; background: var(--primary); color: var(--header-fg); cursor: pointer; font-size: 0.95rem; font-weight: 600; }
+.lecture-inline-js .js-run-btn:hover { background: var(--primary-hover); }
+.lecture-inline-js .js-run-output { margin-top: 0.5rem; padding: 0.6rem 0.75rem; min-height: 2.5rem; font-family: Consolas, Monaco, monospace; font-size: 0.9rem; background: var(--viz-subtle); border: 1px solid var(--border); border-radius: 8px; color: var(--text); white-space: pre-wrap; word-break: break-all; }
+.lecture-inline-js .js-run-line { margin: 0.15rem 0; }
+.lecture-inline-js .js-run-err { color: var(--err-color); font-weight: 600; }
+.lecture-inline-js .inline-run-note { margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+
+/* 실습: 필요할 때만 전체 통합 링크 */
+.lecture-practice-integrated { margin-top: 1rem; padding: 0.75rem 1rem; background: var(--viz-subtle); border: 1px dashed var(--border); border-radius: 8px; font-size: 0.9rem; color: var(--text-muted); }
+.lecture-practice-integrated strong { color: var(--text); }
+.lecture-practice-integrated a { color: var(--primary); font-weight: 600; }
+
 /* 실습 유도 블록 (강의 중간) */
 .lecture .practice-callout {
   background: var(--callout-bg);
@@ -568,4 +605,14 @@ body {
 .code-output { margin: 0.35rem 0 0; padding: 0.75rem 1rem; min-height: 60px; font-family: "Consolas", "Monaco", "Courier New", monospace; font-size: 0.9rem; line-height: 1.5; white-space: pre-wrap; word-break: break-all; background: var(--viz-subtle); border: 1px solid var(--border); border-radius: 8px; color: var(--text); overflow-x: auto; }
 .code-output .pyodide-line { margin: 0.15rem 0; }
 .code-output .pyodide-stderr { color: var(--err-color); }
+.code-output .pyodide-hint { margin-top: 0.5rem; padding: 0.5rem 0.6rem; background: var(--callout-bg); border-left: 4px solid var(--callout-border); border-radius: 0 6px 6px 0; color: var(--text); font-size: 0.9rem; }
+.pyodide-err-help { margin: 1rem 0; padding: 1rem 1.25rem; background: var(--callout-bg); border: 1px solid var(--callout-border); border-radius: var(--radius); font-size: 0.9rem; }
+.pyodide-err-help-title { margin: 0 0 0.5rem; font-weight: 700; color: var(--callout-label); }
+.pyodide-err-help-list { margin: 0; padding-left: 1.25rem; }
+.pyodide-err-help-list li { margin: 0.35rem 0; }
+/* embed: 강의 페이지 안 iframe용 컴팩트 뷰 */
+body.pyodide-embed .header { display: none; }
+body.pyodide-embed .practice-page .back { display: none; }
+body.pyodide-embed .practice-page { padding: 0.5rem 0; }
+body.pyodide-embed .pyodide-page p:first-of-type { margin-top: 0; }
 .pyodide-page .hint code { padding: 0.15rem 0.35rem; background: var(--viz-subtle); border-radius: 4px; font-size: 0.9em; }

@@ -17,6 +17,7 @@
   <main class="practice-page pyodide-page">
     <a href="../index.html" class="back">← 목차</a>
 
+    <p><strong>통합 실습 페이지</strong>예요. 각 강의 안에도 파이썬·자바스크립트 실습이 인라인으로 들어 있어요. 모든 예제를 한곳에서 쓰거나 전체 화면으로 하고 싶을 때 이 페이지를 이용하세요.</p>
     <p>아래에서 <strong>실습 예제를 고르면</strong> 뼈대 코드가 불러와요. <strong>빈칸(_____)이나 주석으로 표시된 부분</strong>을 채운 뒤 <strong>실행</strong>해서 결과를 확인하세요. 처음 한 번은 Python 엔진 로딩으로 조금 걸릴 수 있어요.</p>
 
     <div class="pyodide-presets">
@@ -46,12 +47,24 @@
       </div>
     </div>
 
+    <div class="pyodide-err-help" role="region" aria-label="에러가 났을 때">
+      <p class="pyodide-err-help-title">🛠 에러가 나면?</p>
+      <ol class="pyodide-err-help-list">
+        <li><strong>빈칸(_____)이 남아 있나요?</strong> → 파이썬은 빈칸을 이름으로 인식해요. 위 "실습 가이드"에서 첫 번째·두 번째 빈칸을 <strong>하나씩</strong> 채운 뒤 실행해 보세요.</li>
+        <li><strong>NameError / is not defined</strong> → 채운 내용이 메서드 이름(append, pop, popleft 등)과 정확히 같은지, 오타가 없는지 확인하세요.</li>
+        <li><strong>SyntaxError</strong> → 괄호 (), 쉼표, 따옴표가 빠지지 않았는지 확인하세요.</li>
+        <li>한 번에 다 채우기 어렵다면 <strong>첫 번째 빈칸만</strong> 채우고 실행해 보고, 되면 다음 빈칸을 채우는 식으로 하나씩 보강하세요.</li>
+      </ol>
+    </div>
     <p class="hint">💡 빈칸은 <code>_____</code> 또는 주석 <code># 여기에: ...</code>으로 표시돼요. 채운 뒤 실행해서 출력이 맞는지 확인하세요. 막히면 같은 예제를 다시 불러오면 처음 뼈대로 돌아갑니다.</p>
   </main>
 
   <script src="../js/pyodide-runner.js"></script>
   <script>
     (function () {
+      if ((window.location.search + window.location.hash).indexOf('embed=1') !== -1) {
+        document.body.classList.add('pyodide-embed');
+      }
       var snippets = {
         list: '# 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)\narr = [10, 20, 30]\n# ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)\narr._____(40)\nprint("append(40) 후:", arr)\n# ② 빈칸: 1번 인덱스(20)를 제거하려면? pop( ? )\narr.pop(_____)\nprint("pop(1) 후:", arr)\nprint("길이:", len(arr))',
         stack: '# 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)\nstack = []\nstack.append("A")\n# ① 빈칸: 스택에 "B"를 넣으세요 (append 사용)\nstack._____("B")\nstack.append("C")\nprint("push A,B,C 후:", stack)\n# ② 빈칸: 맨 위에서 하나 꺼내서 변수 x에 넣기 (pop은 인자 없음)\nx = stack._____()\nprint("pop() →", x, ", 남은 스택:", stack)',

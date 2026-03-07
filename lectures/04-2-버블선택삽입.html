@@ -22,10 +22,21 @@
     <h2>선택 정렬(Selection Sort, 셀렉션 소트)</h2>
     <p>아직 정렬 안 된 구간에서 <strong>가장 작은 수</strong>를 찾아서, 그 구간의 맨 앞 자리와 바꿔요. 그 다음은 두 번째 칸부터 같은 일을 반복해요.</p>
     <h4 class="section-title">문제 및 해설</h4>
-    <div class="problem-section exam-type">
+    <div class="problem-section exam-type problem-with-steps">
       <strong>📋 기출 유형</strong>
       <div class="q">[5, 2, 8, 1, 9]를 선택 정렬로 오름차순 할 때, <strong>첫 번째 단계</strong> 후 배열은?</div>
-      <div class="a">정답: [1, 2, 8, 5, 9]. 최솟값 1을 맨 앞 5와 바꾸면 돼요. <a href="../exam/past-exam.html">더 많은 예제 →</a></div>
+      <div class="a">
+        <p class="answer-head">정답: <strong>[1, 2, 8, 5, 9]</strong></p>
+        <div class="solution-steps">
+          <p class="step-title">풀이 단계</p>
+          <ol>
+            <li>선택 정렬의 "첫 번째 단계"는 <strong>아직 정렬 안 된 구간 전체(맨 앞~맨 뒤)</strong>에서 <strong>가장 작은 값</strong>을 찾는 것입니다.</li>
+            <li>최솟값은 <strong>1</strong>(인덱스 3)이에요. 이 1을 <strong>그 구간의 맨 앞 자리(인덱스 0)에 있는 5와 자리 바꿉니다</strong>.</li>
+            <li>바꾼 결과: 맨 앞이 1이 되고, 원래 1이 있던 자리에는 5가 들어갑니다. → <strong>[1, 2, 8, 5, 9]</strong>.</li>
+          </ol>
+          <p class="step-summary"><strong>한 줄 요약</strong> 선택 정렬 첫 단계 = "전체에서 최솟값 찾아서 맨 앞과 교환". <a href="../exam/past-exam.html">더 많은 예제 →</a></p>
+        </div>
+      </div>
     </div>
 
     <h4 class="section-title">문제 및 답 확인</h4>
@@ -33,7 +44,11 @@
       <div class="q">[3, 7, 1]을 버블 정렬로 한 번 쭉 지나간 후 배열은?</div>
       <details>
         <summary>답 보기</summary>
-        <div class="a">[3, 1, 7]. 3과 7 비교→그대로, 7과 1 비교→바꿈(3,1,7), 1이 맨 뒤로 감.</div>
+        <div class="a">
+          <p class="answer-head">정답: <strong>[3, 1, 7]</strong></p>
+          <p><strong>풀이</strong> 버블 정렬은 맨 앞부터 "바로 옆과 비교해서 크면 자리 바꾸기"를 끝까지 한 번 도는 게 1패스예요. (3,7) 비교 → 3&lt;7이므로 그대로. (7,1) 비교 → 7&gt;1이므로 바꿈 → [3, 1, 7]. 이렇게 한 번 지나가면 그 패스에서 가장 큰 값(7)이 맨 뒤로 갑니다.</p>
+          <p class="step-summary" style="margin-top:0.5rem;"><strong>한 줄 요약</strong> 옆과 비교해서 큰 걸 뒤로 보내므로, 한 번 지나가면 가장 큰 수가 맨 뒤로 이동해요.</p>
+        </div>
       </details>
     </div>
 
@@ -50,11 +65,39 @@
       <p class="fill-code-run-link" style="display:none;"></p>
     </div>
     <div class="problem-section practice-callout">
-      <p>버블·선택·삽입 정렬을 한 단계씩 눌러 보면서 배열이 어떻게 바뀌는지 확인해 보세요. 코드로 실행해 보려면 파이썬 실습을 이용하세요.</p>
-      <div class="lecture-practice-cta">
-        <a href="../practice/sort.html">실습: 정렬 →</a>
-        <a href="../practice/pyodide.html?snippet=bubble" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      <p>버블·선택·삽입 정렬을 한 단계씩 눌러 보면서 배열이 어떻게 바뀌는지 확인해 보세요. 아래 <strong>파이썬·자바스크립트 실습</strong>을 강의 안에서 바로 할 수 있어요.</p>
+    </div>
+
+    <div class="lecture-inline-run">
+      <span class="label">🐍 파이썬으로 실습 (인라인)</span>
+      <p>이 단원 예제(버블 정렬)가 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요.</p>
+      <iframe src="../practice/pyodide.html?snippet=bubble&amp;embed=1" title="파이썬 실습: 버블 정렬" class="pyodide-iframe"></iframe>
+    </div>
+
+    <div class="lecture-inline-js js-run-practice">
+      <span class="label">🟨 자바스크립트로 같은 동작 확인 (인라인)</span>
+      <p>버블 정렬: 옆과 비교해서 큰 값을 뒤로 보냅니다. 실행해 보세요.</p>
+      <textarea class="js-run-code" rows="12" spellcheck="false">var arr = [64, 34, 25, 12, 22];
+console.log('정렬 전:', arr);
+var n = arr.length;
+for (var i = 0; i < n; i++) {
+  for (var j = 0; j < n - 1 - i; j++) {
+    if (arr[j] > arr[j + 1]) {
+      var t = arr[j];
+      arr[j] = arr[j + 1];
+      arr[j + 1] = t;
+    }
+  }
+}
+console.log('정렬 후:', arr);</textarea>
+      <div class="js-run-actions">
+        <button type="button" class="js-run-btn">실행</button>
       </div>
+      <div class="js-run-output" role="log" aria-live="polite"></div>
+    </div>
+
+    <div class="lecture-practice-integrated">
+      <strong>필요할 때만</strong> 전체 실습: <a href="../practice/sort.html">실습: 정렬 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=bubble">통합 파이썬 실습 (전체 화면)</a>
     </div>
     <nav class="page-nav">
       <a href="04-1-정렬개요.html">← 이전: 정렬 개요</a>
@@ -62,6 +105,7 @@
     </nav>
   </article>
   <script src="../js/fill-practice.js"></script>
+  <script src="../js/run-js-practice.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

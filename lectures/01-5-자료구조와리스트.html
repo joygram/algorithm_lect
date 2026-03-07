@@ -29,9 +29,20 @@
     </ul>
 
     <h4 class="section-title">문제 및 해설</h4>
-    <div class="problem-section exam-type">
+    <div class="problem-section exam-type problem-with-steps">
       <div class="q">연결 리스트에서 "맨 앞 노드"를 뭘이라고 부르나요? 삽입·삭제가 배열보다 유리한 이유는?</div>
-      <div class="a">맨 앞: <strong>head(헤드)</strong>. 각 노드가 "다음 주소"만 갖고 있어서 가운데를 끊고 넣거나 빼기만 하면 되고, 옆 칸을 전부 밀 필요가 없어요. <a href="../exam/past-exam.html">더 많은 예제 →</a></div>
+      <div class="a">
+        <p class="answer-head">① 맨 앞 노드: <strong>head(헤드)</strong></p>
+        <p>시험에 자주 나오는 용어예요. 맨 뒤 노드는 <strong>tail(테일)</strong>이라고 부릅니다.</p>
+        <div class="solution-steps">
+          <p class="step-title">② 삽입·삭제가 배열보다 유리한 이유</p>
+          <ul style="margin:0.5rem 0; padding-left:1.25rem;">
+            <li><strong>배열</strong>: 칸이 연달아 있어서, 가운데에 하나 넣거나 빼려면 그 뒤의 값들을 전부 한 칸씩 밀거나 당겨야 합니다.</li>
+            <li><strong>연결 리스트</strong>: 각 노드가 "다음 노드 주소"만 갖고 있어서, 가운데에 넣거나 뺄 때는 <em>연결만 바꿔 주면</em> 됩니다. 옆 칸을 전부 옮길 필요가 없어요.</li>
+          </ul>
+          <p class="step-summary"><strong>한 줄 요약</strong> head = 맨 앞 노드. 연결 리스트는 "연결만 바꾸면" 되니까 가운데 삽입·삭제가 배열보다 유리합니다. <a href="../exam/past-exam.html">더 많은 예제 →</a></p>
+        </div>
+      </div>
     </div>
 
     <h4 class="section-title">문제 및 답 확인</h4>
@@ -39,7 +50,11 @@
       <div class="q">배열과 연결 리스트 중 "몇 번째 칸에 바로 접근"하기 좋은 건?</div>
       <details>
         <summary>답 보기</summary>
-        <div class="a">배열. 배열은 칸이 연달아 있어서 인덱스로 바로 찾을 수 있어요. 연결 리스트는 head부터 따라가야 해요.</div>
+        <div class="a">
+          <p class="answer-head">정답: <strong>배열</strong></p>
+          <p>배열은 칸이 연달아 있으므로 "몇 번째"만 알면 그 위치로 곧바로 갈 수 있어요(인덱스로 바로 접근). 연결 리스트는 맨 앞(head)부터 "다음, 다음"을 따라가야 하므로, N번째를 보려면 N번 걸어가야 합니다.</p>
+          <p class="step-summary" style="margin-top:0.5rem;"><strong>한 줄 요약</strong> 바로 접근은 배열, 가운데 삽입·삭제는 연결 리스트가 유리해요.</p>
+        </div>
       </details>
     </div>
 
@@ -52,11 +67,33 @@
       <p class="fill-code-run-link" style="display:none;"></p>
     </div>
     <div class="problem-section practice-callout">
-      <p>리스트를 손으로 넣고 빼 보면서 순서를 확인해 보세요. 코드로 실행해 보려면 아래 파이썬 실습을 이용하세요.</p>
-      <div class="lecture-practice-cta">
-        <a href="../practice/list.html">실습: 리스트 →</a>
-        <a href="../practice/pyodide.html?snippet=list" class="practice-pyodide">브라우저에서 파이썬 실습 →</a>
+      <p>리스트를 손으로 넣고 빼 보면서 순서를 확인해 보세요. 아래 <strong>파이썬·자바스크립트 실습</strong>을 강의 안에서 바로 할 수 있어요.</p>
+    </div>
+
+    <div class="lecture-inline-run">
+      <span class="label">🐍 파이썬으로 실습 (인라인)</span>
+      <p>이 단원 예제(리스트)가 불러와져 있어요. 빈칸을 채운 뒤 실행해 보세요. 에러가 나면 화면 안내를 따라 하나씩 고쳐 보세요.</p>
+      <iframe src="../practice/pyodide.html?snippet=list&amp;embed=1" title="파이썬 실습: 리스트" class="pyodide-iframe"></iframe>
+    </div>
+
+    <div class="lecture-inline-js js-run-practice">
+      <span class="label">🟨 자바스크립트로 같은 동작 확인 (인라인)</span>
+      <p>아래 코드는 리스트(배열)에 push 후 splice로 한 칸 지우는 예제예요. 수정해 보며 실행해 보세요. 결과는 console.log로 출력돼요.</p>
+      <textarea class="js-run-code" rows="8" spellcheck="false">var arr = [10, 20, 30];
+arr.push(40);
+console.log('push(40) 후:', arr);
+arr.splice(1, 1);  // 1번 인덱스 하나 제거
+console.log('splice(1,1) 후:', arr);
+console.log('길이:', arr.length);</textarea>
+      <div class="js-run-actions">
+        <button type="button" class="js-run-btn">실행</button>
       </div>
+      <div class="js-run-output" role="log" aria-live="polite"></div>
+      <p class="inline-run-note">💡 출력이 보이지 않으면 실행 버튼을 눌렀는지 확인하세요.</p>
+    </div>
+
+    <div class="lecture-practice-integrated">
+      <strong>필요할 때만</strong> 전체 실습 페이지 이용: <a href="../practice/list.html">실습: 리스트 (손으로 하기)</a> · <a href="../practice/pyodide.html?snippet=list">통합 파이썬 실습 (전체 화면)</a>
     </div>
 
     <p><a href="../practice/list.html" class="back">실습: 리스트</a> <a href="../practice/pyodide.html?snippet=list" class="back">브라우저 파이썬 실습</a> <a href="../exam/past-exam.html" class="back">기출 유형</a></p>
@@ -66,6 +103,7 @@
     </nav>
   </article>
   <script src="../js/fill-practice.js"></script>
+  <script src="../js/run-js-practice.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

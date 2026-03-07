@@ -1,5 +1,7 @@
 # 자료구조 강의안 및 실습 (프로그래밍기능사 대비)
 
+**→ 🖥 [GitHub Pages로 보기 (직접 링크)](https://joygram.github.io/algorithm_lect/)**
+
 고등학교 특성화 자료구조 교과서를 바탕으로 한 강의 자료입니다. **언더테일 같은 턴제 RPG 만들기**를 하나의 줄거리로 두고, 세이브·메뉴·대사·스토리 분기·인벤·아이템 찾기까지 필요한 자료구조만 골라 배우도록 했어요. **중학생 수준**에서도 이해할 수 있도록 쉬운 말과 비유로 설명했고, **모바일에서도** 실습할 수 있는 웹 페이지를 포함합니다. **프로그래밍기능사** 필기·실기 대비와 **전년도 기출 유형 예제**를 함께 넣었어요.
 
 ## 구성
@@ -17,29 +19,26 @@
 - **📋 [전년도 기출 유형 예제](exam/past-exam.html)** — 스택/큐 출력 결과, 정렬 단계, 이진 탐색, 트리 순회 등 시험에 나온 유형을 중학생도 풀 수 있게 정리했어요.
 - **📖 [용어 어원 & 프로그래밍 조크](fun/etymology-and-jokes.html)** — Bit, Byte, Algorithm, Bug, Stack, Queue, Hash, Cache 등 어원·유래와 짬짬이 읽기 좋은 프로그래밍 조크 모음.
 
-## GitHub에서 바로 잘 보이게 하려면 (GitHub Pages)
+## GitHub Pages로 보기 (직접 링크)
 
-저장소에서 `index.html`을 눌러도 **소스 코드**만 보입니다. 웹처럼 보이게 하려면 **GitHub Pages**를 켜세요.
+| 링크 | 설명 |
+|------|------|
+| **[https://joygram.github.io/algorithm_lect/](https://joygram.github.io/algorithm_lect/)** | 사이트 **직접 링크** (클릭하면 바로 이동). 슬래시 없이 `.../algorithm_lect`로 들어가도 자동으로 `/`가 붙어서 이동합니다. |
 
-### 방법 1: 푸시하면 자동 배포 (권장)
+저장소에서 `index.html`을 눌러도 **소스만** 보이므로, 웹처럼 보려면 **GitHub Pages**를 켜야 합니다.
 
-이 저장소에는 **GitHub Actions** 파이프라인이 들어 있어요. `main` 브랜치에 푸시하면 자동으로 페이지가 빌드·배포됩니다.
+### 페이지가 안 뜰 때 (처음 설정)
 
-1. 저장소 **Settings** → 왼쪽 **Pages**
-2. **Build and deployment** → **Source**: **GitHub Actions**
-3. `main`에 푸시하면 워크플로가 돌면서 Pages에 배포됨
-4. `https://<사용자명>.github.io/<저장소명>/` 로 접속 (끝에 **슬래시 `/`** 꼭 넣기)
+1. **Settings** → 왼쪽 **Pages**
+2. **Build and deployment** → **Source**를 **GitHub Actions**로 선택 (이 저장소에 `.github/workflows/deploy-pages.yml` 있음)
+3. `main` 브랜치에 푸시한 뒤 **Actions** 탭에서 "Deploy to GitHub Pages" 워크플로가 **성공**했는지 확인
+4. 배포 성공 후 **2~3분** 정도 지나면 위 링크로 접속 가능 (캐시 때문에 더 걸릴 수 있음)
+5. 여전히 404면: **Source**를 **Deploy from a branch**로 바꾸고, **Branch** `main`, **Folder** `/ (root)` → **Save** 후 1~2분 기다리기
 
-### 방법 2: 브랜치에서 직접 서빙
+### 확인할 것
 
-1. **Settings** → **Pages** → **Source**: Deploy from a branch
-2. **Branch**: main, **Folder**: / (root) → **Save**
-3. 1~2분 후 위 주소로 접속
-
-**제대로 안 보일 때 확인할 것**
-- 주소 끝에 `/` 있는지 (예: `.../algorithm_lect/`). 없으면 스크립트가 자동으로 붙여 줄 수도 있지만, 직접 `/` 넣고 열어 보세요.
-- 저장소 **루트**에 `index.html`, `css/`, `lectures/` 등이 있는지 (폴더 안에 또 넣어 두면 안 됨).
-- 루트에 **.nojekyll** 파일이 있으면 Jekyll 없이 그대로 서비스되므로, 이 프로젝트는 그대로 두면 됩니다.
+- 저장소 **루트**에 `index.html`, `css/`, `lectures/` 등이 있어야 함 (폴더 안에 또 넣어 두면 안 됨)
+- 루트에 **.nojekyll** 파일이 있으면 Jekyll 없이 그대로 서비스됨 (이 프로젝트는 포함됨)
 
 ## 실행 방법 (로컬)
 

@@ -69,14 +69,26 @@
     <p><strong>시험 예</strong>: "8비트에서 -5의 2의 보수 표현" → 5 = 0000 0101 → 1의 보수 1111 1010 → 2의 보수 1111 1010 + 1 = <strong>1111 1011</strong>. 맨 앞 1이 부호 비트(음수)예요.</p>
 
     <h4 class="section-title">문제 및 해설</h4>
-    <div class="problem-section exam-type">
+    <div class="problem-section exam-type problem-with-steps">
       <div class="q">8비트 부호 있는 수에서 <strong>-3</strong>의 2의 보수 표현은?</div>
-      <div class="a">정답: <strong>1111 1101</strong>. 3 = 0000 0011 → 1의 보수 1111 1100 → 2의 보수 1111 1100 + 1 = 1111 1101. 맨 앞 1이 부호 비트(음수)예요.</div>
+      <div class="a">
+        <p class="answer-head">정답: <strong>1111 1101</strong></p>
+        <div class="solution-steps">
+          <p class="step-title">풀이 단계</p>
+          <ol>
+            <li><strong>① 양수 3을 8비트 2진수로</strong> 씁니다. 3 = 11₂이므로 앞을 0으로 채워 8자리로 → <strong>0000 0011</strong>.</li>
+            <li><strong>② 1의 보수</strong>: 0은 1로, 1은 0으로 바꿉니다. → <strong>1111 1100</strong>.</li>
+            <li><strong>③ 2의 보수</strong>: ② 결과에 1을 더합니다. 1111 1100 + 1 = <strong>1111 1101</strong>. 이게 -3의 2의 보수 표현입니다.</li>
+          </ol>
+          <p class="step-why"><strong>왜 맨 앞이 1인가요?</strong> 부호 있는 수에서 맨 앞 비트는 부호 비트예요. 0이면 양수, 1이면 음수. 2의 보수로 만든 음수는 항상 맨 앞이 1이 됩니다.</p>
+          <p class="step-summary"><strong>한 줄 요약</strong> 양수 2진수 → 1의 보수(0↔1) → 2의 보수(+1). 결과의 맨 앞 1 = 부호 비트(음수).</p>
+        </div>
+      </div>
     </div>
 
     <h4 class="section-title">문제 및 답 확인</h4>
     <div class="problem-section">
-      <p>아래 빈칸에 <strong>-5의 2의 보수</strong>를 구하는 과정을 채우고 [확인]을 누르세요.</p>
+      <p>아래 빈칸에 <strong>-5의 2의 보수</strong>를 구하는 과정을 <strong>한 단계씩</strong> 채워 보세요. ① 5를 8비트 2진수로 쓰고, ② 0과 1을 바꾼 1의 보수, ③ 그다음 1을 더한 2의 보수를 순서대로 입력한 뒤 [확인]을 누르세요.</p>
     </div>
     <div class="inline-practice">
       <p>① 5를 8비트 2진수로 → ② 1의 보수(0↔1) → ③ 2의 보수(②+1) 순서로 입력하세요.</p>
@@ -133,7 +145,7 @@
         if (!s1 && !s2 && !s3) { msg.textContent = '빈칸을 채운 뒤 확인을 눌러 주세요.'; msg.className = 'check-msg'; return; }
         if (!only01(s1) || !only01(s2) || !only01(s3)) { msg.textContent = '0과 1만 입력해 주세요.'; msg.className = 'check-msg err'; return; }
         var ok = (pad8(s1) === a1 && pad8(s2) === a2 && pad8(s3) === a3);
-        msg.textContent = ok ? '정답이에요! -5의 8비트 2의 보수 = 11111011' : '① 00000101 ② 11111010 ③ 11111011 순서로 다시 해 보세요.';
+        msg.textContent = ok ? '정답이에요! 5 → 1의 보수 → +1 하면 -5의 2의 보수 11111011이 됩니다. 맨 앞 1이 부호 비트(음수)예요.' : '순서: ① 5의 8비트 2진수 00000101 ② 0↔1 바꾼 11111010 ③ ②+1 = 11111011. 한 단계씩 확인해 보세요.';
         msg.className = 'check-msg ' + (ok ? 'ok' : 'err');
       });
     })();

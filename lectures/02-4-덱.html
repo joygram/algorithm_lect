@@ -16,6 +16,11 @@
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="02-index.html" class="back">이 단원 목차</a>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>덱</strong> = <strong>최근 본 아이템/방 목록</strong>, <strong>스크롤 히스토리</strong>처럼 앞뒤로 넣고 빼는 경우에 씁니다. "뒤에만 넣고 앞에서만 뺀다"면 큐(대사 순서), "한쪽 끝에서만 넣고 뺀다"면 스택(메뉴 뒤로가기)과 같아요. RPG에서 최근 방문한 맵 5개를 덱으로 유지할 수 있어요.</p>
+    </div>
+
     <h2>덱(Deque)</h2>
     <p><strong>D</strong>ouble-<strong>E</strong>nded <strong>Que</strong>ue(더블 엔디드 큐)의 줄임말 <strong>덱(Deque, 덱)</strong>이에요. <strong>앞과 뒤 둘 다</strong> 넣고 뺄 수 있는 구조예요. 스택이랑 큐를 합친 느낌입니다.</p>
 
@@ -27,7 +32,7 @@
 
     <h3>활용</h3>
     <p>최근 본 목록, 스크롤 히스토리, 슬라이딩 윈도우 등 앞뒤로 자유롭게 넣고 빼는 경우에 씁니다.</p>
-    <div class="fun-callout"><span class="label">😄 조크</span> 전구 갈 때 프로그래머가 몇 명 필요해요? 영 명. 그건 하드웨어 문제니까요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+    <div class="fun-callout has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 전구 갈 때 프로그래머가 몇 명 필요해요? 영 명. 그건 하드웨어 문제니까요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <h3 class="section-title">🔄 유사 구조 비교: 스택 vs 큐 vs 덱</h3>
     <p>넣고 빼는 <strong>위치</strong>가 다르면 나오는 순서가 달라요. 아래 표로 차이를 비교해 보세요.</p>
@@ -85,9 +90,32 @@
       </details>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 덱으로 "뒤에 1, 2 넣고 → 앞에서 하나 꺼내고 → 앞에 0 넣고 → 뒤에서 하나 꺼내기" 순서로 했을 때, 꺼낸 값 두 개는? (순서대로)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 1, 2</strong></p>
+          <p>뒤에 1,2 넣음 → [1, 2](앞=1, 뒤=2). 앞에서 꺼냄 → 1 나옴(첫 번째). 앞에 0 넣음 → [0, 2]. 뒤에서 꺼냄 → 2 나옴(두 번째). 따라서 꺼낸 값은 1, 2예요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. 게임에서 "최근 본 메뉴 3개"를 기억할 때, 새 메뉴를 볼 때마다 "맨 앞에 추가"하고 3개를 넘기면 "맨 뒤를 삭제"하면 됩니다. 이때 쓰기 좋은 자료구조는?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 덱(Deque)</strong></p>
+          <p>앞에 appendleft로 새 메뉴 추가, 길이가 3을 넘으면 뒤에서 pop으로 오래된 것 제거. 덱은 앞·뒤 연산이 모두 O(1)이라 적합해요.</p>
+        </div>
+      </details>
+    </div>
+
     <h4 class="section-title">문제 및 실습</h4>
     <div class="problem-section practice-callout">
-      <p>앞/뒤에 넣고 앞/뒤에서 꺼내 보면서 덱 동작을 확인해 보세요. <strong>아래 iframe</strong>에서 큐(deque) 예제를 바로 실행할 수 있어요.</p>
+      <p>앞/뒤에 넣고 앞/뒤에서 꺼내 보면서 덱 동작을 확인해 보세요. 아래에서 큐(deque) 예제를 바로 실행할 수 있어요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/deque.html">실습: 덱 →</a>
       </div>
@@ -106,7 +134,7 @@
       <p><strong>왜 list가 아니라 deque인가요?</strong> 리스트의 <code>pop(0)</code>은 비용이 커요. deque는 맨 앞·맨 뒤만 다루도록 구현돼 있어서 덱/큐 연산에 맞습니다.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 큐: 먼저 넣은 게 먼저 나옴. popleft()로 앞에서 꺼냄
 from collections import deque
 q = deque(["첫번째", "두번째", "세번째"])
 print("큐:", list(q))
@@ -146,6 +174,7 @@ print("남은 큐:", list(q))</code></pre>
     </nav>
   </article>
   <script src="../js/fill-practice.js"></script>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

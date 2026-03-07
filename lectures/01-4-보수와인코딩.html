@@ -16,6 +16,11 @@
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="01-index.html" class="back">이 단원 목차</a>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>보수·부호 비트</strong> = 게임에서 <strong>데미지 -5</strong>, <strong>골드 감소</strong>처럼 음수를 저장할 때 2의 보수로 저장해요. "n비트로 표현 가능한 범위"는 부호 있으면 -2^(n-1)~2^(n-1)-1, 부호 없으면 0~2^n-1이라서 HP·스탯 최대값 설계할 때 쓰입니다. <strong>인코딩</strong>은 대사·아이템 이름 같은 문자열을 파일에 저장할 때 UTF-8 등으로 쓰여요.</p>
+    </div>
+
     <h2>부호 비트 — 먼저 이걸 구분하자</h2>
     <p>교과서에서 "부호 있는 수", "부호 없는 수"라고 나오면 <strong>맨 앞 비트 한 칸을 뭘로 쓰느냐</strong>만 구분하면 돼요.</p>
 
@@ -108,9 +113,32 @@
       </div>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 게임에서 데미지 -3을 8비트 2의 보수로 표현하면? (3의 2진수 → 1의 보수 → 2의 보수)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 11111101</strong></p>
+          <p>3 = 00000011 → 1의 보수 11111100 → 2의 보수(+1) 11111101. 맨 앞 1은 부호 비트(음수). 게임에서 "데미지 -3"을 메모리나 패킷에 저장할 때 이런 비트열로 쓸 수 있어요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. 8비트 부호 있는 정수에서 10000000₂(2의 보수)는 10진수로 얼마인가요? (맨 앞 1 = 음수, 나머지 비트로 크기 구한 뒤 음수 부호 붙이기)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: -128</strong></p>
+          <p>2의 보수에서 10000000은 "가장 큰 음수"로, 10진수 -128이에요. 8비트 부호 있는 정수 범위는 -128 ~ 127. 게임에서 HP·스탯이 8비트로 저장되면 이 범위 안의 값만 쓸 수 있어요.</p>
+        </div>
+      </details>
+    </div>
+
     <h4 class="section-title">문제 및 실습</h4>
     <div class="problem-section practice-callout">
-      <p>진법 변환과 보수 빈칸 채우기를 더 해 보세요. <strong>아래 iframe</strong>에서 리스트 예제를 바로 실행해 볼 수 있어요.</p>
+      <p>진법 변환과 보수 빈칸 채우기를 더 해 보세요. <strong>아래</strong>에서 리스트 예제를 바로 실행해 볼 수 있어요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/radix.html">실습: 진법·보수 따라하기 →</a>
       </div>
@@ -127,7 +155,7 @@
       <p><strong>왜 미리 보나요?</strong> 자료구조 실습에서 리스트를 자주 쓰므로, 여기서 append·pop만 먼저 익히면 다음 단원이 수월해요.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)
 arr = [10, 20, 30]
 # ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)
 arr._____(40)
@@ -176,6 +204,7 @@ print("길이:", len(arr))</code></pre>
     })();
   </script>
   <script src="../js/fill-practice.js"></script>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

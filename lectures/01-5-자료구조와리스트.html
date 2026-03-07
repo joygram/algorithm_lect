@@ -20,11 +20,15 @@
       <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
       <p><strong>리스트</strong> = 인벤토리(아이템 순서), 대사 한 줄씩 저장, 퀘스트 목록. "몇 번째 칸"으로 바로 접근해서 아이템 정보를 보여줄 때 써요. <strong>배열 vs 연결 리스트</strong>는 "인벤에 넣었다 뺐다"가 많으면 연결 리스트가, "n번째 아이템 보기"가 많으면 배열이 유리해요.</p>
     </div>
+    <figure class="lecture-figure" aria-label="게임 인벤토리 예시">
+      <img src="../images/game-inventory-slots.png" alt="언더테일 스타일 인벤토리: 슬롯에 검, 물약, 방패 등 아이템이 들어 있는 모습. 리스트 인덱스 = 슬롯 번호." width="400">
+      <figcaption>언더테일 인벤처럼 슬롯 번호가 인덱스. append로 획득·pop(인덱스)로 사용.</figcaption>
+    </figure>
 
     <h2>자료구조와 알고리즘</h2>
     <p><strong>자료구조</strong>는 자료를 어떤 순서·형태로 담아 둘지 정한 구조예요. 게임에서 대사 목록(리스트), 메뉴 뒤로가기(스택), 이벤트 순서(큐)처럼요.</p>
     <p><strong>알고리즘</strong>은 문제를 풀기 위한 단계별 방법이에요. 좋은 자료구조를 고르면 알고리즘이 더 빨라져요. 프로그래밍기능사 실기에서 자료구조를 이용한 코딩이 나올 수 있어요.</p>
-    <div class="fun-callout"><span class="label">😄 조크</span> 세상에는 10가지 종류의 사람이 있어요 — 2진수를 아는 사람이랑 모르는 사람. (10을 2진수로 쓰면 2예요.) <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+    <div class="fun-callout has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 세상에는 10가지 종류의 사람이 있어요 — 2진수를 아는 사람이랑 모르는 사람. (10을 2진수로 쓰면 2예요.) <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <h2>리스트(List, 리스트)</h2>
     <p><strong>순서가 있는</strong> 자료의 나열이에요. 같은 종류의 값들이 한 줄로 배치됩니다.</p>
@@ -44,7 +48,7 @@
       <p><strong>왜 이렇게 쓰나요?</strong> 파이썬 list는 "동적 배열"이라 맨 뒤 추가는 빠르고, 인덱스로 접근·삭제가 직관적이에요. 실습에서는 "append로 넣고, pop(인덱스)로 특정 위치 제거"를 익히면 됩니다.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 리스트: 맨 뒤에 추가 → append, 인덱스로 제거 → pop(인덱스)
 arr = [10, 20, 30]
 # ① 빈칸: 리스트 맨 뒤에 40을 추가하는 메서드 (append / insert / pop 중)
 arr._____(40)
@@ -106,6 +110,29 @@ console.log('길이:', arr.length);</textarea>
       </details>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 인벤토리 리스트가 <code>["검", "물약", "방패"]</code>일 때, 1번 슬롯(물약)을 사용해서 제거한 뒤 맨 뒤에 "열쇠"를 추가하면 최종 리스트는?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: ["검", "방패", "열쇠"]</strong></p>
+          <p>pop(1) → "물약" 제거, 리스트는 ["검", "방패"]. append("열쇠") → ["검", "방패", "열쇠"]. 게임에서 "아이템 사용 후 새 아이템 획득" 순서를 그대로 코드로 옮긴 거예요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. "가운데 삽입·삭제가 많을 때" 배열과 연결 리스트 중 어떤 쪽이 유리한가요? 그 이유를 한 줄로 쓰면?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 연결 리스트가 유리하다.</strong></p>
+          <p>이유: 연결 리스트는 "다음 노드 주소"만 바꿔 주면 되지만, 배열은 가운데에 넣거나 빼면 그 뒤의 원소들을 한 칸씩 밀거나 당겨야 해서 비용이 커요.</p>
+        </div>
+      </details>
+    </div>
+
     <p class="lecture-practice-integrated" style="margin-top:0.5rem;">위 실습은 <strong>이 강의(리스트)</strong>에서 배운 append·pop(인덱스)을 쓰는 예제입니다. 손으로 해보려면 <a href="../practice/list.html">실습: 리스트 (손으로 하기)</a>.</p>
 
     <h3 class="section-title">I단원 심화 실습 (3단계) — 이 페이지 안에서</h3>
@@ -139,6 +166,7 @@ console.log('길이:', arr.length);</textarea>
   </article>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/run-js-practice.js"></script>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>III단원 확장: 게임 시스템 실습과제 | 트리·그래프</title>
+  <link rel="stylesheet" href="../../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>III단원 확장 — 게임 시스템 실습과제</h1>
+    <p class="subtitle">학습한 트리·그래프를 스토리 분기·맵 연결·최단 경로로 확장하기 (추가 강의)</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../../index.html" class="back">← 전체 목차</a>
+    <a href="../03-index.html" class="back">III단원 목차</a>
+
+    <p class="hook lead">이 페이지는 <strong>강의 외 추가 강의</strong>예요. III단원에서 배운 <strong>트리·그래프·DFS·BFS</strong>를 게임의 <strong>스토리 분기</strong>, <strong>방 연결·갈 수 있는 맵</strong>, <strong>최단 거리(경로 찾기)</strong>라는 구체적인 시스템으로 확장합니다. <strong>자료구조 복기 → 개념 → 실제 구현 활용</strong> 순으로 짚어요.</p>
+
+    <!-- ========== 1. 트리 → 스토리 분기 ========== -->
+    <h2>1. 트리 — 스토리·퀘스트 분기</h2>
+    <p>선택지에 따라 갈라지는 스토리는 <strong>한 루트(시작 장면)에서 자식 노드(다음 장면)로 뻗어 나가는 트리</strong>로 표현할 수 있어요. 루트 = 스토리 시작, 리프 = 엔딩·종료 지점이에요.</p>
+
+    <div class="expansion-review" role="region" aria-label="복기">
+      <h3>📌 복기: 트리</h3>
+      <ul>
+        <li><strong>개념</strong> 트리는 사이클이 없는 연결 그래프. 루트(시작 노드), 부모/자식, 리프(자식이 없는 노드)로 구분해요.</li>
+        <li><strong>연산</strong> 노드에 "장면 ID·대사·선택지 목록"을 담고, 자식 노드로 이동 = 선택에 따른 다음 장면으로 이동.</li>
+      </ul>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 표현">
+      <h3>📌 트리를 쓰는 방식</h3>
+      <dl>
+        <dt>딕셔너리로 "노드 → 자식들"</dt>
+        <dd><code>tree = {"start": ["scene_a", "scene_b"], "scene_a": ["end1"], "scene_b": ["end2"], "end1": [], "end2": []}</code> — 각 노드가 키, 값이 자식 노드 리스트.</dd>
+        <dt>노드 클래스</dt>
+        <dd>각 노드에 <code>id</code>, <code>text</code>(대사), <code>children</code>(자식 리스트)를 두고, 선택에 따라 현재 노드를 자식 중 하나로 바꿔요.</dd>
+      </dl>
+    </div>
+    <div class="game-use-callout" role="region" aria-label="실제 구현 활용">
+      <h3>🎮 실제 구현에서 쓰는 곳</h3>
+      <ul>
+        <li><strong>스토리 분기</strong>: 루트 = 첫 장면, 선택지 1·2·3 = 자식 3개. 선택하면 해당 자식 노드로 이동하고, 그 노드의 대사·선택지를 표시. 리프에 도달하면 엔딩 처리.</li>
+        <li><strong>퀘스트 의존 관계</strong>: "퀘스트 A 완료 후에만 B 오픈"은 A → B 간선이 있는 트리(또는 DAG). 퀘스트 트리를 순회하면서 "해금 가능한 퀘스트"만 목록에 노출할 수 있어요.</li>
+        <li><strong>순회와 장면 방문</strong>: 전위 순회 = 장면 들어가자마자 연출 재생, 후위 = 자식 장면 다 본 뒤 정리 연출. 중위는 "왼쪽 자식 → 현재 → 오른쪽 자식" 순서로 대화를 이어갈 때 활용.</li>
+      </ul>
+    </div>
+
+    <!-- ========== 2. 그래프 → 맵·방 연결, BFS/DFS ========== -->
+    <h2>2. 그래프 — 맵 연결·갈 수 있는 방·최단 거리</h2>
+    <p>방과 방이 문으로 연결된 구조는 <strong>정점 = 방, 간선 = 연결</strong>인 그래프예요. "지금 방에서 갈 수 있는 방 목록", "목표 방까지 최단 거리"를 그래프 탐색(DFS, BFS)으로 구할 수 있어요.</p>
+
+    <div class="expansion-review" role="region" aria-label="복기">
+      <h3>📌 복기: 그래프·DFS·BFS</h3>
+      <ul>
+        <li><strong>개념</strong> 그래프 = 정점(노드) + 간선(연결). 인접 리스트로 "각 방에서 이웃 방 리스트"를 저장.</li>
+        <li><strong>DFS</strong> 한 방에서 깊이 우선으로 쭉 들어갔다가 돌아옴. "갈 수 있는 모든 방을 찾기", "미로에서 출구 찾기"에 활용.</li>
+        <li><strong>BFS</strong> 같은 깊이(거리)를 단계별로 퍼짐. <strong>간선 가중치가 모두 같을 때</strong> BFS로 구한 거리가 곧 최단 거리. "가장 가까운 NPC·목표" 찾기에 쓰여요.</li>
+      </ul>
+    </div>
+    <div class="python-api-guide" role="region" aria-label="파이썬 표현">
+      <h3>📌 사용하는 파이썬 API</h3>
+      <dl>
+        <dt><code>from collections import deque</code></dt>
+        <dd>BFS에서 "다음에 방문할 정점"을 넣을 큐로 deque를 씁니다. append(다음 방), popleft()로 현재 방.</dd>
+        <dt>인접 리스트</dt>
+        <dd><code>adj = {"방1": ["방2", "방3"], "방2": ["방1", "방4"], ...}</code> — 각 방에서 한 번에 갈 수 있는 방 리스트.</dd>
+        <dt>방문 집합</dt>
+        <dd><code>visited = set()</code>로 이미 방문한 방을 기록해 같은 방을 두 번 방문하지 않도록 해요.</dd>
+      </dl>
+    </div>
+    <div class="game-use-callout" role="region" aria-label="실제 구현 활용">
+      <h3>🎮 실제 구현에서 쓰는 곳</h3>
+      <ul>
+        <li><strong>맵·방 연결</strong>: 던전/맵을 그래프로 두고, 문/포탈이 간선. "현재 방에서 갈 수 있는 방" = 인접 리스트에서 바로 조회.</li>
+        <li><strong>DFS 활용</strong>: "이 방에서 도달 가능한 모든 방"(미로 탐색, 맵 열기), "연결된 구역 하나씩 칠하기" 같은 문제. 스택 또는 재귀로 구현.</li>
+        <li><strong>BFS·최단 거리</strong>: "플레이어 위치에서 가장 가까운 상점/NPC", "퀘스트 목표까지 걸음 수", 미니맵에서의 최단 경로. 간선 비용이 모두 1일 때 BFS 한 번이면 최단 거리와 경로를 구할 수 있어요.</li>
+        <li><strong>가중치가 있으면</strong>: 방 사이 이동 비용(시간·거리)이 다르면 다익스트라 같은 알고리즘으로 최단 경로를 구합니다. (V단원 확장에서 탐색·경로와 연결돼요.)</li>
+      </ul>
+    </div>
+
+    <nav class="page-nav">
+      <a href="02-게임시스템-선형구조.html">← II단원 확장</a>
+      <a href="../03-4-그래프.html">III단원: 그래프</a>
+      <a href="04-게임시스템-정렬.html" class="next">IV단원 확장: 정렬 →</a>
+    </nav>
+  </article>
+  <script src="../../js/theme.js"></script>
+</body>
+</html>

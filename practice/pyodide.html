@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>실습: 브라우저에서 파이썬 | 자료구조</title>
   <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" crossorigin="anonymous">
   <!-- Pyodide: CDN 절대 경로 사용 → GitHub Pages 어디서든 동작 -->
   <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="header">
@@ -17,28 +20,19 @@
   <main class="practice-page pyodide-page">
     <a href="../index.html" class="back">← 목차</a>
 
-    <p><strong>통합 실습 페이지</strong>예요. 각 강의 안에도 파이썬·자바스크립트 실습이 인라인으로 들어 있어요. 모든 예제를 한곳에서 쓰거나 전체 화면으로 하고 싶을 때 이 페이지를 이용하세요.</p>
-    <p>아래에서 <strong>실습 예제를 고르면</strong> 뼈대 코드가 불러와요. <strong>빈칸(_____)이나 주석으로 표시된 부분</strong>을 채운 뒤 <strong>실행</strong>해서 결과를 확인하세요. 처음 한 번은 Python 엔진 로딩으로 조금 걸릴 수 있어요.</p>
-
-    <div class="pyodide-presets">
-      <span class="pyodide-presets-label">실습 예제:</span>
-      <button type="button" class="btn-preset" data-snippet="list">리스트 (추가·삭제)</button>
-      <button type="button" class="btn-preset" data-snippet="stack">스택 (Push/Pop)</button>
-      <button type="button" class="btn-preset" data-snippet="queue">큐 (FIFO)</button>
-      <button type="button" class="btn-preset" data-snippet="bubble">버블 정렬</button>
-      <button type="button" class="btn-preset" data-snippet="binary">이진 탐색</button>
-      <button type="button" class="btn-preset" data-snippet="flags">게임: 비트 플래그</button>
-      <button type="button" class="btn-preset" data-snippet="inventory">게임: 인벤토리</button>
-    </div>
+    <p><strong>통합 실습 페이지</strong>예요. 각 강의 안에도 파이썬 실습이 들어 있어요. <strong>하단 예제 선택</strong>에서 뼈대 코드를 고르면 불러와요. 빈칸(_____)을 채운 뒤 <strong>실행</strong>해서 결과를 확인하세요. 처음 한 번은 Python 엔진 로딩으로 조금 걸릴 수 있어요.</p>
 
     <div id="pyodide-guide" class="pyodide-guide" role="region" aria-label="실습 가이드">
       <p class="pyodide-guide-title">📌 실습 가이드</p>
-      <p id="pyodide-guide-body" class="pyodide-guide-body">왼쪽에서 실습 예제를 누르면 여기에 <strong>할 일</strong>과 <strong>채울 부분</strong> 안내가 나타납니다. 빈칸을 채운 뒤 실행해 보세요.</p>
+      <p id="pyodide-guide-body" class="pyodide-guide-body">아래에서 실습 예제를 고르면 여기에 <strong>할 일</strong>과 <strong>채울 부분</strong> 안내가 나타납니다. 빈칸을 채운 뒤 실행해 보세요.</p>
     </div>
 
     <div class="pyodide-box">
       <label class="pyodide-label" for="pyodide-code">Python 코드</label>
-      <textarea id="pyodide-code" class="code-editor" rows="14" placeholder="# 여기에 Python 코드를 쓰고 실행 버튼을 누르세요.&#10;print('안녕!')" spellcheck="false"></textarea>
+      <div class="code-editor-wrap">
+        <pre id="pyodide-code-mirror" class="code-editor-highlight" aria-hidden="true"><code id="pyodide-code-mirror-code" class="language-python"></code></pre>
+        <textarea id="pyodide-code" class="code-editor" rows="14" placeholder="# 여기에 Python 코드를 쓰고 실행 버튼을 누르세요.&#10;print('안녕!')" spellcheck="false"></textarea>
+      </div>
       <div class="pyodide-actions">
         <button type="button" id="pyodide-run" class="btn-run" disabled>실행</button>
         <span id="pyodide-status" class="pyodide-status" aria-live="polite">Python 엔진 로딩 중… (처음 한 번만 필요해요)</span>
@@ -46,6 +40,19 @@
       <div class="pyodide-output-wrap">
         <span class="pyodide-output-label">실행 결과</span>
         <div id="pyodide-output" class="code-output" role="log" aria-live="polite"></div>
+      </div>
+      <div class="pyodide-presets pyodide-presets-bottom">
+        <label class="pyodide-presets-label" for="pyodide-snippet-select">실습 예제 선택:</label>
+        <select id="pyodide-snippet-select" class="pyodide-snippet-select" aria-label="실습 예제 선택">
+          <option value="">— 예제 고르기 —</option>
+          <option value="list">리스트 (추가·삭제)</option>
+          <option value="stack">스택 (Push/Pop)</option>
+          <option value="queue">큐 (FIFO)</option>
+          <option value="bubble">버블 정렬</option>
+          <option value="binary">이진 탐색</option>
+          <option value="flags">게임: 비트 플래그</option>
+          <option value="inventory">게임: 인벤토리</option>
+        </select>
       </div>
     </div>
 
@@ -58,7 +65,7 @@
         <li>한 번에 다 채우기 어렵다면 <strong>첫 번째 빈칸만</strong> 채우고 실행해 보고, 되면 다음 빈칸을 채우는 식으로 하나씩 보강하세요.</li>
       </ol>
     </div>
-    <p class="hint">💡 빈칸은 <code>_____</code> 또는 주석 <code># 여기에: ...</code>으로 표시돼요. 채운 뒤 실행해서 출력이 맞는지 확인하세요. 막히면 같은 예제를 다시 불러오면 처음 뼈대로 돌아갑니다.</p>
+    <p class="hint">💡 빈칸은 <code>_____</code> 또는 주석 <code># 여기에: ...</code>으로 표시돼요. 채운 뒤 실행해서 출력이 맞는지 확인하세요. 막히면 아래 예제 선택에서 같은 예제를 다시 고르면 처음 뼈대로 돌아갑니다.</p>
   </main>
 
   <script src="../js/pyodide-runner.js"></script>
@@ -92,21 +99,42 @@
       var statusEl = document.getElementById('pyodide-status');
       var outputEl = document.getElementById('pyodide-output');
       var guideBody = document.getElementById('pyodide-guide-body');
+      var mirrorPre = document.getElementById('pyodide-code-mirror');
+      var mirrorCode = document.getElementById('pyodide-code-mirror-code');
+
+      function updateHighlight() {
+        if (!mirrorCode) return;
+        var raw = codeEl.value;
+        mirrorCode.textContent = raw || codeEl.placeholder || '';
+        if (typeof Prism !== 'undefined') Prism.highlightElement(mirrorCode);
+      }
+      codeEl.addEventListener('input', updateHighlight);
+      codeEl.addEventListener('scroll', function () {
+        if (mirrorPre) mirrorPre.scrollTop = codeEl.scrollTop;
+      });
 
       function loadSnippet(key) {
-        if (snippets[key]) codeEl.value = snippets[key];
+        if (snippets[key]) {
+          codeEl.value = snippets[key];
+          updateHighlight();
+        }
         if (guides[key]) guideBody.innerHTML = guides[key];
       }
 
-      document.querySelectorAll('.btn-preset').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          loadSnippet(this.getAttribute('data-snippet'));
+      var selectEl = document.getElementById('pyodide-snippet-select');
+      if (selectEl) {
+        selectEl.addEventListener('change', function () {
+          var key = this.value;
+          if (key && snippets[key]) loadSnippet(key);
         });
-      });
+      }
       var hash = window.location.hash.slice(1) || '';
       var param = (window.location.search.match(/[?&]snippet=([^&]+)/) || [])[1] || '';
       var snippetKey = (param || hash).toLowerCase();
-      if (snippetKey && snippets[snippetKey]) loadSnippet(snippetKey);
+      if (snippetKey && snippets[snippetKey]) {
+        loadSnippet(snippetKey);
+        if (selectEl) selectEl.value = snippetKey;
+      }
 
       var runner = null;
       function setReady(ready) {
@@ -172,8 +200,9 @@
       });
 
       if (!snippetKey || !snippets[snippetKey]) {
-        codeEl.value = '# 위에서 실습 예제를 고르면 뼈대 코드가 불러와요.\n# 빈칸(_____)을 채운 뒤 실행 버튼을 눌러 보세요.\nprint("실습 예제를 선택해 주세요.")';
+        codeEl.value = '# 아래에서 실습 예제를 고르면 뼈대 코드가 불러와요.\n# 빈칸(_____)을 채운 뒤 실행 버튼을 눌러 보세요.\nprint("실습 예제를 선택해 주세요.")';
       }
+      updateHighlight();
     })();
   </script>
   <script src="../js/theme.js"></script>

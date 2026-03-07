@@ -16,6 +16,11 @@
     <a href="../index.html" class="back">← 전체 목차</a>
     <a href="04-index.html" class="back">이 단원 목차</a>
 
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳 (언더테일·RPG)</p>
+      <p><strong>정렬</strong> = <strong>인벤토리 정렬</strong>에 그대로 씁니다. "이름순", "가격순", "획득 순", "등급순"처럼 아이템 목록을 한 줄로 재배치할 때 비교·교환 방식(버블·선택·삽입)과 같은 생각이에요. 정렬된 데이터는 이진 탐색으로 아이템 ID·이름을 빨리 찾을 수 있어서, 게임 데이터 테이블을 미리 정렬해 두는 경우가 많아요.</p>
+    </div>
+
     <h2>정렬(Sort)이란?</h2>
     <p>한 줄로 된 자료를 어떤 <strong>기준에 맞게</strong> 다시 배치하는 거예요.</p>
     <ul>
@@ -31,7 +36,7 @@
 
     <div class="practice-callout">
       <p class="label">실습하기</p>
-      <p>정렬을 한 단계씩 해 보거나, <strong>아래 iframe</strong>에서 버블 정렬 코드를 바로 실행해 보세요.</p>
+      <p>정렬을 한 단계씩 해 보거나, <strong>아래</strong>에서 버블 정렬 코드를 바로 실행해 보세요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/sort.html">실습: 정렬 →</a>
       </div>
@@ -50,7 +55,7 @@
       <p><strong>왜 이렇게 쓰나요?</strong> 버블 정렬 정의가 "인접 비교 후 교환"이므로, 인덱싱·비교·스왑 문법만 있으면 구현할 수 있어요.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
 arr = [64, 34, 25, 12, 22]
 print("정렬 전:", arr)
 n = len(arr)
@@ -73,6 +78,7 @@ print("정렬 후:", arr)</code></pre>
     </nav>
   </article>
   <script src="../js/fill-practice.js"></script>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

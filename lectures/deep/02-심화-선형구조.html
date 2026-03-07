@@ -20,21 +20,22 @@
 
     <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
       <p class="game-use-title">🎮 이 심화에서 다루는 게임 활용</p>
-      <p><strong>스택</strong> = 타이틀 → 메인 → 설정 들어갈 때마다 push, "뒤로" 누르면 pop. <strong>큐</strong> = 대사 줄을 순서대로 enqueue, 화면에 띄울 때마다 dequeue.</p>
+      <p><strong>스택</strong> = 타이틀 → 메인 → 설정 들어갈 때마다 push, "뒤로" 누르면 pop. (LIFO) 메뉴뿐 아니라 <strong>씬 전환 히스토리</strong>, "이전 대화로 돌아가기"에도 쓸 수 있어요. <strong>큐</strong> = 대사 줄을 순서대로 enqueue, "다음" 누를 때마다 dequeue. (FIFO) 이벤트·대사·메시지가 <strong>나온 순서대로 처리</strong>될 때 모두 큐로 다룹니다.</p>
     </div>
 
     <h2>심화 실습 4단계</h2>
 
     <div class="deep-practice-steps">
       <ol>
-        <li><strong>1단계: 스택으로 메뉴 화면 이름 쌓기</strong> — 리스트에 "타이틀", "메인", "설정"을 append로 넣고, pop으로 "뒤로" 할 때마다 꺼내 보기.</li>
-        <li><strong>2단계: 큐로 대사 줄 넣고 꺼내기</strong> — deque에 "안녕!", "선택지가 있어요", "1. 예 2. 아니오"를 넣고 popleft()로 순서대로 꺼내 보기.</li>
-        <li><strong>3단계: 스택+큐 함께 쓰기</strong> — 메뉴 스택과 대사 큐를 각각 변수로 두고, "메뉴 들어가기" / "대사 다음" 시뮬레이션을 print로 확인.</li>
-        <li><strong>4단계: 간단한 메뉴 루프 흉내</strong> — while과 input은 쓰지 않고, 미리 정해 둔 push/pop 순서를 코드로 써서 "들어가기·뒤로가기" 순서가 스택에 어떻게 쌓이는지 확인.</li>
+        <li><strong>1단계: 스택으로 메뉴 화면 이름 쌓기</strong> — <strong>개념</strong> 스택은 맨 위에만 넣고 빼는 구조(LIFO). <strong>활용</strong> 리스트에 "타이틀", "메인", "설정"을 append로 넣고, pop으로 "뒤로" 할 때마다 꺼낸 값이 "현재 화면"이에요.</li>
+        <li><strong>2단계: 큐로 대사 줄 넣고 꺼내기</strong> — <strong>개념</strong> 큐는 맨 뒤에 넣고 맨 앞에서 빼는 구조(FIFO). <strong>활용</strong> deque에 "안녕!", "선택지가 있어요"를 넣고 popleft()로 한 줄씩 꺼내서 화면에 표시하는 흐름이에요.</li>
+        <li><strong>3단계: 스택+큐 함께 쓰기</strong> — 메뉴 스택과 대사 큐를 각각 변수로 두고, "메뉴 들어가기" / "대사 다음" 시뮬레이션을 print로 확인. 게임에서는 한 화면에 메뉴 계층(스택)과 대사 줄(큐)이 동시에 쓰여요.</li>
+        <li><strong>4단계: 간단한 메뉴 루프 흉내</strong> — 미리 정해 둔 push/pop 순서를 코드로 써서 "들어가기·뒤로가기"가 스택에 어떻게 쌓이는지 확인. 디버깅할 때 "지금 스택에 뭐가 쌓여 있나?"를 보면 메뉴 흐름을 추적할 수 있어요.</li>
       </ol>
     </div>
 
     <h3>1·2단계: 스택·큐 실습</h3>
+    <p><strong>개념 복기</strong> 스택 = LIFO(나중에 넣은 게 먼저 나옴) → 메뉴 "뒤로". 큐 = FIFO(먼저 넣은 게 먼저 나옴) → 대사·이벤트 순서. 파이썬에서는 리스트로 스택(append/pop), <code>collections.deque</code>로 큐(append/popleft)를 씁니다.</p>
     <div class="lecture-inline-run">
       <span class="label">🐍 스택 (메뉴 히스토리)</span>
       <iframe src="../../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬 실습: 스택" class="pyodide-iframe"></iframe>
@@ -45,7 +46,7 @@
     </div>
 
     <h3>3·4단계</h3>
-    <p>같은 페이지의 통합 파이썬 실습에서 스택 예제와 큐 예제를 번갈아 불러와서, 각각 "메뉴 이름 push/pop", "대사 popleft"를 한 번씩 실행해 보세요.</p>
+    <p><strong>활용</strong> 실제 게임에서는 "현재 화면" = 스택 top, "다음에 나올 대사" = 큐 front. 같은 페이지의 통합 파이썬 실습에서 스택 예제와 큐 예제를 번갈아 불러와서, "메뉴 이름 push/pop", "대사 popleft"를 한 번씩 실행해 보세요.</p>
 
     <nav class="page-nav">
       <a href="../02-4-덱.html">← II단원: 덱</a>

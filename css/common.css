@@ -320,6 +320,44 @@ body {
 .lecture .exam-type .a { margin: 0.5rem 0 0; padding: 0.5rem 0 0; border-top: 1px dashed var(--exam-type-border); font-size: 0.95rem; color: var(--exam-type-text); }
 .lecture .exam-type a { color: var(--exam-type-accent); font-weight: 600; }
 
+/* 강의 도표·스크린샷 */
+.lecture-figure {
+  margin: 1.25rem 0;
+  text-align: center;
+}
+.lecture-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.lecture-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.lecture-diagram {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--viz-subtle);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+.lecture-diagram svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+.lecture-diagram figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 /* 강의 3단 구성: 문제 및 해설 / 문제 및 답 확인 / 문제 및 실습 */
 .lecture .section-title {
   font-size: 1rem;
@@ -371,6 +409,13 @@ body {
 .lecture .fun-callout.etymology { background: var(--callout-etymology-bg); border-color: var(--callout-etymology-border); }
 .lecture .fun-callout .label { font-weight: 700; color: var(--callout-label); }
 .lecture .fun-callout.etymology .label { color: var(--callout-etymology-label); }
+/* 조크·어원 옆 캐릭터 이미지 (언더테일 스타일) */
+.lecture .fun-callout.has-char { display: flex; gap: 0.75rem; align-items: flex-start; }
+.lecture .fun-callout .fun-callout-char { width: 56px; height: auto; flex-shrink: 0; border-radius: 8px; }
+.fun-page .joke-box.has-char { display: flex; gap: 0.75rem; align-items: flex-start; }
+.fun-page .joke-box .fun-callout-char { width: 64px; height: auto; flex-shrink: 0; border-radius: 8px; }
+.fun-page .etymology-box.has-char { display: flex; gap: 0.75rem; align-items: flex-start; }
+.fun-page .etymology-box .fun-callout-char { width: 56px; height: auto; flex-shrink: 0; border-radius: 8px; }
 
 /* 강의 페이지 안 인라인 실습 */
 .lecture .inline-practice {
@@ -685,10 +730,15 @@ body {
 .pyodide-guide-body code { padding: 0.15rem 0.4rem; background: var(--card); border-radius: 4px; font-size: 0.9em; border: 1px solid var(--border); }
 .pyodide-page .pyodide-presets { margin: 1rem 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
 .pyodide-page .pyodide-presets-label { font-size: 0.9rem; color: var(--text-muted); margin-right: 0.25rem; }
-.pyodide-page .btn-preset { min-height: var(--touch-min); padding: 0.4rem 0.75rem; font-size: 0.9rem; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; }
-.pyodide-page .btn-preset:hover { background: var(--border); }
+.pyodide-page .pyodide-presets-bottom { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.pyodide-page .pyodide-snippet-select { min-height: var(--touch-min); padding: 0.4rem 0.75rem; font-size: 0.95rem; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); min-width: 12rem; }
 .pyodide-box { margin: 1rem 0; padding: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
 .pyodide-label { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+.code-editor-wrap { position: relative; min-height: 260px; height: 260px; }
+.code-editor-wrap .code-editor-highlight { position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding: 0.75rem; font-family: "Consolas", "Monaco", "Courier New", monospace; font-size: 0.9rem; line-height: 1.4; border: 1px solid var(--border); border-radius: 8px; background: var(--input-bg); overflow: auto; pointer-events: none; white-space: pre; tab-size: 4; }
+.code-editor-wrap .code-editor-highlight code { font-size: inherit; line-height: inherit; background: none !important; padding: 0 !important; }
+.code-editor-wrap .code-editor { position: absolute; top: 0; left: 0; width: 100%; height: 100%; min-height: 200px; padding: 0.75rem; font-family: "Consolas", "Monaco", "Courier New", monospace; font-size: 0.9rem; line-height: 1.4; border: 1px solid var(--border); border-radius: 8px; background: transparent; color: transparent; caret-color: var(--text); resize: none; tab-size: 4; }
+.code-editor-wrap .code-editor:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
 .code-editor { width: 100%; min-height: 200px; padding: 0.75rem; font-family: "Consolas", "Monaco", "Courier New", monospace; font-size: 0.9rem; line-height: 1.4; border: 1px solid var(--border); border-radius: 8px; background: var(--input-bg); color: var(--text); resize: vertical; tab-size: 4; }
 .code-editor:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
 .pyodide-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem; }

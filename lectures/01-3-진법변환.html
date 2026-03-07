@@ -49,24 +49,137 @@
     <p>2진수 <strong>4자리 = 16진수 1자리</strong> (0000=0, 1111=F). 네 자리씩 묶어서 바꿈.</p>
     <p class="example">1111 1010₂ = <strong>FA₁₆</strong></p>
 
-    <h4 class="section-title">문제 및 해설</h4>
+    <h4 class="section-title">문제 및 해설 (정답 숨김)</h4>
     <div class="problem-section exam-type">
       <div class="q">10진수 <strong>25</strong>를 2진수로 바꾸면?</div>
-      <div class="a">
-        <p><strong>정답: 11001₂</strong></p>
-        <p>한 줄에 한 번씩 나눗셈하면:</p>
-        <div class="radix-steps" role="img" aria-label="25를 2로 나누는 과정">
-          <div class="radix-step-line"><span class="radix-op">25 ÷ 2</span> = 12 … <strong class="radix-rem">나머지 1</strong></div>
-          <div class="radix-step-line"><span class="radix-op">12 ÷ 2</span> =  6 … <strong class="radix-rem">나머지 0</strong></div>
-          <div class="radix-step-line"><span class="radix-op"> 6 ÷ 2</span> =  3 … <strong class="radix-rem">나머지 0</strong></div>
-          <div class="radix-step-line"><span class="radix-op"> 3 ÷ 2</span> =  1 … <strong class="radix-rem">나머지 1</strong></div>
-          <div class="radix-step-line"><span class="radix-op"> 1 ÷ 2</span> =  0 … <strong class="radix-rem">나머지 1</strong></div>
-          <p class="radix-result">↓ 나머지를 아래→위로 읽으면 → <strong>11001₂</strong></p>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 11001₂</strong></p>
+          <p>한 줄에 한 번씩 나눗셈하면:</p>
+          <div class="radix-steps" role="img" aria-label="25를 2로 나누는 과정">
+            <div class="radix-step-line"><span class="radix-op">25 ÷ 2</span> = 12 … <strong class="radix-rem">나머지 1</strong></div>
+            <div class="radix-step-line"><span class="radix-op">12 ÷ 2</span> =  6 … <strong class="radix-rem">나머지 0</strong></div>
+            <div class="radix-step-line"><span class="radix-op"> 6 ÷ 2</span> =  3 … <strong class="radix-rem">나머지 0</strong></div>
+            <div class="radix-step-line"><span class="radix-op"> 3 ÷ 2</span> =  1 … <strong class="radix-rem">나머지 1</strong></div>
+            <div class="radix-step-line"><span class="radix-op"> 1 ÷ 2</span> =  0 … <strong class="radix-rem">나머지 1</strong></div>
+            <p class="radix-result">↓ 나머지를 아래→위로 읽으면 → <strong>11001₂</strong></p>
+          </div>
         </div>
-      </div>
+      </details>
     </div>
 
-    <h4 class="section-title">문제 및 답 확인</h4>
+    <h4 class="section-title">실습 — 손으로 풀어 보기</h4>
+    <p>아래 문제를 풀어 본 뒤, 클릭해서 정답을 확인하세요.</p>
+
+    <div class="problem-section exam-type">
+      <div class="q">실습 1. 10진수 <strong>18</strong>을 2진수로 바꾸면?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 10010₂</strong></p>
+          <p>18÷2=9…0, 9÷2=4…1, 4÷2=2…0, 2÷2=1…0, 1÷2=0…1 → 나머지를 아래→위로 읽으면 <strong>10010₂</strong>. 파이썬: <code>bin(18)</code> → <code>'0b10010'</code></p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">실습 2. 10진수 <strong>7</strong>을 2진수로 바꾸면?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 111₂</strong></p>
+          <p>7÷2=3…1, 3÷2=1…1, 1÷2=0…1 → <strong>111₂</strong>. 2³−1=7이라 2진수는 1이 세 개.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">실습 3. 2진수 <strong>1010₂</strong>를 10진수로 바꾸면?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 10</strong></p>
+          <p>오른쪽부터 2⁰, 2¹, 2², 2³ → 0×1 + 1×2 + 0×4 + 1×8 = 2+8 = <strong>10</strong>. 파이썬: <code>int('1010', 2)</code> → 10</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">실습 4. 2진수 <strong>1111₂</strong>를 10진수로 바꾸면?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 15</strong></p>
+          <p>1×1+1×2+1×4+1×8 = 15. 또는 2⁴−1=15이므로 4자리 2진수 최댓값.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">실습 5. 10진수 <strong>100</strong>을 16진수로 바꾸면?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: 64₁₆</strong></p>
+          <p>100÷16=6…4, 6÷16=0…6 → 나머지를 아래→위로 읽으면 <strong>64₁₆</strong>. 파이썬: <code>hex(100)</code> → <code>'0x64'</code></p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">실습 6. 2진수 <strong>1101 1010₂</strong>를 16진수로 바꾸면? (4자리씩 묶기)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: DA₁₆</strong></p>
+          <p>1101₂ = 8+4+0+1 = 13 = D, 1010₂ = 8+0+2+0 = 10 = A → <strong>DA₁₆</strong>. 파이썬: <code>hex(0b11011010)</code> → <code>'0xda'</code></p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="section-title">도전과제</h4>
+    <p>조금 더 생각해 보면 풀 수 있어요. 풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. 2진수 <strong>11010₂</strong>를 10진수와 16진수로 각각 바꾸면?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>10진수: 26</strong> (0×1+1×2+0×4+1×8+1×16 = 2+8+16 = 26)</p>
+          <p><strong>16진수: 1A₁₆</strong> (26÷16=1…10 → 나머지 10=A, 1 → 1A₁₆. 또는 11010을 0001 1010으로 묶으면 1, 10=A)</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. 16진수 <strong>1A₁₆</strong>를 10진수와 2진수로 각각 바꾸면?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>10진수: 26</strong> (1×16 + 10×1 = 16+10 = 26)</p>
+          <p><strong>2진수: 11010₂</strong> (26을 2로 나눈 나머지: 26÷2=13…0, 13÷2=6…1, 6÷2=3…0, 3÷2=1…1, 1÷2=0…1 → 11010₂. 또는 1=0001, A=10=1010 → 00011010)</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 3. 게임에서 HP가 <strong>50</strong>일 때, 이 값을 2진수와 16진수로 각각 쓰면? (세이브/메모리에서 어떻게 저장되는지 생각해 보기)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>2진수: 110010₂</strong> (50÷2=25…0, 25÷2=12…1, 12÷2=6…0, 6÷2=3…0, 3÷2=1…1, 1÷2=0…1 → 110010₂)</p>
+          <p><strong>16진수: 32₁₆</strong> (50÷16=3…2, 3÷16=0…3 → 32₁₆)</p>
+          <p>파이썬으로 확인: <code>bin(50)</code> → <code>'0b110010'</code>, <code>hex(50)</code> → <code>'0x32'</code></p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 4. 10진수 <strong>255</strong>를 2진수와 16진수로 바꾸면? (게임에서 색상·픽셀 값으로 자주 쓰이는 수예요)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>2진수: 11111111₂</strong> (8비트로 나타낼 수 있는 최댓값. 2⁸−1=255)</p>
+          <p><strong>16진수: FF₁₆</strong> (255÷16=15…15 → 15=F이므로 FF₁₆. 2진수 1111 1111을 4자리씩 묶어도 F,F)</p>
+          <p>색상 코드에서 #FF0000(빨강), #00FF00(초록)처럼 한 채널 최댓값이 255(=FF₁₆)예요.</p>
+        </div>
+      </details>
+    </div>
+
+    <h4 class="section-title">문제 및 답 확인 (빈칸 채우기)</h4>
     <div class="problem-section">
       <p>13을 2로 나눈 나머지 네 개를 쓰고, 그 나머지를 <strong>아래→위</strong>로 읽은 2진수를 넣은 뒤 [확인]을 누르세요.</p>
       <div class="inline-practice">
@@ -82,7 +195,7 @@
 
     <h4 class="section-title">문제 및 실습</h4>
     <div class="problem-section practice-callout">
-      <p>같은 방식으로 다른 숫자도 2진수·16진수로 바꿔 보세요. <strong>아래 iframe</strong>에서 파이썬으로 바로 확인할 수 있어요.</p>
+      <p>같은 방식으로 다른 숫자도 2진수·16진수로 바꿔 보세요. <strong>아래</strong>에서 파이썬으로 바로 확인할 수 있어요.</p>
       <div class="lecture-practice-cta">
         <a href="../practice/radix.html">실습: 진법·보수 따라하기 →</a>
       </div>
@@ -99,7 +212,7 @@
       <p><strong>왜 쓰나요?</strong> 손으로 나머지 구한 결과를 코드로 검증할 때 위 함수를 쓰면 됩니다.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 실습창에서 그대로 쓸 수 있는 예제예요. 복사해서 실습창에 붙여 넣고 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 진법 변환: bin(), hex()로 검증
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 진법 변환: bin(), hex()로 검증
 print(bin(25))   # 0b11001
 print(hex(25))   # 0x19
 # 역으로 2진수 문자열 → 정수
@@ -134,6 +247,7 @@ print(int('11001', 2))   # 25</code></pre>
     })();
   </script>
   <script src="../js/fill-practice.js"></script>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

@@ -23,6 +23,24 @@
 
     <h2>버블 정렬(Bubble Sort, 버블 소트)</h2>
     <p>맨 앞부터 <strong>바로 옆 숫자랑 비교</strong>해서, 순서가 잘못됐으면 자리를 바꿔요. 한 번 쭉 지나가면 가장 큰 수가 맨 뒤로 가요. 게임 인벤토리를 이름순·가격순으로 정렬할 때 같은 생각이에요. 시험에 자주 나와요.</p>
+    <figure class="lecture-diagram" aria-label="버블 정렬 한 단계">
+      <svg viewBox="0 0 320 90" width="320" height="90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <text x="160" y="18" text-anchor="middle" font-size="11" fill="currentColor">인접한 두 값 비교 → 큰 것을 오른쪽으로 (한 번 지나가면 최댓값이 맨 뒤로)</text>
+        <rect x="20" y="32" width="36" height="28" fill="var(--viz-subtle)" stroke="currentColor" stroke-width="1"/>
+        <text x="38" y="52" text-anchor="middle" font-size="12" fill="currentColor">64</text>
+        <rect x="60" y="32" width="36" height="28" fill="var(--highlight-bg)" stroke="currentColor" stroke-width="1.2"/>
+        <text x="78" y="52" text-anchor="middle" font-size="12" fill="currentColor">34</text>
+        <rect x="100" y="32" width="36" height="28" fill="var(--highlight-bg)" stroke="currentColor" stroke-width="1.2"/>
+        <text x="118" y="52" text-anchor="middle" font-size="12" fill="currentColor">25</text>
+        <rect x="140" y="32" width="36" height="28" fill="var(--card)" stroke="currentColor" stroke-width="1"/>
+        <text x="158" y="52" text-anchor="middle" font-size="12" fill="currentColor">12</text>
+        <rect x="180" y="32" width="36" height="28" fill="var(--card)" stroke="currentColor" stroke-width="1"/>
+        <text x="198" y="52" text-anchor="middle" font-size="12" fill="currentColor">22</text>
+        <text x="78" y="78" text-anchor="middle" font-size="9" fill="currentColor">비교·스왑</text>
+        <text x="118" y="78" text-anchor="middle" font-size="9" fill="currentColor">비교·스왑</text>
+      </svg>
+      <figcaption>버블 정렬: 인접 쌍 비교 후 스왑. 한 패스마다 최댓값이 오른쪽으로.</figcaption>
+    </figure>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
       <p class="api-guide-title">📌 실습 전: 파이썬에서 쓰는 API·문법</p>
       <p><strong>대응</strong> 버블 정렬은 "리스트(배열)"를 한 칸씩 보면서, <strong>인접한 두 값 비교</strong>와 <strong>자리 바꾸기(스왑)</strong>만 반복해요.</p>
@@ -37,7 +55,7 @@
       <p><strong>왜 이렇게 구현하나요?</strong> 버블 정렬의 정의가 "인접한 두 원소를 비교해서 순서가 잘못됐으면 교환"이에요. 그래서 리스트 인덱싱, 비교 연산자, 스왑 문법만 알면 코드로 옮길 수 있습니다.</p>
     </div>
     <p class="practice-callout-inline">👇 아래 코드가 <strong>실습창과 동일한</strong> 예제예요. 빈칸(_____)을 채운 뒤 아래 실습창에서 그대로 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
+    <pre class="lecture-code-same-as-practice"><code class="language-python"># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
 arr = [64, 34, 25, 12, 22]
 print("정렬 전:", arr)
 n = len(arr)
@@ -109,9 +127,32 @@ console.log('정렬 후:', arr);</textarea>
       </details>
     </div>
 
+    <h4 class="section-title">도전과제</h4>
+    <p>풀어 본 뒤 정답을 펼쳐 확인하세요.</p>
+    <div class="problem-section exam-type">
+      <div class="q">도전 1. [5, 2, 8, 1]을 버블 정렬로 <strong>한 패스</strong>(맨 앞부터 옆과 비교·스왑 한 바퀴) 지난 후 배열은?</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>정답: [2, 5, 1, 8]</strong></p>
+          <p>(5,2) 비교 → 스왑 [2,5,8,1]. (5,8) 유지. (8,1) 비교 → 스왑 [2,5,1,8]. 한 패스 후 최댓값 8이 맨 뒤로 갔어요. 인벤토리 정렬에서 "한 번 정렬 버튼 누른 효과"와 같은 한 단계예요.</p>
+        </div>
+      </details>
+    </div>
+    <div class="problem-section exam-type">
+      <div class="q">도전 2. 선택 정렬의 "한 단계"는 무엇을 하나요? 버블 정렬과 어떻게 다르나요? (한 줄씩)</div>
+      <details>
+        <summary>정답 보기</summary>
+        <div class="a">
+          <p><strong>선택 정렬 한 단계:</strong> 아직 정렬 안 된 구간에서 "가장 작은 값"을 찾아서 그 구간의 맨 앞 자리와 교환.</p>
+          <p><strong>버블와 차이:</strong> 버블은 "옆과 비교해서 큰 걸 뒤로 밀어냄". 선택은 "전체 중 최솟값을 골라서 한 자리에 놓음".</p>
+        </div>
+      </details>
+    </div>
+
     <h2>삽입 정렬(Insertion Sort, 인서션 소트)</h2>
     <p>앞부분을 "이미 정렬된 줄"이라고 생각하고, 그 다음 숫자를 <strong>알맞은 자리에 끼워 넣는</strong> 방식이에요. 카드 놀이할 때 손에 든 카드를 순서대로 끼워 넣는 것과 비슷해요.</p>
-    <div class="fun-callout"><span class="label">😄 조크</span> 디버깅 = n번째 버그를 잡으면 (n+1)번째 버그가 보이는 과정의 반복. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div>
+    <div class="fun-callout has-char"><img src="../images/fun-character-joke.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 디버깅 = n번째 버그를 잡으면 (n+1)번째 버그가 보이는 과정의 반복. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <h3 class="section-title">🔄 유사 알고리즘 비교: 버블·선택·삽입 정렬</h3>
     <p>세 가지 모두 <strong>비교 정렬</strong>이지만, "한 단계에서 무엇을 하느냐"가 달라요. 아래 표로 차이를 비교해 보세요.</p>
@@ -160,6 +201,7 @@ console.log('정렬 후:', arr);</textarea>
   </article>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/run-js-practice.js"></script>
+  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

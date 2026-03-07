@@ -46,7 +46,7 @@
     <p><strong>개념</strong> 10진수 → 2진수는 2로 나눈 나머지를 아래에서 위로 읽으면 됩니다. 게임에서 HP·골드는 이렇게 비트로 저장되고, <strong>업적·맵 열림</strong>은 한 비트가 하나의 "달성/미달성"을 나타내요. 아래에서 <code>print(bin(25))</code>, <code>print(hex(100))</code>를 실행해 보세요.</p>
     <div class="lecture-inline-run">
       <span class="label">🐍 1단계: 진법 확인</span>
-      <iframe src="../../practice/pyodide.html?embed=1" title="파이썬 실습" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="radix"></div>
     </div>
 
     <h3>2단계 실습</h3>
@@ -57,14 +57,14 @@
     <p><strong>활용</strong> 게임 인벤은 "슬롯 번호 = 리스트 인덱스". 획득 시 append, 사용/버리기 시 pop(인덱스), n번 슬롯 표시는 inv[n]. 리스트로 인벤토리: <code>inv = ["검", "물약"]</code> 후 <code>inv.append("방패")</code>, <code>inv.pop(1)</code> 등으로 넣고 빼 보세요.</p>
     <div class="lecture-inline-run">
       <span class="label">🐍 2단계: 리스트 인벤토리</span>
-      <iframe src="../../practice/pyodide.html?snippet=list&amp;embed=1" title="파이썬 실습: 리스트" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="list"></div>
     </div>
 
     <h3>3단계 실습</h3>
     <p><strong>활용</strong> 세이브 파일은 "캐릭터 상태 한 덩어리"를 저장합니다. HP, 골드, 인벤을 한 덩어리로: <code>save = {"hp": 25, "gold": 100, "inv": ["검", "물약"]}</code> 후 <code>print(save)</code> 해 보세요. 나중에 파일로 쓰면 세이브, 읽으면 로드가 됩니다.</p>
     <div class="lecture-inline-run">
       <span class="label">🐍 3단계: 세이브 데이터 흉내</span>
-      <iframe src="../../practice/pyodide.html?embed=1" title="파이썬 실습" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline"></div>
     </div>
 
     <nav class="page-nav">
@@ -72,6 +72,10 @@
       <a href="../02-index.html" class="next">II단원으로 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../../js/pyodide-runner.js"></script>
+  <script src="../../js/pyodide-snippets.js"></script>
+  <script src="../../js/pyodide-inline.js"></script>
   <script src="../../js/theme.js"></script>
 </body>
 </html>

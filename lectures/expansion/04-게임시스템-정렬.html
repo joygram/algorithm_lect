@@ -53,19 +53,9 @@
         <li>시험에는 "한 단계 지나면 배열이 어떻게 되나?"가 자주 나와요. 버블 정렬의 비교·스왑 한 사이클이 곧 "한 단계"에 해당해요.</li>
       </ul>
     </div>
-    <p class="practice-callout-inline">👇 버블 정렬: 인접 비교 후 스왑. 실습창에서 빈칸을 채운 뒤 실행해 보세요.</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 버블 정렬: 옆과 비교해서 큰 값을 오른쪽으로 보냄
-arr = [64, 34, 25, 12, 22]
-print("정렬 전:", arr)
-n = len(arr)
-for i in range(n):
-    for j in range(0, n - 1 - i):
-        if arr[j] &gt; arr[j + 1]:
-            arr[j], arr[j + 1] = arr[j + 1], arr[j]
-print("정렬 후:", arr)</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 실습: 버블 정렬</span>
-      <iframe src="../../practice/pyodide.html?snippet=bubble&amp;embed=1" title="파이썬: 버블 정렬" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="bubble"></div>
     </div>
     <p>인벤토리를 "이름순"으로 보여주고 싶다면, 아이템 이름 리스트를 정렬한 뒤 그 순서대로 그리면 됩니다. 파이썬에서는 <code>items.sort(key=lambda x: x["name"])</code>처럼 키를 지정해 정렬할 수 있어요.</p>
 
@@ -75,6 +65,10 @@ print("정렬 후:", arr)</code></pre>
       <a href="05-게임시스템-탐색.html" class="next">V단원 확장: 탐색 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../../js/pyodide-runner.js"></script>
+  <script src="../../js/pyodide-snippets.js"></script>
+  <script src="../../js/pyodide-inline.js"></script>
   <script src="../../js/prism-lecture.js"></script>
   <script src="../../js/theme.js"></script>
 </body>

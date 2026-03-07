@@ -28,7 +28,8 @@
     <div class="fun-callout etymology has-char"><img src="../images/sands.jpg" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">📖 어원</span> Hash = "잘게 썬다". 데이터를 잘게 잘라 번호처럼 만드는 함수라서 해시예요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이 실습에서 쓰는 API: mid = (left+right)//2, left = mid+1</p>
+      <p class="api-guide-title">📌 이론(알고리즘) ↔ 파이썬 표현 (배열 이진 탐색)</p>
+      <p><strong>이진 탐색</strong> 가운데 인덱스 → <code>mid = (left + right) // 2</code> &nbsp;|&nbsp; 구간 좁히기 → <code>left = mid + 1</code> / <code>right = mid - 1</code></p>
       <p><strong>대응</strong> 이진 탐색은 "현재 구간의 가운데 인덱스"를 구하고, 찾는 값과 비교해서 절반만 남기며 반복해요.</p>
       <dl>
         <dt><code>(left + right) // 2</code></dt>
@@ -40,27 +41,9 @@
       </dl>
       <p><strong>왜 이렇게 쓰나요?</strong> 이진 탐색의 핵심은 "매번 가운데를 보고 절반을 버리는 것"이에요. //와 left/right 갱신이 그대로 코드에 반영됩니다.</p>
     </div>
-    <p class="practice-callout-inline">이 실습에서 쓰는 것: <code>mid = (left + right) // 2</code>, <code>left = mid + 1</code></p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 이진 탐색: 정렬된 리스트에서 target 위치 찾기
-arr = [2, 5, 8, 12, 16, 23, 38]
-target = 12
-left, right = 0, len(arr) - 1
-while left &lt;= right:
-    # ① 빈칸: 가운데 인덱스 (left와 right의 평균, 정수)
-    mid = _____
-    if arr[mid] == target:
-        print("찾음! 인덱스:", mid)
-        break
-    # ② 빈칸: target이 더 크면 왼쪽을 mid 다음으로 (left = ?)
-    if arr[mid] &lt; target:
-        left = _____
-    else:
-        right = mid - 1
-else:
-    print("없음")</code></pre>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <iframe src="../practice/pyodide.html?snippet=binary&amp;embed=1" title="파이썬 실습: 이진 탐색" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="binary"></div>
     </div>
 
     <nav class="page-nav">
@@ -68,6 +51,10 @@ else:
       <a href="05-3-최단거리.html" class="next">다음: 최단 거리 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../js/pyodide-runner.js"></script>
+  <script src="../js/pyodide-snippets.js"></script>
+  <script src="../js/pyodide-inline.js"></script>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>

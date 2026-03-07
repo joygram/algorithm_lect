@@ -29,48 +29,13 @@
     <p>가중치가 다를 때는 <strong>다익스트라 알고리즘</strong> 등을 씁니다. 시험에 "단계별로 어떤 점이 선택되는지" 묻는 문제가 나올 수 있어요.</p>
     <div class="fun-callout has-char"><img src="../images/human.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 다른 과목에서는 복사·붙여넣기가 표절인데, 프로그래밍에서는 "코드 재사용"이라고 부른대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
-    <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이 실습에서 쓰는 API: mid, left 갱신 (이진 탐색 뼈대)</p>
-      <p><strong>대응</strong> 이진 탐색은 "현재 구간의 가운데 인덱스"를 구하고, 찾는 값과 비교해서 절반만 남기며 반복해요.</p>
-      <dl>
-        <dt><code>(left + right) // 2</code></dt>
-        <dd>정수 나눗셈으로 가운데 인덱스를 구해요. 인덱스는 정수여야 하므로 //를 씁니다.</dd>
-        <dt><code>리스트[mid]</code></dt>
-        <dd>mid번째 칸의 값. target과 비교해서 구간을 왼쪽/오른쪽 절반으로 좁혀요.</dd>
-        <dt><code>left = mid + 1</code> / <code>right = mid - 1</code></dt>
-        <dd>target이 더 크면 <code>left = mid + 1</code>, 더 작으면 <code>right = mid - 1</code>로 구간을 줄여요.</dd>
-      </dl>
-      <p><strong>왜 이렇게 쓰나요?</strong> "매번 가운데를 보고 절반을 버리는" 이진 탐색이 코드로는 //와 left/right 갱신으로 구현돼요.</p>
-    </div>
-    <p class="practice-callout-inline">이 실습에서 쓰는 것: <code>mid = (left + right) // 2</code>, <code>left = mid + 1</code></p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 이진 탐색: 정렬된 리스트에서 target 위치 찾기
-arr = [2, 5, 8, 12, 16, 23, 38]
-target = 12
-left, right = 0, len(arr) - 1
-while left &lt;= right:
-    # ① 빈칸: 가운데 인덱스 (left와 right의 평균, 정수)
-    mid = _____
-    if arr[mid] == target:
-        print("찾음! 인덱스:", mid)
-        break
-    # ② 빈칸: target이 더 크면 왼쪽을 mid 다음으로 (left = ?)
-    if arr[mid] &lt; target:
-        left = _____
-    else:
-        right = mid - 1
-else:
-    print("없음")</code></pre>
-    <div class="lecture-inline-run">
-      <span class="label">🐍 파이썬으로 실습 (이 페이지 안에서)</span>
-      <iframe src="../practice/pyodide.html?snippet=binary&amp;embed=1" title="파이썬 실습: 이진 탐색" class="pyodide-iframe"></iframe>
-    </div>
+    <p class="practice-callout-inline">이 강의는 <strong>개념</strong>만 다뤄요. BFS·다익스트라 코드 실습은 교과·실기 자료에서 다루는 경우가 많아요. 탐색 기초 실습은 <a href="05-1-순차이진탐색.html">1. 순차·이진 탐색</a>에서 해요.</p>
+
     <nav class="page-nav">
       <a href="05-2-이진탐색트리해싱.html">← 이전: 이진 탐색 트리·해싱</a>
       <span></span>
     </nav>
   </article>
-  <script src="../js/fill-practice.js"></script>
-  <script src="../js/prism-lecture.js"></script>
   <script src="../js/theme.js"></script>
 </body>
 </html>

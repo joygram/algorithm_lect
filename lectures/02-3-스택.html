@@ -51,7 +51,8 @@
     <p>게임에서 <strong>메뉴 뒤로가기</strong>(설정 → 메인 → 타이틀처럼), 괄호 짝 맞추기, <strong>DFS(디에프에스, 깊이 우선 탐색)</strong>, 함수 호출 시 복귀 주소 저장 등.</p>
     <div class="fun-callout etymology has-char"><img src="../images/human.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">📖 어원</span> Stack(스택) = "쌓다, 더미". Queue(큐) = "줄, 꼬리"(프랑스어). <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이 실습에서 쓰는 API: append(값), pop()</p>
+      <p class="api-guide-title">📌 이론(알고리즘) ↔ 파이썬 함수</p>
+      <p><strong>스택 연산</strong> push(맨 위에 넣기) → <code>list.append(값)</code> &nbsp;|&nbsp; pop(맨 위에서 꺼내기) → <code>list.pop()</code> (인자 없음)</p>
       <p><strong>대응</strong> 스택은 "맨 위에만 넣고, 맨 위에서만 뺀다"가 핵심이에요. 파이썬 <code>list</code>에서 <strong>맨 뒤</strong>를 "맨 위(top)"로 보면 됩니다.</p>
       <dl>
         <dt><code>리스트.append(값)</code></dt>
@@ -61,17 +62,6 @@
       </dl>
       <p><strong>왜 list만으로 되나요?</strong> 스택은 "맨 끝"에만 넣고 빼면 되기 때문에, list의 append와 pop()이 모두 O(1)로 동작해요. 별도 모듈 없이 리스트만으로 스택을 구현하는 게 파이썬에서 일반적입니다.</p>
     </div>
-    <p class="practice-callout-inline">이 실습에서 쓰는 메서드: <code>append(값)</code>, <code>pop()</code> (인자 없음)</p>
-    <pre class="lecture-code-same-as-practice"><code class="language-python"># 스택: 맨 위에만 넣기(push=append), 맨 위에서만 꺼내기(pop)
-stack = []
-stack.append("A")
-# ① 빈칸: 스택에 "B"를 넣으세요 (append 사용)
-stack._____("B")
-stack.append("C")
-print("push A,B,C 후:", stack)
-# ② 빈칸: 맨 위에서 하나 꺼내서 변수 x에 넣기 (pop은 인자 없음)
-x = stack._____()
-print("pop() →", x, ", 남은 스택:", stack)</code></pre>
     <div class="fill-code-practice" data-answers="append|pop" data-snippet="stack">
       <p class="fill-code-prompt">스택에 넣을 때 append, 맨 위에서 꺼낼 때? (빈칸 두 개)</p>
       <div class="fill-code-line">stack._____("B") &nbsp; → &nbsp; x = stack._____()</div>
@@ -81,7 +71,7 @@ print("pop() →", x, ", 남은 스택:", stack)</code></pre>
     </div>
     <div class="lecture-inline-run">
       <span class="label">🐍 파이썬 (바로 실행)</span>
-      <iframe src="../practice/pyodide.html?snippet=stack&amp;embed=1" title="파이썬 실습: 스택" class="pyodide-iframe"></iframe>
+      <div class="pyodide-inline" data-snippet="stack"></div>
     </div>
     <div class="lecture-inline-js js-run-practice">
       <span class="label">🟨 자바스크립트로 확인</span>
@@ -154,6 +144,10 @@ console.log('pop() →', x, ', 남은 스택:', stack);</textarea>
       <a href="02-4-덱.html" class="next">다음: 덱 →</a>
     </nav>
   </article>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.3/full/pyodide.js"></script>
+  <script src="../js/pyodide-runner.js"></script>
+  <script src="../js/pyodide-snippets.js"></script>
+  <script src="../js/pyodide-inline.js"></script>
   <script src="../js/prism-lecture.js"></script>
   <script src="../js/fill-practice.js"></script>
   <script src="../js/run-js-practice.js"></script>

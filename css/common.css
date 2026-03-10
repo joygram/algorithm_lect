@@ -541,6 +541,12 @@ body {
 .lecture .pyodide-inline-box .btn-run { min-height: var(--touch-min); padding: 0.5rem 1.25rem; font-size: 1rem; font-weight: 600; border: none; border-radius: 8px; background: var(--primary); color: var(--header-fg); cursor: pointer; }
 .lecture .pyodide-inline-box .btn-run:hover:not(:disabled) { background: var(--primary-hover); }
 .lecture .pyodide-inline-box .btn-run:disabled { opacity: 0.6; cursor: not-allowed; }
+/* 인라인 에디터: 라인 번호 + 자동 들여쓰기 */
+.code-editor-with-lines { display: flex; min-height: 240px; border: 1px solid var(--border); border-radius: 8px; background: var(--input-bg); overflow: hidden; }
+.code-editor-gutter { flex-shrink: 0; width: 2.25rem; padding: 0.75rem 0.35rem 0.75rem 0.75rem; overflow-y: auto; overflow-x: hidden; font-family: "Consolas", "Monaco", "Courier New", monospace; font-size: 0.9rem; line-height: 1.4; color: var(--text-muted); text-align: right; user-select: none; white-space: pre; tab-size: 4; scrollbar-width: none; -ms-overflow-style: none; }
+.code-editor-gutter::-webkit-scrollbar { display: none; }
+.code-editor-with-lines .code-editor-has-gutter { flex: 1; min-width: 0; min-height: 200px; padding: 0.75rem; padding-left: 0.5rem; border: none; border-radius: 0; background: transparent; resize: none; }
+.code-editor-with-lines .code-editor-has-gutter:focus { outline: none; box-shadow: inset 0 0 0 2px var(--primary); }
 
 /* 강의 페이지 안 인라인 자바스크립트 실습 */
 .lecture-inline-js { margin: 1.5rem 0; padding: 1rem; background: var(--callout-etymology-bg); border: 1px solid var(--callout-etymology-border); border-radius: var(--radius); }

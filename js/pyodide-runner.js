@@ -81,11 +81,30 @@
     // GitHub Pages 등 서브경로에 상관없이 CDN 절대 경로만 사용
     var indexURL = (baseUrl && baseUrl.indexOf('http') === 0) ? baseUrl : PYODIDE_BASE;
     var runner = new PyodideRunner();
-    return global.loadPyodide({ indexURL: indexURL }).then(function (pyodide) {
+    var isMobile = typeof navigator !== 'undefined' && /Mobile|Android|iPhone|iPad|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    var timeoutMs = isMobile ? 22000 : 55000; // 모바일: 22초, PC: 55초
+
+    var loadPromise = global.loadPyodide({ indexURL: indexURL }).then(function (pyodide) {
       runner.pyodide = pyodide;
       runner.ready = true;
       return runner;
+    }).catch(function (err) {
+      var msg = (err && (err.message || err.toString())) || '알 수 없는 오류';
+      if (/out of memory|Array buffer allocation failed|abort\(|wasm|WebAssembly|memory/i.test(msg)) {
+        msg = 'Python 엔진 로딩 실패 (메모리/환경 제한). 모바일에서는 Wi‑Fi에서 다시 시도하거나 PC에서 이용해 보세요.';
+      } else if (/fetch|network|timeout|Failed to load/i.test(msg)) {
+        msg = 'Python 엔진 로딩 실패 (네트워크). 연결을 확인한 뒤 다시 시도해 보세요.';
+      }
+      return Promise.reject(new Error(msg));
     });
+
+    var timeoutPromise = new Promise(function (_, reject) {
+      setTimeout(function () {
+        reject(new Error('Python 엔진 로딩 시간 초과. 모바일에서는 지원이 제한될 수 있어요. PC에서 열어 보세요.'));
+      }, timeoutMs);
+    });
+
+    return Promise.race([loadPromise, timeoutPromise]);
   };
 
   global.PyodideRunner = PyodideRunner;

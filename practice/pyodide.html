@@ -150,7 +150,8 @@
           runner = r;
           setReady(true);
         }).catch(function (err) {
-          statusEl.textContent = '로딩 실패: ' + (err.message || err) + ' (네트워크 확인 후 새로고침)';
+          var msg = err.message || String(err);
+          statusEl.textContent = msg + (msg.indexOf('모바일') === -1 ? ' 모바일에서는 Wi‑Fi·PC에서 시도해 보세요.' : '');
           statusEl.classList.add('pyodide-err');
         });
         return true;

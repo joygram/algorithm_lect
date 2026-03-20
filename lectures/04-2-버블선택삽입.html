@@ -54,6 +54,10 @@
         <dd>파이썬에서는 한 줄로 두 변수의 값을 맞바꿀 수 있어요. <code>arr[j], arr[j+1] = arr[j+1], arr[j]</code>로 두 칸의 값을 서로 바꿉니다. 임시 변수 없이 구현할 수 있어요.</dd>
       </dl>
       <p><strong>왜 이렇게 구현하나요?</strong> 버블 정렬의 정의가 "인접한 두 원소를 비교해서 순서가 잘못됐으면 교환"이에요. 그래서 리스트 인덱싱, 비교 연산자, 스왑 문법만 알면 코드로 옮길 수 있습니다.</p>
+      <p class="api-guide-title" style="margin-top:1rem;">📌 파이썬 들여쓰기·루프 기초</p>
+      <p><strong>들여쓰기(indent)</strong> 파이썬에서는 <strong>칸 띄우기(스페이스 또는 탭)</strong>가 "이 줄이 어느 블록에 속하는지"를 정해요. <code>for</code>·<code>if</code> 다음에 오는 줄은 반드시 한 단계 들여쓰기해요. 들여쓰기가 같으면 같은 블록이에요.</p>
+      <p><strong>for 루프</strong> <code>for 변수 in range(시작, 끝)</code>은 "시작부터 끝 직전까지" 변수를 0, 1, 2, … 로 바꿔 가며 반복해요. <code>for j in range(0, n - 1 - i)</code>면 j는 0, 1, …, n-2-i까지 돼요. <code>range(n)</code>은 0부터 n 직전까지예요.</p>
+      <p><strong>중첩 루프</strong> 바깥 <code>for i in range(n):</code> 안에 <code>for j in range(...):</code>가 들어 있으면, i가 한 번 바뀔 때마다 j 루프가 전부 도는 구조예요. 버블 정렬은 "바깥: 패스 횟수, 안: 인접 비교"로 두 겹 루프를 씁니다.</p>
     </div>
     <div class="fill-code-practice" data-answers=">|arr[j+1], arr[j]" data-snippet="bubble">
       <p class="fill-code-prompt">① 비교 연산자: arr[j]가 arr[j+1]보다 클 때 바꿈 → <code>&gt;</code> &nbsp; ② 스왑: 두 값 맞바꾸기 → <code>arr[j+1], arr[j]</code></p>

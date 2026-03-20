@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>5. 성능이란? 빅오 표기법 (쉬운 설명) | I단원</title>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body>
+  <header class="header">
+    <h1>I. 자료와 자료 구조</h1>
+    <p class="subtitle">5. 성능·빅오 표기법 (초등학생도 쉬운 설명 + 실생활 예제) · 약 5분</p>
+    <div id="theme-switcher-wrap"></div>
+  </header>
+  <article class="lecture">
+    <a href="../index.html" class="back">← 전체 목차</a>
+    <a href="01-index.html" class="back">이 단원 목차</a>
+
+    <div class="game-use-callout" role="region" aria-label="게임에서 쓰는 곳">
+      <p class="game-use-title">🎮 이 단원이 게임에서 쓰이는 곳</p>
+      <p>게임에서 <strong>인벤토리 100개</strong>일 때 "3번 슬롯 보기"는 한 번에 끝나고, "이름이 '검'인 슬롯 찾기"는 끝까지 볼 수도 있어요. 이런 걸 <strong>성능(시간 복잡도)</strong>으로 나누어 생각해요.</p>
+    </div>
+
+    <h2>성능이란? — "몇 번 만에 끝나나"</h2>
+    <p><strong>성능</strong>이란, 일을 할 때 <strong>얼마나 빨리</strong> 끝내는지, 또는 <strong>몇 번의 단계</strong>로 끝내는지를 말해요. 초등학생도 생각해 볼 수 있어요.</p>
+    <p>예: 반에서 <strong>이름표 30개</strong> 중에 "철수" 이름표를 찾는다고 해요.</p>
+    <ul>
+      <li><strong>방법 1</strong> — 하나씩 처음부터 보기: 운이 나쁘면 30번까지 봐야 해요.</li>
+      <li><strong>방법 2</strong> — 이름이 가나다 순으로 줄 세워 두었으면, "철수는 'ㅊ'이니까 뒤쪽이겠다" 하고 반씩 나눠서 찾기: 훨씬 적은 번만에 찾을 수 있어요.</li>
+    </ul>
+    <p>같은 "찾기"인데, <strong>어떤 방법을 쓰느냐</strong>에 따라 "몇 번 만에 끝나나"가 달라져요. 이걸 나중에 <strong>빅오</strong>로 대략적으로 나타내요.</p>
+
+    <h2>실생활 예제로 느끼기</h2>
+    <h3>예 1: 책장에서 책 찾기</h3>
+    <p>책장에 <strong>책 100권</strong>이 <strong>번호 순</strong>으로 1번, 2번, …, 100번 들어 있어요.</p>
+    <ul>
+      <li><strong>"47번 책 주세요"</strong> → 47번째 칸에 가면 끝. <strong>한 번</strong>에 찾아요.</li>
+      <li><strong>"제목이 '파이썬'인 책 주세요"</strong> → 어디 있는지 모르니까 처음부터 끝까지 볼 수도 있어요. 운이 나쁘면 <strong>100번</strong>까지 봐야 해요.</li>
+    </ul>
+    <p>그래서 "몇 번째 칸이야?"라고 <strong>위치를 알고 있으면 한 번</strong>에 끝나고, "이름으로 찾기"는 <strong>개수만큼</strong> 볼 수 있다고 생각하면 돼요.</p>
+
+    <h3>예 2: 반 친구끼리 악수</h3>
+    <p>반에 <strong>30명</strong>이 있어요. 한 명이 나머지 모두와 악수를 한다고 하면, 그 한 명은 <strong>29번</strong> 악수해요. 이걸 30명 모두가 하면, 대략 <strong>30×29 ≈ 900번</strong> 정도 돼요. (같은 악수를 두 번 세지 않아도, "번 수"는 n×n에 비례해요.)</p>
+    <p>즉, <strong>사람 수가 많아질수록</strong> 악수 횟수는 "n×n"처럼 빨리 늘어나요. 이런 걸 나중에 <strong>O(n²)</strong>라고 써요.</p>
+
+    <h2>빅오 표기법 — "대략 몇 번에 비례하나"</h2>
+    <p>컴퓨터도 "데이터가 n개일 때, 최악이라면 <strong>대략 몇 번</strong> 일을 하게 되나?"를 수학적으로 간단히 나타내요. 그게 <strong>빅오( Big O )</strong>예요. 정확한 초 단위가 아니라, <strong>개수가 늘어나면 단계 수가 얼마나 늘어나는지</strong>를 보는 거예요.</p>
+    <p>아래는 시험에 나올 수 있는 표기예요. "실생활로 치면 이런 느낌"만 잡으면 돼요.</p>
+    <ul>
+      <li><strong>O(1)</strong> — <strong>한 번</strong>에 끝. 예: "n번째 칸에 있는 값 보기". 책 100권이 있어도 "47번 책"은 47번째 가면 끝.</li>
+      <li><strong>O(n)</strong> — 개수 <strong>n</strong>만큼, 최대 n번. 예: 이름표 30개 중 "철수"를 처음부터 하나씩 찾기. 100권 중 제목으로 찾기.</li>
+      <li><strong>O(n²)</strong> — 대략 <strong>n×n</strong>에 비례. 예: 반 30명이 서로 악수. 버블 정렬처럼 "모두와 비교"를 n번 반복하는 경우.</li>
+    </ul>
+    <p>정리하면, <strong>성능(시간 복잡도) = "데이터가 많아질 때, 단계 수가 얼마나 늘어나는가"</strong>를 빅오로 나타낸 거예요.</p>
+
+    <div class="fun-callout" role="region" aria-label="시간 복잡도 유머">
+      <span class="label">😄 시간 복잡도 얽힌 유머</span>
+      <p style="margin:0.25rem 0 0;">"O(n²) 알고리즘에 데이터 10만 개 넣으면?" → 프로그래머가 <strong>커피 마시러 갑니다</strong>. (단계가 100억 번 가까이 되니까요.) "O(1)이면?" → 넣든 1개 넣든 100만 개 넣든 <strong>한 번에</strong> 끝나니까 "효율 있다"고 말해요. 그래서 시험에서 "시간 복잡도가 O(n²)인 정렬"이 나오면 "데이터가 많을수록 단계가 n×n으로 늘어난다 = 많으면 느리다"라고 판단하면 돼요.</p>
+      <p style="margin:0.35rem 0 0; font-size:0.9rem;">또 "무한 루프에 걸렸어요" "그거 O(∞) 아니에요?" 같은 말도 있어요. 빅오는 "대략 몇 번에 비례하나"를 쓰는 거라, 끝나지 않으면 복잡도만으로는 안 세요. 그래도 "효율이 있나 없나"는 "n이 커질 때 단계가 얼마나 불어나나"로 대략 보면 됩니다.</p>
+    </div>
+
+    <h2>효율 있나 없나 — 대략 판단 근거</h2>
+    <p>시험이나 실무에서 "이거 효율 있나?"를 <strong>대략</strong> 보려면 아래만 기억해도 돼요.</p>
+    <ul>
+      <li><strong>O(1)</strong> — 데이터가 10개든 10만 개든 단계 수가 거의 그대로면 → <strong>효율 좋음</strong>. "몇 번째 칸 보기"처럼 위치만 알면 한 번에 끝나는 연산.</li>
+      <li><strong>O(n)</strong> — 데이터 n개면 단계가 n번 정도 비례하면 → <strong>보통 괜찮음</strong>. "처음부터 끝까지 한 번 훑기"가 이에 해당해요. n이 100만이면 대략 100만 번이니까, 컴퓨터가면 허용되는 경우가 많아요.</li>
+      <li><strong>O(n²)</strong> — n개면 대략 n×n번 비례하면 → <strong>데이터가 많으면 느려짐</strong>. n=1만이면 1억 번, n=10만이면 100억 번 가까이 되니까 "효율 없다"고 보는 기준이에요. 버블 정렬처럼 "모두와 비교"를 반복하면 보통 O(n²)이에요.</li>
+    </ul>
+    <p><strong>판단 요약</strong> "위치를 알고 한 번에 접근" → O(1) → 효율 있음. "한 번 쭉 훑기" → O(n) → 보통 허용. "모두와 비교·반복"가 두 겹이면 O(n²) 의심 → 데이터 많을 때 효율 없음. 이 정도만 있어도 "효율 있나 없나"를 대략 말할 수 있어요.</p>
+
+    <h2>게임에서의 예</h2>
+    <p>게임 인벤토리에 <strong>슬롯 10개</strong>가 있어요.</p>
+    <ul>
+      <li><strong>"3번 슬롯에 뭐 있어?"</strong> → 3번째 칸만 보면 되니까 <strong>O(1)</strong>.</li>
+      <li><strong>"이름이 '검'인 슬롯이 어디야?"</strong> → 처음부터 끝까지 볼 수 있으니까 최대 10번 → <strong>O(n)</strong>.</li>
+    </ul>
+    <p>그래서 "몇 번째인지 아는 칸 보기"는 O(1), "이름으로 찾기"는 O(n)이라고 외우면 돼요.</p>
+
+    <h4 class="section-title">한 줄 요약</h4>
+    <p><strong>성능 측정</strong> = "몇 번 만에 끝나나"를 생각하는 것. <strong>빅오</strong>는 그걸 "대략 n번? n×n번?"처럼 간단히 쓴 거예요. O(1) = 한 번에, O(n) = n개면 최대 n번, O(n²) = n×n에 비례. 실생활의 "책장에서 번호로 찾기 / 이름으로 찾기 / 악수"처럼 생각하면 쉬워요.</p>
+
+    <nav class="page-nav">
+      <a href="01-4-보수와인코딩.html">← 이전: 보수와 인코딩</a>
+      <a href="01-6-자료구조와리스트.html" class="next">다음: 자료구조와 리스트 →</a>
+    </nav>
+  </article>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

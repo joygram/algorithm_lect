@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>5. 자료구조와 리스트 | I단원</title>
+  <title>6. 자료구조와 리스트 | I단원</title>
   <link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
   <header class="header">
     <h1>I. 자료와 자료 구조</h1>
-    <p class="subtitle">5. 자료구조·알고리즘, 리스트 · 약 5분</p>
+    <p class="subtitle">6. 자료구조·알고리즘, 리스트 · 약 5분</p>
     <div id="theme-switcher-wrap"></div>
   </header>
   <article class="lecture">
@@ -37,16 +37,58 @@
       <li><strong>연결 리스트</strong>: 각 노드가 "다음 노드 주소"를 갖고 있어서, 가운데 삽입·삭제가 배열보다 유리해요. <strong>머리(head, 헤드)</strong>, <strong>꼬리(tail, 테일)</strong> 용어가 시험에 나옵니다.</li>
     </ul>
     <div class="python-api-guide" role="region" aria-label="파이썬 API 안내">
-      <p class="api-guide-title">📌 이론(자료구조 연산) ↔ 파이썬 함수</p>
+      <p class="api-guide-title">📌 이론(자료구조 연산) ↔ 파이썬 함수(메서드)</p>
       <p><strong>리스트 연산</strong> 맨 뒤에 넣기 → <code>list.append(값)</code> &nbsp;|&nbsp; i번째 칸 제거·반환 → <code>list.pop(인덱스)</code></p>
       <p><strong>대응</strong> 파이썬 <code>list</code>는 순서 있는 배열처럼 씁니다. 리스트의 "맨 뒤에 넣기"·"몇 번째 칸 지우기"에 아래 메서드를 써요.</p>
       <dl>
         <dt><code>리스트.append(값)</code></dt>
-        <dd><strong>맨 뒤에</strong> 한 칸 추가. 배열에서 "끝에 삽입"에 해당해요. 리스트 길이가 n이면 새 값은 인덱스 n에 들어갑니다.</dd>
+        <dd><strong>맨 뒤에</strong> 한 칸 추가. 배열에서 "끝에 삽입"에 해당해요. 리스트 길이가 n이면 새 값은 인덱스 n에 들어갑니다. <strong>예</strong>: <code>arr = [10, 20]; arr.append(30)</code> → arr은 <code>[10, 20, 30]</code>. 괄호 안에 넣을 <strong>값 하나</strong>를 쓰는 게 인자(argument)예요.</dd>
         <dt><code>리스트.pop(인덱스)</code></dt>
-        <dd><strong>지정한 인덱스</strong>의 값을 제거하고 그 값을 반환해요. 예: <code>pop(1)</code>이면 1번 칸(두 번째 값)이 사라집니다. 뒤쪽 칸들이 한 칸씩 당겨져서 채워져요.</dd>
+        <dd><strong>지정한 인덱스</strong>의 값을 제거하고 그 값을 반환해요. 예: <code>pop(1)</code>이면 1번 칸(두 번째 값)이 사라집니다. 뒤쪽 칸들이 한 칸씩 당겨져서 채워져요. <strong>예</strong>: <code>arr = [10, 20, 30]; x = arr.pop(1)</code> → arr은 <code>[10, 30]</code>, x는 <code>20</code>. 인덱스는 0부터 세요(0=첫 번째, 1=두 번째).</dd>
       </dl>
+      <p><strong>함수(메서드) 호출이란?</strong> <code>객체.이름(인자)</code> 형태로 "이름에 해당하는 일을 인자에 대해 실행해라"라고 쓰는 거예요. <code>arr.append(40)</code>은 "arr 리스트에 append를 실행하고, 인자 40을 넘긴다" → 맨 뒤에 40이 추가돼요.</p>
       <p><strong>왜 이렇게 쓰나요?</strong> 파이썬 list는 "동적 배열"이라 맨 뒤 추가는 빠르고, 인덱스로 접근·삭제가 직관적이에요. 실습에서는 "append로 넣고, pop(인덱스)로 특정 위치 제거"를 익히면 됩니다.</p>
+    </div>
+    <div class="expansion-review" role="region" aria-label="Python vs C# 비교" style="margin-top:1rem;">
+      <h3 class="api-guide-title">📌 리스트·배열 개념 — Python vs C# 비교</h3>
+      <p>같은 "순서 있는 칸"을 Python은 <strong>list</strong>, C#은 <strong>배열(array)</strong> 또는 <strong>List&lt;T&gt;</strong>로 씁니다. 용어와 문법만 맞추면 개념은 같아요.</p>
+      <table class="lecture-table" style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+        <thead>
+          <tr>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">연산</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">Python (list)</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C#</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">만들기</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr = [10, 20, 30]</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>int[] arr = { 10, 20, 30 };</code> 또는 <code>var list = new List&lt;int&gt;() { 10, 20, 30 };</code></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">맨 뒤에 추가</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr.append(40)</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list.Add(40);</code> (배열은 크기 고정이라 보통 List 사용)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">i번째 값 보기</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr[i]</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr[i]</code> 또는 <code>list[i]</code></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">i번째 제거·반환</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr.pop(1)</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list.RemoveAt(1);</code> 또는 제거한 값을 쓰려면 인덱스로 읽은 뒤 RemoveAt</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">길이(개수)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>len(arr)</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr.Length</code> 또는 <code>list.Count</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5rem;"><strong>정리</strong> Python의 <code>list</code>는 C#의 <code>List&lt;T&gt;</code>와 비슷해요(동적 크기, append↔Add, pop(인덱스)↔RemoveAt). C# 배열(<code>int[]</code>)은 크기가 고정이라 "맨 뒤 추가"는 없고, 리스트 자료구조를 쓰려면 <code>List&lt;T&gt;</code>를 쓰는 경우가 많아요.</p>
     </div>
     <div class="fill-code-practice" data-answers="append|1" data-snippet="list">
       <p class="fill-code-prompt">맨 뒤에 추가하는 메서드, 1번 인덱스 제거할 때 pop(?)</p>
@@ -151,7 +193,7 @@ console.log('길이:', arr.length);</textarea>
 
     <p><a href="../exam/past-exam.html" class="back">기출 유형</a></p>
     <nav class="page-nav">
-      <a href="01-4-보수와인코딩.html">← 이전: 보수와 인코딩</a>
+      <a href="01-5-성능과빅오.html">← 이전: 성능과 빅오</a>
       <a href="02-index.html" class="next">다음 단원: II. 선형 구조 →</a>
     </nav>
   </article>

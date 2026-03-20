@@ -18,6 +18,9 @@
     if (/name '_____' is not defined|'_____'/.test(s) || /name '.*' is not defined/.test(s) && s.indexOf('_____') !== -1) {
       return '💡 빈칸(_____)을 아직 채우지 않은 것 같아요. 위 실습 가이드에서 "첫 번째 빈칸", "두 번째 빈칸" 순서대로 채워 보세요.';
     }
+    if (/AttributeError.*has no attribute '_____'|'_____'/.test(s) || /AttributeError.*'_____'/.test(s)) {
+      return '💡 빈칸(_____)을 채운 뒤 실행해 주세요. 예: 리스트 맨 뒤에 넣을 때는 append, 맨 위에서 꺼낼 때는 pop, 큐 맨 앞에서 꺼낼 때는 popleft. 실습 가이드를 참고하세요.';
+    }
     if (/NameError|is not defined/.test(s)) {
       return '💡 이름을 찾을 수 없다는 뜻이에요. 빈칸을 채웠는지, 메서드 이름(append, pop, popleft 등)을 정확히 썼는지 확인해 보세요.';
     }

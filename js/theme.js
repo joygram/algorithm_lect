@@ -2,6 +2,31 @@
   var KEY = 'algorithm_lect_theme';
   var root = document.documentElement;
 
+  // 상대 경로 링크를 절대 URL로 변환 (한글 파일명·서브경로에서 링크 깨짐 방지)
+  function fixRelativeLinks() {
+    var pathname = location.pathname || '/';
+    var dir = pathname.replace(/\/[^/]*$/, '/') || '/';
+    var base = location.origin + dir;
+
+    // 404 페이지: URL이 잘못된 경로이므로 '메인으로' 링크를 사이트 루트로 고정
+    if (document.body && document.body.classList.contains('err-body')) {
+      var homeLink = document.querySelector('.err-body a[href="./"], .err-body a[href="."]');
+      if (homeLink) {
+        var parts = pathname.split('/').filter(Boolean);
+        homeLink.href = parts.length > 1 ? location.origin + '/' + parts[0] + '/' : location.origin + '/';
+      }
+      return;
+    }
+
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var h = a.getAttribute('href');
+      if (!h || /^(https?:|#|mailto:|javascript:|\/\/)/.test(h.trim())) return;
+      try {
+        a.href = new URL(h, base).href;
+      } catch (e) {}
+    });
+  }
+
   function getSaved() {
     try {
       return localStorage.getItem(KEY) || 'light';
@@ -62,9 +87,13 @@
   }
 
   setTheme(getSaved());
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', render);
-  } else {
+  function onReady() {
     render();
+    fixRelativeLinks();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady);
+  } else {
+    onReady();
   }
 })();

@@ -53,6 +53,41 @@
       <li><strong>DFS(디에프에스, 깊이 우선)</strong>: 한 길로 쭉 들어갔다가, 막히면 돌아와서 다른 길. <strong>스택</strong>을 쓰는 방법이에요.</li>
       <li><strong>BFS(비에프에스, 너비 우선)</strong>: 가까운 것부터 층층이. <strong>큐</strong>를 쓰는 방법이에요. "최단 거리" 구할 때 자주 씁니다. 시험에도 나와요.</li>
     </ul>
+    <div class="python-api-guide" role="region" aria-label="그래프·언어별 대응" style="margin-top:1rem;">
+      <p class="api-guide-title">📌 그래프 표현·탐색 — Python / C# / C++ 대응</p>
+      <p style="font-size:0.9rem;">그래프는 보통 <strong>인접 리스트</strong>(각 정점마다 "이웃 리스트")로 저장하고, DFS에는 스택, BFS에는 큐를 씁니다.</p>
+      <table class="lecture-table" style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+        <thead>
+          <tr>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">구분</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">Python</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C#</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C++</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">인접 리스트</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>adj = [[] for _ in range(n)]</code> 후 <code>adj[u].append(v)</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>List&lt;List&lt;int&gt;&gt;</code> 또는 <code>Dictionary&lt;int, List&lt;int&gt;&gt;</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>vector&lt;vector&lt;int&gt;&gt; adj;</code> 후 <code>adj[u].push_back(v);</code></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">DFS용</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list</code> (append/pop) 또는 재귀</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>Stack&lt;T&gt;</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>stack&lt;int&gt;</code></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">BFS용</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>deque</code> (append/popleft)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>Queue&lt;T&gt;</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>queue&lt;int&gt;</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5rem; font-size:0.9rem;"><strong>응용</strong> 맵의 방·지역 연결(정점=방, 간선=문), "현재 방에서 갈 수 있는 방" 목록, <strong>최단 거리</strong>(간선 수 = 문 개수일 때 BFS), 미로 탈출·연결된 구역 찾기(DFS).</p>
+    </div>
     <div class="fun-callout has-char"><img src="../images/sands.jpg" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 프로그래머들이 다크 모드를 좋아하는 이유? 빛이 버그를 끌어당긴대요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
 
     <h4 class="section-title">문제 및 해설</h4>

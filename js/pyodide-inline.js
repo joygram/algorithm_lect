@@ -17,10 +17,10 @@
 
   function getRunner() {
     if (typeof window.PyodideRunner === 'undefined') {
-      return Promise.reject(new Error('PyodideRunner를 불러오지 못했어요. pyodide.js, pyodide-runner.js를 포함했는지 확인해 주세요.'));
+      return Promise.reject(new Error('PyodideRunner를 불러오지 못했어요. pyodide.js 다음에 pyodide-runner.js를 로드해 주세요.'));
     }
-    if (!window.loadPyodide) {
-      return Promise.reject(new Error('Pyodide 스크립트가 로드되지 않았어요. CDN pyodide.js를 포함해 주세요.'));
+    if (typeof window.loadPyodide !== 'function') {
+      return Promise.reject(new Error('Pyodide 스크립트가 아직 로드되지 않았어요. 페이지 맨 아래에 pyodide.js(CDN)가 먼저 오는지 확인해 주세요.'));
     }
     if (!sharedRunnerPromise) {
       sharedRunnerPromise = window.PyodideRunner.init();
@@ -118,35 +118,51 @@
     box.appendChild(outWrap);
 
     runBtn.addEventListener('click', function () {
-      runBtn.disabled = true;
-      status.textContent = '준비 중…';
-      status.className = 'pyodide-status';
-      getRunner().then(function (runner) {
-        status.textContent = '실행 중…';
-        return runner.run(textarea.value, output);
-      }).then(function () {
-        status.textContent = '실행 완료';
-        status.className = 'pyodide-status pyodide-ready';
-      }).catch(function (err) {
-        status.textContent = '오류';
-        status.className = 'pyodide-status pyodide-err';
+      var errMsg = '';
+      try {
+        runBtn.disabled = true;
+        status.textContent = '준비 중…';
+        status.className = 'pyodide-status';
+        if (output) output.innerHTML = '';
+        getRunner().then(function (runner) {
+          status.textContent = '실행 중…';
+          return runner.run(textarea.value, output);
+        }).then(function () {
+          status.textContent = '실행 완료';
+          status.className = 'pyodide-status pyodide-ready';
+        }).catch(function (err) {
+          status.textContent = '오류';
+          status.className = 'pyodide-status pyodide-err';
+          if (output) {
+            output.innerHTML = '';
+            var line = document.createElement('div');
+            line.className = 'pyodide-line pyodide-stderr';
+            line.textContent = (err && (err.message || err.toString())) || String(err);
+            output.appendChild(line);
+            if (isMobile() || /메모리|네트워크|로딩 실패|시간 초과/i.test(line.textContent || '')) {
+              var hint = document.createElement('div');
+              hint.className = 'pyodide-line pyodide-hint';
+              hint.setAttribute('role', 'status');
+              hint.textContent = '💡 모바일에서는 첫 로딩이 느리거나 실패할 수 있어요. Wi‑Fi에서 새로고침 후 다시 실행해 보시거나, PC에서 열어 보세요.';
+              output.appendChild(hint);
+            }
+          }
+        }).finally(function () {
+          runBtn.disabled = false;
+        });
+      } catch (e) {
+        runBtn.disabled = false;
+        errMsg = (e && (e.message || e.toString())) || String(e);
         if (output) {
           output.innerHTML = '';
           var line = document.createElement('div');
           line.className = 'pyodide-line pyodide-stderr';
-          line.textContent = err.message || String(err);
+          line.textContent = '실행기 오류: ' + errMsg;
           output.appendChild(line);
-          if (isMobile() || /메모리|네트워크|로딩 실패/i.test(err.message || '')) {
-            var hint = document.createElement('div');
-            hint.className = 'pyodide-line pyodide-hint';
-            hint.setAttribute('role', 'status');
-            hint.textContent = '💡 모바일에서는 첫 로딩이 느리거나 실패할 수 있어요. Wi‑Fi에서 새로고침 후 다시 실행해 보시거나, PC에서 열어 보세요.';
-            output.appendChild(hint);
-          }
         }
-      }).finally(function () {
-        runBtn.disabled = false;
-      });
+        status.textContent = '오류';
+        status.className = 'pyodide-status pyodide-err';
+      }
     });
 
     container.appendChild(box);

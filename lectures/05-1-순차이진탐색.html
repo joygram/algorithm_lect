@@ -44,6 +44,9 @@
         <dd>target이 <strong>arr[mid]보다 크면</strong> "오른쪽 절반"만 보면 되므로, 구간의 왼쪽 끝을 mid 다음으로 옮겨요: <code>left = mid + 1</code>. 반대로 target이 더 작으면 <code>right = mid - 1</code>로 오른쪽 끝을 줄여요.</dd>
       </dl>
       <p><strong>왜 이렇게 쓰나요?</strong> 이진 탐색의 핵심은 "매번 구간의 가운데를 보고 절반을 버리는 것"이에요. 가운데 인덱스를 정수로 구하는 //, 구간을 좁히는 left/right 갱신이 그대로 코드에 반영됩니다.</p>
+      <p class="api-guide-title" style="margin-top:1rem;">📌 파이썬 while·if 기초</p>
+      <p><strong>while 루프</strong> <code>while 조건:</code>은 "조건이 참인 동안" 아래 블록을 반복해요. 이진 탐색에서는 <code>while left &lt;= right:</code>로 "구간이 남아 있는 한" 계속 가운데를 보며 좁혀요. 들여쓰기된 줄이 반복할 블록이에요.</p>
+      <p><strong>if / else</strong> <code>if 조건:</code> 다음에 들여쓰기한 줄은 "조건이 참일 때만" 실행돼요. <code>else:</code>는 "위 if가 거짓일 때" 실행할 블록이에요. <code>if arr[mid] == target:</code>이면 "가운데 값이 찾는 값이면" 그때 break로 루프를 끝내요.</p>
     </div>
     <div class="fill-code-practice" data-answers="(left+right)//2|mid+1" data-snippet="binary">
       <p class="fill-code-prompt">가운데 인덱스 mid = ? &nbsp; target이 더 크면 left = ?</p>

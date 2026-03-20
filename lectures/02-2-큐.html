@@ -66,7 +66,34 @@
         <dd>맨 <strong>앞</strong>에서 하나 꺼내서 반환 → dequeue(디큐)에 대응해요. 이름에 "left"가 들어간 이유는 "앞쪽=왼쪽"이라고 보기 때문이에요.</dd>
       </dl>
       <p><strong>왜 list가 아니라 deque인가요?</strong> 일반 리스트에서 <code>pop(0)</code>(맨 앞 제거)을 쓰면, 뒤의 값들을 한 칸씩 당겨야 해서 비용이 커요. deque는 맨 앞·맨 뒤만 다루도록 구현돼 있어서 큐 연산에 맞습니다.</p>
+      <p class="api-guide-title" style="margin-top:1rem;">📌 큐 — Python / C# / C++ 대응</p>
+      <table class="lecture-table" style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+        <thead>
+          <tr>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">연산</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">Python</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C#</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C++</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">뒤에 넣기 (enqueue)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>deque.append(x)</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>queue.Enqueue(x);</code> (<code>Queue&lt;T&gt;</code>)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>q.push(x);</code> (<code>queue&lt;T&gt;</code>)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">앞에서 꺼내기 (dequeue)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>deque.popleft()</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>queue.Dequeue();</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>q.pop();</code> (앞에서 제거, 값은 <code>front()</code>로 먼저 확인)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5rem; font-size:0.9rem;"><strong>응용</strong> 대사·이벤트 순서(한 줄씩 enqueue → "다음" 누르면 dequeue), <strong>BFS</strong>(III단원 그래프)에서 "가까운 정점부터" 탐색할 때 큐에 이웃을 넣고 앞에서 꺼내요. 프린터 대기열, 작업 스케줄링에도 씁니다.</p>
     </div>
+    <div class="fun-callout has-char" style="margin-top:0.5rem;"><img src="../images/human.png" alt="" class="fun-callout-char" width="56" height="56"><div><span class="label">😄 조크</span> 큐에 줄 서 있는 사람한테 "뒤로 가세요" 하면? … 그게 바로 dequeue예요. <a href="../fun/etymology-and-jokes.html">더 보기 →</a></div></div>
     <div class="fill-code-practice" data-answer="popleft" data-snippet="queue">
       <p class="fill-code-prompt">큐에서 맨 앞에서 꺼낼 때 쓰는 메서드? (파이썬 deque)</p>
       <div class="fill-code-line">out = q._____()</div>

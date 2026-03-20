@@ -73,6 +73,40 @@
         </tbody>
       </table>
     </div>
+    <div class="python-api-guide" role="region" aria-label="언어별 덱 대응" style="margin-top:1rem;">
+      <p class="api-guide-title">📌 덱 — Python / C# / C++ 대응</p>
+      <table class="lecture-table" style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+        <thead>
+          <tr>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">연산</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">Python (deque)</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C#</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C++</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">뒤에 넣기</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>append(x)</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>LinkedList</code> AddLast 등 (표준 덱 없음)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>deque.push_back(x)</code></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">앞에 넣기</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>appendleft(x)</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>AddFirst</code> 등</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>deque.push_front(x)</code></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">앞에서 / 뒤에서 꺼내기</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>popleft()</code> / <code>pop()</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>RemoveFirst</code> / <code>RemoveLast</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>pop_front()</code> / <code>pop_back()</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5rem; font-size:0.9rem;"><strong>응용</strong> 최근 본 메뉴·아이템 N개(앞에 추가, 넘치면 뒤 제거), 슬라이딩 윈도우(구간을 앞뒤로 밀 때), BFS에서 앞뒤 모두 넣는 변형이 필요할 때.</p>
+    </div>
 
     <h4 class="section-title">문제 및 해설</h4>
     <div class="problem-section exam-type">

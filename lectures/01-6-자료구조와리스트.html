@@ -50,45 +50,52 @@
       <p><strong>왜 이렇게 쓰나요?</strong> 파이썬 list는 "동적 배열"이라 맨 뒤 추가는 빠르고, 인덱스로 접근·삭제가 직관적이에요. 실습에서는 "append로 넣고, pop(인덱스)로 특정 위치 제거"를 익히면 됩니다.</p>
     </div>
     <div class="expansion-review" role="region" aria-label="Python vs C# 비교" style="margin-top:1rem;">
-      <h3 class="api-guide-title">📌 리스트·배열 개념 — Python vs C# 비교</h3>
-      <p>같은 "순서 있는 칸"을 Python은 <strong>list</strong>, C#은 <strong>배열(array)</strong> 또는 <strong>List&lt;T&gt;</strong>로 씁니다. 용어와 문법만 맞추면 개념은 같아요.</p>
-      <table class="lecture-table" style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+      <h3 class="api-guide-title">📌 리스트·배열 개념 — Python / C# / C++ 비교</h3>
+      <p>같은 "순서 있는 칸"을 Python은 <strong>list</strong>, C#은 <strong>List&lt;T&gt;</strong>·배열, C++은 <strong>vector</strong>로 씁니다. 용어와 문법만 맞추면 개념은 같아요.</p>
+      <table class="lecture-table" style="width:100%; border-collapse:collapse; font-size:0.88rem;">
         <thead>
           <tr>
             <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">연산</th>
             <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">Python (list)</th>
             <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C#</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C++</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">만들기</td>
             <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr = [10, 20, 30]</code></td>
-            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>int[] arr = { 10, 20, 30 };</code> 또는 <code>var list = new List&lt;int&gt;() { 10, 20, 30 };</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>var list = new List&lt;int&gt;() { 10, 20, 30 };</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>vector&lt;int&gt; v = {10, 20, 30};</code></td>
           </tr>
           <tr>
             <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">맨 뒤에 추가</td>
             <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr.append(40)</code></td>
-            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list.Add(40);</code> (배열은 크기 고정이라 보통 List 사용)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list.Add(40);</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>v.push_back(40);</code></td>
           </tr>
           <tr>
             <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">i번째 값 보기</td>
             <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr[i]</code></td>
-            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr[i]</code> 또는 <code>list[i]</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list[i]</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>v[i]</code></td>
           </tr>
           <tr>
-            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">i번째 제거·반환</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">i번째 제거</td>
             <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr.pop(1)</code></td>
-            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list.RemoveAt(1);</code> 또는 제거한 값을 쓰려면 인덱스로 읽은 뒤 RemoveAt</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list.RemoveAt(1);</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>v.erase(v.begin()+i);</code></td>
           </tr>
           <tr>
             <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">길이(개수)</td>
             <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>len(arr)</code></td>
-            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>arr.Length</code> 또는 <code>list.Count</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list.Count</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>v.size()</code></td>
           </tr>
         </tbody>
       </table>
-      <p style="margin-top:0.5rem;"><strong>정리</strong> Python의 <code>list</code>는 C#의 <code>List&lt;T&gt;</code>와 비슷해요(동적 크기, append↔Add, pop(인덱스)↔RemoveAt). C# 배열(<code>int[]</code>)은 크기가 고정이라 "맨 뒤 추가"는 없고, 리스트 자료구조를 쓰려면 <code>List&lt;T&gt;</code>를 쓰는 경우가 많아요.</p>
+      <p style="margin-top:0.5rem;"><strong>정리</strong> Python <code>list</code> ↔ C# <code>List&lt;T&gt;</code> ↔ C++ <code>vector</code> (동적 배열). append↔Add↔push_back, 인덱스 접근은 세 언어 모두 <code>[i]</code>.</p>
+      <p class="practice-callout-inline" style="margin-top:0.75rem;"><strong>🎮 응용</strong> 게임에서는 인벤 <strong>슬롯 번호 = 인덱스</strong>로 아이템 보기, <strong>정렬</strong>(IV단원)로 이름순·가격순 정렬, <strong>이진 탐색</strong>(V단원)으로 ID로 빠르게 찾기 등 리스트를 기반으로 확장해요.</p>
     </div>
     <div class="fill-code-practice" data-answers="append|1" data-snippet="list">
       <p class="fill-code-prompt">맨 뒤에 추가하는 메서드, 1번 인덱스 제거할 때 pop(?)</p>

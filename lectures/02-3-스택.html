@@ -61,6 +61,32 @@
         <dd>괄호 안에 아무것도 안 쓰면 <strong>맨 뒤</strong>에서 하나 꺼내서 반환해요 → 스택의 <strong>pop(팝)</strong>에 대응합니다. "맨 위 접시"를 들어 올리는 것과 같아요.</dd>
       </dl>
       <p><strong>왜 list만으로 되나요?</strong> 스택은 "맨 끝"에만 넣고 빼면 되기 때문에, list의 append와 pop()이 모두 O(1)로 동작해요. 별도 모듈 없이 리스트만으로 스택을 구현하는 게 파이썬에서 일반적입니다.</p>
+      <p class="api-guide-title" style="margin-top:1rem;">📌 스택 — Python / C# / C++ 대응</p>
+      <table class="lecture-table" style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+        <thead>
+          <tr>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">연산</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">Python</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C#</th>
+            <th style="border:1px solid var(--border); padding:0.4rem 0.6rem;">C++</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">맨 위에 넣기 (push)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list.append(x)</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>stack.Push(x);</code> (<code>Stack&lt;T&gt;</code>)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>st.push(x);</code> (<code>stack&lt;T&gt;</code>)</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;">맨 위에서 꺼내기 (pop)</td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>list.pop()</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>stack.Pop();</code></td>
+            <td style="border:1px solid var(--border); padding:0.4rem 0.6rem;"><code>st.pop();</code> (값은 <code>top()</code>으로 먼저 확인)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:0.5rem; font-size:0.9rem;"><strong>응용</strong> 메뉴 뒤로가기(타이틀→메인→설정 push, "뒤로" 시 pop), <strong>DFS</strong>(III단원 그래프)에서 한 길로 쭉 들어갔다 막히면 돌아올 때 스택, 괄호 짝 맞추기, 함수 호출 복귀 주소 저장.</p>
     </div>
     <div class="fill-code-practice" data-answers="append|pop" data-snippet="stack">
       <p class="fill-code-prompt">스택에 넣을 때 append, 맨 위에서 꺼낼 때? (빈칸 두 개)</p>
